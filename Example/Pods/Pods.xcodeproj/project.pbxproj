@@ -1,0 +1,784 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		142704891ED333D1008DB31B /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142704881ED333D1008DB31B /* URLScheme.swift */; };
+		1427048B1ED3425D008DB31B /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1427048A1ED3425D008DB31B /* RequestBuilder.swift */; };
+		1427048D1ED3485C008DB31B /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1427048C1ED3485C008DB31B /* RequestSender.swift */; };
+		1427048F1ED3496A008DB31B /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1427048E1ED3496A008DB31B /* NetworkingError.swift */; };
+		149CBDE21ED1934000CF97B9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149CBDE11ED1934000CF97B9 /* Request.swift */; };
+		149CBDE41ED193B500CF97B9 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149CBDE31ED193B500CF97B9 /* Configuration.swift */; };
+		149CBDE71ED1958000CF97B9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149CBDE61ED1958000CF97B9 /* HTTPMethod.swift */; };
+		14EFFBFD1EDF00C60073C9D3 /* JSONRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EFFBFC1EDF00C60073C9D3 /* JSONRequestBuilder.swift */; };
+		4A35189F5AE37BD18D15F8ED85706904 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		4EE411BB7EAC16EC2DBC7761BA75AA53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		698B71EC2EB1A5AC3C4A4D53F3FA4C25 /* Pods-Astral_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FA0560F70FF1F8F0D7716EB3EFEDCA09 /* Pods-Astral_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72F8583217D0CC1E4C1F6FE9A4438682 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		8F314DBF806CBFD02D3FBD31B4B539C6 /* Pods-Astral_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB7D157371C184EF650A7AC94B908B /* Pods-Astral_Example-dummy.m */; };
+		C186457A7F16402EE95C05ADB37EE2B4 /* Pods-Astral_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 281218C430E531DCFAA689ABC0529A4C /* Pods-Astral_Tests-dummy.m */; };
+		CA1434F78A5607FFB40BDC9FCAFF5367 /* Astral-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B90712C53B65CF2809126F8ED6D89CB /* Astral-dummy.m */; };
+		F80DB90CAA87882C8648D6007965A46D /* Pods-Astral_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B2739EFA2E23590A2090B9AF7B04C603 /* Pods-Astral_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDE9B99237F19A71DAD0DF295F92AF22 /* Astral-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8284A50709BB63EB03BD089ED9C29CF2 /* Astral-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCA2F711CF675C0F2BB019E5FD30381E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3589199C2FEDFE842A2B974C4A13B293;
+			remoteInfo = Astral;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		090E5A3B90FF8A20F6F4784CBE2D629A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F0FD94BA79821755D2607B3A868F7E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		142704881ED333D1008DB31B /* URLScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLScheme.swift; sourceTree = "<group>"; };
+		1427048A1ED3425D008DB31B /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		1427048C1ED3485C008DB31B /* RequestSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		1427048E1ED3496A008DB31B /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		149CBDE11ED1934000CF97B9 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		149CBDE31ED193B500CF97B9 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		149CBDE61ED1958000CF97B9 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		14EFFBFC1EDF00C60073C9D3 /* JSONRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRequestBuilder.swift; sourceTree = "<group>"; };
+		1DA5C91E18D167756A3EC1171303E9D1 /* Pods-Astral_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Astral_Example.modulemap"; sourceTree = "<group>"; };
+		21AE8C996AD5B0E69EEDC0F68B6CC551 /* Pods_Astral_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astral_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		281218C430E531DCFAA689ABC0529A4C /* Pods-Astral_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Astral_Tests-dummy.m"; sourceTree = "<group>"; };
+		2B506D3A0CE47EB1162945083D299983 /* Pods-Astral_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Astral_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		2D4DCFB6633FBDFE6448FEBFEC207219 /* Pods-Astral_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Astral_Example.release.xcconfig"; sourceTree = "<group>"; };
+		4CE06542EFA0988BDB7F581FBA61E9F3 /* Pods-Astral_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Astral_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4F369E8E53B5204CCE42AE26D2903C38 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B90712C53B65CF2809126F8ED6D89CB /* Astral-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Astral-dummy.m"; sourceTree = "<group>"; };
+		5C22F95580FE5CAEA3FCF61A4A7198ED /* Pods-Astral_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Astral_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5DFB7D157371C184EF650A7AC94B908B /* Pods-Astral_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Astral_Example-dummy.m"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6954264B42A943837571423D8B30AEA8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F86436757F4F38A63A6C2F5439C980B /* Pods_Astral_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astral_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DDCCF556A5C5D335D1A8F27C303AD55 /* Astral-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Astral-prefix.pch"; sourceTree = "<group>"; };
+		80138F99970CDAEA992A09B61A3F7920 /* Pods-Astral_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Astral_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		8284A50709BB63EB03BD089ED9C29CF2 /* Astral-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Astral-umbrella.h"; sourceTree = "<group>"; };
+		8708FCFC11B1C0E4B50772E88AC14FDD /* Pods-Astral_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Astral_Tests-resources.sh"; sourceTree = "<group>"; };
+		901595B1CC485B88A60A69D831F881AF /* Astral.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Astral.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97ECBB826FD9036AE6FD692D283BCC03 /* Pods-Astral_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Astral_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A527074C03EA59E76C79880981C4B944 /* Pods-Astral_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Astral_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A843EFD1E33B356753B8A23D8A9F6FB8 /* Astral.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Astral.xcconfig; sourceTree = "<group>"; };
+		AC2E5D665A44B034519C452A302A1E2A /* Pods-Astral_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Astral_Example-frameworks.sh"; sourceTree = "<group>"; };
+		B2739EFA2E23590A2090B9AF7B04C603 /* Pods-Astral_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Astral_Example-umbrella.h"; sourceTree = "<group>"; };
+		D7F2FA14AD0C895DB47F0EF612037561 /* Pods-Astral_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Astral_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D81134E67543389422DB0D3A11497D71 /* Pods-Astral_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Astral_Tests.modulemap"; sourceTree = "<group>"; };
+		DF6CA826E0BC6A38F582C5203462E543 /* Pods-Astral_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Astral_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		EE0AF7AA5E4B4BC25ECEB140200B9EAB /* Pods-Astral_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Astral_Example-resources.sh"; sourceTree = "<group>"; };
+		FA0560F70FF1F8F0D7716EB3EFEDCA09 /* Pods-Astral_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Astral_Tests-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50727C8183AB9239D0E68A41DE57342E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EE411BB7EAC16EC2DBC7761BA75AA53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEEBAFE961FA39495FB3C603D767BB04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A35189F5AE37BD18D15F8ED85706904 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D117C07C6C4EC686F163EF530DDAD24B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72F8583217D0CC1E4C1F6FE9A4438682 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		149CBDE01ED1930B00CF97B9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				149CBDE31ED193B500CF97B9 /* Configuration.swift */,
+				149CBDE11ED1934000CF97B9 /* Request.swift */,
+				1427048A1ED3425D008DB31B /* RequestBuilder.swift */,
+				1427048C1ED3485C008DB31B /* RequestSender.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		149CBDE51ED193EF00CF97B9 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				149CBDE61ED1958000CF97B9 /* HTTPMethod.swift */,
+				142704881ED333D1008DB31B /* URLScheme.swift */,
+				1427048E1ED3496A008DB31B /* NetworkingError.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		149CBDE81ED1BD9E00CF97B9 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				14EFFBFC1EDF00C60073C9D3 /* JSONRequestBuilder.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		24AB32CACD184456D6E457EA615A6030 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				149CBDE81ED1BD9E00CF97B9 /* Structs */,
+				149CBDE51ED193EF00CF97B9 /* Enums */,
+				149CBDE01ED1930B00CF97B9 /* Protocols */,
+				8520483186DA5C42016173BD5AAF34D1 /* Classes */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		61104B8182F2E786995AEEEA5234E162 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8599B2994B3B9F6F769DF7B430ECAA9E /* Pods-Astral_Example */,
+				BD263B63F251DD37AF190C0CCBF8BC25 /* Pods-Astral_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				C074ABC5D59F82D65CA459BEB0BA4D30 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				EDA4892415F54ED5337C794CDA3C3064 /* Products */,
+				61104B8182F2E786995AEEEA5234E162 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8520483186DA5C42016173BD5AAF34D1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8599B2994B3B9F6F769DF7B430ECAA9E /* Pods-Astral_Example */ = {
+			isa = PBXGroup;
+			children = (
+				090E5A3B90FF8A20F6F4784CBE2D629A /* Info.plist */,
+				1DA5C91E18D167756A3EC1171303E9D1 /* Pods-Astral_Example.modulemap */,
+				4CE06542EFA0988BDB7F581FBA61E9F3 /* Pods-Astral_Example-acknowledgements.markdown */,
+				DF6CA826E0BC6A38F582C5203462E543 /* Pods-Astral_Example-acknowledgements.plist */,
+				5DFB7D157371C184EF650A7AC94B908B /* Pods-Astral_Example-dummy.m */,
+				AC2E5D665A44B034519C452A302A1E2A /* Pods-Astral_Example-frameworks.sh */,
+				EE0AF7AA5E4B4BC25ECEB140200B9EAB /* Pods-Astral_Example-resources.sh */,
+				B2739EFA2E23590A2090B9AF7B04C603 /* Pods-Astral_Example-umbrella.h */,
+				A527074C03EA59E76C79880981C4B944 /* Pods-Astral_Example.debug.xcconfig */,
+				2D4DCFB6633FBDFE6448FEBFEC207219 /* Pods-Astral_Example.release.xcconfig */,
+			);
+			name = "Pods-Astral_Example";
+			path = "Target Support Files/Pods-Astral_Example";
+			sourceTree = "<group>";
+		};
+		A2202A4EB12974C6EE1D45103EDCBB4D /* Astral */ = {
+			isa = PBXGroup;
+			children = (
+				24AB32CACD184456D6E457EA615A6030 /* Source */,
+				C31D7BE5F72019A03BC34354405BBF04 /* Support Files */,
+			);
+			name = Astral;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD263B63F251DD37AF190C0CCBF8BC25 /* Pods-Astral_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0F0FD94BA79821755D2607B3A868F7E5 /* Info.plist */,
+				D81134E67543389422DB0D3A11497D71 /* Pods-Astral_Tests.modulemap */,
+				5C22F95580FE5CAEA3FCF61A4A7198ED /* Pods-Astral_Tests-acknowledgements.markdown */,
+				97ECBB826FD9036AE6FD692D283BCC03 /* Pods-Astral_Tests-acknowledgements.plist */,
+				281218C430E531DCFAA689ABC0529A4C /* Pods-Astral_Tests-dummy.m */,
+				80138F99970CDAEA992A09B61A3F7920 /* Pods-Astral_Tests-frameworks.sh */,
+				8708FCFC11B1C0E4B50772E88AC14FDD /* Pods-Astral_Tests-resources.sh */,
+				FA0560F70FF1F8F0D7716EB3EFEDCA09 /* Pods-Astral_Tests-umbrella.h */,
+				D7F2FA14AD0C895DB47F0EF612037561 /* Pods-Astral_Tests.debug.xcconfig */,
+				2B506D3A0CE47EB1162945083D299983 /* Pods-Astral_Tests.release.xcconfig */,
+			);
+			name = "Pods-Astral_Tests";
+			path = "Target Support Files/Pods-Astral_Tests";
+			sourceTree = "<group>";
+		};
+		C074ABC5D59F82D65CA459BEB0BA4D30 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2202A4EB12974C6EE1D45103EDCBB4D /* Astral */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C31D7BE5F72019A03BC34354405BBF04 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				901595B1CC485B88A60A69D831F881AF /* Astral.modulemap */,
+				A843EFD1E33B356753B8A23D8A9F6FB8 /* Astral.xcconfig */,
+				5B90712C53B65CF2809126F8ED6D89CB /* Astral-dummy.m */,
+				7DDCCF556A5C5D335D1A8F27C303AD55 /* Astral-prefix.pch */,
+				8284A50709BB63EB03BD089ED9C29CF2 /* Astral-umbrella.h */,
+				6954264B42A943837571423D8B30AEA8 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Astral";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EDA4892415F54ED5337C794CDA3C3064 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F369E8E53B5204CCE42AE26D2903C38 /* Astral.framework */,
+				21AE8C996AD5B0E69EEDC0F68B6CC551 /* Pods_Astral_Example.framework */,
+				6F86436757F4F38A63A6C2F5439C980B /* Pods_Astral_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		63797A7E4478046D7CCE7D65376DD113 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F80DB90CAA87882C8648D6007965A46D /* Pods-Astral_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A7DF3CD61450C1BC1D908051CBCBEF5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				698B71EC2EB1A5AC3C4A4D53F3FA4C25 /* Pods-Astral_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D89B53DF95EAF41CCAE49523DBBC315F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE9B99237F19A71DAD0DF295F92AF22 /* Astral-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3589199C2FEDFE842A2B974C4A13B293 /* Astral */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95E243775B45C1C94DCDBFF85F5A9F13 /* Build configuration list for PBXNativeTarget "Astral" */;
+			buildPhases = (
+				D22B50D9625F4E1D7672A3EFCB0A4A05 /* Sources */,
+				CEEBAFE961FA39495FB3C603D767BB04 /* Frameworks */,
+				D89B53DF95EAF41CCAE49523DBBC315F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Astral;
+			productName = Astral;
+			productReference = 4F369E8E53B5204CCE42AE26D2903C38 /* Astral.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60B049DB5B0D092EFC0AF6BB029A2BFD /* Pods-Astral_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2850B6E3B0A81CAA343DF34F7DD90332 /* Build configuration list for PBXNativeTarget "Pods-Astral_Tests" */;
+			buildPhases = (
+				F1D2D19AAEBD57F3472D78B6985BAC0D /* Sources */,
+				D117C07C6C4EC686F163EF530DDAD24B /* Frameworks */,
+				6A7DF3CD61450C1BC1D908051CBCBEF5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Astral_Tests";
+			productName = "Pods-Astral_Tests";
+			productReference = 6F86436757F4F38A63A6C2F5439C980B /* Pods_Astral_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6C4DC40E1816EE92ED3D817FE3FB2890 /* Pods-Astral_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68D34CCCE7926FE0D3E9A7F3F75272DE /* Build configuration list for PBXNativeTarget "Pods-Astral_Example" */;
+			buildPhases = (
+				7659AFC89B39477D3342315F85791D85 /* Sources */,
+				50727C8183AB9239D0E68A41DE57342E /* Frameworks */,
+				63797A7E4478046D7CCE7D65376DD113 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3DF7A8718DD02F2401BBBED75621752 /* PBXTargetDependency */,
+			);
+			name = "Pods-Astral_Example";
+			productName = "Pods-Astral_Example";
+			productReference = 21AE8C996AD5B0E69EEDC0F68B6CC551 /* Pods_Astral_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					3589199C2FEDFE842A2B974C4A13B293 = {
+						LastSwiftMigration = 0830;
+					};
+				};
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = EDA4892415F54ED5337C794CDA3C3064 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3589199C2FEDFE842A2B974C4A13B293 /* Astral */,
+				6C4DC40E1816EE92ED3D817FE3FB2890 /* Pods-Astral_Example */,
+				60B049DB5B0D092EFC0AF6BB029A2BFD /* Pods-Astral_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7659AFC89B39477D3342315F85791D85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F314DBF806CBFD02D3FBD31B4B539C6 /* Pods-Astral_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D22B50D9625F4E1D7672A3EFCB0A4A05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				149CBDE71ED1958000CF97B9 /* HTTPMethod.swift in Sources */,
+				149CBDE41ED193B500CF97B9 /* Configuration.swift in Sources */,
+				1427048F1ED3496A008DB31B /* NetworkingError.swift in Sources */,
+				1427048D1ED3485C008DB31B /* RequestSender.swift in Sources */,
+				CA1434F78A5607FFB40BDC9FCAFF5367 /* Astral-dummy.m in Sources */,
+				14EFFBFD1EDF00C60073C9D3 /* JSONRequestBuilder.swift in Sources */,
+				1427048B1ED3425D008DB31B /* RequestBuilder.swift in Sources */,
+				142704891ED333D1008DB31B /* URLScheme.swift in Sources */,
+				149CBDE21ED1934000CF97B9 /* Request.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1D2D19AAEBD57F3472D78B6985BAC0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C186457A7F16402EE95C05ADB37EE2B4 /* Pods-Astral_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3DF7A8718DD02F2401BBBED75621752 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Astral;
+			target = 3589199C2FEDFE842A2B974C4A13B293 /* Astral */;
+			targetProxy = FCA2F711CF675C0F2BB019E5FD30381E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		345CC476DF4A7516DBD2220CF5035FF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		56BA8945FCEB5FC31EA16678DAF9A0D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7F2FA14AD0C895DB47F0EF612037561 /* Pods-Astral_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Astral_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Astral_Tests/Pods-Astral_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Astral_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5965A565DADA5FB162F6F804659D4956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A843EFD1E33B356753B8A23D8A9F6FB8 /* Astral.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Astral/Astral-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Astral/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Astral/Astral.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Astral;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		717E77604BFBB04BEAF56608A1CB2EDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		90C8E2084C7FFD2DD6DA9D69E2E79835 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B506D3A0CE47EB1162945083D299983 /* Pods-Astral_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Astral_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Astral_Tests/Pods-Astral_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Astral_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C48157089D7FB7BFC30E91263DD1924F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D4DCFB6633FBDFE6448FEBFEC207219 /* Pods-Astral_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Astral_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Astral_Example/Pods-Astral_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Astral_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C8A9059EB4DF9C2438A2EEF4C4CCB405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A843EFD1E33B356753B8A23D8A9F6FB8 /* Astral.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Astral/Astral-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Astral/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Astral/Astral.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Astral;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DF9ED2DD039A9ACFA30C13ADABCB8515 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A527074C03EA59E76C79880981C4B944 /* Pods-Astral_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Astral_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Astral_Example/Pods-Astral_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Astral_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2850B6E3B0A81CAA343DF34F7DD90332 /* Build configuration list for PBXNativeTarget "Pods-Astral_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56BA8945FCEB5FC31EA16678DAF9A0D9 /* Debug */,
+				90C8E2084C7FFD2DD6DA9D69E2E79835 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				345CC476DF4A7516DBD2220CF5035FF3 /* Debug */,
+				717E77604BFBB04BEAF56608A1CB2EDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68D34CCCE7926FE0D3E9A7F3F75272DE /* Build configuration list for PBXNativeTarget "Pods-Astral_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF9ED2DD039A9ACFA30C13ADABCB8515 /* Debug */,
+				C48157089D7FB7BFC30E91263DD1924F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95E243775B45C1C94DCDBFF85F5A9F13 /* Build configuration list for PBXNativeTarget "Astral" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5965A565DADA5FB162F6F804659D4956 /* Debug */,
+				C8A9059EB4DF9C2438A2EEF4C4CCB405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

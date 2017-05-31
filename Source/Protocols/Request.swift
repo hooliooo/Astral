@@ -1,0 +1,50 @@
+//
+//  Request.swift
+//  Astral
+//
+//  Created by Julio Alorro on 5/21/17.
+//
+//
+
+/**
+ A Request contains the information required to make an HTTP network request
+*/
+public protocol Request {
+    /**
+     The Configuration used by the Request
+    */
+    var configuration: Configuration { get }
+
+    /**
+     HTTP method of the HTTP request
+    */
+    var method: HTTPMethod { get }
+
+    /**
+     Determines whether the HTTP method is a GET or not
+    */
+    var isGetRequest: Bool { get }
+
+    /**
+     URL path to API Endpoint
+    */
+    var path: String { get }
+
+    /**
+     HTTP parameters to be sent in the HTTP network request body or as query string(s) in the URL
+    */
+    var parameters: [String: Any] { get }
+
+    /**
+     HTTP headers to be sent with the HTTP network request
+    */
+    var headers: [String: Any] { get }
+}
+
+public extension Request {
+
+    var isGetRequest: Bool {
+        return self.method == HTTPMethod.GET
+    }
+    
+}
