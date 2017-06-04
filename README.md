@@ -11,7 +11,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Astral requires iOS 10 or higher and Swift 3.x
+Astral requires iOS 10.0 or higher and Swift 3.x
 
 ## Installation
 
@@ -76,6 +76,8 @@ struct PokemonRequest: Request {
         return [:]
     }
 }
+
+let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.userInitiated, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
 let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: request, printsResponse: true)
