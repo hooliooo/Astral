@@ -22,7 +22,7 @@ pod "Astral"
 
 ## Author
 
-hooliooo, julio.alorro@ffuf.de
+Julio Alorro, alorro3@gmail.com
 
 ## License
 
