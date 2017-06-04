@@ -48,7 +48,9 @@ struct PokeAPIConfiguration: Configuration {
         ]
     }
 }
+```
 
+```swift
 struct PokemonRequest: Request {
 
     let id: Int
@@ -57,15 +59,15 @@ struct PokemonRequest: Request {
         return PokeAPIConfiguration()
     }
 
-    var method: HTTPMethod {
-        return HTTPMethod.GET
-    }
-
     var pathComponents: [String] {
-        return [
+        return [    
             "pokemon",
             "\(self.id)"
         ]
+    }
+
+    var method: HTTPMethod {
+        return HTTPMethod.GET
     }
 
     var parameters: [String : Any] {
@@ -76,7 +78,9 @@ struct PokemonRequest: Request {
         return [:]
     }
 }
+```
 
+```swift
 let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.userInitiated, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
