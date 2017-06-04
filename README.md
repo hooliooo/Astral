@@ -22,7 +22,7 @@ it, simply add the following line to your Podfile:
 pod "Astral"
 ```
 
-## Examples
+## Example
 
 ```swift
 struct PokeAPIConfiguration: Configuration {
@@ -82,19 +82,14 @@ let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: reque
 
 sender.sendURLRequest()
     .onSuccess(queue.context) { (data: Data) -> Void in
-        do {
-            guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                else { fatalError("Not a JSON Response") }
-
-            print(json)
-        } catch {
-
-            print(error.localizedDescription)
-
-        }
+        // Create and parse JSON
     }
     .onFailure(queue.context) { (error: NetworkingError) -> Void in
-        print(error.localizedDescription)
+        // Handle the error
+    }
+    .onComplete(queue.context) { (result: Result<Data, NetworkingError>) -> Void in
+        // Handle the completion of the network request
+        // such as clean up of the UI
     }
 ```
 
