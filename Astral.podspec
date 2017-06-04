@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.summary          = 'An HTTP networking library that uses protocols and Futures'
   s.homepage         = 'https://github.com/hooliooo/Astral'
 
-  s.author           = { 'hooliooo' => 'alorro3@gmail.com' }
+  s.author           = { 'Julio Alorro' => 'alorro3@gmail.com' }
   s.source           = { :git => 'https://github.com/hooliooo/Astral.git', :tag => s.version }
 
   s.ios.deployment_target = '10.0'
