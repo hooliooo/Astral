@@ -16,12 +16,12 @@ public protocol RequestSender {
     /**
      Initializer using a Request
     */
-    init(request: Request)
+    init(request: Request, printsResponse: Bool)
 
     /**
      Initializer using a RequestBuiler
     */
-    init(builder: RequestBuilder)
+    init(builder: RequestBuilder, printsResponse: Bool)
 
     /**
      The Request associated with the RequestSender
@@ -32,6 +32,11 @@ public protocol RequestSender {
      The URLRequest associated with the RequestSender
     */
     var urlRequest: URLRequest { get }
+
+    /**
+     Prints Response
+    */
+    var printsResponse: Bool { get }
 
     /**
      The method used to make an HTTP network request. Returns a Future.

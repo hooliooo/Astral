@@ -28,7 +28,7 @@ public protocol Request {
     /**
      URL path to API Endpoint
     */
-    var path: String { get }
+    var pathComponents: [String] { get }
 
     /**
      HTTP parameters to be sent in the HTTP network request body or as query string(s) in the URL

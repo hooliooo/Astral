@@ -28,7 +28,7 @@ public protocol Configuration {
     /**
      The root URL of the HTTP network request
     */
-    var baseURL: URL { get }
+    var baseURLComponents: URLComponents { get }
 
     /**
      The base headers of the HTTP network request
@@ -39,29 +39,11 @@ public protocol Configuration {
 
 public extension Configuration {
 
-    var baseURL: URL {
+    var baseURLComponents: URLComponents {
         var components: URLComponents = URLComponents()
         components.scheme = self.scheme.rawValue
         components.host = self.host
 
-        switch basePathComponents.isEmpty {
-            case true:
-                break
-
-            case false:
-                var path: String = self.basePathComponents.joined(separator: "/")
-
-                switch path.characters.first! != "/" {
-                    case true:
-                        path.insert("/", at: path.startIndex)
-                    
-                    case false:
-                        break
-                }
-
-                components.path = path
-        }
-
-        return components.url!
+        return components
     }
 }

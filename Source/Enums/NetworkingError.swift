@@ -8,7 +8,7 @@
 
 public enum NetworkingError: Error {
     case invalidRequest(String)
-    case noInternet(String)
+    case connection(String)
     case response(String)
 
     var localizedDescription: String {
@@ -16,7 +16,7 @@ public enum NetworkingError: Error {
             case .invalidRequest(let parameter):
                 return parameter
 
-            case .noInternet(let string):
+            case .connection(let string):
                 return string
 
             case .response(let string):
@@ -28,8 +28,10 @@ public enum NetworkingError: Error {
         switch self {
             case .invalidRequest:
                 return "Invalid Request"
-            case .noInternet:
-                return "No Internet Connection"
+
+            case .connection:
+                return "Connection Error"
+
             case .response:
                 return "Response Error"
         }

@@ -13,8 +13,27 @@ public struct JSONRequestBuilder {
 
     // MARK: Computed Properties
     fileprivate var url: URL {
-        var components: URLComponents = URLComponents(url: self.request.configuration.baseURL, resolvingAgainstBaseURL: true)!
-        components.path = self.request.path
+        var components: URLComponents = self.request.configuration.baseURLComponents
+
+        let pathComponents: [String] = self.request.configuration.basePathComponents + self.request.pathComponents
+
+        switch pathComponents.isEmpty {
+            case true:
+                break
+
+            case false:
+                var path: String = pathComponents.joined(separator: "/")
+
+                switch path.characters.first! != "/" {
+                    case true:
+                        path.insert("/", at: path.startIndex)
+
+                    case false:
+                        break
+                }
+
+                components.path = path
+        }
 
         switch self.request.isGetRequest && !self.queryItems.isEmpty {
             case true:
@@ -24,7 +43,10 @@ public struct JSONRequestBuilder {
                 break
         }
 
-        return components.url!
+        guard let url = components.url
+            else { fatalError("Invalid URL \(components)") }
+
+        return url
     }
 
     /**

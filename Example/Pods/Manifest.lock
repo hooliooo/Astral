@@ -1,5 +1,9 @@
 PODS:
-  - Astral (0.1.0)
+  - Astral (0.1.0):
+    - BrightFutures
+  - BrightFutures (5.2.0):
+    - Result (~> 3.2)
+  - Result (3.2.2)
 
 DEPENDENCIES:
   - Astral (from `../`)
@@ -9,8 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Astral: 36378ddfcb0b06af2aadcdd590d473ea523fd6d3
+  Astral: f9a2b8b29f23fd982f0424fe194ff14066717618
+  BrightFutures: 8681dbb9fa831b69b6e7dc4a498b9e081d5daeb5
+  Result: 4edd39003fdccf281d418ee1b006571f70123250
 
-PODFILE CHECKSUM: 96ab287c636b3cf8195938b42c58d3746d1bbab3
+PODFILE CHECKSUM: 0502fb0178e655c7483ac0e385f17a008e6300be
 
 COCOAPODS: 1.2.1

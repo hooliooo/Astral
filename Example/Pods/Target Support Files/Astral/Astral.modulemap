@@ -1,0 +1,6 @@
+framework module Astral {
+  umbrella header "Astral-umbrella.h"
+
+  export *
+  module * { export * }
+}
