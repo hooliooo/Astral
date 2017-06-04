@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Astral
 //
-//  Created by hooliooo on 05/21/2017.
-//  Copyright (c) 2017 hooliooo. All rights reserved.
+//  Created by Julio Alorro on 05/21/2017.
+//  Copyright © 2017 Julio Alorro. All rights reserved.
 //
 
 import UIKit
