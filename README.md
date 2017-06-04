@@ -23,7 +23,7 @@ pod "Astral"
 ```
 
 ## Example
-
+Here's an example using the [Pokemon API](http://pokeapi.co)
 ```swift
 struct PokeAPIConfiguration: Configuration {
 
