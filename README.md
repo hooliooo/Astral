@@ -101,7 +101,7 @@ sender.sendURLRequest()
 
 ## Author
 
-Julio Alorro, alorro3@gmail.com
+[Julio Alorro](https://twitter.com/Hooliooo)
 
 ## License
 
