@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 
-//  Copyright (c) 2017 Julio Alorro
+//  Copyright © 2017 Julio Alorro
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
 /**
- 
- HTTP Methods
-
+ A String Enum that represents HTTP Methods
 */
 public enum HTTPMethod: String {
     case GET

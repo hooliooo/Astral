@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 
-//  Copyright (c) 2017 Julio Alorro
+//  Copyright © 2017 Julio Alorro
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,9 @@
 import BrightFutures
 import Result
 
+/**
+ An implementation of RequestSender that uses the URLSession shared instance for HTTP network requests.
+*/
 public struct JSONRequestSender<T: RequestBuilder> {
 
     // MARK: Stored Properties

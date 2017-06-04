@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 
-//  Copyright (c) 2017 Julio Alorro
+//  Copyright © 2017 Julio Alorro
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@ import BrightFutures
 /**
  A RequestSender uses the URLRequest of the RequestBuilder to make an
  HTTP network request using the system's URLSession shared instance.
- */
+*/
 public protocol RequestSender {
     /**
      Initializer using a Request

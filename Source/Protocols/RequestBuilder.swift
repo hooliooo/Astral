@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 
-//  Copyright (c) 2017 Julio Alorro
+//  Copyright © 2017 Julio Alorro
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,26 @@ public protocol RequestBuilder {
      Initializer used to create a RequestBuilder
     */
     init(request: Request)
+
+    /**
+     The HTTP network request's URL built from the Request
+    */
+    var url: URL { get }
+
+    /**
+     Request object's parameters as URLQueryItems
+    */
+    var queryItems: [URLQueryItem] { get }
+
+    /**
+     Request object's parameters as Data
+    */
+    var httpBody: Data? { get }
+
+    /**
+     Combined headers of Request's Configuration and its headers
+    */
+    var headers: [String: Any] { get }
 
     /**
      The Request associated with the RequestBuilder

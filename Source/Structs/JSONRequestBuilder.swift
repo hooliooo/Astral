@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 
-//  Copyright (c) 2017 Julio Alorro
+//  Copyright © 2017 Julio Alorro
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +20,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+/**
+ An implementation of RequestBuilder that can build URLRequests for simple HTTP network requests.
+*/
 public struct JSONRequestBuilder {
 
     // MARK: Stored Properties
     fileprivate let _request: Request
 
+}
+
+// MARK: - RequestBuilder Protocol
+extension JSONRequestBuilder: RequestBuilder {
+
+    // MARK: Initializer
+    public init(request: Request) {
+        self._request = request
+    }
+
     // MARK: Computed Properties
-    fileprivate var url: URL {
+    public var url: URL {
         var components: URLComponents = self.request.configuration.baseURLComponents
 
         let pathComponents: [String] = self.request.configuration.basePathComponents + self.request.pathComponents
@@ -63,10 +76,7 @@ public struct JSONRequestBuilder {
         return url
     }
 
-    /**
-     Request object's parameters as URLQueryItems
-     */
-    fileprivate var queryItems: [URLQueryItem] {
+    public var queryItems: [URLQueryItem] {
         return self.request.parameters.flatMap { (item: (key: String, value: Any)) -> URLQueryItem? in
             guard let value = item.value as? String
                 else { return nil }
@@ -76,10 +86,7 @@ public struct JSONRequestBuilder {
         }
     }
 
-    /**
-     Request object's parameters as Data
-     */
-    fileprivate var httpBody: Data? {
+    public var httpBody: Data? {
         if self.request.parameters.isEmpty || self.request.isGetRequest {
             return nil
         }
@@ -87,10 +94,7 @@ public struct JSONRequestBuilder {
         return try? JSONSerialization.data(withJSONObject: self.request.parameters)
     }
 
-    /**
-     Combined headers of Request object's configuration and its headers
-     */
-    fileprivate var headers: [String: Any] {
+    public var headers: [String: Any] {
         return [self.request.configuration.baseHeaders, self.request.headers].reduce([:]) {
             (result: [String: Any], dict: [String : Any]) -> [String: Any] in
             var result: [String: Any] = result
@@ -100,16 +104,7 @@ public struct JSONRequestBuilder {
             return result
         }
     }
-}
 
-// MARK: - RequestBuilder Protocol
-extension JSONRequestBuilder: RequestBuilder {
-    // MARK: Initializer
-    public init(request: Request) {
-        self._request = request
-    }
-
-    // MARK: Computed Properties
     public var request: Request {
         return self._request
     }
