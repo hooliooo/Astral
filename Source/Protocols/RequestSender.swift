@@ -53,7 +53,13 @@ public protocol RequestSender {
     var printsResponse: Bool { get }
 
     /**
-     The method used to make an HTTP network request. Returns a Future.
+     The method used to make an HTTP network request by creating a URLSessionDataTask from the URLRequest instance. 
+     Returns a Future.
     */
     func sendURLRequest() -> Future<Data, NetworkingError>
+
+    /**
+     The method used to cancel the URLSessionDataTask created using the URLRequest
+    */
+    func cancelURLRequest()
 }

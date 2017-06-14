@@ -57,6 +57,7 @@ extension JSONRequestSender: RequestSender {
     }
 
     public func sendURLRequest() -> Future<Data, NetworkingError> {
+
         return Future { (callback: @escaping (Result<Data, NetworkingError>) -> Void) -> Void in
             let task: URLSessionDataTask = URLSession.shared.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
@@ -69,13 +70,17 @@ extension JSONRequestSender: RequestSender {
 
                     switch self._printsResponse {
                         case true:
-                            print("HTTPResponse \(response)")
+                            print("HTTPResponse: \(response)")
 
                         case false:
                             break
                     }
 
                     switch response.statusCode {
+
+                        case 200...399:
+
+                            callback(Result.success(data))
 
                         case 400...599:
 
@@ -88,10 +93,6 @@ extension JSONRequestSender: RequestSender {
                                 callback(Result.failure(NetworkingError.response("Error could not be transformed into string")))
 
                             }
-
-                        case 200...399:
-
-                            callback(Result.success(data))
                         
                         default:
                             fatalError("Unhandled status code: \(response.statusCode)")
@@ -101,6 +102,18 @@ extension JSONRequestSender: RequestSender {
             }
             
             task.resume()
+        }
+    }
+
+    public func cancelURLRequest() {
+        URLSession.shared.getAllTasks { (tasks: [URLSessionTask]) -> Void in
+
+            guard
+                let task = tasks.filter({ $0.currentRequest == self.urlRequest }).first
+            else { return }
+
+            task.cancel()
+
         }
     }
 }
