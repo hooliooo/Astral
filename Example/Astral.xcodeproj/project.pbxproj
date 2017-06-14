@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1477F8AC1EE344EF005A6536 /* PokeAPIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1477F8AB1EE344EF005A6536 /* PokeAPIConfiguration.swift */; };
 		1477F8AE1EE34587005A6536 /* PokemonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1477F8AD1EE34587005A6536 /* PokemonRequest.swift */; };
+		1489465A1EF0D55E00824DF2 /* TestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148946591EF0D55E00824DF2 /* TestStructs.swift */; };
+		1489465C1EF0E77F00824DF2 /* HTTPBinKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */; };
 		21FD55CD0775581933EEBD5B /* Pods_Astral_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045E2E1F7A37822681EFA38E /* Pods_Astral_Example.framework */; };
 		23110D017810D35AC1D1A267 /* Pods_Astral_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FD0E18CC1CF8475C80150A /* Pods_Astral_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 		064375C338BA1F0610CD02CD /* Pods-Astral_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astral_Example/Pods-Astral_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1477F8AB1EE344EF005A6536 /* PokeAPIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeAPIConfiguration.swift; sourceTree = "<group>"; };
 		1477F8AD1EE34587005A6536 /* PokemonRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonRequest.swift; sourceTree = "<group>"; };
+		148946591EF0D55E00824DF2 /* TestStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStructs.swift; sourceTree = "<group>"; };
+		1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinKeys.swift; sourceTree = "<group>"; };
 		160B8B4C648236A29BD4C5DB /* Pods-Astral_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astral_Tests/Pods-Astral_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		382031DFF490E1B5A13F915A /* Pods-Astral_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astral_Example/Pods-Astral_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				148946591EF0D55E00824DF2 /* TestStructs.swift */,
+				1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */,
 			);
 			name = Tests;
 			path = ../Tests;
@@ -381,7 +387,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1489465A1EF0D55E00824DF2 /* TestStructs.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				1489465C1EF0E77F00824DF2 /* HTTPBinKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,11 +550,12 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "~/Swift Frameworks/Astral/Tests/Info.plist";
+				INFOPLIST_FILE = "/Users/hooliooo/Swift Frameworks/Astral/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astral_Example.app/Astral_Example";
 			};
 			name = Debug;
 		};
@@ -556,11 +565,12 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = S886WPSL95;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "~/Swift Frameworks/Astral/Tests/Info.plist";
+				INFOPLIST_FILE = "/Users/hooliooo/Swift Frameworks/Astral/Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astral_Example.app/Astral_Example";
 			};
 			name = Release;
 		};
