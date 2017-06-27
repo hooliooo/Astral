@@ -56,9 +56,9 @@ extension JSONRequestSender: RequestSender {
         return self._printsResponse
     }
 
-    public func sendURLRequest() -> Future<Data, NetworkingError> {
+    public func sendURLRequest() -> Future<RequestResponse, NetworkingError> {
 
-        return Future { (callback: @escaping (Result<Data, NetworkingError>) -> Void) -> Void in
+        return Future { (callback: @escaping (Result<RequestResponse, NetworkingError>) -> Void) -> Void in
             let task: URLSessionDataTask = URLSession.shared.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
 
@@ -80,7 +80,7 @@ extension JSONRequestSender: RequestSender {
 
                         case 200...399:
 
-                            callback(Result.success(data))
+                            callback(Result.success(JSONRequestResponse(httpResponse: response, data: data)))
 
                         case 400...599:
 
@@ -96,7 +96,6 @@ extension JSONRequestSender: RequestSender {
                         
                         default:
                             fatalError("Unhandled status code: \(response.statusCode)")
-                        
                     }
                 }
             }

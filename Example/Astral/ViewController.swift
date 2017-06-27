@@ -26,17 +26,8 @@ class ViewController: UIViewController {
         let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: request, printsResponse: true)
 
         sender.sendURLRequest()
-            .onSuccess(queue.context) { (data: Data) -> Void in
-                do {
-                    guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                        else { fatalError("Not a JSON Response") }
-
-                    print(json)
-                } catch {
-
-                    print(error.localizedDescription)
-
-                }
+            .onSuccess(queue.context) { (response: RequestResponse) -> Void in
+                print(response.payload.dictValue)
             }
             .onFailure(queue.context) { (error: NetworkingError) -> Void in
                 print(error.localizedDescription)

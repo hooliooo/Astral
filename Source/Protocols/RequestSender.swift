@@ -56,7 +56,7 @@ public protocol RequestSender {
      The method used to make an HTTP network request by creating a URLSessionDataTask from the URLRequest instance. 
      Returns a Future.
     */
-    func sendURLRequest() -> Future<Data, NetworkingError>
+    func sendURLRequest() -> Future<RequestResponse, NetworkingError>
 
     /**
      The method used to cancel the URLSessionDataTask created using the URLRequest

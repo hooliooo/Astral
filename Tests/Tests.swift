@@ -31,10 +31,10 @@ class Tests: XCTestCase {
         let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinGetRequest(), printsResponse: true)
 
         requestSender.sendURLRequest()
-            .map { (data: Data) -> [String: Any] in
+            .map { (response: RequestResponse) -> [String: Any] in
 
-                return self.createJSON(with: data)
-
+                return response.payload.dictValue
+        
             }
             .onSuccess { (json: [String : Any]) -> Void in
                 guard
@@ -70,9 +70,9 @@ class Tests: XCTestCase {
 
         let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinGetRequest(), printsResponse: true)
         requestSender.sendURLRequest()
-            .map { (data: Data) -> [String: Any] in
+            .map { (response: RequestResponse) -> [String: Any] in
 
-                return self.createJSON(with: data)
+                return response.payload.dictValue
 
             }
             .onSuccess { (json: [String : Any]) -> Void in
@@ -114,8 +114,8 @@ class Tests: XCTestCase {
         let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinPostRequest(), printsResponse: true)
 
         requestSender.sendURLRequest()
-            .map { (data: Data) -> [String: Any] in
-                return self.createJSON(with: data)
+            .map { (response: RequestResponse) -> [String: Any] in
+                return response.payload.dictValue
             }
             .onSuccess { (json: [String : Any]) -> Void in
                 guard
