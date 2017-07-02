@@ -60,5 +60,5 @@ public extension Request {
     var isGetRequest: Bool {
         return self.method == HTTPMethod.GET
     }
-    
+
 }

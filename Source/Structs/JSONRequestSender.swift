@@ -23,6 +23,8 @@
 import BrightFutures
 import Result
 
+public typealias HTTPRequestResult = (Result<RequestResponse, NetworkingError>) -> Void
+
 /**
  An implementation of RequestSender that uses the URLSession shared instance for HTTP network requests.
 */
@@ -58,7 +60,7 @@ extension JSONRequestSender: RequestSender {
 
     public func sendURLRequest() -> Future<RequestResponse, NetworkingError> {
 
-        return Future { (callback: @escaping (Result<RequestResponse, NetworkingError>) -> Void) -> Void in
+        return Future { (callback: @escaping HTTPRequestResult) -> Void in
             let task: URLSessionDataTask = URLSession.shared.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
 
@@ -93,13 +95,13 @@ extension JSONRequestSender: RequestSender {
                                 callback(Result.failure(NetworkingError.response("Error could not be transformed into string")))
 
                             }
-                        
+
                         default:
                             fatalError("Unhandled status code: \(response.statusCode)")
                     }
                 }
             }
-            
+
             task.resume()
         }
     }

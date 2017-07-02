@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         let request: Request = PokemonRequest(id: 1)
 
         let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: request, printsResponse: true)

@@ -95,12 +95,14 @@ extension JSONRequestBuilder: RequestBuilder {
     }
 
     public var headers: [String: Any] {
-        return [self.request.configuration.baseHeaders, self.request.headers].reduce([:]) {
-            (result: [String: Any], dict: [String : Any]) -> [String: Any] in
+        let headersArray: [[String: Any]] = [self.request.configuration.baseHeaders, self.request.headers]
+
+        return headersArray.reduce([:]) { (result: [String: Any], dict: [String : Any]) -> [String: Any] in
             var result: [String: Any] = result
             dict.forEach { (dict: (key: String, value: Any)) -> Void in
                 result.updateValue(dict.value, forKey: dict.key)
             }
+
             return result
         }
     }
@@ -121,7 +123,7 @@ extension JSONRequestBuilder: RequestBuilder {
                 print("No headers")
             }
         }
-        
+
         return request
     }
 }

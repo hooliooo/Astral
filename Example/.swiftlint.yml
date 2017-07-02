@@ -1,15 +1,15 @@
 disabled_rules:
-  - variable_name
+  - identifier_name
 
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Example/Pods/BrightFutures/*
+  - Example/Pods/Result/*
+  - Tests
 
 included:
   - Source
   - Example
-
-excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Carthage
-  - Pods
-  - Tests
 
 line_length:
   ignores_function_declarations: true
