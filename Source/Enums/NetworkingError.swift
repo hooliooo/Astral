@@ -1,5 +1,3 @@
-//  The MIT License (MIT)
-
 //
 //  Astral
 //  Copyright © 2017 Julio Alorro
