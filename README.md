@@ -1,4 +1,14 @@
 # Astral
+Astral is a minimal HTTP Networking library that aims to simply an application's networking layer by breaking down
+the steps needed to create a network request. 
+
+It aims to shy away from the typical network layer singleton by encapsulating each network request as an object.
+
+Astral makes full use of the [BrightFutures](https://github.com/Thomvis/BrightFutures) API to flatten the asynchronous calls
+associated with networking, making your code base as readable as possible.
+
+Inspired by Soroush Khanlou's [blog post](http://khanlou.com/2016/05/protocol-oriented-programming/) on Protocol Oriented 
+Programming.
 
 [![CI Status](http://img.shields.io/travis/hooliooo/Astral.svg?style=flat)](https://travis-ci.org/hooliooo/Astral)
 [![Version](https://img.shields.io/cocoapods/v/Astral.svg?style=flat)](http://cocoapods.org/pods/Astral)
