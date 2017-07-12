@@ -5,22 +5,20 @@
 [![License](https://img.shields.io/cocoapods/l/Astral.svg?style=flat)](http://cocoapods.org/pods/Astral)
 [![Platform](https://img.shields.io/cocoapods/p/Astral.svg?style=flat)](http://cocoapods.org/pods/Astral)
 
-## Example Project
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 Astral requires iOS 10.0 or higher and Swift 3.x
 
 ## Installation
+### [CocoaPods](http://cocoapods.org/)
 
-Astral is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+1. Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
 
 ```ruby
-pod "Astral"
+pod 'Astral'
 ```
+2. Integrate your dependencies using frameworks: add `use_frameworks!` to your Podfile. 
+3. Run `pod install`.
 
 ## Example
 Here's an example using the [Pokemon API](http://pokeapi.co)
