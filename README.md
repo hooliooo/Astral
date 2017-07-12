@@ -1,10 +1,10 @@
 # Astral
-Astral is a minimal HTTP Networking library that aims to simply an application's networking layer by breaking down
-the steps needed to create a network request. 
+Astral is a minimal HTTP Networking library that aims to simply an application's networking layer by abstracting
+the steps needed to create a network request into multiple objects.
 
-It aims to shy away from the typical network layer singleton by encapsulating each network request as an object.
+It aims to shy away from the typical network layer singleton by encapsulating each part of network request as an object.
 
-Astral makes full use of the [BrightFutures](https://github.com/Thomvis/BrightFutures) API to flatten the asynchronous calls
+Astral makes use of the [BrightFutures](https://github.com/Thomvis/BrightFutures) library to flatten the asynchronous calls
 associated with networking, making your code base as readable as possible.
 
 Inspired by Soroush Khanlou's [blog post](http://khanlou.com/2016/05/protocol-oriented-programming/) on Protocol Oriented 
