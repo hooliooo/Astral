@@ -10,25 +10,29 @@ import Result
 public typealias httpRequestResult = (Result<Response, NetworkingError>) -> Void
 
 /**
- An implementation of RequestSender that uses the URLSession shared instance for http network requests.
+ An implementation of RequestDispatcher that uses the URLSession shared instance for http network requests.
 */
-public struct JSONRequestSender<T: RequestBuilder> {
+public struct JSONRequestDispatcher {
 
     // MARK: Stored Properties
     fileprivate let _requestBuilder: RequestBuilder
     fileprivate let _printsResponse: Bool
+
+    // MARK: Static Properties
+    public static let session: URLSession = URLSession.shared
+
 }
 
-extension JSONRequestSender: RequestSender {
+extension JSONRequestDispatcher: RequestDispatcher {
 
     // MARK: Intializers
-    public init(request: Request, printsResponse: Bool) {
-        self.init(builder: T(request: request), printsResponse: printsResponse)
+    public init(request: Request, builderType: RequestBuilder.Type, printsResponse: Bool) {
+        self.init(builder: builderType.init(request: request), printsResponse: printsResponse)
     }
 
     public init(builder: RequestBuilder, printsResponse: Bool) {
-        self._printsResponse = printsResponse
         self._requestBuilder = builder
+        self._printsResponse = printsResponse
     }
 
     // MARK: Computed Properties
@@ -45,10 +49,10 @@ extension JSONRequestSender: RequestSender {
     }
 
     // MARK: Instance Methods
-    public func sendURLRequest() -> Future<Response, NetworkingError> {
+    public func dispatchURLRequest() -> Future<Response, NetworkingError> {
 
         return Future { (callback: @escaping httpRequestResult) -> Void in
-            let task: URLSessionDataTask = URLSession.shared.dataTask(with: self.urlRequest) {
+            let task: URLSessionDataTask = JSONRequestDispatcher.session.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
 
                 if let error = error {
@@ -94,7 +98,7 @@ extension JSONRequestSender: RequestSender {
     }
 
     public func cancelURLRequest() {
-        URLSession.shared.getAllTasks { (tasks: [URLSessionTask]) -> Void in
+        JSONRequestDispatcher.session.getAllTasks { (tasks: [URLSessionTask]) -> Void in
 
             guard
                 let task = tasks.filter({ $0.currentRequest == self.urlRequest }).first

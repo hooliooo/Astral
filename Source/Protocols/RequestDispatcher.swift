@@ -7,14 +7,20 @@
 import BrightFutures
 
 /**
- A RequestSender uses the URLRequest of the RequestBuilder to make an
+ A RequestDispatcher uses the URLRequest of the RequestBuilder to make an
  http network request using the system's URLSession shared instance.
 */
-public protocol RequestSender {
+public protocol RequestDispatcher {
+
     /**
-     Initializer using a Request
+     The URLSession used for the RequestDispatcher type
     */
-    init(request: Request, printsResponse: Bool)
+    static var session: URLSession { get }
+
+    /**
+     Initializer with a Request and RequestBuilder type
+    */
+    init(request: Request, builderType: RequestBuilder.Type, printsResponse: Bool)
 
     /**
      Initializer using a RequestBuiler
@@ -22,12 +28,12 @@ public protocol RequestSender {
     init(builder: RequestBuilder, printsResponse: Bool)
 
     /**
-     The Request associated with the RequestSender
+     The Request associated with the RequestDispatcher
     */
     var request: Request { get }
 
     /**
-     The URLRequest associated with the RequestSender
+     The URLRequest associated with the RequestDispatcher
     */
     var urlRequest: URLRequest { get }
 
@@ -40,7 +46,7 @@ public protocol RequestSender {
      The method used to make an http network request by creating a URLSessionDataTask from the URLRequest instance. 
      Returns a Future.
     */
-    func sendURLRequest() -> Future<Response, NetworkingError>
+    func dispatchURLRequest() -> Future<Response, NetworkingError>
 
     /**
      The method used to cancel the URLSessionDataTask created using the URLRequest

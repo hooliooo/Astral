@@ -28,9 +28,11 @@ class Tests: XCTestCase {
     func testHeaders() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
-        let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinGetRequest(), printsResponse: true)
+        let requestDispatcher: RequestDispatcher = JSONRequestDispatcher(
+            request: HTTPBinGetRequest(), builderType: JSONRequestBuilder.self, printsResponse: true
+        )
 
-        requestSender.sendURLRequest()
+        requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
 
                 return response.payload.dictValue
@@ -44,14 +46,14 @@ class Tests: XCTestCase {
                     let contentType = headers[HTTPBinKeys.contentType.rawValue],
                     let getRequest = headers[HTTPBinKeys.getRequest.rawValue],
 
-                    let configurationContentTypeHeader = requestSender.request.configuration.baseHeaders[HTTPBinKeys.contentType.rawValue] as? String,
-                    let requestGetRequestHeader = requestSender.request.headers[HTTPBinKeys.getRequest.rawValue] as? String
+                    let configurationContentTypeHeader = requestDispatcher.request.configuration.baseHeaders[HTTPBinKeys.contentType.rawValue] as? String,
+                    let requestGetRequestHeader = requestDispatcher.request.headers[HTTPBinKeys.getRequest.rawValue] as? String
                 else {
                     XCTFail("Failed to get headers")
                     return
                 }
 
-                XCTAssertTrue(requestSender.request.configuration.host == host)
+                XCTAssertTrue(requestDispatcher.request.configuration.host == host)
                 XCTAssertTrue(configurationContentTypeHeader == contentType)
                 XCTAssertTrue(requestGetRequestHeader == getRequest)
                 expectation.fulfill()
@@ -68,8 +70,10 @@ class Tests: XCTestCase {
 
         let expectation: XCTestExpectation = self.expectation(description: "Get Request Query")
 
-        let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinGetRequest(), printsResponse: true)
-        requestSender.sendURLRequest()
+        let requestDispatcher: RequestDispatcher = JSONRequestDispatcher(
+            request: HTTPBinGetRequest(), builderType: JSONRequestBuilder.self, printsResponse: true
+        )
+        requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
 
                 return response.payload.dictValue
@@ -80,7 +84,7 @@ class Tests: XCTestCase {
                     // Args Node
                     let args = json[HTTPBinKeys.args.rawValue] as? [String: String],
                     let thisValue = args[HTTPBinKeys.this.rawValue],
-                    let requestParameterValue = requestSender.request.parameters[HTTPBinKeys.this.rawValue] as? String,
+                    let requestParameterValue = requestDispatcher.request.parameters[HTTPBinKeys.this.rawValue] as? String,
 
                     // URL Node
                     let url = json[HTTPBinKeys.url.rawValue] as? String
@@ -89,7 +93,7 @@ class Tests: XCTestCase {
                     return
                 }
 
-                XCTAssertTrue(requestSender.urlRequest.url?.absoluteString == url)
+                XCTAssertTrue(requestDispatcher.urlRequest.url?.absoluteString == url)
                 XCTAssertTrue(requestParameterValue == thisValue)
                 expectation.fulfill()
 
@@ -111,9 +115,11 @@ class Tests: XCTestCase {
     func testPostRequest() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
-        let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinPostRequest(), printsResponse: true)
+        let requestDispatcher: RequestDispatcher = JSONRequestDispatcher(
+            request: HTTPBinPostRequest(), builderType: JSONRequestBuilder.self, printsResponse: true
+        )
 
-        requestSender.sendURLRequest()
+        requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
                 return response.payload.dictValue
             }
@@ -123,7 +129,7 @@ class Tests: XCTestCase {
                     let jsonNode = json[HTTPBinKeys.json.rawValue] as? [String: String],
                     let thisValue = jsonNode[HTTPBinKeys.this.rawValue],
 
-                    let requestThisValue = requestSender.request.parameters[HTTPBinKeys.this.rawValue] as? String
+                    let requestThisValue = requestDispatcher.request.parameters[HTTPBinKeys.this.rawValue] as? String
 
                 else {
                     XCTFail("Failed to get json")

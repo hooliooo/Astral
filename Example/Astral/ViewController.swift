@@ -22,9 +22,11 @@ class ViewController: UIViewController {
 
         let request: Request = PokemonRequest(id: 1)
 
-        let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: request, printsResponse: true)
+        let dispatcher: RequestDispatcher = JSONRequestDispatcher(
+            request: request, builderType: JSONRequestBuilder.self, printsResponse: true
+        )
 
-        sender.sendURLRequest()
+        dispatcher.dispatchURLRequest()
             .onSuccess(queue.context) { (response: Response) -> Void in
                 print(response.payload.dictValue)
             }

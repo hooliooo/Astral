@@ -92,9 +92,11 @@ struct PokemonRequest: Request {
 let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.userInitiated, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
-let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: request, printsResponse: true)
+let dispatcher: RequestDispatcher = JSONRequestDispatcher(
+    request: request, builderType: JSONRequestBuilder.self, printsResponse: true
+)
 
-sender.sendURLRequest()
+dispatcher.dispatchURLRequest()
     .onSuccess(queue.context) { (data: Data) -> Void in
         // Create and parse JSON
     }
