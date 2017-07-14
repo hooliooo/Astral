@@ -5,7 +5,7 @@
 //
 
 /**
- String Enum that represents the scheme of the HTTP network request
+ String Enum that represents the scheme of the http network request
 */
 public enum URLScheme: String {
     case http

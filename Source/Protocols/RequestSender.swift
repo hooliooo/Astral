@@ -8,7 +8,7 @@ import BrightFutures
 
 /**
  A RequestSender uses the URLRequest of the RequestBuilder to make an
- HTTP network request using the system's URLSession shared instance.
+ http network request using the system's URLSession shared instance.
 */
 public protocol RequestSender {
     /**
@@ -32,15 +32,15 @@ public protocol RequestSender {
     var urlRequest: URLRequest { get }
 
     /**
-     When set to true, the headers of the HTTPURLResponse is printed in the console log. Use for debugging purposes
+     When set to true, the headers of the httpURLResponse is printed in the console log. Use for debugging purposes
     */
     var printsResponse: Bool { get }
 
     /**
-     The method used to make an HTTP network request by creating a URLSessionDataTask from the URLRequest instance. 
+     The method used to make an http network request by creating a URLSessionDataTask from the URLRequest instance. 
      Returns a Future.
     */
-    func sendURLRequest() -> Future<RequestResponse, NetworkingError>
+    func sendURLRequest() -> Future<Response, NetworkingError>
 
     /**
      The method used to cancel the URLSessionDataTask created using the URLRequest

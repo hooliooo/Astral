@@ -5,7 +5,7 @@
 //
 
 /**
- An implementation of RequestBuilder that can build URLRequests for simple HTTP network requests.
+ An implementation of RequestBuilder that can build URLRequests for simple http network requests.
 */
 public struct JSONRequestBuilder {
 

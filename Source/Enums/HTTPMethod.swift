@@ -5,7 +5,7 @@
 //
 
 /**
- A String Enum that represents HTTP Methods
+ A String Enum that represents http methods
 */
 public enum HTTPMethod: String {
     case GET

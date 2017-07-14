@@ -5,7 +5,7 @@
 //
 
 /**
- A Request contains the information required to make an HTTP network request
+ A Request contains the information required to make an http network request
 */
 public protocol Request {
     /**
@@ -14,12 +14,12 @@ public protocol Request {
     var configuration: Configuration { get }
 
     /**
-     HTTP method of the HTTP request
+     http method of the http request
     */
     var method: HTTPMethod { get }
 
     /**
-     Determines whether the HTTP method is a GET or not
+     Determines whether the http method is a GET or not
     */
     var isGetRequest: Bool { get }
 
@@ -29,12 +29,12 @@ public protocol Request {
     var pathComponents: [String] { get }
 
     /**
-     HTTP parameters to be sent in the HTTP network request body or as query string(s) in the URL
+     http parameters to be sent in the http network request body or as query string(s) in the URL
     */
     var parameters: [String: Any] { get }
 
     /**
-     HTTP headers to be sent with the HTTP network request
+     http headers to be sent with the http network request
     */
     var headers: [String: Any] { get }
 }

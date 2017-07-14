@@ -7,10 +7,10 @@
 import BrightFutures
 import Result
 
-public typealias HTTPRequestResult = (Result<RequestResponse, NetworkingError>) -> Void
+public typealias httpRequestResult = (Result<Response, NetworkingError>) -> Void
 
 /**
- An implementation of RequestSender that uses the URLSession shared instance for HTTP network requests.
+ An implementation of RequestSender that uses the URLSession shared instance for http network requests.
 */
 public struct JSONRequestSender<T: RequestBuilder> {
 
@@ -42,9 +42,9 @@ extension JSONRequestSender: RequestSender {
         return self._printsResponse
     }
 
-    public func sendURLRequest() -> Future<RequestResponse, NetworkingError> {
+    public func sendURLRequest() -> Future<Response, NetworkingError> {
 
-        return Future { (callback: @escaping HTTPRequestResult) -> Void in
+        return Future { (callback: @escaping httpRequestResult) -> Void in
             let task: URLSessionDataTask = URLSession.shared.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
 
@@ -56,7 +56,7 @@ extension JSONRequestSender: RequestSender {
 
                     switch self._printsResponse {
                         case true:
-                            print("HTTPResponse: \(response)")
+                            print("httpResponse: \(response)")
 
                         case false:
                             break
@@ -66,7 +66,7 @@ extension JSONRequestSender: RequestSender {
 
                         case 200...399:
 
-                            callback(Result.success(JSONRequestResponse(httpResponse: response, data: data)))
+                            callback(Result.success(JSONResponse(httpResponse: response, data: data)))
 
                         case 400...599:
 

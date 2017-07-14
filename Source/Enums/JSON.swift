@@ -5,11 +5,16 @@
 //
 
 import Foundation
-
+/**
+ The JSON enum represents the data from an http response as either an array of dictionaries or a single dictionary
+*/
 public enum JSON {
     case array([[String: Any]])
     case dictionary([String: Any])
 
+    /**
+     The initializer of a JSON enum
+    */
     public init(data: Data) {
         guard let json = try? JSONSerialization.jsonObject(with: data)
             else { fatalError("Could not turn data into a JSON") }
@@ -26,6 +31,9 @@ public enum JSON {
         }
     }
 
+    /**
+     Returns the array of the .array case, otherwise induces a fatalError
+    */
     public var arrayValue: [[String: Any]] {
         switch self {
             case .array(let array):
@@ -36,6 +44,9 @@ public enum JSON {
         }
     }
 
+    /**
+     Returns the dictionary of the .dictionary case, otherwise induces a fatalError
+    */
     public var dictValue: [String: Any] {
         switch self {
             case .dictionary(let dict):

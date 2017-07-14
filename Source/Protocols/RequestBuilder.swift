@@ -14,7 +14,7 @@ public protocol RequestBuilder {
     init(request: Request)
 
     /**
-     The HTTP network request's URL built from the Request
+     The http network request's URL built from the Request
     */
     var url: URL { get }
 
@@ -39,7 +39,7 @@ public protocol RequestBuilder {
     var request: Request { get }
 
     /**
-     The URLRequest used when sending an HTTP network request
+     The URLRequest used when sending an http network request
     */
     var urlRequest: URLRequest { get }
 }

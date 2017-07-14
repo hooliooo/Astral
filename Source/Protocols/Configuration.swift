@@ -19,17 +19,17 @@ public protocol Configuration {
     var host: String { get }
 
     /**
-     The root URL path components of the HTTP network request
+     The root URL path components of the http network request
     */
     var basePathComponents: [String] { get }
 
     /**
-     The root URLComponents of the HTTP network request
+     The root URLComponents of the http network request
     */
     var baseURLComponents: URLComponents { get }
 
     /**
-     The base headers of the HTTP network request
+     The base headers of the http network request
     */
     var baseHeaders: [String: Any] { get }
 

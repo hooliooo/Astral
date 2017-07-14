@@ -5,14 +5,16 @@
 //
 
 import Foundation
-
-public struct JSONRequestResponse {
+/**
+ An implementation of Response that represents the data from an HTTPURLResponse.
+*/
+public struct JSONResponse {
     fileprivate let _statusCode: Int
     fileprivate let _data: Data
     fileprivate let _response: JSON
 }
 
-extension JSONRequestResponse: RequestResponse {
+extension JSONResponse: Response {
 
     public init(httpResponse: HTTPURLResponse, data: Data) {
         self._statusCode = httpResponse.statusCode

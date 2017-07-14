@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         let sender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: request, printsResponse: true)
 
         sender.sendURLRequest()
-            .onSuccess(queue.context) { (response: RequestResponse) -> Void in
+            .onSuccess(queue.context) { (response: Response) -> Void in
                 print(response.payload.dictValue)
             }
             .onFailure(queue.context) { (error: NetworkingError) -> Void in

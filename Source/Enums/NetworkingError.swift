@@ -5,7 +5,7 @@
 //
 
 /**
- An Enum that represents errors related to HTTP network requests
+ An Enum that represents errors related to http network requests
 */
 public enum NetworkingError: Error {
     case invalidRequest(String)

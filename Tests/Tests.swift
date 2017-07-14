@@ -31,7 +31,7 @@ class Tests: XCTestCase {
         let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinGetRequest(), printsResponse: true)
 
         requestSender.sendURLRequest()
-            .map { (response: RequestResponse) -> [String: Any] in
+            .map { (response: Response) -> [String: Any] in
 
                 return response.payload.dictValue
         
@@ -70,7 +70,7 @@ class Tests: XCTestCase {
 
         let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinGetRequest(), printsResponse: true)
         requestSender.sendURLRequest()
-            .map { (response: RequestResponse) -> [String: Any] in
+            .map { (response: Response) -> [String: Any] in
 
                 return response.payload.dictValue
 
@@ -114,7 +114,7 @@ class Tests: XCTestCase {
         let requestSender: RequestSender = JSONRequestSender<JSONRequestBuilder>(request: HTTPBinPostRequest(), printsResponse: true)
 
         requestSender.sendURLRequest()
-            .map { (response: RequestResponse) -> [String: Any] in
+            .map { (response: Response) -> [String: Any] in
                 return response.payload.dictValue
             }
             .onSuccess { (json: [String : Any]) -> Void in

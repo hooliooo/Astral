@@ -6,7 +6,10 @@
 
 import Foundation
 
-public protocol RequestResponse {
+/**
+ A Response encapsulates the data retreived after an http request was made.
+*/
+public protocol Response {
 
     /**
      Initializer for RequestResponse
@@ -14,17 +17,17 @@ public protocol RequestResponse {
     init(httpResponse: HTTPURLResponse, data: Data)
 
     /**
-     Status code of the HTTP Response
+     Status code of the http Response
     */
     var statusCode: Int { get }
 
     /**
-     Payload of information from the HTTP Response as Data
+     Payload of information from the http Response as Data
     */
     var data: Data { get }
 
     /**
-     Payload of information from the HTTP Response as JSON
+     Payload of information from the http Response as JSON
     */
     var payload: JSON { get }
 
