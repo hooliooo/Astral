@@ -1,5 +1,5 @@
 # Astral
-Astral is a minimal HTTP Networking library that aims to simply an application's networking layer by abstracting
+Astral is a minimal HTTP Networking library that aims to simplify an application's networking layer by abstracting
 the steps needed to create a network request into multiple objects.
 
 It aims to shy away from the typical network layer singleton by encapsulating each part of network request as an object.

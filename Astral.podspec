@@ -9,13 +9,13 @@
 Pod::Spec.new do |s|
   s.name             = 'Astral'
   s.module_name      = 'Astral'
-  s.version          = '0.6.3'
+  s.version          = '0.6.4'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.summary          = 'An HTTP networking library that uses protocols and Futures'
   s.homepage         = 'https://github.com/hooliooo/Astral'
   s.description      = <<-DESC
-                            Astral is a minimal HTTP Networking library that aims to simply an application's networking layer by
+                            Astral is a minimal HTTP Networking library that aims to simplify an application's networking layer by
                             abstracting the steps needed to create a network request into multiple objects. It aims to shy away
                             from the typical network layer singleton by encapsulating each part of network request as an object.
                         DESC
