@@ -21,6 +21,7 @@ public struct JSONRequestSender<T: RequestBuilder> {
 
 extension JSONRequestSender: RequestSender {
 
+    // MARK: Intializers
     public init(request: Request, printsResponse: Bool) {
         self.init(builder: T(request: request), printsResponse: printsResponse)
     }
@@ -30,6 +31,7 @@ extension JSONRequestSender: RequestSender {
         self._requestBuilder = builder
     }
 
+    // MARK: Computed Properties
     public var request: Request {
         return self._requestBuilder.request
     }
@@ -42,6 +44,7 @@ extension JSONRequestSender: RequestSender {
         return self._printsResponse
     }
 
+    // MARK: Instance Methods
     public func sendURLRequest() -> Future<Response, NetworkingError> {
 
         return Future { (callback: @escaping httpRequestResult) -> Void in
