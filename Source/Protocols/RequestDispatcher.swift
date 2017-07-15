@@ -8,7 +8,7 @@ import BrightFutures
 
 /**
  A RequestDispatcher uses the URLRequest of the RequestBuilder to make an
- http network request using the system's URLSession shared instance.
+ http network request using the a URLSession instance.
 */
 public protocol RequestDispatcher {
 
@@ -38,7 +38,7 @@ public protocol RequestDispatcher {
     var urlRequest: URLRequest { get }
 
     /**
-     When set to true, the headers of the httpURLResponse is printed in the console log. Use for debugging purposes
+     When set to true, the headers of the HTTPURLResponse is printed in the console log. Use for debugging purposes
     */
     var printsResponse: Bool { get }
 

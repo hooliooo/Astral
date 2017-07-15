@@ -57,13 +57,19 @@ extension JSONRequestDispatcher: RequestDispatcher {
 
                 if let error = error {
 
-                    callback(Result.failure(NetworkingError.connection(error.localizedDescription)))
+                    callback(
+                        Result.failure(
+                            NetworkingError.connection(
+                                error.localizedDescription
+                            )
+                        )
+                    )
 
                 } else if let data = data, let response = response as? HTTPURLResponse {
 
                     switch self._printsResponse {
                         case true:
-                            print("httpResponse: \(response)")
+                            print("Response: \(response)")
 
                         case false:
                             break
@@ -73,19 +79,21 @@ extension JSONRequestDispatcher: RequestDispatcher {
 
                         case 200...399:
 
-                            callback(Result.success(JSONResponse(httpResponse: response, data: data)))
+                            callback(
+                                Result.success(
+                                    JSONResponse(httpResponse: response, data: data)
+                                )
+                            )
 
                         case 400...599:
 
-                            if let errorResponse = String(data: data, encoding: String.Encoding.utf8) {
-
-                                callback(Result.failure(NetworkingError.response(errorResponse)))
-
-                            } else {
-
-                                callback(Result.failure(NetworkingError.response("Error could not be transformed into string")))
-
-                            }
+                            callback(
+                                Result.failure(
+                                    NetworkingError.response(
+                                        JSONResponse(httpResponse: response, data: data)
+                                    )
+                                )
+                            )
 
                         default:
                             fatalError("Unhandled status code: \(response.statusCode)")
@@ -101,7 +109,10 @@ extension JSONRequestDispatcher: RequestDispatcher {
         JSONRequestDispatcher.session.getAllTasks { (tasks: [URLSessionTask]) -> Void in
 
             guard
-                let task = tasks.filter({ $0.currentRequest == self.urlRequest }).first
+                let task = tasks.filter({
+                    $0.currentRequest == self.urlRequest &&
+                    $0.currentRequest?.httpBody == self.urlRequest.httpBody
+                }).first
             else { return }
 
             task.cancel()

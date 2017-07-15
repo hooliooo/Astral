@@ -9,7 +9,14 @@ import Foundation
  The JSON enum represents the data from an http response as either an array of dictionaries or a single dictionary
 */
 public enum JSON {
+    /**
+     JSON Array representation
+    */
     case array([[String: Any]])
+
+    /**
+     JSON Dictionary representation
+    */
     case dictionary([String: Any])
 
     /**
@@ -54,6 +61,18 @@ public enum JSON {
 
             case .array:
                 fatalError("Not a Dictionary value")
+        }
+    }
+}
+
+extension JSON: CustomStringConvertible {
+    public var description: String {
+        switch self {
+            case .array(let array):
+                return "\(array)"
+
+            case .dictionary(let dict):
+                return "\(dict)"
         }
     }
 }

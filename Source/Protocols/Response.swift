@@ -12,22 +12,22 @@ import Foundation
 public protocol Response {
 
     /**
-     Initializer for RequestResponse
+     Initializer for Response
     */
     init(httpResponse: HTTPURLResponse, data: Data)
 
     /**
-     Status code of the http Response
+     Status code of the http response
     */
     var statusCode: Int { get }
 
     /**
-     Payload of information from the http Response as Data
+     Payload of information from the http response as Data
     */
     var data: Data { get }
 
     /**
-     Payload of information from the http Response as JSON
+     Payload of information from the http response as JSON
     */
     var payload: JSON { get }
 

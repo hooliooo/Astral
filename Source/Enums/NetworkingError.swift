@@ -8,33 +8,22 @@
  An Enum that represents errors related to http network requests
 */
 public enum NetworkingError: Error {
-    case invalidRequest(String)
+    /**
+     Connection error
+    */
     case connection(String)
-    case response(String)
+    /**
+     Response error
+    */
+    case response(Response)
 
     var localizedDescription: String {
         switch self {
-            case .invalidRequest(let parameter):
-                return parameter
-
             case .connection(let string):
                 return string
 
-            case .response(let string):
-                return string
-        }
-    }
-
-    var title: String {
-        switch self {
-            case .invalidRequest:
-                return "Invalid Request"
-
-            case .connection:
-                return "Connection Error"
-
-            case .response:
-                return "Response Error"
+            case .response(let response):
+                return response.payload.description
         }
     }
 }
