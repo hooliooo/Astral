@@ -7,7 +7,7 @@
 import BrightFutures
 import Result
 
-public typealias httpRequestResult = (Result<Response, NetworkingError>) -> Void
+public typealias HTTPRequestResult = (Result<Response, NetworkingError>) -> Void
 
 /**
  An implementation of RequestDispatcher that uses the URLSession shared instance for http network requests.
@@ -51,7 +51,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
     // MARK: Instance Methods
     public func dispatchURLRequest() -> Future<Response, NetworkingError> {
 
-        return Future { (callback: @escaping httpRequestResult) -> Void in
+        return Future { (callback: @escaping HTTPRequestResult) -> Void in
             let task: URLSessionDataTask = JSONRequestDispatcher.session.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
 

@@ -13,7 +13,7 @@ public struct JSONResponse {
     // MARK: Stored Properties
     fileprivate let _statusCode: Int
     fileprivate let _data: Data
-    fileprivate let _response: JSON
+    fileprivate let _payload: JSON
 }
 
 extension JSONResponse: Response {
@@ -22,7 +22,7 @@ extension JSONResponse: Response {
     public init(httpResponse: HTTPURLResponse, data: Data) {
         self._statusCode = httpResponse.statusCode
         self._data = data
-        self._response = JSON(data: data)
+        self._payload = JSON(data: data)
     }
 
     // MARK: Computed Properties
@@ -35,7 +35,7 @@ extension JSONResponse: Response {
     }
 
     public var payload: JSON {
-        return self._response
+        return self._payload
     }
 
 }

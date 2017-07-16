@@ -16,15 +16,6 @@ class Tests: XCTestCase {
         super.tearDown()
     }
 
-    fileprivate func createJSON(with data: Data) -> [String: Any] {
-        guard let json = try! JSONSerialization.jsonObject(with: data) as? [String: Any]
-            else {
-                fatalError("Could not convert to JSON")
-            }
-
-        return json
-    }
-
     func testHeaders() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 

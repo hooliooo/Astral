@@ -14,11 +14,6 @@ Pod::Spec.new do |s|
 
   s.summary          = 'An HTTP networking library that uses protocols and Futures'
   s.homepage         = 'https://github.com/hooliooo/Astral'
-  s.description      = <<-DESC
-                            Astral is a minimal HTTP Networking library that aims to simplify an application's networking layer by
-                            abstracting the steps needed to create a network request into multiple objects. It aims to shy away
-                            from the typical network layer singleton by encapsulating each part of network request as an object.
-                        DESC
 
   s.author           = { 'Julio Alorro' => 'alorro3@gmail.com' }
   s.source           = { :git => 'https://github.com/hooliooo/Astral.git', :tag => s.version }
@@ -26,6 +21,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'Source/**/*.swift'
+  s.requires_arc = true
 
   s.frameworks = 'Foundation'
   s.dependency 'BrightFutures'
