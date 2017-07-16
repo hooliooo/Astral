@@ -76,9 +76,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
                     }
 
                     switch response.statusCode {
-
                         case 200...399:
-
                             callback(
                                 Result.success(
                                     JSONResponse(httpResponse: response, data: data)
@@ -86,7 +84,6 @@ extension JSONRequestDispatcher: RequestDispatcher {
                             )
 
                         case 400...599:
-
                             callback(
                                 Result.failure(
                                     NetworkingError.response(
