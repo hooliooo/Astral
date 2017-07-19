@@ -25,10 +25,9 @@
 		1421528E1F1F97B700EB421A /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152821F1F97B700EB421A /* JSONResponse.swift */; };
 		142152941F1F9C3000EB421A /* HTTPBinKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */; };
 		142152951F1F9C3400EB421A /* TestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148946591EF0D55E00824DF2 /* TestStructs.swift */; };
-		142152971F1F9C5F00EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152961F1F9C5F00EB421A /* BrightFutures.framework */; };
-		142152991F1F9C6400EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152981F1F9C6400EB421A /* Result.framework */; };
 		1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421529A1F1F9C6D00EB421A /* Foundation.framework */; };
-		E069DAA2D5166A365E7BB4B7 /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
+		142152A81F1FBDCD00EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152A61F1FBDCD00EB421A /* Result.framework */; };
+		142152A91F1FBDCD00EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152A71F1FBDCD00EB421A /* BrightFutures.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +63,8 @@
 		142152961F1F9C5F00EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Debug-iphonesimulator/BrightFutures/BrightFutures.framework"; sourceTree = "<group>"; };
 		142152981F1F9C6400EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		1421529A1F1F9C6D00EB421A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		142152A61F1FBDCD00EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		142152A71F1FBDCD00EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		148946591EF0D55E00824DF2 /* TestStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestStructs.swift; path = ../Tests/TestStructs.swift; sourceTree = "<group>"; };
 		1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPBinKeys.swift; path = ../Tests/HTTPBinKeys.swift; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
@@ -81,10 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142152A81F1FBDCD00EB421A /* Result.framework in Frameworks */,
+				142152A91F1FBDCD00EB421A /* BrightFutures.framework in Frameworks */,
 				1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */,
-				142152991F1F9C6400EB421A /* Result.framework in Frameworks */,
-				142152971F1F9C5F00EB421A /* BrightFutures.framework in Frameworks */,
-				E069DAA2D5166A365E7BB4B7 /* Pods_Astral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +187,8 @@
 		54192C909F17619BA5A5AEC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				142152A61F1FBDCD00EB421A /* Result.framework */,
+				142152A71F1FBDCD00EB421A /* BrightFutures.framework */,
 				1421529A1F1F9C6D00EB421A /* Foundation.framework */,
 				142152981F1F9C6400EB421A /* Result.framework */,
 				142152961F1F9C5F00EB421A /* BrightFutures.framework */,
@@ -499,6 +501,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -528,6 +534,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
