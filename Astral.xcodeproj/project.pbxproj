@@ -28,6 +28,7 @@
 		142152971F1F9C5F00EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152961F1F9C5F00EB421A /* BrightFutures.framework */; };
 		142152991F1F9C6400EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152981F1F9C6400EB421A /* Result.framework */; };
 		1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421529A1F1F9C6D00EB421A /* Foundation.framework */; };
+		E069DAA2D5166A365E7BB4B7 /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 				1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */,
 				142152991F1F9C6400EB421A /* Result.framework in Frameworks */,
 				142152971F1F9C5F00EB421A /* BrightFutures.framework in Frameworks */,
+				E069DAA2D5166A365E7BB4B7 /* Pods_Astral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

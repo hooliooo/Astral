@@ -1,6 +1,0 @@
-framework module Pods_AstralTests {
-  umbrella header "Pods-AstralTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
