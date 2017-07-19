@@ -101,19 +101,38 @@ extension JSONRequestDispatcher: RequestDispatcher {
             task.resume()
         }
     }
-
+    
     public func cancelURLRequest() {
-        JSONRequestDispatcher.session.getAllTasks { (tasks: [URLSessionTask]) -> Void in
-
-            guard
-                let task = tasks.filter({
+        
+        if #available(iOS 9.0, *) {
+            JSONRequestDispatcher.session.getAllTasks { (tasks: [URLSessionTask]) -> Void in
+                let filteredTasks = tasks.filter{
                     $0.currentRequest == self.urlRequest &&
                     $0.currentRequest?.httpBody == self.urlRequest.httpBody
-                }).first
-            else { return }
+                }
 
-            task.cancel()
+                filteredTasks.forEach {
+                    $0.cancel()
+                }
+            }
 
+        } else {
+            JSONRequestDispatcher.session.getTasksWithCompletionHandler { (dataTasks: [URLSessionDataTask], uploadTasks: [URLSessionUploadTask], downloadTasks: [URLSessionDownloadTask]) -> Void in
+                let tasks: [URLSessionTask] = [
+                    dataTasks as [URLSessionTask],
+                    uploadTasks as [URLSessionTask],
+                    downloadTasks as [URLSessionTask]
+                ].flatMap { $0 }
+
+                let filteredTasks: [URLSessionTask] = tasks.filter {
+                    $0.currentRequest == self.urlRequest &&
+                    $0.currentRequest?.httpBody == self.urlRequest.httpBody
+                }
+
+                filteredTasks.forEach {
+                    $0.cancel()
+                }
+            }
         }
     }
 }
