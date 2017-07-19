@@ -26,8 +26,8 @@
 		142152941F1F9C3000EB421A /* HTTPBinKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */; };
 		142152951F1F9C3400EB421A /* TestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148946591EF0D55E00824DF2 /* TestStructs.swift */; };
 		1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421529A1F1F9C6D00EB421A /* Foundation.framework */; };
-		142152A81F1FBDCD00EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152A61F1FBDCD00EB421A /* Result.framework */; };
-		142152A91F1FBDCD00EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152A71F1FBDCD00EB421A /* BrightFutures.framework */; };
+		142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AB1F1FC51000EB421A /* BrightFutures.framework */; };
+		142152AE1F1FC51400EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AD1F1FC51400EB421A /* Result.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +65,8 @@
 		1421529A1F1F9C6D00EB421A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		142152A61F1FBDCD00EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		142152A71F1FBDCD00EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
+		142152AB1F1FC51000EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Release-iphonesimulator/BrightFutures/BrightFutures.framework"; sourceTree = "<group>"; };
+		142152AD1F1FC51400EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Release-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		148946591EF0D55E00824DF2 /* TestStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestStructs.swift; path = ../Tests/TestStructs.swift; sourceTree = "<group>"; };
 		1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPBinKeys.swift; path = ../Tests/HTTPBinKeys.swift; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
@@ -82,8 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				142152A81F1FBDCD00EB421A /* Result.framework in Frameworks */,
-				142152A91F1FBDCD00EB421A /* BrightFutures.framework in Frameworks */,
+				142152AE1F1FC51400EB421A /* Result.framework in Frameworks */,
+				142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */,
 				1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +189,8 @@
 		54192C909F17619BA5A5AEC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				142152AD1F1FC51400EB421A /* Result.framework */,
+				142152AB1F1FC51000EB421A /* BrightFutures.framework */,
 				142152A61F1FBDCD00EB421A /* Result.framework */,
 				142152A71F1FBDCD00EB421A /* BrightFutures.framework */,
 				1421529A1F1F9C6D00EB421A /* Foundation.framework */,
@@ -245,7 +249,6 @@
 				142152571F1F93A500EB421A /* Resources */,
 				86F7EC6346CB46CA872969EC /* [CP] Copy Pods Resources */,
 				1421529C1F1F9CDB00EB421A /* Swiftlint Script */,
-				142152A31F1FA54D00EB421A /* Carthage Script */,
 			);
 			buildRules = (
 			);
@@ -364,24 +367,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		142152A31F1FA54D00EB421A /* Carthage Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
-			);
-			name = "Carthage Script";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		14C20727CAA8F960A6566CD9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
