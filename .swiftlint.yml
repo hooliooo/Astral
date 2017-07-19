@@ -1,13 +1,8 @@
 disabled_rules:
   - identifier_name
 
-included:
-  - Source
-  - Example
-
 excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Example/Pods
-  - Tests
+  - Pods
 
 line_length:
   ignores_function_declarations: true
