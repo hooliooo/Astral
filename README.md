@@ -31,7 +31,11 @@ pod 'Astral'
 3. Run `pod install`.
 
 ## Example
-Here's an example using the [Pokemon API](http://pokeapi.co)
+Here's an example using the [Pokemon API](http://pokeapi.co) and using the implementations of RequestBuilder and RequestDispatcher
+provided by Astral.
+
+Feel free to build and customize your own implementations. Simply adopt the appropriate protocols.
+
 ```swift
 struct PokeAPIConfiguration: Configuration {
 
