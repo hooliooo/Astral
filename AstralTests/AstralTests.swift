@@ -4,7 +4,7 @@ import BrightFutures
 import Result
 @testable import Astral
 
-class Tests: XCTestCase {
+class AstralTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
