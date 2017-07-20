@@ -20,11 +20,11 @@ public enum HTTPMethod: String {
 
     /**
      - http POST method
-     */
+    */
     case POST
 
     /**
      - http PUT method
-     */
+    */
     case PUT
 }

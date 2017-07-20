@@ -102,7 +102,7 @@ class AstralTests: XCTestCase {
 
     /**
      PUT and DELETE http methods produce identical results with POST request
-     */
+    */
     func testPostRequest() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 

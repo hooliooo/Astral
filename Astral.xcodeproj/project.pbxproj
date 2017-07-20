@@ -147,10 +147,10 @@
 		142152741F1F97B700EB421A /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				142152751F1F97B700EB421A /* HTTPMethod.swift */,
-				142152761F1F97B700EB421A /* JSON.swift */,
-				142152771F1F97B700EB421A /* NetworkingError.swift */,
 				142152781F1F97B700EB421A /* URLScheme.swift */,
+				142152751F1F97B700EB421A /* HTTPMethod.swift */,
+				142152771F1F97B700EB421A /* NetworkingError.swift */,
+				142152761F1F97B700EB421A /* JSON.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -206,11 +206,11 @@
 			isa = PBXGroup;
 			children = (
 				142152721F1F969400EB421A /* Podspec Metadata */,
-				142152651F1F93A600EB421A /* AstralTests */,
-				607FACD11AFB9204008FA782 /* Products */,
 				142152731F1F97B700EB421A /* Sources */,
 				142152911F1F98AF00EB421A /* Supporting Files */,
 				0589D8792B71810E4E1958A8 /* Pods */,
+				142152651F1F93A600EB421A /* AstralTests */,
+				607FACD11AFB9204008FA782 /* Products */,
 				54192C909F17619BA5A5AEC4 /* Frameworks */,
 			);
 			sourceTree = "<group>";

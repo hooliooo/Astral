@@ -12,6 +12,7 @@ public enum NetworkingError: Error {
      Connection error
     */
     case connection(String)
+
     /**
      Response error
     */
