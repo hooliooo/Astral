@@ -3,7 +3,7 @@
 //  Astral
 //
 //  Created by Julio Alorro on 7/19/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright (c) 2017 CocoaPods. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
