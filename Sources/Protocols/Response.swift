@@ -29,6 +29,6 @@ public protocol Response {
     /**
      Payload of information from the http response as JSON
     */
-    var payload: JSON { get }
+    var json: JSON { get }
 
 }

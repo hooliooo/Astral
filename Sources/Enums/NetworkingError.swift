@@ -24,7 +24,7 @@ public enum NetworkingError: Error {
                 return string
 
             case .response(let response):
-                return response.payload.description
+                return response.json.description
         }
     }
 }

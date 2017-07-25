@@ -27,4 +27,9 @@ public enum HTTPMethod: String {
      - http PUT method
     */
     case PUT
+
+    /**
+     - http PATCH method
+    */
+    case PATCH
 }

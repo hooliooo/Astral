@@ -11,7 +11,7 @@ public protocol Request {
     /**
      The Configuration used by the Request
     */
-    var configuration: Configuration { get }
+    var configuration: RequestConfiguration { get }
 
     /**
      http method of the http request

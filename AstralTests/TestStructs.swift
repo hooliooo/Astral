@@ -8,7 +8,7 @@
 
 import Astral
 
-struct HTTPBinConfiguration: Configuration {
+struct HTTPBinConfiguration: RequestConfiguration {
     var scheme: URLScheme {
         return .https
     }
@@ -29,7 +29,7 @@ struct HTTPBinConfiguration: Configuration {
 }
 
 struct HTTPBinGetRequest: Request {
-    var configuration: Configuration {
+    var configuration: RequestConfiguration {
         return HTTPBinConfiguration()
     }
 
@@ -57,7 +57,7 @@ struct HTTPBinGetRequest: Request {
 }
 
 struct HTTPBinPostRequest: Request {
-    var configuration: Configuration {
+    var configuration: RequestConfiguration {
         return HTTPBinConfiguration()
     }
 

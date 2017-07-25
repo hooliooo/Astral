@@ -14,14 +14,14 @@ public protocol RequestBuilder {
     init(request: Request)
 
     /**
-     The http network request's URL built from the Request
-    */
-    var url: URL { get }
-
-    /**
      Request object's parameters as URLQueryItems
     */
     var queryItems: [URLQueryItem] { get }
+
+    /**
+     The http network request's URL built from the Request
+    */
+    var url: URL { get }
 
     /**
      Request object's parameters as Data

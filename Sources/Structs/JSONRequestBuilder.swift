@@ -23,6 +23,16 @@ extension JSONRequestBuilder: RequestBuilder {
     }
 
     // MARK: Computed Properties
+    public var queryItems: [URLQueryItem] {
+        return self.request.parameters.flatMap { (item: (key: String, value: Any)) -> URLQueryItem? in
+            guard let value = item.value as? String
+                else { return nil }
+
+            return URLQueryItem(name: item.key, value: value)
+
+        }
+    }
+
     public var url: URL {
         var components: URLComponents = self.request.configuration.baseURLComponents
 
@@ -60,16 +70,6 @@ extension JSONRequestBuilder: RequestBuilder {
         return url
     }
 
-    public var queryItems: [URLQueryItem] {
-        return self.request.parameters.flatMap { (item: (key: String, value: Any)) -> URLQueryItem? in
-            guard let value = item.value as? String
-                else { return nil }
-
-            return URLQueryItem(name: item.key, value: value)
-
-        }
-    }
-
     public var httpBody: Data? {
         if self.request.parameters.isEmpty || self.request.isGetRequest {
             return nil
@@ -103,8 +103,6 @@ extension JSONRequestBuilder: RequestBuilder {
         self.headers.forEach { (key: String, value: Any) -> Void in
             if let value = value as? String {
                 request.addValue(value, forHTTPHeaderField: key)
-            } else {
-                print("No headers")
             }
         }
 

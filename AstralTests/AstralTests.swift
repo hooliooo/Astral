@@ -26,7 +26,7 @@ class AstralTests: XCTestCase {
         requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
 
-                return response.payload.dictValue
+                return response.json.dictValue
 
             }
             .onSuccess { (json: [String : Any]) -> Void in
@@ -40,9 +40,9 @@ class AstralTests: XCTestCase {
 
                     let configurationContentTypeHeader = configuration.baseHeaders[HTTPBinKeys.contentType.rawValue] as? String,
                     let requestGetRequestHeader = requestDispatcher.request.headers[HTTPBinKeys.getRequest.rawValue] as? String
-                    else {
-                        XCTFail("Failed to get headers")
-                        return
+                else {
+                    XCTFail("Failed to get headers")
+                    return
                 }
 
                 XCTAssertTrue(requestDispatcher.request.configuration.host == host)
@@ -68,7 +68,7 @@ class AstralTests: XCTestCase {
         requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
 
-                return response.payload.dictValue
+                return response.json.dictValue
 
             }
             .onSuccess { (json: [String : Any]) -> Void in
@@ -80,9 +80,9 @@ class AstralTests: XCTestCase {
 
                     // URL Node
                     let url = json[HTTPBinKeys.url.rawValue] as? String
-                    else {
-                        XCTFail("Failed to get args or url")
-                        return
+                else {
+                    XCTFail("Failed to get args or url")
+                    return
                 }
 
                 XCTAssertTrue(requestDispatcher.urlRequest.url?.absoluteString == url)
@@ -112,7 +112,7 @@ class AstralTests: XCTestCase {
 
         requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
-                return response.payload.dictValue
+                return response.json.dictValue
             }
             .onSuccess { (json: [String : Any]) -> Void in
                 guard
@@ -122,9 +122,9 @@ class AstralTests: XCTestCase {
 
                     let requestThisValue = requestDispatcher.request.parameters[HTTPBinKeys.this.rawValue] as? String
 
-                    else {
-                        XCTFail("Failed to get json")
-                        return
+                else {
+                    XCTFail("Failed to get json")
+                    return
                 }
 
                 XCTAssertTrue(requestThisValue == thisValue)
