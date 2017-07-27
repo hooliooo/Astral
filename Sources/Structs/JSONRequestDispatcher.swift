@@ -53,7 +53,8 @@ extension JSONRequestDispatcher: RequestDispatcher {
 
         return Future { (callback: @escaping HTTPRequestResult) -> Void in
             let task: URLSessionDataTask = JSONRequestDispatcher.session.dataTask(with: self.urlRequest) {
-                (data: Data?, response: URLResponse?, error: Error?) in // swiftlint:disable:this closure_parameter_position
+                (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                // swiftlint:disable:previous closure_parameter_position
 
                 if let error = error {
 
