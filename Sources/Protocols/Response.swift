@@ -10,7 +10,6 @@ import Foundation
  A Response encapsulates the data retreived after an http request was made.
 */
 public protocol Response {
-
     /**
      Initializer for Response
     */

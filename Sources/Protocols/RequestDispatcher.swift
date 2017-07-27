@@ -11,7 +11,6 @@ import BrightFutures
  http network request using the a URLSession instance.
 */
 public protocol RequestDispatcher {
-
     /**
      The URLSession used for the RequestDispatcher type
     */
