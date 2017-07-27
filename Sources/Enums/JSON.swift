@@ -45,8 +45,13 @@ public enum JSON {
                     )
             }
         } catch {
+            let errorString: String = String(
+                data: data,
+                encoding: String.Encoding.utf8
+            ) ?? "Unknown Error. Could not convert data to string"
+
             self = JSON.unknown(
-                String(data: data, encoding: String.Encoding.utf8) ?? "Unknown Error. Could not convert data to string"
+                errorString + "\n\n \(error.localizedDescription)"
             )
         }
     }
