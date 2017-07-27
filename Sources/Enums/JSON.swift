@@ -5,6 +5,7 @@
 //
 
 import Foundation
+
 /**
  The JSON enum represents the data from an http response as either an array of dictionaries or a single dictionary
 */
@@ -20,11 +21,21 @@ public enum JSON {
     case dictionary([String: Any])
 
     /**
+     Not a JSON representation
+    */
+    case unknown(String)
+
+    /**
      The initializer of a JSON enum
     */
     public init(data: Data) {
         guard let json = try? JSONSerialization.jsonObject(with: data)
-            else { fatalError("Could not turn data into a JSON") }
+            else {
+                self = JSON.unknown(
+                    String(data: data, encoding: String.Encoding.utf8) ?? "Unknown Error. Could not convert data to string"
+                )
+                return
+            }
 
         switch json {
             case let jsonDict as [String: Any]:
@@ -46,7 +57,7 @@ public enum JSON {
             case .array(let array):
                 return array
 
-            case .dictionary:
+            case .dictionary, .unknown:
                 fatalError("Not an Array value")
         }
     }
@@ -59,7 +70,7 @@ public enum JSON {
             case .dictionary(let dict):
                 return dict
 
-            case .array:
+            case .array, .unknown:
                 fatalError("Not a Dictionary value")
         }
     }
@@ -73,6 +84,9 @@ extension JSON: CustomStringConvertible {
 
             case .dictionary(let dict):
                 return "\(dict)"
+
+            case .unknown(let string):
+                return string
         }
     }
 }

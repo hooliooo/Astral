@@ -12,6 +12,7 @@ public enum URLScheme: String {
      - http protocol
     */
     case http
+
     /**
      - https protocol
     */
