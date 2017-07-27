@@ -51,7 +51,7 @@ public enum JSON {
             ) ?? "Unknown Error. Could not convert data to string"
 
             self = JSON.unknown(
-                errorString + "\n\n \(error.localizedDescription)"
+                errorString + "\n\(error.localizedDescription)"
             )
         }
     }
