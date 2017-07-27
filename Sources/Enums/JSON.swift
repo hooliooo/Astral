@@ -29,23 +29,25 @@ public enum JSON {
      The initializer of a JSON enum
     */
     public init(data: Data) {
-        guard let json = try? JSONSerialization.jsonObject(with: data)
-            else {
-                self = JSON.unknown(
-                    String(data: data, encoding: String.Encoding.utf8) ?? "Unknown Error. Could not convert data to string"
-                )
-                return
+        do {
+            let json: Any = try JSONSerialization.jsonObject(with: data)
+
+            switch json {
+                case let jsonDict as [String: Any]:
+                    self = JSON.dictionary(jsonDict)
+
+                case let jsonArray as [[String: Any]]:
+                    self = JSON.array(jsonArray)
+
+                default:
+                    self = JSON.unknown(
+                        String(data: data, encoding: String.Encoding.utf8) ?? "JSON serialized but not an array or dictionary"
+                    )
             }
-
-        switch json {
-            case let jsonDict as [String: Any]:
-                self = JSON.dictionary(jsonDict)
-
-            case let jsonArray as [[String: Any]]:
-                self = JSON.array(jsonArray)
-
-            default:
-                fatalError("Not a valid JSON")
+        } catch {
+            self = JSON.unknown(
+                String(data: data, encoding: String.Encoding.utf8) ?? "Unknown Error. Could not convert data to string"
+            )
         }
     }
 
