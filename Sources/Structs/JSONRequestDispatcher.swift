@@ -51,7 +51,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
     // MARK: Instance Methods
     public func dispatchURLRequest() -> Future<Response, NetworkingError> {
 
-        return Future { (callback: @escaping HTTPRequestResult) -> Void in
+        return Future(resolver: { (callback: @escaping HTTPRequestResult) -> Void in
             let task: URLSessionDataTask = JSONRequestDispatcher.session.dataTask(with: self.urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 // swiftlint:disable:previous closure_parameter_position
@@ -100,7 +100,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
             }
 
             task.resume()
-        }
+        })
     }
 
     public func cancelURLRequest() {
