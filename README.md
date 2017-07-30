@@ -101,8 +101,12 @@ let dispatcher: RequestDispatcher = JSONRequestDispatcher(
 )
 
 dispatcher.dispatchURLRequest()
-    .onSuccess(queue.context) { (data: Data) -> Void in
-        // Create and parse JSON
+    .onSuccess(queue.context) { (response: Response) -> Void in
+        // let responseData: Data = response.data
+        // Do something with data
+        // or
+        // let dictionary: [String: Any] = response.json.dictValue
+        // Do something with dictionary
     }
     .onFailure(queue.context) { (error: NetworkingError) -> Void in
         // Handle the error

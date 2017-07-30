@@ -9,7 +9,7 @@
 */
 public protocol Request {
     /**
-     The Configuration used by the Request
+     The RequestConfiguration used by the Request
     */
     var configuration: RequestConfiguration { get }
 
