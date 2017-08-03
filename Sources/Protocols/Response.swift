@@ -9,7 +9,7 @@ import Foundation
 /**
  A Response encapsulates the data retreived after an http request was made.
 */
-public protocol Response {
+public protocol Response: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      Initializer for Response
     */
@@ -30,4 +30,24 @@ public protocol Response {
     */
     var json: JSON { get }
 
+}
+
+public extension Response {
+    var description: String {
+        let strings: [String] = [
+            "Status Code: \(self.statusCode)",
+            "Data: \(self.data)",
+            "JSON: \(self.json)"
+        ]
+
+        let descriptionString: String = strings.reduce("") { (result: String, string: String) -> String in
+            return "\(result)\n\t\(string)"
+        }
+
+        return "Type: \(type(of: self)): \(descriptionString)"
+    }
+
+    var debugDescription: String {
+        return self.description
+    }
 }

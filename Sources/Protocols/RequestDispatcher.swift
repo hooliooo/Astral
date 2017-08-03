@@ -32,6 +32,11 @@ public protocol RequestDispatcher {
     var request: Request { get }
 
     /**
+     The Request Builder associated with the RequestDispatcher
+    */
+    var builder: RequestBuilder { get }
+
+    /**
      The URLRequest associated with the RequestDispatcher
     */
     var urlRequest: URLRequest { get }

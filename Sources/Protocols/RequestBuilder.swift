@@ -7,7 +7,7 @@
 /**
  A RequestBuilder uses the information of a Request to create an instance of URLRequest
 */
-public protocol RequestBuilder {
+public protocol RequestBuilder: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      Initializer used to create a RequestBuilder
     */
@@ -42,4 +42,25 @@ public protocol RequestBuilder {
      The URLRequest used when sending an http network request
     */
     var urlRequest: URLRequest { get }
+}
+
+public extension RequestBuilder {
+    var description: String {
+        let strings: [String] = [
+            "QueryItems: \(self.queryItems)",
+            "URL: \(self.url)",
+            "Http Body: \(String(describing: self.httpBody))",
+            "Headers: \(self.headers)",
+            "URLRequest: \(self.urlRequest)"
+        ]
+
+        let descriptionString: String = strings.reduce("") { (result: String, string: String) -> String in
+            return "\(result)\n\t\(string)"
+        }
+        return "Type: \(type(of: self)): \(descriptionString)"
+    }
+
+    var debugDescription: String {
+        return self.description
+    }
 }

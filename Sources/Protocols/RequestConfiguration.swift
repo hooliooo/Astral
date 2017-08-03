@@ -7,7 +7,7 @@
 /**
  A RequestConfiguration defines the base URL and base headers of a Request
 */
-public protocol RequestConfiguration {
+public protocol RequestConfiguration: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      Scheme of Request
     */
@@ -48,5 +48,25 @@ public extension RequestConfiguration {
         components.host = self.host
 
         return components
+    }
+
+    var description: String {
+        let strings: [String] = [
+            "Scheme: \(self.scheme)",
+            "Host: \(self.host)",
+            "BasePathComponents: \(self.basePathComponents)",
+            "BaseURLComponents: \(self.baseURLComponents)",
+            "BaseHeaders: \(self.baseHeaders)"
+        ]
+
+        let descriptionString: String = strings.reduce("") { (result: String, string: String) -> String in
+            return "\(result)\n\t\(string)"
+        }
+
+        return "Type: \(type(of: self)): \(descriptionString)"
+    }
+
+    var debugDescription: String {
+        return self.description
     }
 }

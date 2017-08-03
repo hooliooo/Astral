@@ -25,7 +25,7 @@ class AstralTests: XCTestCase {
 
         requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
-
+                print(response)
                 return response.json.dictValue
 
             }

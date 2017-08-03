@@ -87,13 +87,19 @@ extension JSON: CustomStringConvertible {
     public var description: String {
         switch self {
             case .array(let array):
-                return "\(array)"
+                return "Array: \(array)"
 
             case .dictionary(let dict):
-                return "\(dict)"
+                return "Dictionary: \(dict)"
 
             case .unknown(let string):
                 return string
         }
+    }
+}
+
+extension JSON: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return self.description
     }
 }

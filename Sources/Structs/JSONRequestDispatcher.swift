@@ -40,6 +40,10 @@ extension JSONRequestDispatcher: RequestDispatcher {
         return self._requestBuilder.request
     }
 
+    public var builder: RequestBuilder {
+        return self._requestBuilder
+    }
+
     public var urlRequest: URLRequest {
         return self._requestBuilder.urlRequest
     }

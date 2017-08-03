@@ -7,7 +7,7 @@
 /**
  A Request contains the information required to make an http network request. A Request represents one network operation.
 */
-public protocol Request {
+public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      The RequestConfiguration used by the Request
     */
@@ -43,6 +43,24 @@ public extension Request {
 
     var isGetRequest: Bool {
         return self.method == HTTPMethod.GET
+    }
+
+    var description: String {
+        let strings: [String] = [
+            "Method: \(self.method)",
+            "PathComponents: \(self.pathComponents)",
+            "Parameters: \(self.parameters)",
+            "Headers: \(self.headers)"
+        ]
+
+        let descriptionString: String = strings.reduce("") { (result: String, string: String) -> String in
+            return "\(result)\n\t\(string)"
+        }
+        return "Type: \(type(of: self)): \(descriptionString)"
+    }
+
+    var debugDescription: String {
+        return self.description
     }
 
 }
