@@ -108,34 +108,33 @@ extension JSONRequestDispatcher: RequestDispatcher {
     }
 
     public func cancelURLRequest() {
-
         if #available(iOS 9.0, *) {
             JSONRequestDispatcher.session.getAllTasks { (tasks: [URLSessionTask]) -> Void in
-                let filteredTasks = tasks.filter {
-                    $0.currentRequest == self.urlRequest &&
-                    $0.currentRequest?.httpBody == self.urlRequest.httpBody
+                let filteredTasks = tasks.filter { (task: URLSessionTask) -> Bool in
+                    return task.currentRequest == self.urlRequest &&
+                    task.currentRequest?.httpBody == self.urlRequest.httpBody
                 }
 
-                filteredTasks.forEach {
-                    $0.cancel()
+                filteredTasks.forEach { (task: URLSessionTask) -> Void in
+                    task.cancel()
                 }
             }
 
         } else {
             JSONRequestDispatcher.session.getTasksWithCompletionHandler { (dataTasks: [URLSessionDataTask], uploadTasks: [URLSessionUploadTask], downloadTasks: [URLSessionDownloadTask]) -> Void in // swiftlint:disable:this line_length
                 let tasks: [URLSessionTask] = [
-                    dataTasks as [URLSessionTask],
-                    uploadTasks as [URLSessionTask],
-                    downloadTasks as [URLSessionTask]
-                ].flatMap { $0 }
-
-                let filteredTasks: [URLSessionTask] = tasks.filter {
-                    $0.currentRequest == self.urlRequest &&
-                    $0.currentRequest?.httpBody == self.urlRequest.httpBody
+                    dataTasks as [URLSessionTask], uploadTasks as [URLSessionTask], downloadTasks as [URLSessionTask]
+                ].flatMap { (tasks: [URLSessionTask]) -> [URLSessionTask] in
+                    return tasks
                 }
 
-                filteredTasks.forEach {
-                    $0.cancel()
+                let filteredTasks: [URLSessionTask] = tasks.filter { (task: URLSessionTask) -> Bool in
+                    return task.currentRequest == self.urlRequest &&
+                    task.currentRequest?.httpBody == self.urlRequest.httpBody
+                }
+
+                filteredTasks.forEach { (task: URLSessionTask) -> Void in
+                    task.cancel()
                 }
             }
         }

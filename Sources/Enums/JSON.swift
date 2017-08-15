@@ -40,15 +40,32 @@ public enum JSON {
                     self = JSON.array(jsonArray)
 
                 default:
-                    self = JSON.unknown(
-                        String(data: data, encoding: String.Encoding.utf8) ?? "JSON serialized but not an array or dictionary"
-                    )
+                    let stringValue: String
+
+                    if let str = String(data: data, encoding: String.Encoding.utf8) {
+
+                        stringValue = str
+
+                    } else {
+
+                        stringValue = "JSON serialized but not an array or dictionary"
+
+                    }
+
+                    self = JSON.unknown(stringValue)
             }
         } catch {
-            let errorString: String = String(
-                data: data,
-                encoding: String.Encoding.utf8
-            ) ?? "Unknown Error. Could not convert data to string"
+            let errorString: String
+
+            if let str: String = String(data: data, encoding: String.Encoding.utf8) {
+
+                errorString = str
+
+            } else {
+
+                errorString = "Unknown Error. Could not convert data to string"
+
+            }
 
             self = JSON.unknown(
                 errorString + "\n\(error.localizedDescription)"

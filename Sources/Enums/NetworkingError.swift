@@ -7,7 +7,7 @@
 /**
  An Enum that represents errors related to http network requests
 */
-public enum NetworkingError: Error {
+public enum NetworkingError: LocalizedError {
     /**
      Connection error
     */
@@ -18,13 +18,21 @@ public enum NetworkingError: Error {
     */
     case response(Response)
 
-    var localizedDescription: String {
+    public var errorDescription: String? {
         switch self {
-            case .connection(let string):
-                return string
+        case .connection(let string):
+            return string
 
-            case .response(let response):
-                return response.json.description
+        case .response(let response):
+            return response.json.description
         }
+    }
+
+    public var localizedDescription: String {
+        return self.errorDescription!
+    }
+
+    public var failureReason: String? {
+        return self.errorDescription
     }
 }
