@@ -17,4 +17,5 @@ enum HTTPBinKeys: String {
     case json
     case this
     case url
+    case form
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,9 @@
 		1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421529A1F1F9C6D00EB421A /* Foundation.framework */; };
 		142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AB1F1FC51000EB421A /* BrightFutures.framework */; };
 		142152AE1F1FC51400EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AD1F1FC51400EB421A /* Result.framework */; };
+		14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */; };
+		14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */; };
+		14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */; };
 		D5941865612E84E67621B6FC /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,9 @@
 		142152AD1F1FC51400EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Release-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		148946591EF0D55E00824DF2 /* TestStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStructs.swift; sourceTree = "<group>"; };
 		1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinKeys.swift; sourceTree = "<group>"; };
+		14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
+		14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
+		14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		4B4486EBA8B9A4DDE7DDA6A3 /* Astral.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 		142152791F1F97B700EB421A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */,
 				1421527A1F1F97B700EB421A /* RequestConfiguration.swift */,
 				1421527B1F1F97B700EB421A /* Request.swift */,
 				1421527C1F1F97B700EB421A /* RequestBuilder.swift */,
@@ -172,6 +179,7 @@
 		1421527F1F1F97B700EB421A /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				14DD74391F44813000AEB5C7 /* Strategies */,
 				142152801F1F97B700EB421A /* JSONRequestBuilder.swift */,
 				142152811F1F97B700EB421A /* JSONRequestDispatcher.swift */,
 				142152821F1F97B700EB421A /* JSONResponse.swift */,
@@ -186,6 +194,15 @@
 				1421528F1F1F987100EB421A /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14DD74391F44813000AEB5C7 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */,
+				14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */,
+			);
+			path = Strategies;
 			sourceTree = "<group>";
 		};
 		54192C909F17619BA5A5AEC4 /* Frameworks */ = {
@@ -305,7 +322,7 @@
 				};
 			};
 			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Astral" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -438,11 +455,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				142152891F1F97B700EB421A /* RequestBuilder.swift in Sources */,
+				14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */,
+				14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */,
 				142152831F1F97B700EB421A /* HTTPMethod.swift in Sources */,
 				1421528A1F1F97B700EB421A /* RequestDispatcher.swift in Sources */,
 				1421528D1F1F97B700EB421A /* JSONRequestDispatcher.swift in Sources */,
 				142152881F1F97B700EB421A /* Request.swift in Sources */,
 				1421528B1F1F97B700EB421A /* Response.swift in Sources */,
+				14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */,
 				1421528E1F1F97B700EB421A /* JSONResponse.swift in Sources */,
 				1421528C1F1F97B700EB421A /* JSONRequestBuilder.swift in Sources */,
 				142152871F1F97B700EB421A /* RequestConfiguration.swift in Sources */,

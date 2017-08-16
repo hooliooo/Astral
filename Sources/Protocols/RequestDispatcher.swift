@@ -19,7 +19,7 @@ public protocol RequestDispatcher {
     /**
      Initializer with a Request and RequestBuilder type
     */
-    init(request: Request, builderType: RequestBuilder.Type, printsResponse: Bool)
+    init(request: Request, builderType: RequestBuilder.Type, strategy: DataStrategy, printsResponse: Bool)
 
     /**
      Initializer using a RequestBuiler

@@ -20,7 +20,9 @@ class AstralTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
         let requestDispatcher: RequestDispatcher = JSONRequestDispatcher(
-            request: HTTPBinGetRequest(), builderType: JSONRequestBuilder.self, printsResponse: true
+            request: HTTPBinGetRequest(),
+            builderType: JSONRequestBuilder.self,
+            strategy: JSONStrategy()
         )
 
         requestDispatcher.dispatchURLRequest()
@@ -63,7 +65,9 @@ class AstralTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Get Request Query")
 
         let requestDispatcher: RequestDispatcher = JSONRequestDispatcher(
-            request: HTTPBinGetRequest(), builderType: JSONRequestBuilder.self, printsResponse: true
+            request: HTTPBinGetRequest(),
+            builderType: JSONRequestBuilder.self,
+            strategy: JSONStrategy()
         )
         requestDispatcher.dispatchURLRequest()
             .map { (response: Response) -> [String: Any] in
@@ -107,7 +111,9 @@ class AstralTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
         let requestDispatcher: RequestDispatcher = JSONRequestDispatcher(
-            request: HTTPBinPostRequest(), builderType: JSONRequestBuilder.self, printsResponse: true
+            request: HTTPBinPostRequest(),
+            builderType: JSONRequestBuilder.self,
+            strategy: FormURLEncodedStrategy()
         )
 
         requestDispatcher.dispatchURLRequest()
@@ -117,8 +123,8 @@ class AstralTests: XCTestCase {
             .onSuccess { (json: [String : Any]) -> Void in
                 guard
                     // JSON Node
-                    let jsonNode = json[HTTPBinKeys.json.rawValue] as? [String: String],
-                    let thisValue = jsonNode[HTTPBinKeys.this.rawValue],
+                    let formNode = json[HTTPBinKeys.form.rawValue] as? [String: String],
+                    let thisValue = formNode[HTTPBinKeys.this.rawValue],
 
                     let requestThisValue = requestDispatcher.request.parameters[HTTPBinKeys.this.rawValue] as? String
 
@@ -132,7 +138,7 @@ class AstralTests: XCTestCase {
             }
             .onFailure { (error: NetworkingError) -> Void in
                 XCTFail(error.localizedDescription)
-        }
+            }
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }

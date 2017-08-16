@@ -8,7 +8,7 @@
 
 import Astral
 
-struct HTTPBinConfiguration: RequestConfiguration {
+struct JSONConfiguration: RequestConfiguration {
     var scheme: URLScheme {
         return .https
     }
@@ -28,9 +28,30 @@ struct HTTPBinConfiguration: RequestConfiguration {
     }
 }
 
+struct FormURLEncodedConfiguration: RequestConfiguration {
+    var scheme: URLScheme {
+        return .https
+    }
+
+    var host: String {
+        return "httpbin.org"
+    }
+
+    var basePathComponents: [String] {
+        return []
+    }
+
+    var baseHeaders: [String : Any] {
+        return [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json"
+        ]
+    }
+}
+
 struct HTTPBinGetRequest: Request {
     var configuration: RequestConfiguration {
-        return HTTPBinConfiguration()
+        return JSONConfiguration()
     }
 
     var method: HTTPMethod {
@@ -58,7 +79,7 @@ struct HTTPBinGetRequest: Request {
 
 struct HTTPBinPostRequest: Request {
     var configuration: RequestConfiguration {
-        return HTTPBinConfiguration()
+        return FormURLEncodedConfiguration()
     }
 
     var method: HTTPMethod {
