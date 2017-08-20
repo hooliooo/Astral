@@ -19,11 +19,6 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     var method: HTTPMethod { get }
 
     /**
-     Determines whether the http method is a GET or not
-    */
-    var isGetRequest: Bool { get }
-
-    /**
      URL path to API Endpoint
     */
     var pathComponents: [String] { get }
@@ -37,6 +32,7 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
      http headers to be sent with the http network request
     */
     var headers: [String: Any] { get }
+
 }
 
 public extension Request {

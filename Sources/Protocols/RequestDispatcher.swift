@@ -18,11 +18,17 @@ public protocol RequestDispatcher {
 
     /**
      Initializer with a Request and RequestBuilder type
+     - parameter request: The Request instance used to build a URLRequest in the RequestBuilder
+     - parameter builderType: The type of RequestBuilder that will be initialized to create the URLRequest
+     - parameter strategy: The DataStrategy used to create the body of the http request
+     - parameter printsResponse: Indicates whether the HTTPURLResponse will be printed to the console or not
     */
     init(request: Request, builderType: RequestBuilder.Type, strategy: DataStrategy, printsResponse: Bool)
 
     /**
      Initializer using a RequestBuiler
+     - parameter builder: The RequestBuilder instance used to build a URLRequest
+     - parameter printsResponse: Indicates whether the HTTPURLResponse will be printed to the console or not
     */
     init(builder: RequestBuilder, printsResponse: Bool)
 

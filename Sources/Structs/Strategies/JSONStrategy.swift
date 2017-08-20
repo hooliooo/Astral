@@ -1,17 +1,18 @@
 //
-//  JSONStrategy.swift
 //  Astral
-//
-//  Created by Julio Alorro on 8/16/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright (c) 2017 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation
 
+/**
+ An implementation of DataStrategy that is suited for a Content-Type of application/json for the body of an http request
+*/
 public struct JSONStrategy: DataStrategy {
 
-    public func createHTTPBody(from object: Any) -> Data? {
-        return try? JSONSerialization.data(withJSONObject: object)
+    public func createHTTPBody(from dict: [String: Any]) -> Data? {
+        return try? JSONSerialization.data(withJSONObject: dict)
     }
 
 }

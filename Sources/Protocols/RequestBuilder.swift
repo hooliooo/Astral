@@ -10,6 +10,8 @@
 public protocol RequestBuilder {
     /**
      Initializer used to create a RequestBuilder
+     - parameter request: The Request instance used to build a URLRequest
+     - parameter strategy: The DataStrategy used to create the body of the http request
     */
     init(request: Request, strategy: DataStrategy)
 
