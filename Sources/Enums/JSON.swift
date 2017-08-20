@@ -27,6 +27,7 @@ public enum JSON {
 
     /**
      The initializer of a JSON enum
+     - parameter data: The Data that is used to create a JSON instance
     */
     public init(data: Data) {
         do {

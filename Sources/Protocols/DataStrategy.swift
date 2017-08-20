@@ -6,6 +6,9 @@
 
 import Foundation
 
+/**
+ A DataStrategy defines the steps used to create the body for an http request
+*/
 public protocol DataStrategy {
 
     /**

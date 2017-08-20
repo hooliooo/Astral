@@ -20,11 +20,11 @@ public enum NetworkingError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
-        case .connection(let string):
-            return string
+            case .connection(let string):
+                return string
 
-        case .response(let response):
-            return response.json.description
+            case .response(let response):
+                return response.json.description
         }
     }
 
