@@ -11,6 +11,8 @@ import Foundation
 */
 public struct JSONStrategy: DataStrategy {
 
+    public init() {}
+
     public func createHTTPBody(from dict: [String: Any]) -> Data? {
         return try? JSONSerialization.data(withJSONObject: dict)
     }

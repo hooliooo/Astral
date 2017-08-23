@@ -19,6 +19,9 @@ public struct FormURLEncodedStrategy {
         return set
     }()
 
+    // MARK: Initializer
+    public init() {}
+
     // MARK: Instance Methods
     fileprivate func percentEscaped(string: String) -> String {
         return string
