@@ -15,7 +15,7 @@ public typealias HTTPRequestResult = (Result<Response, NetworkingError>) -> Void
 public struct JSONRequestDispatcher {
 
     // MARK: Stored Properties
-    fileprivate let _requestBuilder: RequestBuilder
+    fileprivate var _requestBuilder: RequestBuilder
     fileprivate let _printsResponse: Bool
 
     // MARK: Static Properties
@@ -35,13 +35,17 @@ extension JSONRequestDispatcher: RequestDispatcher {
         self._printsResponse = printsResponse
     }
 
-    // MARK: Computed Properties
+    // MARK: Getter/Setter Properties
     public var request: Request {
-        return self._requestBuilder.request
+        get { return self._requestBuilder.request }
+
+        set { self._requestBuilder.request = newValue }
     }
 
     public var builder: RequestBuilder {
-        return self._requestBuilder
+        get { return self._requestBuilder }
+
+        set { self._requestBuilder = newValue }
     }
 
     public var urlRequest: URLRequest {

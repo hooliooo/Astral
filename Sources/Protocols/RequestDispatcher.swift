@@ -35,12 +35,12 @@ public protocol RequestDispatcher {
     /**
      The Request associated with the RequestDispatcher
     */
-    var request: Request { get }
+    var request: Request { get set }
 
     /**
      The Request Builder associated with the RequestDispatcher
     */
-    var builder: RequestBuilder { get }
+    var builder: RequestBuilder { get set }
 
     /**
      The URLRequest associated with the RequestDispatcher

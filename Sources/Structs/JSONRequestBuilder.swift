@@ -10,8 +10,8 @@
 public struct JSONRequestBuilder {
 
     // MARK: Stored Properties
-    fileprivate let _request: Request
-    fileprivate let _strategy: DataStrategy
+    fileprivate var _request: Request
+    fileprivate var _strategy: DataStrategy
 
 }
 
@@ -24,6 +24,19 @@ extension JSONRequestBuilder: RequestBuilder {
         self._strategy = strategy
     }
 
+    // MARK: Getter/Setter Properties
+    public var request: Request {
+        get { return self._request }
+
+        set { self._request = newValue }
+    }
+
+    public var strategy: DataStrategy {
+        get { return self._strategy }
+
+        set { self._strategy = newValue }
+    }
+
     // MARK: Computed Properties
     public var httpBody: Data? {
         if self.request.parameters.isEmpty || self.request.isGetRequest {
@@ -31,10 +44,6 @@ extension JSONRequestBuilder: RequestBuilder {
         }
 
         return self._strategy.createHTTPBody(from: self.request.parameters)
-    }
-
-    public var request: Request {
-        return self._request
     }
 
 }

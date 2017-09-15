@@ -38,7 +38,12 @@ public protocol RequestBuilder {
     /**
      The Request associated with the RequestBuilder
     */
-    var request: Request { get }
+    var request: Request { get set }
+
+    /**
+     The DataStrategy used to create the http body of the request
+    */
+    var strategy: DataStrategy { get set }
 
     /**
      The URLRequest used when sending an http network request
