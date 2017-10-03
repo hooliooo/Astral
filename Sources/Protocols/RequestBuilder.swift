@@ -4,6 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
+
 /**
  A RequestBuilder uses the information of a Request to create an instance of URLRequest
 */

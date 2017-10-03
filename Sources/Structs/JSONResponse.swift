@@ -5,15 +5,16 @@
 //
 
 import Foundation
+
 /**
  An implementation of Response that represents the data from an HTTPURLResponse.
 */
 public struct JSONResponse {
 
     // MARK: Stored Properties
-    fileprivate let _statusCode: Int
-    fileprivate let _data: Data
-    fileprivate let _json: JSON
+    private let _statusCode: Int
+    private let _data: Data
+    private let _json: JSON
 }
 
 extension JSONResponse: Response {

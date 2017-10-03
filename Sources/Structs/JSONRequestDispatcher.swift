@@ -4,6 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
 import BrightFutures
 import Result
 
@@ -15,8 +16,8 @@ public typealias HTTPRequestResult = (Result<Response, NetworkingError>) -> Void
 public struct JSONRequestDispatcher {
 
     // MARK: Stored Properties
-    fileprivate var _requestBuilder: RequestBuilder
-    fileprivate let _printsResponse: Bool
+    private var _requestBuilder: RequestBuilder
+    private let _printsResponse: Bool
 
     // MARK: Static Properties
     public static let session: URLSession = URLSession.shared

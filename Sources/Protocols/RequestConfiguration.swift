@@ -4,6 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
+
 /**
  A RequestConfiguration defines the base URL and base headers of a Request
 */

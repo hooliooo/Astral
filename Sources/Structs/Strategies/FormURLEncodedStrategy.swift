@@ -13,7 +13,7 @@ import Foundation
 public struct FormURLEncodedStrategy {
 
     // MARK: Static Properties
-    fileprivate static let characterSet: CharacterSet = {
+    private static let characterSet: CharacterSet = {
         var set: CharacterSet = CharacterSet.alphanumerics
         set.insert(charactersIn: "-._* ")
         return set
@@ -23,22 +23,19 @@ public struct FormURLEncodedStrategy {
     public init() {}
 
     // MARK: Instance Methods
-    fileprivate func percentEscaped(string: String) -> String {
+    private func percentEscaped(string: String) -> String {
         return string
             .addingPercentEncoding(withAllowedCharacters: FormURLEncodedStrategy.characterSet)!
             .replacingOccurrences(of: " ", with: "+")
     }
 
-    fileprivate func convert(dict: [String: Any]) -> [String: String]? {
-
+    private func convert(dict: [String: Any]) -> [String: String]? {
         let bodyDict: [(String, String)] = dict.flatMap { (dict: (key: String, value: Any)) -> (String, String) in
             return (dict.key, String(describing: dict.value))
         }
 
-        return bodyDict.reduce([:]) { (result: [String: String], tuple: (key: String, value: String)) -> [String: String] in
-            var result: [String: String] = result
+        return bodyDict.reduce(into: [:]) { (result: inout [String: String], tuple: (key: String, value: String)) -> Void in
             result.updateValue(tuple.value, forKey: tuple.key)
-            return result
         }
     }
 

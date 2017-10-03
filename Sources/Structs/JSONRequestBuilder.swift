@@ -4,14 +4,16 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
+
 /**
  An implementation of RequestBuilder that can build URLRequests for simple http network requests.
 */
 public struct JSONRequestBuilder {
 
     // MARK: Stored Properties
-    fileprivate var _request: Request
-    fileprivate var _strategy: DataStrategy
+    private var _request: Request
+    private var _strategy: DataStrategy
 
 }
 

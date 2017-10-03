@@ -4,6 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
+
 /**
  An Enum that represents errors related to http network requests
 */

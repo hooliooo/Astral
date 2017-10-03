@@ -4,6 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
+
 /**
  String Enum that represents the scheme of the http network request
 */

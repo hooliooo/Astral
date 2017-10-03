@@ -28,10 +28,13 @@
 		1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421529A1F1F9C6D00EB421A /* Foundation.framework */; };
 		142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AB1F1FC51000EB421A /* BrightFutures.framework */; };
 		142152AE1F1FC51400EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AD1F1FC51400EB421A /* Result.framework */; };
+		14C70B3D1F6EB0D000C5AEB4 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C70B3C1F6EB0D000C5AEB4 /* DownloadManager.swift */; };
+		14C70B3F1F6EB61D00C5AEB4 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C70B3E1F6EB61D00C5AEB4 /* DownloadTracking.swift */; };
 		14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */; };
 		14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */; };
 		14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */; };
-		D5941865612E84E67621B6FC /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
+		14E87D4F1F6FF2E50062CCDD /* DownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E87D4E1F6FF2E50062CCDD /* DownloadTracker.swift */; };
+		1D55167A132A32E65B632547 /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +76,12 @@
 		142152AD1F1FC51400EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Release-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		148946591EF0D55E00824DF2 /* TestStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStructs.swift; sourceTree = "<group>"; };
 		1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinKeys.swift; sourceTree = "<group>"; };
+		14C70B3C1F6EB0D000C5AEB4 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		14C70B3E1F6EB61D00C5AEB4 /* DownloadTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTracking.swift; sourceTree = "<group>"; };
 		14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
 		14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
 		14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
+		14E87D4E1F6FF2E50062CCDD /* DownloadTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTracker.swift; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		4B4486EBA8B9A4DDE7DDA6A3 /* Astral.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,7 +100,7 @@
 				142152AE1F1FC51400EB421A /* Result.framework in Frameworks */,
 				142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */,
 				1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */,
-				D5941865612E84E67621B6FC /* Pods_Astral.framework in Frameworks */,
+				1D55167A132A32E65B632547 /* Pods_Astral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +154,7 @@
 				142152741F1F97B700EB421A /* Enums */,
 				142152791F1F97B700EB421A /* Protocols */,
 				1421527F1F1F97B700EB421A /* Structs */,
+				14C70B3B1F6EAEDC00C5AEB4 /* Classes */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -172,6 +179,8 @@
 				1421527C1F1F97B700EB421A /* RequestBuilder.swift */,
 				1421527D1F1F97B700EB421A /* RequestDispatcher.swift */,
 				1421527E1F1F97B700EB421A /* Response.swift */,
+				14C70B3C1F6EB0D000C5AEB4 /* DownloadManager.swift */,
+				14C70B3E1F6EB61D00C5AEB4 /* DownloadTracking.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -194,6 +203,14 @@
 				1421528F1F1F987100EB421A /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14C70B3B1F6EAEDC00C5AEB4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				14E87D4E1F6FF2E50062CCDD /* DownloadTracker.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		14DD74391F44813000AEB5C7 /* Strategies */ = {
@@ -306,17 +323,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					142152581F1F93A500EB421A = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = S886WPSL95;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					142152601F1F93A600EB421A = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = S886WPSL95;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -364,13 +383,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Astral-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1421529C1F1F9CDB00EB421A /* Swiftlint Script */ = {
@@ -393,13 +415,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AstralTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2EC4BCB9E6833D6326C77247 /* [CP] Copy Pods Resources */ = {
@@ -438,9 +463,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BrightFutures/BrightFutures.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightFutures.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -457,6 +487,7 @@
 				142152891F1F97B700EB421A /* RequestBuilder.swift in Sources */,
 				14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */,
 				14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */,
+				14C70B3D1F6EB0D000C5AEB4 /* DownloadManager.swift in Sources */,
 				142152831F1F97B700EB421A /* HTTPMethod.swift in Sources */,
 				1421528A1F1F97B700EB421A /* RequestDispatcher.swift in Sources */,
 				1421528D1F1F97B700EB421A /* JSONRequestDispatcher.swift in Sources */,
@@ -465,9 +496,11 @@
 				14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */,
 				1421528E1F1F97B700EB421A /* JSONResponse.swift in Sources */,
 				1421528C1F1F97B700EB421A /* JSONRequestBuilder.swift in Sources */,
+				14E87D4F1F6FF2E50062CCDD /* DownloadTracker.swift in Sources */,
 				142152871F1F97B700EB421A /* RequestConfiguration.swift in Sources */,
 				142152851F1F97B700EB421A /* NetworkingError.swift in Sources */,
 				142152861F1F97B700EB421A /* URLScheme.swift in Sources */,
+				14C70B3F1F6EB61D00C5AEB4 /* DownloadTracking.swift in Sources */,
 				142152841F1F97B700EB421A /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,7 +550,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -546,7 +580,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.Astral;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -569,7 +604,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.AstralTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -587,7 +623,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.AstralTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -599,14 +636,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -646,14 +689,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

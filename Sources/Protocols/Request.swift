@@ -4,6 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import Foundation
+
 /**
  A Request contains the information required to make an http network request. A Request represents one network operation.
 */
