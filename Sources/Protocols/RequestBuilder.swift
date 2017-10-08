@@ -105,7 +105,7 @@ public extension RequestBuilder {
     public var headers: [String: Any] {
         let headersArray: [[String: Any]] = [self.request.configuration.baseHeaders, self.request.headers]
 
-        return headersArray.reduce([:]) { (result: [String: Any], dict: [String : Any]) -> [String: Any] in
+        return headersArray.reduce([:]) { (result: [String: Any], dict: [String: Any]) -> [String: Any] in
             var result: [String: Any] = result
             dict.forEach { (dict: (key: String, value: Any)) -> Void in
                 result.updateValue(dict.value, forKey: dict.key)

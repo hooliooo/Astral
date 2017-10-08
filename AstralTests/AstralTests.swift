@@ -31,7 +31,7 @@ class AstralTests: XCTestCase {
                 return response.json.dictValue
 
             }
-            .onSuccess { (json: [String : Any]) -> Void in
+            .onSuccess { (json: [String: Any]) -> Void in
                 let configuration = requestDispatcher.request.configuration
                 guard
                     // Headers Node
@@ -75,7 +75,7 @@ class AstralTests: XCTestCase {
                 return response.json.dictValue
 
             }
-            .onSuccess { (json: [String : Any]) -> Void in
+            .onSuccess { (json: [String: Any]) -> Void in
                 guard
                     // Args Node
                     let args = json[HTTPBinKeys.args.rawValue] as? [String: String],
@@ -120,7 +120,7 @@ class AstralTests: XCTestCase {
             .map { (response: Response) -> [String: Any] in
                 return response.json.dictValue
             }
-            .onSuccess { (json: [String : Any]) -> Void in
+            .onSuccess { (json: [String: Any]) -> Void in
                 guard
                     // JSON Node
                     let formNode = json[HTTPBinKeys.form.rawValue] as? [String: String],

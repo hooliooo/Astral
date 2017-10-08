@@ -99,6 +99,46 @@ public enum JSON {
                 fatalError("Not a Dictionary value")
         }
     }
+
+    /**
+     Returns the value as Data representation
+    */
+    public var dataValue: Data? {
+        let value: Any
+
+        switch self {
+            case .array(let array):
+                value = array
+
+            case .dictionary(let dict):
+                value = dict
+
+            case .unknown(let str):
+                value = str
+        }
+
+        return try? JSONSerialization.data(withJSONObject: value)
+    }
+
+    /**
+     Returns the value as a String representation
+    */
+    public var stringValue: String {
+        switch self {
+            case .unknown(let string):
+                return string
+
+            case .array, .dictionary:
+                guard
+                    let data = self.dataValue,
+                    let stringValue = String(data: data, encoding: String.Encoding.utf8)
+                else {
+                    return ""
+                }
+
+                return stringValue
+        }
+    }
 }
 
 extension JSON: CustomStringConvertible {
@@ -111,7 +151,7 @@ extension JSON: CustomStringConvertible {
                 return "Dictionary: \(dict)"
 
             case .unknown(let string):
-                return string
+                return "String: \(string)"
         }
     }
 }

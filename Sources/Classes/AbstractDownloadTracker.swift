@@ -1,9 +1,7 @@
 //
-//  DownloadTracker.swift
 //  Astral
-//
-//  Created by Julio Alorro on 9/18/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright (c) 2017 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation
@@ -11,7 +9,7 @@ import Foundation
 /**
  A base implementation of the DownTracking protocol
 */
-open class DownloadTracker<Model: Equatable> {
+open class AbstractDownloadTracker<Model: Equatable> {
 
     // MARK: Initializer
     /**
@@ -20,6 +18,11 @@ open class DownloadTracker<Model: Equatable> {
      - parameter tasks: URLSessionsDownloadTasks associated with the object instance
     */
     public init(object: Model, tasks: [URLSessionDownloadTask]) {
+        guard type(of: self) != AbstractDownloadTracker.self else {
+            fatalError(
+                "AbstractDownloadTracker instances cannot be created. Use subclasses instead"
+            )
+        }
         self._object = object
         self._tasks = tasks
     }
@@ -39,7 +42,7 @@ open class DownloadTracker<Model: Equatable> {
 
 }
 
-extension DownloadTracker: DownloadTracking {
+extension AbstractDownloadTracker: DownloadTracking {
 
     // MARK: Properties
     open var tasks: [URLSessionDownloadTask] {
@@ -73,9 +76,9 @@ extension DownloadTracker: DownloadTracking {
 
 }
 
-extension DownloadTracker: Equatable {
+extension AbstractDownloadTracker: Equatable {
 
-    open static func == (lhs: DownloadTracker<Model>, rhs: DownloadTracker<Model>) -> Bool {
+    open static func == (lhs: AbstractDownloadTracker<Model>, rhs: AbstractDownloadTracker<Model>) -> Bool {
         return lhs.object == rhs.object &&
             lhs.tasks == rhs.tasks &&
             lhs.totalBytesToDownload == rhs.totalBytesToDownload &&

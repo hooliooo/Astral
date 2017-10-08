@@ -33,7 +33,7 @@
 		14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */; };
 		14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */; };
 		14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */; };
-		14E87D4F1F6FF2E50062CCDD /* DownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E87D4E1F6FF2E50062CCDD /* DownloadTracker.swift */; };
+		14E87D4F1F6FF2E50062CCDD /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */; };
 		1D55167A132A32E65B632547 /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +81,7 @@
 		14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
 		14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
 		14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
-		14E87D4E1F6FF2E50062CCDD /* DownloadTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTracker.swift; sourceTree = "<group>"; };
+		14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractDownloadTracker.swift; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		4B4486EBA8B9A4DDE7DDA6A3 /* Astral.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		14C70B3B1F6EAEDC00C5AEB4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				14E87D4E1F6FF2E50062CCDD /* DownloadTracker.swift */,
+				14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -496,7 +496,7 @@
 				14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */,
 				1421528E1F1F97B700EB421A /* JSONResponse.swift in Sources */,
 				1421528C1F1F97B700EB421A /* JSONRequestBuilder.swift in Sources */,
-				14E87D4F1F6FF2E50062CCDD /* DownloadTracker.swift in Sources */,
+				14E87D4F1F6FF2E50062CCDD /* AbstractDownloadTracker.swift in Sources */,
 				142152871F1F97B700EB421A /* RequestConfiguration.swift in Sources */,
 				142152851F1F97B700EB421A /* NetworkingError.swift in Sources */,
 				142152861F1F97B700EB421A /* URLScheme.swift in Sources */,

@@ -7,11 +7,10 @@
 import Foundation
 
 /**
- A DownloadTracking object contains information about the downloading progress associated with it such as its URLSessionDownloadTasks,
+ A DownloadTracking object contains information about its downloading progress such as its URLSessionDownloadTasks,
  total bytes to download, the current bytes downloaded, and status.
 */
 public protocol DownloadTracking {
-
     /**
      URLSessionDownloadTasks associated with the DownloadTracking instance
     */

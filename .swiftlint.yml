@@ -1,5 +1,6 @@
 disabled_rules:
   - identifier_name
+  - switch_case_alignment
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods

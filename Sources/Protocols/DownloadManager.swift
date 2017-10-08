@@ -36,6 +36,6 @@ public protocol DownloadManager: URLSessionDownloadDelegate {
     /**
      The array of DownloadTrackers managed by the DownloadManager
     */
-    var trackers: [DownloadTracker<Model>] { get }
+    var trackers: [AbstractDownloadTracker<Model>] { get }
 
 }

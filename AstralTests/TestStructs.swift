@@ -21,7 +21,7 @@ struct JSONConfiguration: RequestConfiguration {
         return []
     }
 
-    var baseHeaders: [String : Any] {
+    var baseHeaders: [String: Any] {
         return [
             "Content-Type": "application/json"
         ]
@@ -41,7 +41,7 @@ struct FormURLEncodedConfiguration: RequestConfiguration {
         return []
     }
 
-    var baseHeaders: [String : Any] {
+    var baseHeaders: [String: Any] {
         return [
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "application/json"
@@ -64,13 +64,13 @@ struct HTTPBinGetRequest: Request {
         ]
     }
 
-    var parameters: [String : Any] {
+    var parameters: [String: Any] {
         return [
             "this": "that"
         ]
     }
 
-    var headers: [String : Any] {
+    var headers: [String: Any] {
         return [
             "Get-Request": "YES"
         ]
@@ -92,13 +92,13 @@ struct HTTPBinPostRequest: Request {
         ]
     }
 
-    var parameters: [String : Any] {
+    var parameters: [String: Any] {
         return [
             "this": "that"
         ]
     }
 
-    var headers: [String : Any] {
+    var headers: [String: Any] {
         return [
             "Post-Request": "Yes"
         ]

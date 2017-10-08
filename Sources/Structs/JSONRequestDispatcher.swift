@@ -27,8 +27,16 @@ public struct JSONRequestDispatcher {
 extension JSONRequestDispatcher: RequestDispatcher {
 
     // MARK: Intializers
-    public init(request: Request, builderType: RequestBuilder.Type = JSONRequestBuilder.self, strategy: DataStrategy = JSONStrategy(), printsResponse: Bool = true) {
-        self.init(builder: builderType.init(request: request, strategy: strategy), printsResponse: printsResponse)
+    public init(
+        request: Request,
+        builderType: RequestBuilder.Type = JSONRequestBuilder.self,
+        strategy: DataStrategy = JSONStrategy(),
+        printsResponse: Bool = true
+    ) {
+        self.init(
+            builder: builderType.init(request: request, strategy: strategy),
+            printsResponse: printsResponse
+        )
     }
 
     public init(builder: RequestBuilder, printsResponse: Bool) {

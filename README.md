@@ -96,9 +96,7 @@ struct PokemonRequest: Request {
 let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.userInitiated, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
-let dispatcher: RequestDispatcher = JSONRequestDispatcher(
-    request: request, builderType: JSONRequestBuilder.self, printsResponse: true
-)
+let dispatcher: RequestDispatcher = JSONRequestDispatcher(request: request)
 
 dispatcher.dispatchURLRequest()
     .onSuccess(queue.context) { (response: Response) -> Void in
