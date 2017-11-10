@@ -79,7 +79,7 @@ struct PokemonRequest: Request {
     }
 
     var method: HTTPMethod {
-        return HTTPMethod.GET
+        return HTTPMethod.get
     }
 
     var parameters: [String : Any] {
@@ -93,7 +93,7 @@ struct PokemonRequest: Request {
 ```
 
 ```swift
-let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.userInitiated, attributes: [DispatchQueue.Attributes.concurrent])
+let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
 let dispatcher: RequestDispatcher = JSONRequestDispatcher(request: request)
