@@ -61,11 +61,11 @@ public extension RequestConfiguration {
             "BaseHeaders: \(self.baseHeaders)"
         ]
 
-        let descriptionString: String = strings.reduce("") { (result: String, string: String) -> String in
-            return "\(result)\n\t\(string)"
+        let description: String = strings.reduce(into: "") { (result: inout String, string: String) -> Void in
+            result = "\(result)\n\t\(string)"
         }
 
-        return "Type: \(type(of: self)): \(descriptionString)"
+        return "Type: \(type(of: self)): \(description)"
     }
 
     var debugDescription: String {

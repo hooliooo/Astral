@@ -55,7 +55,7 @@ struct HTTPBinGetRequest: Request {
     }
 
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
 
     var pathComponents: [String] {
@@ -83,7 +83,7 @@ struct HTTPBinPostRequest: Request {
     }
 
     var method: HTTPMethod {
-        return .POST
+        return .post
     }
 
     var pathComponents: [String] {

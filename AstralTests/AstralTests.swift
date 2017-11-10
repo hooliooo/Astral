@@ -55,7 +55,7 @@ class AstralTests: XCTestCase {
             }
             .onFailure { (error: NetworkingError) -> Void in
                 XCTFail(error.localizedDescription)
-        }
+            }
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
@@ -98,7 +98,7 @@ class AstralTests: XCTestCase {
 
                 XCTFail(error.localizedDescription)
 
-        }
+            }
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
 

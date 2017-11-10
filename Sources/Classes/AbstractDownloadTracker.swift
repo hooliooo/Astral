@@ -19,10 +19,9 @@ open class AbstractDownloadTracker<Model: Equatable> {
     */
     public init(object: Model, tasks: [URLSessionDownloadTask]) {
         guard type(of: self) != AbstractDownloadTracker.self else {
-            fatalError(
-                "AbstractDownloadTracker instances cannot be created. Use subclasses instead"
-            )
+            fatalError("AbstractDownloadTracker instances cannot be created. Use subclasses instead")
         }
+
         self._object = object
         self._tasks = tasks
     }

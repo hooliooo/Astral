@@ -57,11 +57,7 @@ public extension RequestBuilder {
 
     public var queryItems: [URLQueryItem] {
         return self.request.parameters.flatMap { (item: (key: String, value: Any)) -> URLQueryItem? in
-            guard let value = item.value as? String
-                else { return nil }
-
-            return URLQueryItem(name: item.key, value: value)
-
+            return URLQueryItem(name: item.key, value: String(describing: item.value))
         }
     }
 
@@ -77,7 +73,7 @@ public extension RequestBuilder {
             case false:
                 var path: String = pathComponents.joined(separator: "/")
 
-                switch path.characters.first! != "/" {
+                switch path.first! != "/" {
                     case true:
                         path.insert("/", at: path.startIndex)
 
@@ -105,19 +101,16 @@ public extension RequestBuilder {
     public var headers: [String: Any] {
         let headersArray: [[String: Any]] = [self.request.configuration.baseHeaders, self.request.headers]
 
-        return headersArray.reduce([:]) { (result: [String: Any], dict: [String: Any]) -> [String: Any] in
-            var result: [String: Any] = result
+        return headersArray.reduce(into: [:]) { (result: inout [String: Any], dict: [String: Any]) -> Void in
             dict.forEach { (dict: (key: String, value: Any)) -> Void in
                 result.updateValue(dict.value, forKey: dict.key)
             }
-
-            return result
         }
     }
 
     public var urlRequest: URLRequest {
         var request: URLRequest = URLRequest(url: self.url)
-        request.httpMethod = self.request.method.rawValue
+        request.httpMethod = self.request.method.stringValue
         request.httpBody = self.httpBody
 
         self.headers.forEach { (key: String, value: Any) -> Void in
@@ -141,10 +134,11 @@ public extension RequestBuilder {
             "URLRequest: \(self.urlRequest)"
         ]
 
-        let descriptionString: String = strings.reduce("") { (result: String, string: String) -> String in
-            return "\(result)\n\t\(string)"
+        let description: String = strings.reduce(into: "") { (result: inout String, string: String) -> Void in
+            result = "\(result)\n\t\(string)"
         }
-        return "Type: \(type(of: self)): \(descriptionString)"
+
+        return "Type: \(type(of: self)): \(description)"
     }
 
     var debugDescription: String {

@@ -125,7 +125,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
             JSONRequestDispatcher.session.getAllTasks { (tasks: [URLSessionTask]) -> Void in
                 let filteredTasks = tasks.filter { (task: URLSessionTask) -> Bool in
                     return task.currentRequest == self.urlRequest &&
-                    task.currentRequest?.httpBody == self.urlRequest.httpBody
+                        task.currentRequest?.httpBody == self.urlRequest.httpBody
                 }
 
                 filteredTasks.forEach { (task: URLSessionTask) -> Void in
@@ -143,7 +143,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
 
                 let filteredTasks: [URLSessionTask] = tasks.filter { (task: URLSessionTask) -> Bool in
                     return task.currentRequest == self.urlRequest &&
-                    task.currentRequest?.httpBody == self.urlRequest.httpBody
+                        task.currentRequest?.httpBody == self.urlRequest.httpBody
                 }
 
                 filteredTasks.forEach { (task: URLSessionTask) -> Void in
