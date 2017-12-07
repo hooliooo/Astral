@@ -12,6 +12,10 @@ import Foundation
 public struct MultiPartFormDataStrategy {
 
     // MARK: Initializer
+    /**
+     Initializer.
+     - parameter request: The MultiPartFormDataRequest instance used to create the MultiPartFormDataStrategy instance.
+    */
     public init(request: MultiPartFormDataRequest) {
         self.boundary = request.boundary
         self.data = request.data

@@ -15,22 +15,22 @@ public protocol MultiPartFormDataRequest: Request {
     /**
      The boundary string to be used when constructing the multipart form-data payload
     */
-    public var boundary: String { get }
+    var boundary: String { get }
 
     /**
      The data to be included in the multipart form-data payload
     */
-    public var data: Data { get }
+    var data: Data { get }
 
     /**
      The file name to be used as part of the multipart form-data payload.
     */
-    public var fileName: String { get }
+    var fileName: String { get }
 
     /**
      The mime type to be defined as the Content-Type in the multipart form-data payload.
     */
-    public var mimeType: String { get }
+    var mimeType: String { get }
 
 }
 
