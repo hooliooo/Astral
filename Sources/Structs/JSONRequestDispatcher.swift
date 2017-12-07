@@ -87,6 +87,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
 
                     switch self._printsResponse {
                         case true:
+                            print("HTTP Method: \(self.request.method.stringValue)")
                             print("Response: \(response)")
 
                         case false:
