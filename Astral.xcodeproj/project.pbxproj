@@ -34,6 +34,8 @@
 		14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */; };
 		14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */; };
 		14E87D4F1F6FF2E50062CCDD /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */; };
+		14FAAA6A1FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAAA691FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift */; };
+		14FAAA6C1FD8E51000F51E4E /* MultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAAA6B1FD8E51000F51E4E /* MultipartFormDataRequest.swift */; };
 		1D55167A132A32E65B632547 /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
 		14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
 		14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractDownloadTracker.swift; sourceTree = "<group>"; };
+		14FAAA691FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataStrategy.swift; sourceTree = "<group>"; };
+		14FAAA6B1FD8E51000F51E4E /* MultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataRequest.swift; sourceTree = "<group>"; };
 		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		4B4486EBA8B9A4DDE7DDA6A3 /* Astral.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */,
 				1421527A1F1F97B700EB421A /* RequestConfiguration.swift */,
 				1421527B1F1F97B700EB421A /* Request.swift */,
+				14FAAA6B1FD8E51000F51E4E /* MultipartFormDataRequest.swift */,
 				1421527C1F1F97B700EB421A /* RequestBuilder.swift */,
 				1421527D1F1F97B700EB421A /* RequestDispatcher.swift */,
 				1421527E1F1F97B700EB421A /* Response.swift */,
@@ -218,6 +223,7 @@
 			children = (
 				14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */,
 				14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */,
+				14FAAA691FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift */,
 			);
 			path = Strategies;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 				14C70B3D1F6EB0D000C5AEB4 /* DownloadManager.swift in Sources */,
 				142152831F1F97B700EB421A /* HTTPMethod.swift in Sources */,
 				1421528A1F1F97B700EB421A /* RequestDispatcher.swift in Sources */,
+				14FAAA6C1FD8E51000F51E4E /* MultipartFormDataRequest.swift in Sources */,
 				1421528D1F1F97B700EB421A /* JSONRequestDispatcher.swift in Sources */,
 				142152881F1F97B700EB421A /* Request.swift in Sources */,
 				1421528B1F1F97B700EB421A /* Response.swift in Sources */,
@@ -502,6 +509,7 @@
 				142152861F1F97B700EB421A /* URLScheme.swift in Sources */,
 				14C70B3F1F6EB61D00C5AEB4 /* DownloadTracking.swift in Sources */,
 				142152841F1F97B700EB421A /* JSON.swift in Sources */,
+				14FAAA6A1FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

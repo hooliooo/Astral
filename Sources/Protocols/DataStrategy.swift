@@ -12,7 +12,7 @@ import Foundation
 public protocol DataStrategy {
     /**
      The method transforms the object instance into an optional Data
-     - parameter object: The object to be transformed in to Data
+     - parameter dict: The key-value pairs to be transformed as part of the HTTP body payload.
     */
     func createHTTPBody(from dict: [String: Any]) -> Data?
 
