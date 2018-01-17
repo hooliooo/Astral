@@ -20,7 +20,7 @@ public protocol MultiPartFormDataRequest: Request {
     /**
      The form data to be included in the multipart form data payload
     */
-    var formData: [FormData] { get }
+    var files: [FormFile] { get }
 
 }
 
@@ -33,7 +33,7 @@ public extension MultiPartFormDataRequest {
             "Parameters: \(self.parameters)",
             "Headers: \(self.headers)",
             "Boundary: \(self.boundary)",
-            "formData: \(self.formData)"
+            "files: \(self.files)"
         ]
 
         let description: String = strings.reduce(into: "") { (result: inout String, string: String) -> Void in

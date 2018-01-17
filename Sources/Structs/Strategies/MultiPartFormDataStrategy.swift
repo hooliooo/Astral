@@ -18,7 +18,7 @@ public struct MultiPartFormDataStrategy {
     */
     public init(request: MultiPartFormDataRequest) {
         self.boundary = request.boundary
-        self.formData = request.formData
+        self.formData = request.files
     }
 
     // MARK: Stored Properties
@@ -28,9 +28,9 @@ public struct MultiPartFormDataStrategy {
     public let boundary: String
 
     /**
-     The form data to be included in the http body
+     The files to be uploaded in the http body
     */
-    public let formData: [FormData]
+    public let formData: [FormFile]
 
     // MARK: Instance Methods
     /**

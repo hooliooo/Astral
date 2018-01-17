@@ -143,4 +143,31 @@ class AstralTests: XCTestCase {
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
+    func testMultiPartFormDataRequest() {
+
+        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
+
+        let request: HTTPBINMultipartFormDataRequest = HTTPBINMultipartFormDataRequest()
+
+        let dispatcher: RequestDispatcher = JSONRequestDispatcher(
+            request: request,
+            builderType: JSONRequestBuilder.self,
+            strategy: MultiPartFormDataStrategy(request: request),
+            printsResponse: true
+        )
+
+        dispatcher.dispatchURLRequest()
+            .onSuccess { (response: Response) -> Void in
+                print(response.json.dictValue)
+                expectation.fulfill()
+            }
+            .onFailure { (error: NetworkingError) -> Void in
+                print(error)
+                expectation.fulfill()
+            }
+
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+
+    }
+
 }
