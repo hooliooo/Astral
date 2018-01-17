@@ -18,9 +18,7 @@ public struct MultiPartFormDataStrategy {
     */
     public init(request: MultiPartFormDataRequest) {
         self.boundary = request.boundary
-        self.data = request.data
-        self.filename = request.fileName
-        self.mimeType = request.mimeType
+        self.formData = request.formData
     }
 
     // MARK: Stored Properties
@@ -30,19 +28,9 @@ public struct MultiPartFormDataStrategy {
     public let boundary: String
 
     /**
-     The data to be uploaded as part of the multipart form-data payload.
+     The form data to be included in the http body
     */
-    public let data: Data
-
-    /**
-     The file name to be used as part of the multipart form-data payload.
-    */
-    public let filename: String
-
-    /**
-     The mime type to be defined as the Content-Type in the multipart form-data payload.
-    */
-    public let mimeType: String
+    public let formData: [FormData]
 
     // MARK: Instance Methods
     /**
@@ -78,13 +66,20 @@ extension MultiPartFormDataStrategy: DataStrategy {
                 }
         }
 
-        self.append(string: boundaryPrefix, to: &body)
-        self.append(string: "Content-Disposition: form-data; name=\"file\"; filename=\"\(self.filename)\"\r\n", to: &body)
-        self.append(string: "Content-Type: \(self.mimeType)\r\n\r\n", to: &body)
+        for formData in self.formData {
+            self.append(string: boundaryPrefix, to: &body)
+            self.append(
+                string: "Content-Disposition: form-data; name=\"\(formData.name)\"; filename=\"\(formData.filename)\"\r\n",
+                to: &body
+            )
 
-        body.append(self.data)
+            self.append(string: "Content-Type: \(formData.contentType)\r\n\r\n", to: &body)
 
-        self.append(string: "\r\n", to: &body)
+            body.append(formData.data)
+
+            self.append(string: "\r\n", to: &body)
+        }
+
         self.append(string: "--".appending(self.boundary.appending("--\r\n")), to: &body)
 
         return body

@@ -18,19 +18,9 @@ public protocol MultiPartFormDataRequest: Request {
     var boundary: String { get }
 
     /**
-     The data to be included in the multipart form-data payload
+     The form data to be included in the multipart form data payload
     */
-    var data: Data { get }
-
-    /**
-     The file name to be used as part of the multipart form-data payload.
-    */
-    var fileName: String { get }
-
-    /**
-     The mime type to be defined as the Content-Type in the multipart form-data payload.
-    */
-    var mimeType: String { get }
+    var formData: [FormData] { get }
 
 }
 
