@@ -33,8 +33,7 @@ public extension MultiPartFormDataRequest {
             "Parameters: \(self.parameters)",
             "Headers: \(self.headers)",
             "Boundary: \(self.boundary)",
-            "fileName: \(self.fileName)",
-            "mimeType: \(self.mimeType)"
+            "formData: \(self.formData)"
         ]
 
         let description: String = strings.reduce(into: "") { (result: inout String, string: String) -> Void in
