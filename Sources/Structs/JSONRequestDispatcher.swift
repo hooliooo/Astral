@@ -77,9 +77,7 @@ extension JSONRequestDispatcher: RequestDispatcher {
 
                     callback(
                         Result.failure(
-                            NetworkingError.connection(
-                                error.localizedDescription
-                            )
+                            NetworkingError.connection(error)
                         )
                     )
 
@@ -112,7 +110,14 @@ extension JSONRequestDispatcher: RequestDispatcher {
                             )
 
                         default:
-                            fatalError("Unhandled status code: \(response.statusCode)")
+                            callback(
+                                Result.failure(
+                                    NetworkingError.unknown(
+                                        JSONResponse(httpResponse: response, data: data),
+                                        "Unhandled status code: \(response.statusCode)"
+                                    )
+                                )
+                            )
                     }
                 }
             }

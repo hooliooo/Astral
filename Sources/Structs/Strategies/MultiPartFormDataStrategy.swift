@@ -18,7 +18,7 @@ public struct MultiPartFormDataStrategy {
     */
     public init(request: MultiPartFormDataRequest) {
         self.boundary = request.boundary
-        self.formData = request.files
+        self.files = request.files
     }
 
     // MARK: Stored Properties
@@ -30,7 +30,7 @@ public struct MultiPartFormDataStrategy {
     /**
      The files to be uploaded in the http body
     */
-    public let formData: [FormFile]
+    public let files: [FormFile]
 
     // MARK: Instance Methods
     /**
@@ -66,7 +66,7 @@ extension MultiPartFormDataStrategy: DataStrategy {
                 }
         }
 
-        for formData in self.formData {
+        for formData in self.files {
             self.append(string: boundaryPrefix, to: &body)
             self.append(
                 string: "Content-Disposition: form-data; name=\"\(formData.name)\"; filename=\"\(formData.filename)\"\r\n",

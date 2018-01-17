@@ -13,20 +13,28 @@ public enum NetworkingError: LocalizedError {
     /**
      Connection error
     */
-    case connection(String)
+    case connection(Error)
 
     /**
      Response error
     */
     case response(Response)
 
+    /**
+     Unknown error
+    */
+    case unknown(Response, String)
+
     public var errorDescription: String? {
         switch self {
-            case .connection(let string):
-                return string
+            case .connection(let error):
+                return error.localizedDescription
 
             case .response(let response):
                 return response.json.description
+
+            case .unknown(let response, let text):
+                return "\(text)\n\n\(response)"
         }
     }
 
