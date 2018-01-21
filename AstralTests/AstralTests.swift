@@ -25,7 +25,7 @@ class AstralTests: XCTestCase {
             strategy: JSONStrategy()
         )
 
-        requestDispatcher.dispatchURLRequest()
+        requestDispatcher.response()
             .map { (response: Response) -> [String: Any] in
                 print(response)
                 return response.json.dictValue
@@ -69,7 +69,7 @@ class AstralTests: XCTestCase {
             builderType: JSONRequestBuilder.self,
             strategy: JSONStrategy()
         )
-        requestDispatcher.dispatchURLRequest()
+        requestDispatcher.response()
             .map { (response: Response) -> [String: Any] in
 
                 return response.json.dictValue
@@ -116,7 +116,7 @@ class AstralTests: XCTestCase {
             strategy: FormURLEncodedStrategy()
         )
 
-        requestDispatcher.dispatchURLRequest()
+        requestDispatcher.response()
             .map { (response: Response) -> [String: Any] in
                 return response.json.dictValue
             }
@@ -156,7 +156,7 @@ class AstralTests: XCTestCase {
             printsResponse: true
         )
 
-        dispatcher.dispatchURLRequest()
+        dispatcher.response()
             .onSuccess { (response: Response) -> Void in
                 print(response.json.dictValue)
                 expectation.fulfill()
