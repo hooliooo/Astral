@@ -37,7 +37,7 @@ provided by Astral.
 Feel free to build and customize your own implementations. Simply adopt the appropriate protocols.
 
 ```swift
-struct PokeAPIConfiguration: Configuration {
+struct PokeAPIConfiguration: RequestConfiguration {
 
     var scheme: URLScheme {
         return URLScheme.http
@@ -67,8 +67,12 @@ struct PokemonRequest: Request {
 
     let id: Int
 
-    var configuration: Configuration {
+    var configuration: RequestConfiguration {
         return PokeAPIConfiguration()
+    }
+
+    var method: HTTPMethod {
+        return HTTPMethod.get
     }
 
     var pathComponents: [String] {
@@ -76,10 +80,6 @@ struct PokemonRequest: Request {
             "pokemon",
             "\(self.id)"
         ]
-    }
-
-    var method: HTTPMethod {
-        return HTTPMethod.get
     }
 
     var parameters: [String : Any] {
@@ -98,7 +98,7 @@ let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.util
 let request: Request = PokemonRequest(id: 1)
 let dispatcher: RequestDispatcher = JSONRequestDispatcher(request: request)
 
-dispatcher.dispatchURLRequest()
+dispatcher.response()
     .onSuccess(queue.context) { (response: Response) -> Void in
         // let responseData: Data = response.data
         // Do something with data
