@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D8E81F8E40DB889EAE7F11A /* Pods_AstralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B8B57AD166D4C3A7888FA9 /* Pods_AstralTests.framework */; };
 		142152621F1F93A600EB421A /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152591F1F93A500EB421A /* Astral.framework */; };
-		142152671F1F93A600EB421A /* AstralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152661F1F93A600EB421A /* AstralTests.swift */; };
+		142152671F1F93A600EB421A /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152661F1F93A600EB421A /* Tests.swift */; };
 		142152691F1F93A600EB421A /* Astral.h in Headers */ = {isa = PBXBuildFile; fileRef = 1421525B1F1F93A500EB421A /* Astral.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		142152831F1F97B700EB421A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152751F1F97B700EB421A /* HTTPMethod.swift */; };
 		142152841F1F97B700EB421A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152761F1F97B700EB421A /* JSON.swift */; };
@@ -55,7 +55,7 @@
 		142152591F1F93A500EB421A /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1421525B1F1F93A500EB421A /* Astral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
 		142152611F1F93A600EB421A /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		142152661F1F93A600EB421A /* AstralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralTests.swift; sourceTree = "<group>"; };
+		142152661F1F93A600EB421A /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		142152681F1F93A600EB421A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		142152751F1F97B700EB421A /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		142152761F1F97B700EB421A /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -133,15 +133,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		142152651F1F93A600EB421A /* AstralTests */ = {
+		142152651F1F93A600EB421A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				1489465B1EF0E77F00824DF2 /* HTTPBinKeys.swift */,
 				148946591EF0D55E00824DF2 /* TestStructs.swift */,
-				142152661F1F93A600EB421A /* AstralTests.swift */,
+				142152661F1F93A600EB421A /* Tests.swift */,
 				142152681F1F93A600EB421A /* Info.plist */,
 			);
-			path = AstralTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		142152721F1F969400EB421A /* Podspec Metadata */ = {
@@ -254,7 +254,7 @@
 				142152731F1F97B700EB421A /* Sources */,
 				142152911F1F98AF00EB421A /* Supporting Files */,
 				0589D8792B71810E4E1958A8 /* Pods */,
-				142152651F1F93A600EB421A /* AstralTests */,
+				142152651F1F93A600EB421A /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				54192C909F17619BA5A5AEC4 /* Frameworks */,
 			);
@@ -521,7 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				142152671F1F93A600EB421A /* AstralTests.swift in Sources */,
+				142152671F1F93A600EB421A /* Tests.swift in Sources */,
 				142152941F1F9C3000EB421A /* HTTPBinKeys.swift in Sources */,
 				142152951F1F9C3400EB421A /* TestStructs.swift in Sources */,
 			);
