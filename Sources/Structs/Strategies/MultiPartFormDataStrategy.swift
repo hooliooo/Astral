@@ -80,7 +80,7 @@ extension MultiPartFormDataStrategy: DataStrategy {
             self.append(string: "\r\n", to: &body)
         }
 
-        self.append(string: "--".appending(self.boundary.appending("--\r\n")), to: &body)
+        self.append(string: "--\(self.boundary)--\r\n", to: &body)
 
         return body
     }

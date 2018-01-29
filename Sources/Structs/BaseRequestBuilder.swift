@@ -9,7 +9,7 @@ import Foundation
 /**
  An implementation of RequestBuilder that can build URLRequests for simple http network requests.
 */
-public struct JSONRequestBuilder {
+public struct BaseRequestBuilder {
 
     // MARK: Stored Properties
     private var _request: Request
@@ -18,7 +18,7 @@ public struct JSONRequestBuilder {
 }
 
 // MARK: - RequestBuilder Protocol
-extension JSONRequestBuilder: RequestBuilder {
+extension BaseRequestBuilder: RequestBuilder {
 
     // MARK: Initializer
     public init(request: Request, strategy: DataStrategy) {
@@ -41,11 +41,16 @@ extension JSONRequestBuilder: RequestBuilder {
 
     // MARK: Computed Properties
     public var httpBody: Data? {
-        if self.request.parameters.isEmpty || self.request.isGetRequest {
-            return nil
-        }
 
-        return self._strategy.createHTTPBody(from: self.request.parameters)
+        let hasNoHTTPBody: Bool = self._request.parameters.isEmpty || self._request.isGetRequest
+
+        switch hasNoHTTPBody {
+            case true:
+                return nil
+
+            case false:
+                return self._strategy.createHTTPBody(from: self.request.parameters)
+        }
     }
 
 }

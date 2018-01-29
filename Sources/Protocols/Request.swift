@@ -33,7 +33,7 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      http headers to be sent with the http network request
     */
-    var headers: [String: Any] { get }
+    var headers: Set<Header> { get }
 
 }
 

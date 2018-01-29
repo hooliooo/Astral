@@ -38,7 +38,7 @@ public protocol RequestConfiguration: CustomStringConvertible, CustomDebugString
     /**
      The headers that are common in all Requests that use an instance of this RequestConfiguration
     */
-    var baseHeaders: [String: Any] { get }
+    var baseHeaders: Set<Header> { get }
 
 }
 

@@ -33,9 +33,11 @@ public protocol RequestBuilder {
     var httpBody: Data? { get }
 
     /**
-     Combined headers of Request's Configuration and its headers
+     The combined Headers of the Request's RequestConfiguration and its own headers defined in its headers property.
+
+     A Request's Header will overwrite its RequestConfiguration Header if they have identfical keys.
     */
-    var headers: [String: Any] { get }
+    var headers: Set<Header> { get }
 
     /**
      The Request associated with the RequestBuilder
@@ -98,14 +100,8 @@ public extension RequestBuilder {
         return url
     }
 
-    public var headers: [String: Any] {
-        let headersArray: [[String: Any]] = [self.request.configuration.baseHeaders, self.request.headers]
-
-        return headersArray.reduce(into: [:]) { (result: inout [String: Any], dict: [String: Any]) -> Void in
-            dict.forEach { (dict: (key: String, value: Any)) -> Void in
-                result.updateValue(dict.value, forKey: dict.key)
-            }
-        }
+    public var headers: Set<Header> {
+        return self.request.headers.union(self.request.configuration.baseHeaders)
     }
 
     public var urlRequest: URLRequest {
@@ -113,10 +109,8 @@ public extension RequestBuilder {
         request.httpMethod = self.request.method.stringValue
         request.httpBody = self.httpBody
 
-        self.headers.forEach { (key: String, value: Any) -> Void in
-            if let value = value as? String {
-                request.addValue(value, forHTTPHeaderField: key)
-            }
+        self.headers.forEach { (header: Header) -> Void in
+            request.addValue(header.value.stringValue, forHTTPHeaderField: header.key.stringValue)
         }
 
         return request

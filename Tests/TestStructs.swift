@@ -8,169 +8,42 @@
 
 import Astral
 
-struct JSONConfiguration: RequestConfiguration {
-    var scheme: URLScheme {
-        return .https
+struct HTTPBinBasicResponse: Decodable {
+
+    enum CodingKeys: String, CodingKey {
+        case args
+        case headers
+        case url
     }
 
-    var host: String {
-        return "httpbin.org"
-    }
+    public let args: Args
+    public let headers: HTTPHeader
+    public let url: URL
 
-    var basePathComponents: [String] {
-        return []
-    }
-
-    var baseHeaders: [String: Any] {
-        return [
-            "Content-Type": "application/json"
-        ]
-    }
 }
 
-struct FormURLEncodedConfiguration: RequestConfiguration {
-    var scheme: URLScheme {
-        return .https
+struct Args: Decodable {
+
+    enum CodingKeys: String, CodingKey {
+        case this
+        case what
+        case why
     }
 
-    var host: String {
-        return "httpbin.org"
-    }
+    public let this: String
+    public let what: String
+    public let why: String
 
-    var basePathComponents: [String] {
-        return []
-    }
-
-    var baseHeaders: [String: Any] {
-        return [
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "application/json"
-        ]
-    }
 }
 
-struct MultiPartFormCofiguration: RequestConfiguration {
-    var scheme: URLScheme {
-        return .https
+struct HTTPHeader: Decodable {
+
+    enum CodingKeys: String, CodingKey {
+        case accept = "Accept"
+        case contentType = "Content-Type"
     }
 
-    var host: String {
-        return "httpbin.org"
-    }
-
-    var basePathComponents: [String] {
-        return []
-    }
-
-    var baseHeaders: [String: Any] {
-        return [
-            "Accept": "application/json"
-        ]
-    }
-}
-
-struct HTTPBinGetRequest: Request {
-    var configuration: RequestConfiguration {
-        return JSONConfiguration()
-    }
-
-    var method: HTTPMethod {
-        return .get
-    }
-
-    var pathComponents: [String] {
-        return [
-            "get"
-        ]
-    }
-
-    var parameters: [String: Any] {
-        return [
-            "this": "that"
-        ]
-    }
-
-    var headers: [String: Any] {
-        return [
-            "Get-Request": "YES"
-        ]
-    }
-}
-
-struct HTTPBinPostRequest: Request {
-    var configuration: RequestConfiguration {
-        return FormURLEncodedConfiguration()
-    }
-
-    var method: HTTPMethod {
-        return .post
-    }
-
-    var pathComponents: [String] {
-        return [
-            "post"
-        ]
-    }
-
-    var parameters: [String: Any] {
-        return [
-            "this": "that"
-        ]
-    }
-
-    var headers: [String: Any] {
-        return [
-            "Post-Request": "Yes"
-        ]
-    }
-}
-
-struct HTTPBINMultipartFormDataRequest: MultiPartFormDataRequest {
-
-    var configuration: RequestConfiguration {
-        return MultiPartFormCofiguration()
-    }
-
-    var method: HTTPMethod {
-        return .post
-    }
-
-    var pathComponents: [String] {
-        return [
-            "post"
-        ]
-    }
-
-    var parameters: [String: Any] {
-        return [
-            "this": "that"
-        ]
-    }
-
-    var headers: [String: Any] {
-        return [
-            "Post-Request": "Yes",
-            "Content-Type": "multipart/form-data; boundary=\(self.boundary)"
-        ]
-    }
-
-    var boundary: String = UUID().uuidString
-
-    var files: [FormFile] {
-        return [
-            FormFile(
-                name: "file1",
-                filename: "image1.png",
-                contentType: "image/png",
-                data: Data()
-            ),
-            FormFile(
-                name: "file2",
-                filename: "image2.png",
-                contentType: "image/png",
-                data: Data()
-            )
-        ]
-    }
+    public let accept: String
+    public let contentType: String
 
 }
