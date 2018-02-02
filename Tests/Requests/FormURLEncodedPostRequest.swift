@@ -1,15 +1,15 @@
 //
-//  HTTPBinPostRequest.swift
+//  FormURLEncodedPostRequest.swift
 //  AstralTests
 //
-//  Created by Julio Alorro on 1/28/18.
+//  Created by Julio Alorro on 2/3/18.
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import Foundation
 import Astral
 
-struct HTTPBinPostRequest: Request {
+struct FormURLEncodedPostRequest: Request {
 
     let configuration: RequestConfiguration = FormURLEncodedConfiguration()
 
@@ -20,10 +20,12 @@ struct HTTPBinPostRequest: Request {
     ]
 
     let parameters: [String: Any] = [
-        "this": "that"
+        "this": "that",
+        "what": "where",
+        "why": "what"
     ]
 
     let headers: Set<Header> = Set<Header>(arrayLiteral:
-        Header(key: Header.Field.custom("Post-Request"), value: Header.Value.custom("Yes"))
+        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes"))
     )
 }

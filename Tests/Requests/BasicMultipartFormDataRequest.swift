@@ -1,5 +1,5 @@
 //
-//  HTTPBinMultipartFormDataRequest.swift
+//  BasicMultipartFormDataRequest.swift
 //  AstralTests
 //
 //  Created by Julio Alorro on 1/28/18.
@@ -9,7 +9,7 @@
 import Foundation
 import Astral
 
-struct HTTPBinMultipartFormDataRequest: MultiPartFormDataRequest {
+struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
 
     let configuration: RequestConfiguration = MultiPartFormConfiguration()
 
@@ -20,12 +20,14 @@ struct HTTPBinMultipartFormDataRequest: MultiPartFormDataRequest {
     ]
 
     let parameters: [String: Any] = [
-        "this": "that"
+        "this": "that",
+        "what": "where",
+        "why": "what"
     ]
 
     var headers: Set<Header> {
         return Set<Header>(arrayLiteral:
-            Header(key: Header.Field.custom("Post-Request"), value: Header.Value.custom("Yes")),
+            Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes")),
             Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.multipartFormData(self.boundary)))
         )
     }

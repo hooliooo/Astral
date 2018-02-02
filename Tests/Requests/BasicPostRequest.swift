@@ -1,6 +1,6 @@
 //
-//  HTTPBinGetRequest.swift
-//  Astral
+//  BasicPostRequest.swift
+//  AstralTests
 //
 //  Created by Julio Alorro on 1/28/18.
 //  Copyright © 2018 CocoaPods. All rights reserved.
@@ -9,14 +9,14 @@
 import Foundation
 import Astral
 
-struct HTTPBinGetRequest: Request {
+struct BasicPostRequest: Request {
 
     let configuration: RequestConfiguration = BasicConfiguration()
 
-    let method: HTTPMethod = .get
+    let method: HTTPMethod = .post
 
     let pathComponents: [String] = [
-        "get"
+        "post"
     ]
 
     let parameters: [String: Any] = [
@@ -26,8 +26,6 @@ struct HTTPBinGetRequest: Request {
     ]
 
     let headers: Set<Header> = Set<Header>(arrayLiteral:
-        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("YES")),
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
-        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes"))
     )
 }

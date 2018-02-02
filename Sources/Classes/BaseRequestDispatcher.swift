@@ -49,6 +49,16 @@ open class BaseRequestDispatcher {
         self._isDebugMode = isDebugMode
     }
 
+    deinit {
+        switch self._isDebugMode {
+            case true:
+                print("\(type(of: self)) was deallocated")
+
+            case false:
+                break
+        }
+    }
+
     // MARK: Stored Properties
     private var _requestBuilder: RequestBuilder
     private let _isDebugMode: Bool
