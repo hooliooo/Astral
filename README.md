@@ -141,10 +141,8 @@ struct YourRequest: Request {
         Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
     )
 }
-
 ```
 
-```swift
 ```swift
 let queue: DispatchQueue = DispatchQueue(label: "NetworkQueue", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
