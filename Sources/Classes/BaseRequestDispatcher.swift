@@ -92,12 +92,15 @@ extension BaseRequestDispatcher: RequestDispatcher {
 
         self._tasks = self._tasks.filter { $0.state != URLSessionTask.State.running }
 
+        let isDebugMode: Bool = self._isDebugMode
+        let method: String = self.request.method.stringValue
+
         return Future(resolver: { [weak self] (callback: @escaping HTTPRequestResult) -> Void in
             guard let `self` = self else { return }
             let task: URLSessionDataTask = BaseRequestDispatcher.session.dataTask(with: self.urlRequest) {
-                [weak self] (data: Data?, response: URLResponse?, error: Error?) -> Void in
+                (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 // swiftlint:disable:previous closure_parameter_position
-                guard let `self` = self else { return }
+
                 if let error = error {
 
                     callback(
@@ -108,9 +111,9 @@ extension BaseRequestDispatcher: RequestDispatcher {
 
                 } else if let data = data, let response = response as? HTTPURLResponse {
 
-                    switch self.isDebugMode {
+                    switch isDebugMode {
                         case true:
-                            print("HTTP Method: \(self.request.method.stringValue)")
+                            print("HTTP Method: \(method)")
                             print("Response: \(response)")
 
                         case false:
