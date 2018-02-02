@@ -41,9 +41,11 @@ struct HTTPHeader: Decodable {
     enum CodingKeys: String, CodingKey {
         case accept = "Accept"
         case contentType = "Content-Type"
+        case custom = "Get-Request"
     }
 
     public let accept: String
     public let contentType: String
+    public let custom: String
 
 }

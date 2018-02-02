@@ -19,49 +19,41 @@ class Tests: XCTestCase {
 
     let decoder: JSONDecoder = JSONDecoder()
 
-//    func testHeaders() {
-//        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
-//
-//        let requestDispatcher: RequestDispatcher = BaseRequestDispatcher(
-//            request: HTTPBinGetRequest(),
-//            builderType: BaseRequestBuilder.self,
-//            strategy: JSONStrategy()
-//        )
-//
-//        requestDispatcher.response()
-//            .map { (response: Response) -> [String: Any] in
-//                print(response)
-//                return response.json.dictValue
-//
-//            }
-//            .onSuccess { (json: [String: Any]) -> Void in
-//                let configuration = requestDispatcher.request.configuration
-//                guard
-//                    // Headers Node
-//                    let headers = json[HTTPBinKeys.headers.rawValue] as? [String: String],
-//                    let host = headers[HTTPBinKeys.host.rawValue],
-//                    let contentType = headers[HTTPBinKeys.contentType.rawValue],
-//                    let getRequest = headers[HTTPBinKeys.getRequest.rawValue],
-//
-//                    let configurationContentTypeHeader = configuration.baseHeaders[HTTPBinKeys.contentType.rawValue] as? String,
-//                    let requestGetRequestHeader = requestDispatcher.request.headers[HTTPBinKeys.getRequest.rawValue] as? String
-//                else {
-//                    XCTFail("Failed to get headers")
-//                    return
-//                }
-//
-//                XCTAssertTrue(requestDispatcher.request.configuration.host == host)
-//                XCTAssertTrue(configurationContentTypeHeader == contentType)
-//                XCTAssertTrue(requestGetRequestHeader == getRequest)
-//                expectation.fulfill()
-//
-//            }
-//            .onFailure { (error: NetworkingError) -> Void in
-//                XCTFail(error.localizedDescription)
-//            }
-//
-//        self.waitForExpectations(timeout: 5.0, handler: nil)
-//    }
+    func testHeaders() {
+        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
+
+        let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: HTTPBinGetRequest())
+
+        dispatcher.response()
+            .map { (response: Response) -> HTTPBinBasicResponse in
+
+                do {
+
+                    return try self.decoder.decode(HTTPBinBasicResponse.self, from: response.data)
+
+                } catch {
+                    XCTFail("Failed to get args or url")
+                    fatalError(error.localizedDescription)
+                }
+
+            }
+            .onSuccess { (response: HTTPBinBasicResponse) -> Void in
+
+                let accept: Header = dispatcher.request.headers.filter { $0.key == .accept }.first!
+                let contentType: Header = dispatcher.request.headers.filter { $0.key == .contentType }.first!
+                let custom: Header = dispatcher.request.headers.filter { $0.key == Header.Field.custom("Get-Request") }.first!
+
+                XCTAssertTrue(response.headers.accept == accept.value.stringValue)
+                XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
+                XCTAssertTrue(response.headers.custom == custom.value.stringValue)
+                expectation.fulfill()
+            }
+            .onFailure { (error: NetworkingError) -> Void in
+                XCTFail(error.localizedDescription)
+            }
+
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+    }
 
     func testGetRequest() {
 

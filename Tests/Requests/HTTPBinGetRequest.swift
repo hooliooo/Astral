@@ -26,6 +26,8 @@ struct HTTPBinGetRequest: Request {
     ]
 
     let headers: Set<Header> = Set<Header>(arrayLiteral:
-        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("YES"))
+        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("YES")),
+        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
+        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
     )
 }

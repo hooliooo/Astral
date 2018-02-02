@@ -30,7 +30,7 @@ pod 'Astral'
 2. Integrate your dependencies using frameworks: add `use_frameworks!` to your Podfile. 
 3. Run `pod install`.
 
-## Example
+## A Simple Example
 Here's an example using the [Pokemon API](http://pokeapi.co) and the implementations of RequestBuilder and RequestDispatcher
 provided by Astral.
 
@@ -39,26 +39,18 @@ Feel free to build and customize your own implementations. Simply adopt the appr
 ```swift
 struct PokeAPIConfiguration: RequestConfiguration {
 
-    var scheme: URLScheme {
-        return URLScheme.http
-    }
+    let scheme: URLScheme = URLScheme.http
 
-    var host: String {
-        return "pokeapi.co"
-    }
+    let host: String = "pokeapi.co"
 
-    var basePathComponents: [String] {
-        return [
-            "api",
-            "v2"
-        ]
-    }
+    let basePathComponents: [String] = [
+        "api",
+        "v2"
+    ]
 
-    var baseHeaders: [String : Any] {
-        return [
-            "Content-Type": "application/json"
-        ]
-    }
+    let baseHeaders: Set<Header> = Set<Header>(arrayLiteral:
+        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
+    )
 }
 ```
 
@@ -67,28 +59,18 @@ struct PokemonRequest: Request {
 
     let id: Int
 
-    var configuration: RequestConfiguration {
-        return PokeAPIConfiguration()
-    }
+    let configuration: RequestConfiguration = PokeAPIConfiguration()
 
-    var method: HTTPMethod {
-        return HTTPMethod.get
-    }
+    let method: HTTPMethod = HTTPMethod.get
 
-    var pathComponents: [String] {
-        return [    
-            "pokemon",
-            "\(self.id)"
-        ]
-    }
+    let pathComponents: [String] = [
+        "pokemon",
+        "\(self.id)"
+    ]
 
-    var parameters: [String : Any] {
-        return [:]
-    }
+    let parameters: [String : Any] = [:]
 
-    var headers: [String : Any] {
-        return [:]
-    }
+    let headers: Set<Header> = Set<Header>()
 }
 ```
 
@@ -96,7 +78,7 @@ struct PokemonRequest: Request {
 let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
-let dispatcher: RequestDispatcher = JSONRequestDispatcher(request: request)
+let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request)
 
 dispatcher.response()
     .onSuccess(queue.context) { (response: Response) -> Void in
@@ -114,6 +96,79 @@ dispatcher.response()
         // such as clean up of the UI
     }
 ```
+
+## In-depth Example
+Let's say you have a get request that requires url path components. An example of that request could be:
+
+```swift
+struct YourAPIConfiguration: RequestConfiguration {
+
+    let scheme: URLScheme = URLScheme.https
+
+    let host: String = "yourhost.com"
+
+    let basePathComponents: [String] = [
+        "api",
+        "v1"
+    ]
+
+    let baseHeaders: Set<Header> = Set<Header>(arrayLiteral:
+        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
+    )
+}
+```
+
+```swift
+struct YourRequest: Request {
+
+
+    let configuration: RequestConfiguration = YourAPIConfiguration()
+
+    let method: HTTPMethod = HTTPMethod.get
+
+    let pathComponents: [String] = [
+        "your",
+        "path",
+        "components"
+    ]
+
+    let parameters: [String : Any] = [
+        "yourKey": "yourValue,
+        "anotherKey": "anotherValue"
+    ]
+
+    let headers: Set<Header> = Set<Header>(arrayLiteral:
+        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
+    )
+}
+
+```
+
+```swift
+```swift
+let queue: DispatchQueue = DispatchQueue(label: "NetworkQueue", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
+
+let request: Request = YourRequest()
+let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request, isDebugMode: true)
+
+dispatcher.response()
+```
+
+With these lines of code, your hypothetical request would create the following URL:
+
+```
+https://yourhost.com/api/v1/your/path/components?yourKey=yourValue&anotherKey=anotherValue
+```
+
+The response would also have the following headers included:
+```
+Content-Type = application/json
+Accept = application/json
+```
+
+In the case of when the RequestConfiguration AND the Request have each have a Header with identical keys, the Request WILL OVERWRITE the RequestConfiguration's Header.
+
+
 
 ## Author
 
