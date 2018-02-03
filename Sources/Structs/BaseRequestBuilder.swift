@@ -12,7 +12,6 @@ import Foundation
 public struct BaseRequestBuilder {
 
     // MARK: Stored Properties
-    private var _request: Request
     private var _strategy: DataStrategy
 
 }
@@ -21,35 +20,28 @@ public struct BaseRequestBuilder {
 extension BaseRequestBuilder: RequestBuilder {
 
     // MARK: Initializer
-    public init(request: Request, strategy: DataStrategy) {
-        self._request = request
+    public init(strategy: DataStrategy) {
         self._strategy = strategy
     }
 
     // MARK: Getter/Setter Properties
-    public var request: Request {
-        get { return self._request }
-
-        set { self._request = newValue }
-    }
-
     public var strategy: DataStrategy {
         get { return self._strategy }
 
         set { self._strategy = newValue }
     }
 
-    // MARK: Computed Properties
-    public var httpBody: Data? {
+    // MARK: Instance Methods
+    public func httpBody(of request: Request) -> Data? {
 
-        let hasNoHTTPBody: Bool = self._request.parameters.isEmpty || self._request.isGetRequest
+        let hasNoHTTPBody: Bool = request.parameters.isEmpty || request.isGetRequest
 
         switch hasNoHTTPBody {
             case true:
                 return nil
 
             case false:
-                return self._strategy.createHTTPBody(from: self.request.parameters)
+                return self._strategy.createHTTPBody(from: request.parameters)
         }
     }
 

@@ -20,9 +20,9 @@ class ResponseTests: XCTestCase {
     func testHeaders() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
-        let dispatcher = BaseRequestDispatcher(request: BasicGetRequest())
+        let request: BasicGetRequest = BasicGetRequest()
 
-        dispatcher.response()
+        BaseRequestDispatcher().response(of: request)
             .map { [unowned self] (response: Response) -> GetResponse in
 
                 do {
@@ -37,9 +37,9 @@ class ResponseTests: XCTestCase {
             }
             .onSuccess { (response: GetResponse) -> Void in
 
-                let accept: Header = dispatcher.request.headers.filter { $0.key == .accept }.first!
-                let contentType: Header = dispatcher.request.headers.filter { $0.key == .contentType }.first!
-                let custom: Header = dispatcher.request.headers.filter { $0.key == Header.Field.custom("Get-Request") }.first!
+                let accept: Header = request.headers.filter { $0.key == .accept }.first!
+                let contentType: Header = request.headers.filter { $0.key == .contentType }.first!
+                let custom: Header = request.headers.filter { $0.key == Header.Field.custom("Get-Request") }.first!
 
                 XCTAssertTrue(response.headers.accept == accept.value.stringValue)
                 XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
@@ -59,9 +59,9 @@ class ResponseTests: XCTestCase {
 
         let request: Request = BasicGetRequest()
 
-        let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request)
+        let dispatcher: RequestDispatcher = BaseRequestDispatcher()
 
-        dispatcher.response()
+        dispatcher.response(of: request)
             .map { (response: Response) -> GetResponse in
 
                 do {
@@ -76,7 +76,7 @@ class ResponseTests: XCTestCase {
             }
             .onSuccess { (response: GetResponse) -> Void in
 
-                XCTAssertTrue(response.url == dispatcher.urlRequest.url!)
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
                 XCTAssertTrue(response.args.this == request.parameters["this"]! as! String)
                 XCTAssertTrue(response.args.what == request.parameters["what"]! as! String)
                 XCTAssertTrue(response.args.why == request.parameters["why"]! as! String)
@@ -101,9 +101,9 @@ class ResponseTests: XCTestCase {
 
         let request: Request = BasicPostRequest()
 
-        let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request)
+        let dispatcher: RequestDispatcher = BaseRequestDispatcher()
 
-        dispatcher.response()
+        dispatcher.response(of: request)
             .map { (response: Response) -> PostResponse in
                 do {
 
@@ -115,7 +115,7 @@ class ResponseTests: XCTestCase {
                 }
             }
             .onSuccess { (response: PostResponse) -> Void in
-                XCTAssertTrue(response.url == dispatcher.urlRequest.url!)
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
                 XCTAssertTrue(response.json.this == request.parameters["this"]! as! String)
                 XCTAssertTrue(response.json.what == request.parameters["what"]! as! String)
                 XCTAssertTrue(response.json.why == request.parameters["why"]! as! String)
@@ -133,9 +133,9 @@ class ResponseTests: XCTestCase {
 
         let request: Request = FormURLEncodedPostRequest()
 
-        let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request, strategy: FormURLEncodedStrategy())
+        let dispatcher: RequestDispatcher = BaseRequestDispatcher(strategy: FormURLEncodedStrategy())
 
-        dispatcher.response()
+        dispatcher.response(of: request)
             .map { (response: Response) -> FormURLEncodedResponse in
                 do {
 
@@ -147,7 +147,7 @@ class ResponseTests: XCTestCase {
                 }
             }
             .onSuccess { (response: FormURLEncodedResponse) -> Void in
-                XCTAssertTrue(response.url == dispatcher.urlRequest.url!)
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
                 XCTAssertTrue(response.form.this == request.parameters["this"]! as! String)
                 XCTAssertTrue(response.form.what == request.parameters["what"]! as! String)
                 XCTAssertTrue(response.form.why == request.parameters["why"]! as! String)
@@ -167,11 +167,10 @@ class ResponseTests: XCTestCase {
         let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
 
         let dispatcher: RequestDispatcher = BaseRequestDispatcher(
-            request: request,
             strategy: MultiPartFormDataStrategy(request: request)
         )
 
-        dispatcher.response()
+        dispatcher.response(of: request)
             .map { (response: Response) -> MultipartFormDataResponse in
                 do {
 
@@ -183,7 +182,7 @@ class ResponseTests: XCTestCase {
                 }
             }
             .onSuccess { (response: MultipartFormDataResponse) -> Void in
-                XCTAssertTrue(response.url == dispatcher.urlRequest.url!)
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
                 XCTAssertTrue(response.form.this == request.parameters["this"]! as! String)
                 XCTAssertTrue(response.form.what == request.parameters["what"]! as! String)
                 XCTAssertTrue(response.form.why == request.parameters["why"]! as! String)

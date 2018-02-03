@@ -33,13 +33,12 @@ open class BaseRequestDispatcher {
        Default value is true.
     */
     public convenience required init(
-        request: Request,
         builderType: RequestBuilder.Type = BaseRequestBuilder.self,
         strategy: DataStrategy = JSONStrategy(),
         isDebugMode: Bool = true
     ) {
         self.init(
-            builder: builderType.init(request: request, strategy: strategy),
+            builder: builderType.init(strategy: strategy),
             isDebugMode: isDebugMode
         )
     }
@@ -74,20 +73,10 @@ open class BaseRequestDispatcher {
 extension BaseRequestDispatcher: RequestDispatcher {
 
     // MARK: Getter/Setter Properties
-    open var request: Request {
-        get { return self._requestBuilder.request }
-
-        set { self._requestBuilder.request = newValue }
-    }
-
     open var builder: RequestBuilder {
         get { return self._requestBuilder }
 
         set { self._requestBuilder = newValue }
-    }
-
-    open var urlRequest: URLRequest {
-        return self._requestBuilder.urlRequest
     }
 
     open var isDebugMode: Bool {
@@ -98,13 +87,17 @@ extension BaseRequestDispatcher: RequestDispatcher {
         return self._tasks
     }
 
-    open func response() -> Future<Response, NetworkingError> {
+    open func urlRequest(of request: Request) -> URLRequest {
+        return self._requestBuilder.urlRequest(of: request)
+    }
+
+    open func response(of request: Request) -> Future<Response, NetworkingError> {
 
         self._tasks = self._tasks.filter { $0.state != URLSessionTask.State.running }
 
         let isDebugMode: Bool = self._isDebugMode
-        let method: String = self.request.method.stringValue
-        let urlRequest: URLRequest = self.urlRequest
+        let method: String = request.method.stringValue
+        let urlRequest: URLRequest = self.urlRequest(of: request)
 
         return Future(resolver: { [weak self] (callback: @escaping HTTPRequestResult) -> Void in
 
