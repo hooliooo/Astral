@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Astral'
   s.module_name      = 'Astral'
-  s.version          = '0.9.82'
+  s.version          = '0.9.83'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.summary          = 'An HTTP networking library that uses protocols and Futures'
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'Sources/**/*.swift'
+  s.source_files = 'Sources/*.swift'
   s.requires_arc = true
 
   s.frameworks = 'Foundation'
