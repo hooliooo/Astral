@@ -25,7 +25,7 @@ struct BasicPostRequest: Request {
         "why": "what"
     ]
 
-    let headers: Set<Header> = Set<Header>(arrayLiteral:
+    let headers: Set<Header> = [
         Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes"))
-    )
+    ]
 }

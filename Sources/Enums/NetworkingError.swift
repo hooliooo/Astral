@@ -21,9 +21,14 @@ public enum NetworkingError: LocalizedError {
     case response(Response)
 
     /**
-     Unknown error
+     Unknown Response error
     */
-    case unknown(Response, String)
+    case unknownResponse(Response, String)
+
+    /**
+     Unknown Error
+    */
+    case unknown(String)
 
     public var errorDescription: String? {
         switch self {
@@ -33,8 +38,11 @@ public enum NetworkingError: LocalizedError {
             case .response(let response):
                 return response.json.description
 
-            case .unknown(let response, let text):
+            case .unknownResponse(let response, let text):
                 return "\(text)\n\n\(response)"
+
+            case .unknown(let text):
+                return text
         }
     }
 

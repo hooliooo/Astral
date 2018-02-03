@@ -1,11 +1,10 @@
-import UIKit
 import XCTest
 import BrightFutures
 import Result
 @testable import Astral
 
 // swiftlint:disable force_cast
-class Tests: XCTestCase {
+class ResponseTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

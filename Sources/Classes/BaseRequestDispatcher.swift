@@ -104,10 +104,11 @@ extension BaseRequestDispatcher: RequestDispatcher {
 
         let isDebugMode: Bool = self._isDebugMode
         let method: String = self.request.method.stringValue
+        let urlRequest: URLRequest = self.urlRequest
 
         return Future(resolver: { [weak self] (callback: @escaping HTTPRequestResult) -> Void in
-            guard let `self` = self else { return }
-            let task: URLSessionDataTask = BaseRequestDispatcher.session.dataTask(with: self.urlRequest) {
+
+            let task: URLSessionDataTask = BaseRequestDispatcher.session.dataTask(with: urlRequest) {
                 (data: Data?, response: URLResponse?, error: Error?) -> Void in
                 // swiftlint:disable:previous closure_parameter_position
 
@@ -150,19 +151,27 @@ extension BaseRequestDispatcher: RequestDispatcher {
                         default:
                             callback(
                                 Result.failure(
-                                    NetworkingError.unknown(
+                                    NetworkingError.unknownResponse(
                                         JSONResponse(httpResponse: response, data: data),
                                         "Unhandled status code: \(response.statusCode)"
                                     )
                                 )
                             )
                     }
+                } else {
+
+                    callback(
+                        Result.failure(
+                            NetworkingError.unknown("Unknown error occured")
+                        )
+                    )
+
                 }
             }
 
             task.resume()
 
-            self._tasks.append(task)
+            self?._tasks.append(task)
         })
     }
 

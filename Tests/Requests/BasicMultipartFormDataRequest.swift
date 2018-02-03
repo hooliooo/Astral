@@ -26,10 +26,10 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
     ]
 
     var headers: Set<Header> {
-        return Set<Header>(arrayLiteral:
+        return [
             Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes")),
             Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.multipartFormData(self.boundary)))
-        )
+        ]
     }
 
     let boundary: String = UUID().uuidString

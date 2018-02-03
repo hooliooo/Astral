@@ -41,8 +41,11 @@ struct MultipartFormDataResponse: Decodable {
         self.form = try container.decode(BinData.self, forKey: MultipartFormDataResponse.CodingKeys.form)
         self.headers = try container.decode(BinHeaders.self, forKey: MultipartFormDataResponse.CodingKeys.headers)
         self.files = try container.nestedContainer(
-            keyedBy: MultipartFormDataResponse.DynamicKey.self, forKey: MultipartFormDataResponse.CodingKeys.files
-        ).allKeys.map { $0.stringValue }
+                keyedBy: MultipartFormDataResponse.DynamicKey.self,
+                forKey: MultipartFormDataResponse.CodingKeys.files
+            )
+            .allKeys
+            .map { $0.stringValue }
 
         self.url = try container.decode(URL.self, forKey: MultipartFormDataResponse.CodingKeys.url)
     }
