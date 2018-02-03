@@ -22,28 +22,10 @@ public protocol RequestBuilder {
     var strategy: DataStrategy { get set }
 
     /**
-     Creates URLQueryItems from the Request's parameters if the Request is a GET request. Otherwise returns an empty array.
-     - parameter request: The Request instance used to create the URLQueryItems.
-    */
-    func queryItems(of request: Request) -> [URLQueryItem]
-
-    /**
-     Creates a URL instance from the Request
-     - parameter request: The Request instance used to create the URL.
-    */
-    func url(of request: Request) -> URL
-
-    /**
      Creates httpBody from the Request based on the DataStrategy if the Request is NOT a GET request. Otherwise returns nil.
      - parameter request: The Request instance used to create the httpBody.
     */
     func httpBody(of request: Request) -> Data?
-
-    /**
-     Combines the Headers of the Request's RequestConfiguration and its own headers defined in its headers property.
-     - parameter request: The Request instance used to create the HTTP header fields for the URLRequest.
-    */
-    func headers(for request: Request) -> Set<Header>
 
     /**
      The URLRequest used when sending an http network request
@@ -54,13 +36,21 @@ public protocol RequestBuilder {
 
 public extension RequestBuilder {
 
-    public func queryItems(of request: Request) -> [URLQueryItem] {
+    /**
+     Creates URLQueryItems from the Request's parameters if the Request is a GET request. Otherwise returns an empty array.
+     - parameter request: The Request instance used to create the URLQueryItems.
+    */
+    private func queryItems(of request: Request) -> [URLQueryItem] {
         return request.parameters.flatMap { (item: (key: String, value: Any)) -> URLQueryItem? in
             return URLQueryItem(name: item.key, value: String(describing: item.value))
         }
     }
 
-    public func url(of request: Request) -> URL {
+    /**
+     Creates a URL instance from the Request
+     - parameter request: The Request instance used to create the URL.
+    */
+    private func url(of request: Request) -> URL {
         var components: URLComponents = request.configuration.baseURLComponents
 
         let pathComponents: [String] = request.configuration.basePathComponents + request.pathComponents
@@ -105,7 +95,7 @@ public extension RequestBuilder {
      A Request's Header will overwrite its RequestConfiguration Header if they have identfical keys.
      - parameter request: The Request instance used to create the HTTP header fields for the URLRequest.
     */
-    public func headers(for request: Request) -> Set<Header> {
+    private func headers(for request: Request) -> Set<Header> {
         return request.headers.union(request.configuration.baseHeaders)
     }
 
