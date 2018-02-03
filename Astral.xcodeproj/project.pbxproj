@@ -3,861 +3,1090 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		"Astral::AstralPackageTests::ProductTarget" /* AstralPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_195 /* Build configuration list for PBXAggregateTarget "AstralPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_198 /* PBXTargetDependency */,
+			);
+			name = AstralPackageTests;
+			productName = AstralPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		0D8E81F8E40DB889EAE7F11A /* Pods_AstralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B8B57AD166D4C3A7888FA9 /* Pods_AstralTests.framework */; };
-		142152621F1F93A600EB421A /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152591F1F93A500EB421A /* Astral.framework */; };
-		142152671F1F93A600EB421A /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152661F1F93A600EB421A /* ResponseTests.swift */; };
-		142152691F1F93A600EB421A /* Astral.h in Headers */ = {isa = PBXBuildFile; fileRef = 1421525B1F1F93A500EB421A /* Astral.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		142152831F1F97B700EB421A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152751F1F97B700EB421A /* HTTPMethod.swift */; };
-		142152841F1F97B700EB421A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152761F1F97B700EB421A /* JSON.swift */; };
-		142152851F1F97B700EB421A /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152771F1F97B700EB421A /* NetworkingError.swift */; };
-		142152861F1F97B700EB421A /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152781F1F97B700EB421A /* URLScheme.swift */; };
-		142152871F1F97B700EB421A /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421527A1F1F97B700EB421A /* RequestConfiguration.swift */; };
-		142152881F1F97B700EB421A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421527B1F1F97B700EB421A /* Request.swift */; };
-		142152891F1F97B700EB421A /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421527C1F1F97B700EB421A /* RequestBuilder.swift */; };
-		1421528A1F1F97B700EB421A /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421527D1F1F97B700EB421A /* RequestDispatcher.swift */; };
-		1421528B1F1F97B700EB421A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421527E1F1F97B700EB421A /* Response.swift */; };
-		1421528C1F1F97B700EB421A /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152801F1F97B700EB421A /* BaseRequestBuilder.swift */; };
-		1421528D1F1F97B700EB421A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152811F1F97B700EB421A /* BaseRequestDispatcher.swift */; };
-		1421528E1F1F97B700EB421A /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142152821F1F97B700EB421A /* JSONResponse.swift */; };
-		142152951F1F9C3400EB421A /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148946591EF0D55E00824DF2 /* BinData.swift */; };
-		1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1421529A1F1F9C6D00EB421A /* Foundation.framework */; };
-		142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AB1F1FC51000EB421A /* BrightFutures.framework */; };
-		142152AE1F1FC51400EB421A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142152AD1F1FC51400EB421A /* Result.framework */; };
-		14424A79200F80A900892CE1 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14424A78200F80A900892CE1 /* FormFile.swift */; };
-		148DD7A1201CF3020043F59B /* BasicGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148DD79F201CF2FE0043F59B /* BasicGetRequest.swift */; };
-		148DD7A3201CF38F0043F59B /* BasicPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148DD7A2201CF38F0043F59B /* BasicPostRequest.swift */; };
-		148DD7A5201CF43D0043F59B /* BasicMultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148DD7A4201CF43D0043F59B /* BasicMultipartFormDataRequest.swift */; };
-		14B723AD201C8E4900C669D1 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B723AC201C8E4900C669D1 /* Header.swift */; };
-		14B723AF201C93B500C669D1 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B723AE201C93B500C669D1 /* MediaType.swift */; };
-		14BCAD86201CEFBD0018DCD2 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B723A9201C87B700C669D1 /* BasicConfiguration.swift */; };
-		14BCAD88201CF13B0018DCD2 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BCAD87201CF13B0018DCD2 /* FormURLEncodedConfiguration.swift */; };
-		14BCAD8A201CF1F50018DCD2 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BCAD89201CF1F50018DCD2 /* MultipartConfiguration.swift */; };
-		14C670332025627D0092D1CD /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C670322025627D0092D1CD /* HeaderTests.swift */; };
-		14C70B3D1F6EB0D000C5AEB4 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C70B3C1F6EB0D000C5AEB4 /* DownloadManager.swift */; };
-		14C70B3F1F6EB61D00C5AEB4 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C70B3E1F6EB61D00C5AEB4 /* DownloadTracking.swift */; };
-		14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */; };
-		14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */; };
-		14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */; };
-		14E87D4F1F6FF2E50062CCDD /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */; };
-		14FAAA6A1FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAAA691FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift */; };
-		14FAAA6C1FD8E51000F51E4E /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAAA6B1FD8E51000F51E4E /* MultiPartFormDataRequest.swift */; };
-		14FE118E2024C625002162CA /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE118D2024C625002162CA /* GetResponse.swift */; };
-		14FE11912024C660002162CA /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE11902024C660002162CA /* BinHeaders.swift */; };
-		14FE11932024C6A3002162CA /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE11922024C6A3002162CA /* PostResponse.swift */; };
-		14FE11952024CBEA002162CA /* FormURLEncodedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE11942024CBEA002162CA /* FormURLEncodedResponse.swift */; };
-		14FE11972024CD04002162CA /* FormURLEncodedPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE11962024CD04002162CA /* FormURLEncodedPostRequest.swift */; };
-		14FE11992024CE67002162CA /* MultipartFormDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE11982024CE67002162CA /* MultipartFormDataResponse.swift */; };
-		1D55167A132A32E65B632547 /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */; };
+		OBJ_101 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Package.swift */; };
+		OBJ_107 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
+		OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
+		OBJ_109 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
+		OBJ_110 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* HeaderTests.swift */; };
+		OBJ_111 /* BasicGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* BasicGetRequest.swift */; };
+		OBJ_112 /* BasicMultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* BasicMultipartFormDataRequest.swift */; };
+		OBJ_113 /* BasicPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* BasicPostRequest.swift */; };
+		OBJ_114 /* FormURLEncodedPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FormURLEncodedPostRequest.swift */; };
+		OBJ_115 /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* ResponseTests.swift */; };
+		OBJ_116 /* FormURLEncodedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* FormURLEncodedResponse.swift */; };
+		OBJ_117 /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* GetResponse.swift */; };
+		OBJ_118 /* MultipartFormDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* MultipartFormDataResponse.swift */; };
+		OBJ_119 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* PostResponse.swift */; };
+		OBJ_120 /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
+		OBJ_121 /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
+		OBJ_123 /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Astral::Astral::Product" /* Astral.framework */; };
+		OBJ_124 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "BrightFutures::BrightFutures::Product" /* BrightFutures.framework */; };
+		OBJ_125 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Result::Result::Product" /* Result.framework */; };
+		OBJ_136 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
+		OBJ_137 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		OBJ_138 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		OBJ_139 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
+		OBJ_140 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
+		OBJ_141 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
+		OBJ_142 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		OBJ_143 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
+		OBJ_144 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
+		OBJ_145 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
+		OBJ_146 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
+		OBJ_147 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
+		OBJ_148 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
+		OBJ_149 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
+		OBJ_150 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
+		OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
+		OBJ_152 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
+		OBJ_153 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
+		OBJ_154 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
+		OBJ_155 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
+		OBJ_156 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
+		OBJ_157 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
+		OBJ_158 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
+		OBJ_160 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "BrightFutures::BrightFutures::Product" /* BrightFutures.framework */; };
+		OBJ_161 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Result::Result::Product" /* Result.framework */; };
+		OBJ_168 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Async.swift */; };
+		OBJ_169 /* AsyncType+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* AsyncType+Debug.swift */; };
+		OBJ_170 /* AsyncType+ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* AsyncType+ResultType.swift */; };
+		OBJ_171 /* AsyncType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* AsyncType.swift */; };
+		OBJ_172 /* Dispatch+BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* Dispatch+BrightFutures.swift */; };
+		OBJ_173 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* Errors.swift */; };
+		OBJ_174 /* ExecutionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* ExecutionContext.swift */; };
+		OBJ_175 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* Future.swift */; };
+		OBJ_176 /* InvalidationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* InvalidationToken.swift */; };
+		OBJ_177 /* MutableAsyncType+ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* MutableAsyncType+ResultType.swift */; };
+		OBJ_178 /* MutableAsyncType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* MutableAsyncType.swift */; };
+		OBJ_179 /* NSOperationQueue+BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* NSOperationQueue+BrightFutures.swift */; };
+		OBJ_180 /* Number+BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* Number+BrightFutures.swift */; };
+		OBJ_181 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* Promise.swift */; };
+		OBJ_182 /* Result+BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* Result+BrightFutures.swift */; };
+		OBJ_183 /* SequenceType+BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* SequenceType+BrightFutures.swift */; };
+		OBJ_185 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Result::Result::Product" /* Result.framework */; };
+		OBJ_191 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* Result.swift */; };
+		OBJ_192 /* ResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* ResultProtocol.swift */; };
+		OBJ_89 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_95 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		142152631F1F93A600EB421A /* PBXContainerItemProxy */ = {
+		14C4BF942025C33C00938416 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 142152581F1F93A500EB421A;
+			remoteGlobalIDString = "BrightFutures::BrightFutures";
+			remoteInfo = BrightFutures;
+		};
+		14C4BF952025C33C00938416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Result::Result";
+			remoteInfo = Result;
+		};
+		14C4BF962025C33C00938416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Result::Result";
+			remoteInfo = Result;
+		};
+		14C4BF972025C33C00938416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Astral::Astral";
 			remoteInfo = Astral;
+		};
+		14C4BF982025C33C00938416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "BrightFutures::BrightFutures";
+			remoteInfo = BrightFutures;
+		};
+		14C4BF992025C33C00938416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Result::Result";
+			remoteInfo = Result;
+		};
+		14C4BF9A2025C33C00938416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Astral::AstralTests";
+			remoteInfo = AstralTests;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C676A5FDB0FDC2D282194CD /* Pods-AstralTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.release.xcconfig"; sourceTree = "<group>"; };
-		142152591F1F93A500EB421A /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1421525B1F1F93A500EB421A /* Astral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
-		142152611F1F93A600EB421A /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		142152661F1F93A600EB421A /* ResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
-		142152681F1F93A600EB421A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		142152751F1F97B700EB421A /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		142152761F1F97B700EB421A /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		142152771F1F97B700EB421A /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
-		142152781F1F97B700EB421A /* URLScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLScheme.swift; sourceTree = "<group>"; };
-		1421527A1F1F97B700EB421A /* RequestConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestConfiguration.swift; sourceTree = "<group>"; };
-		1421527B1F1F97B700EB421A /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		1421527C1F1F97B700EB421A /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		1421527D1F1F97B700EB421A /* RequestDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDispatcher.swift; sourceTree = "<group>"; };
-		1421527E1F1F97B700EB421A /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		142152801F1F97B700EB421A /* BaseRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequestBuilder.swift; sourceTree = "<group>"; };
-		142152811F1F97B700EB421A /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
-		142152821F1F97B700EB421A /* JSONResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
-		1421528F1F1F987100EB421A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		142152961F1F9C5F00EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Debug-iphonesimulator/BrightFutures/BrightFutures.framework"; sourceTree = "<group>"; };
-		142152981F1F9C6400EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
-		1421529A1F1F9C6D00EB421A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		142152A61F1FBDCD00EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
-		142152A71F1FBDCD00EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
-		142152AB1F1FC51000EB421A /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Release-iphonesimulator/BrightFutures/BrightFutures.framework"; sourceTree = "<group>"; };
-		142152AD1F1FC51400EB421A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/Astral-ftgrorrihgramchazqsjxptldtep/Build/Products/Release-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
-		14424A78200F80A900892CE1 /* FormFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFile.swift; sourceTree = "<group>"; };
-		148946591EF0D55E00824DF2 /* BinData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinData.swift; sourceTree = "<group>"; };
-		148DD79F201CF2FE0043F59B /* BasicGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicGetRequest.swift; sourceTree = "<group>"; };
-		148DD7A2201CF38F0043F59B /* BasicPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPostRequest.swift; sourceTree = "<group>"; };
-		148DD7A4201CF43D0043F59B /* BasicMultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMultipartFormDataRequest.swift; sourceTree = "<group>"; };
-		14B723A9201C87B700C669D1 /* BasicConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicConfiguration.swift; sourceTree = "<group>"; };
-		14B723AC201C8E4900C669D1 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		14B723AE201C93B500C669D1 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
-		14BCAD87201CF13B0018DCD2 /* FormURLEncodedConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedConfiguration.swift; sourceTree = "<group>"; };
-		14BCAD89201CF1F50018DCD2 /* MultipartConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartConfiguration.swift; sourceTree = "<group>"; };
-		14C670322025627D0092D1CD /* HeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTests.swift; sourceTree = "<group>"; };
-		14C70B3C1F6EB0D000C5AEB4 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
-		14C70B3E1F6EB61D00C5AEB4 /* DownloadTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadTracking.swift; sourceTree = "<group>"; };
-		14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
-		14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
-		14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
-		14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractDownloadTracker.swift; sourceTree = "<group>"; };
-		14FAAA691FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataStrategy.swift; sourceTree = "<group>"; };
-		14FAAA6B1FD8E51000F51E4E /* MultiPartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataRequest.swift; sourceTree = "<group>"; };
-		14FE118D2024C625002162CA /* GetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetResponse.swift; sourceTree = "<group>"; };
-		14FE11902024C660002162CA /* BinHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinHeaders.swift; sourceTree = "<group>"; };
-		14FE11922024C6A3002162CA /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
-		14FE11942024CBEA002162CA /* FormURLEncodedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedResponse.swift; sourceTree = "<group>"; };
-		14FE11962024CD04002162CA /* FormURLEncodedPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedPostRequest.swift; sourceTree = "<group>"; };
-		14FE11982024CE67002162CA /* MultipartFormDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataResponse.swift; sourceTree = "<group>"; };
-		20A57690F2A8A1B605E51DBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; lineEnding = 0; path = LICENSE; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		4B4486EBA8B9A4DDE7DDA6A3 /* Astral.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
-		6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
-		93B8B57AD166D4C3A7888FA9 /* Pods_AstralTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AstralTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9519D6E3BB05F1645E0F6333 /* Pods-Astral.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astral/Pods-Astral.debug.xcconfig"; sourceTree = "<group>"; };
-		95CA8DBDC940E4D75E03C96D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B6E858261982AEA702D8F8A5 /* Pods-Astral.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astral/Pods-Astral.release.xcconfig"; sourceTree = "<group>"; };
-		F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
+		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"BrightFutures::BrightFutures::Product" /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
+		OBJ_11 /* DataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
+		OBJ_12 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		OBJ_13 /* DownloadTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTracking.swift; sourceTree = "<group>"; };
+		OBJ_14 /* FormFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFile.swift; sourceTree = "<group>"; };
+		OBJ_15 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
+		OBJ_16 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		OBJ_17 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		OBJ_18 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		OBJ_19 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
+		OBJ_20 /* JSONStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
+		OBJ_21 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
+		OBJ_22 /* MultiPartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataRequest.swift; sourceTree = "<group>"; };
+		OBJ_23 /* MultiPartFormDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataStrategy.swift; sourceTree = "<group>"; };
+		OBJ_24 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		OBJ_25 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		OBJ_26 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		OBJ_27 /* RequestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConfiguration.swift; sourceTree = "<group>"; };
+		OBJ_28 /* RequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDispatcher.swift; sourceTree = "<group>"; };
+		OBJ_29 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		OBJ_30 /* URLScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLScheme.swift; sourceTree = "<group>"; };
+		OBJ_33 /* BasicConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicConfiguration.swift; sourceTree = "<group>"; };
+		OBJ_34 /* FormURLEncodedConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedConfiguration.swift; sourceTree = "<group>"; };
+		OBJ_35 /* MultipartConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartConfiguration.swift; sourceTree = "<group>"; };
+		OBJ_36 /* HeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTests.swift; sourceTree = "<group>"; };
+		OBJ_38 /* BasicGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicGetRequest.swift; sourceTree = "<group>"; };
+		OBJ_39 /* BasicMultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMultipartFormDataRequest.swift; sourceTree = "<group>"; };
+		OBJ_40 /* BasicPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPostRequest.swift; sourceTree = "<group>"; };
+		OBJ_41 /* FormURLEncodedPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedPostRequest.swift; sourceTree = "<group>"; };
+		OBJ_42 /* ResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
+		OBJ_44 /* FormURLEncodedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedResponse.swift; sourceTree = "<group>"; };
+		OBJ_45 /* GetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetResponse.swift; sourceTree = "<group>"; };
+		OBJ_46 /* MultipartFormDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataResponse.swift; sourceTree = "<group>"; };
+		OBJ_47 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
+		OBJ_49 /* BinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinData.swift; sourceTree = "<group>"; };
+		OBJ_50 /* BinHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinHeaders.swift; sourceTree = "<group>"; };
+		OBJ_51 /* Astral.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = Astral.xcworkspace; sourceTree = SOURCE_ROOT; };
+		OBJ_52 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = SOURCE_ROOT; };
+		OBJ_53 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = SOURCE_ROOT; };
+		OBJ_57 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		OBJ_58 /* AsyncType+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncType+Debug.swift"; sourceTree = "<group>"; };
+		OBJ_59 /* AsyncType+ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AsyncType+ResultType.swift"; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_60 /* AsyncType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncType.swift; sourceTree = "<group>"; };
+		OBJ_61 /* Dispatch+BrightFutures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dispatch+BrightFutures.swift"; sourceTree = "<group>"; };
+		OBJ_62 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		OBJ_63 /* ExecutionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionContext.swift; sourceTree = "<group>"; };
+		OBJ_64 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		OBJ_65 /* InvalidationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidationToken.swift; sourceTree = "<group>"; };
+		OBJ_66 /* MutableAsyncType+ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableAsyncType+ResultType.swift"; sourceTree = "<group>"; };
+		OBJ_67 /* MutableAsyncType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableAsyncType.swift; sourceTree = "<group>"; };
+		OBJ_68 /* NSOperationQueue+BrightFutures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSOperationQueue+BrightFutures.swift"; sourceTree = "<group>"; };
+		OBJ_69 /* Number+BrightFutures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+BrightFutures.swift"; sourceTree = "<group>"; };
+		OBJ_70 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		OBJ_71 /* Result+BrightFutures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+BrightFutures.swift"; sourceTree = "<group>"; };
+		OBJ_72 /* SequenceType+BrightFutures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SequenceType+BrightFutures.swift"; sourceTree = "<group>"; };
+		OBJ_73 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/hooliooo/Swift Frameworks/Astral/.build/checkouts/BrightFutures-1253803234394282328/Package.swift"; sourceTree = "<group>"; };
+		OBJ_76 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		OBJ_77 /* ResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProtocol.swift; sourceTree = "<group>"; };
+		OBJ_78 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/hooliooo/Swift Frameworks/Astral/.build/checkouts/Result.git-8684547452332391156/Package.swift"; sourceTree = "<group>"; };
+		OBJ_8 /* AbstractDownloadTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDownloadTracker.swift; sourceTree = "<group>"; };
+		OBJ_9 /* BaseRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestBuilder.swift; sourceTree = "<group>"; };
+		"Result::Result::Product" /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		142152551F1F93A500EB421A /* Frameworks */ = {
+		OBJ_122 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				142152AE1F1FC51400EB421A /* Result.framework in Frameworks */,
-				142152AC1F1FC51000EB421A /* BrightFutures.framework in Frameworks */,
-				1421529B1F1F9C6D00EB421A /* Foundation.framework in Frameworks */,
-				1D55167A132A32E65B632547 /* Pods_Astral.framework in Frameworks */,
+				OBJ_123 /* Astral.framework in Frameworks */,
+				OBJ_124 /* BrightFutures.framework in Frameworks */,
+				OBJ_125 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1421525E1F1F93A600EB421A /* Frameworks */ = {
+		OBJ_159 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				142152621F1F93A600EB421A /* Astral.framework in Frameworks */,
-				0D8E81F8E40DB889EAE7F11A /* Pods_AstralTests.framework in Frameworks */,
+				OBJ_160 /* BrightFutures.framework in Frameworks */,
+				OBJ_161 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_184 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_185 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_193 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0589D8792B71810E4E1958A8 /* Pods */ = {
+		14C4BF9B2025C53C00938416 /* Meta Data */ = {
 			isa = PBXGroup;
 			children = (
-				9519D6E3BB05F1645E0F6333 /* Pods-Astral.debug.xcconfig */,
-				B6E858261982AEA702D8F8A5 /* Pods-Astral.release.xcconfig */,
-				6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */,
-				0C676A5FDB0FDC2D282194CD /* Pods-AstralTests.release.xcconfig */,
+				14C4BF9C2025C55700938416 /* Astral.podspec */,
+				14C4BF9D2025C56E00938416 /* LICENSE */,
+				OBJ_6 /* Package.swift */,
 			);
-			name = Pods;
+			name = "Meta Data";
 			sourceTree = "<group>";
 		};
-		142152651F1F93A600EB421A /* Tests */ = {
+		OBJ_31 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				14FE118F2024C63A002162CA /* Utilities */,
-				14B723A8201C879200C669D1 /* Configurations */,
-				148DD79E201CF2DC0043F59B /* Requests */,
-				14FE118C2024C60A002162CA /* Responses */,
-				142152661F1F93A600EB421A /* ResponseTests.swift */,
-				14C670322025627D0092D1CD /* HeaderTests.swift */,
-				142152681F1F93A600EB421A /* Info.plist */,
+				OBJ_32 /* Configurations */,
+				OBJ_36 /* HeaderTests.swift */,
+				OBJ_37 /* Requests */,
+				OBJ_42 /* ResponseTests.swift */,
+				OBJ_43 /* Responses */,
+				OBJ_48 /* Utilities */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
-		142152721F1F969400EB421A /* Podspec Metadata */ = {
+		OBJ_32 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				4B4486EBA8B9A4DDE7DDA6A3 /* Astral.podspec */,
-				95CA8DBDC940E4D75E03C96D /* README.md */,
-				20A57690F2A8A1B605E51DBC /* LICENSE */,
-			);
-			name = "Podspec Metadata";
-			sourceTree = "<group>";
-		};
-		142152731F1F97B700EB421A /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				142152741F1F97B700EB421A /* Enums */,
-				142152791F1F97B700EB421A /* Protocols */,
-				1421527F1F1F97B700EB421A /* Structs */,
-				14C70B3B1F6EAEDC00C5AEB4 /* Classes */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		142152741F1F97B700EB421A /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				142152781F1F97B700EB421A /* URLScheme.swift */,
-				142152751F1F97B700EB421A /* HTTPMethod.swift */,
-				142152771F1F97B700EB421A /* NetworkingError.swift */,
-				142152761F1F97B700EB421A /* JSON.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		142152791F1F97B700EB421A /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				14DD743A1F44816A00AEB5C7 /* DataStrategy.swift */,
-				1421527A1F1F97B700EB421A /* RequestConfiguration.swift */,
-				1421527B1F1F97B700EB421A /* Request.swift */,
-				14FAAA6B1FD8E51000F51E4E /* MultiPartFormDataRequest.swift */,
-				1421527C1F1F97B700EB421A /* RequestBuilder.swift */,
-				1421527D1F1F97B700EB421A /* RequestDispatcher.swift */,
-				1421527E1F1F97B700EB421A /* Response.swift */,
-				14C70B3C1F6EB0D000C5AEB4 /* DownloadManager.swift */,
-				14C70B3E1F6EB61D00C5AEB4 /* DownloadTracking.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		1421527F1F1F97B700EB421A /* Structs */ = {
-			isa = PBXGroup;
-			children = (
-				14DD74391F44813000AEB5C7 /* Strategies */,
-				142152801F1F97B700EB421A /* BaseRequestBuilder.swift */,
-				142152821F1F97B700EB421A /* JSONResponse.swift */,
-				14424A78200F80A900892CE1 /* FormFile.swift */,
-				14B723AC201C8E4900C669D1 /* Header.swift */,
-				14B723AE201C93B500C669D1 /* MediaType.swift */,
-			);
-			path = Structs;
-			sourceTree = "<group>";
-		};
-		142152911F1F98AF00EB421A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1421525B1F1F93A500EB421A /* Astral.h */,
-				1421528F1F1F987100EB421A /* Info.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		148DD79E201CF2DC0043F59B /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				148DD79F201CF2FE0043F59B /* BasicGetRequest.swift */,
-				148DD7A2201CF38F0043F59B /* BasicPostRequest.swift */,
-				148DD7A4201CF43D0043F59B /* BasicMultipartFormDataRequest.swift */,
-				14FE11962024CD04002162CA /* FormURLEncodedPostRequest.swift */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
-		14B723A8201C879200C669D1 /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				14B723A9201C87B700C669D1 /* BasicConfiguration.swift */,
-				14BCAD87201CF13B0018DCD2 /* FormURLEncodedConfiguration.swift */,
-				14BCAD89201CF1F50018DCD2 /* MultipartConfiguration.swift */,
+				OBJ_33 /* BasicConfiguration.swift */,
+				OBJ_34 /* FormURLEncodedConfiguration.swift */,
+				OBJ_35 /* MultipartConfiguration.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
 		};
-		14C70B3B1F6EAEDC00C5AEB4 /* Classes */ = {
+		OBJ_37 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				142152811F1F97B700EB421A /* BaseRequestDispatcher.swift */,
-				14E87D4E1F6FF2E50062CCDD /* AbstractDownloadTracker.swift */,
+				OBJ_38 /* BasicGetRequest.swift */,
+				OBJ_39 /* BasicMultipartFormDataRequest.swift */,
+				OBJ_40 /* BasicPostRequest.swift */,
+				OBJ_41 /* FormURLEncodedPostRequest.swift */,
 			);
-			path = Classes;
+			path = Requests;
 			sourceTree = "<group>";
 		};
-		14DD74391F44813000AEB5C7 /* Strategies */ = {
+		OBJ_43 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				14DD743C1F44831900AEB5C7 /* JSONStrategy.swift */,
-				14DD743E1F44847500AEB5C7 /* FormURLEncodedStrategy.swift */,
-				14FAAA691FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift */,
-			);
-			path = Strategies;
-			sourceTree = "<group>";
-		};
-		14FE118C2024C60A002162CA /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				14FE118D2024C625002162CA /* GetResponse.swift */,
-				14FE11922024C6A3002162CA /* PostResponse.swift */,
-				14FE11942024CBEA002162CA /* FormURLEncodedResponse.swift */,
-				14FE11982024CE67002162CA /* MultipartFormDataResponse.swift */,
+				OBJ_44 /* FormURLEncodedResponse.swift */,
+				OBJ_45 /* GetResponse.swift */,
+				OBJ_46 /* MultipartFormDataResponse.swift */,
+				OBJ_47 /* PostResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
 		};
-		14FE118F2024C63A002162CA /* Utilities */ = {
+		OBJ_48 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				14FE11902024C660002162CA /* BinHeaders.swift */,
-				148946591EF0D55E00824DF2 /* BinData.swift */,
+				OBJ_49 /* BinData.swift */,
+				OBJ_50 /* BinHeaders.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		54192C909F17619BA5A5AEC4 /* Frameworks */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				142152AD1F1FC51400EB421A /* Result.framework */,
-				142152AB1F1FC51000EB421A /* BrightFutures.framework */,
-				142152A61F1FBDCD00EB421A /* Result.framework */,
-				142152A71F1FBDCD00EB421A /* BrightFutures.framework */,
-				1421529A1F1F9C6D00EB421A /* Foundation.framework */,
-				142152981F1F9C6400EB421A /* Result.framework */,
-				142152961F1F9C5F00EB421A /* BrightFutures.framework */,
-				F7E984A65D47B5A0143B5009 /* Pods_Astral.framework */,
-				93B8B57AD166D4C3A7888FA9 /* Pods_AstralTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		607FACC71AFB9204008FA782 = {
-			isa = PBXGroup;
-			children = (
-				142152721F1F969400EB421A /* Podspec Metadata */,
-				142152731F1F97B700EB421A /* Sources */,
-				142152911F1F98AF00EB421A /* Supporting Files */,
-				0589D8792B71810E4E1958A8 /* Pods */,
-				142152651F1F93A600EB421A /* Tests */,
-				607FACD11AFB9204008FA782 /* Products */,
-				54192C909F17619BA5A5AEC4 /* Frameworks */,
+				14C4BF9B2025C53C00938416 /* Meta Data */,
+				OBJ_7 /* Sources */,
+				OBJ_31 /* Tests */,
+				OBJ_51 /* Astral.xcworkspace */,
+				OBJ_52 /* Pods */,
+				OBJ_53 /* Supporting Files */,
+				OBJ_54 /* Dependencies */,
+				OBJ_79 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		607FACD11AFB9204008FA782 /* Products */ = {
+		OBJ_54 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				142152591F1F93A500EB421A /* Astral.framework */,
-				142152611F1F93A600EB421A /* AstralTests.xctest */,
+				OBJ_55 /* BrightFutures 6.0.0 */,
+				OBJ_74 /* Result 3.2.4 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_55 /* BrightFutures 6.0.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_56 /* BrightFutures */,
+				OBJ_73 /* Package.swift */,
+			);
+			name = "BrightFutures 6.0.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_56 /* BrightFutures */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_57 /* Async.swift */,
+				OBJ_58 /* AsyncType+Debug.swift */,
+				OBJ_59 /* AsyncType+ResultType.swift */,
+				OBJ_60 /* AsyncType.swift */,
+				OBJ_61 /* Dispatch+BrightFutures.swift */,
+				OBJ_62 /* Errors.swift */,
+				OBJ_63 /* ExecutionContext.swift */,
+				OBJ_64 /* Future.swift */,
+				OBJ_65 /* InvalidationToken.swift */,
+				OBJ_66 /* MutableAsyncType+ResultType.swift */,
+				OBJ_67 /* MutableAsyncType.swift */,
+				OBJ_68 /* NSOperationQueue+BrightFutures.swift */,
+				OBJ_69 /* Number+BrightFutures.swift */,
+				OBJ_70 /* Promise.swift */,
+				OBJ_71 /* Result+BrightFutures.swift */,
+				OBJ_72 /* SequenceType+BrightFutures.swift */,
+			);
+			name = BrightFutures;
+			path = ".build/checkouts/BrightFutures-1253803234394282328/Sources/BrightFutures";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* AbstractDownloadTracker.swift */,
+				OBJ_9 /* BaseRequestBuilder.swift */,
+				OBJ_10 /* BaseRequestDispatcher.swift */,
+				OBJ_11 /* DataStrategy.swift */,
+				OBJ_12 /* DownloadManager.swift */,
+				OBJ_13 /* DownloadTracking.swift */,
+				OBJ_14 /* FormFile.swift */,
+				OBJ_15 /* FormURLEncodedStrategy.swift */,
+				OBJ_16 /* HTTPMethod.swift */,
+				OBJ_17 /* Header.swift */,
+				OBJ_18 /* JSON.swift */,
+				OBJ_19 /* JSONResponse.swift */,
+				OBJ_20 /* JSONStrategy.swift */,
+				OBJ_21 /* MediaType.swift */,
+				OBJ_22 /* MultiPartFormDataRequest.swift */,
+				OBJ_23 /* MultiPartFormDataStrategy.swift */,
+				OBJ_24 /* NetworkingError.swift */,
+				OBJ_25 /* Request.swift */,
+				OBJ_26 /* RequestBuilder.swift */,
+				OBJ_27 /* RequestConfiguration.swift */,
+				OBJ_28 /* RequestDispatcher.swift */,
+				OBJ_29 /* Response.swift */,
+				OBJ_30 /* URLScheme.swift */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_74 /* Result 3.2.4 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_75 /* Result */,
+				OBJ_78 /* Package.swift */,
+			);
+			name = "Result 3.2.4";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_75 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_76 /* Result.swift */,
+				OBJ_77 /* ResultProtocol.swift */,
+			);
+			name = Result;
+			path = ".build/checkouts/Result.git-8684547452332391156/Result";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"Astral::AstralTests::Product" /* AstralTests.xctest */,
+				"Astral::Astral::Product" /* Astral.framework */,
+				"BrightFutures::BrightFutures::Product" /* BrightFutures.framework */,
+				"Result::Result::Product" /* Result.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		142152561F1F93A500EB421A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				142152691F1F93A600EB421A /* Astral.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		142152581F1F93A500EB421A /* Astral */ = {
+		"Astral::Astral" /* Astral */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1421526E1F1F93A600EB421A /* Build configuration list for PBXNativeTarget "Astral" */;
+			buildConfigurationList = OBJ_132 /* Build configuration list for PBXNativeTarget "Astral" */;
 			buildPhases = (
-				117CFA01E2F815FA61961111 /* [CP] Check Pods Manifest.lock */,
-				142152541F1F93A500EB421A /* Sources */,
-				142152551F1F93A500EB421A /* Frameworks */,
-				142152561F1F93A500EB421A /* Headers */,
-				142152571F1F93A500EB421A /* Resources */,
-				86F7EC6346CB46CA872969EC /* [CP] Copy Pods Resources */,
-				1421529C1F1F9CDB00EB421A /* Swiftlint Script */,
+				OBJ_135 /* Sources */,
+				OBJ_159 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				OBJ_162 /* PBXTargetDependency */,
+				OBJ_163 /* PBXTargetDependency */,
 			);
 			name = Astral;
 			productName = Astral;
-			productReference = 142152591F1F93A500EB421A /* Astral.framework */;
+			productReference = "Astral::Astral::Product" /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		142152601F1F93A600EB421A /* AstralTests */ = {
+		"Astral::AstralTests" /* AstralTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1421526F1F1F93A600EB421A /* Build configuration list for PBXNativeTarget "AstralTests" */;
+			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "AstralTests" */;
 			buildPhases = (
-				14C20727CAA8F960A6566CD9 /* [CP] Check Pods Manifest.lock */,
-				1421525D1F1F93A600EB421A /* Sources */,
-				1421525E1F1F93A600EB421A /* Frameworks */,
-				1421525F1F1F93A600EB421A /* Resources */,
-				BF7CC65E6F16B846CAFECB6A /* [CP] Embed Pods Frameworks */,
-				2EC4BCB9E6833D6326C77247 /* [CP] Copy Pods Resources */,
+				OBJ_106 /* Sources */,
+				OBJ_122 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				142152641F1F93A600EB421A /* PBXTargetDependency */,
+				OBJ_126 /* PBXTargetDependency */,
+				OBJ_128 /* PBXTargetDependency */,
+				OBJ_130 /* PBXTargetDependency */,
 			);
 			name = AstralTests;
 			productName = AstralTests;
-			productReference = 142152611F1F93A600EB421A /* AstralTests.xctest */;
+			productReference = "Astral::AstralTests::Product" /* AstralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"Astral::SwiftPMPackageDescription" /* AstralPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_85 /* Build configuration list for PBXNativeTarget "AstralPackageDescription" */;
+			buildPhases = (
+				OBJ_88 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AstralPackageDescription;
+			productName = AstralPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"BrightFutures::BrightFutures" /* BrightFutures */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_164 /* Build configuration list for PBXNativeTarget "BrightFutures" */;
+			buildPhases = (
+				OBJ_167 /* Sources */,
+				OBJ_184 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_186 /* PBXTargetDependency */,
+			);
+			name = BrightFutures;
+			productName = BrightFutures;
+			productReference = "BrightFutures::BrightFutures::Product" /* BrightFutures.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"BrightFutures::SwiftPMPackageDescription" /* BrightFuturesPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_91 /* Build configuration list for PBXNativeTarget "BrightFuturesPackageDescription" */;
+			buildPhases = (
+				OBJ_94 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrightFuturesPackageDescription;
+			productName = BrightFuturesPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"Result::Result" /* Result */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_187 /* Build configuration list for PBXNativeTarget "Result" */;
+			buildPhases = (
+				OBJ_190 /* Sources */,
+				OBJ_193 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Result;
+			productName = Result;
+			productReference = "Result::Result::Product" /* Result.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Result::SwiftPMPackageDescription" /* ResultPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_97 /* Build configuration list for PBXNativeTarget "ResultPackageDescription" */;
+			buildPhases = (
+				OBJ_100 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ResultPackageDescription;
+			productName = ResultPackageDescription;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		607FACC81AFB9204008FA782 /* Project object */ = {
+		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = CocoaPods;
-				TargetAttributes = {
-					142152581F1F93A500EB421A = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = S886WPSL95;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-					};
-					142152601F1F93A600EB421A = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = S886WPSL95;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-					};
-				};
+				LastUpgradeCheck = 9999;
 			};
-			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Astral" */;
-			compatibilityVersion = "Xcode 8.0";
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Astral" */;
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 607FACC71AFB9204008FA782;
-			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				142152581F1F93A500EB421A /* Astral */,
-				142152601F1F93A600EB421A /* AstralTests */,
+				"Astral::SwiftPMPackageDescription" /* AstralPackageDescription */,
+				"BrightFutures::SwiftPMPackageDescription" /* BrightFuturesPackageDescription */,
+				"Result::SwiftPMPackageDescription" /* ResultPackageDescription */,
+				"Astral::AstralTests" /* AstralTests */,
+				"Astral::Astral" /* Astral */,
+				"BrightFutures::BrightFutures" /* BrightFutures */,
+				"Result::Result" /* Result */,
+				"Astral::AstralPackageTests::ProductTarget" /* AstralPackageTests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		142152571F1F93A500EB421A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1421525F1F1F93A600EB421A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		117CFA01E2F815FA61961111 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Astral-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1421529C1F1F9CDB00EB421A /* Swiftlint Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Swiftlint Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		14C20727CAA8F960A6566CD9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AstralTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2EC4BCB9E6833D6326C77247 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86F7EC6346CB46CA872969EC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Astral/Pods-Astral-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BF7CC65E6F16B846CAFECB6A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BrightFutures/BrightFutures.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightFutures.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		142152541F1F93A500EB421A /* Sources */ = {
+		OBJ_100 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				142152891F1F97B700EB421A /* RequestBuilder.swift in Sources */,
-				14DD743B1F44816A00AEB5C7 /* DataStrategy.swift in Sources */,
-				14DD743F1F44847500AEB5C7 /* FormURLEncodedStrategy.swift in Sources */,
-				14C70B3D1F6EB0D000C5AEB4 /* DownloadManager.swift in Sources */,
-				142152831F1F97B700EB421A /* HTTPMethod.swift in Sources */,
-				14424A79200F80A900892CE1 /* FormFile.swift in Sources */,
-				1421528A1F1F97B700EB421A /* RequestDispatcher.swift in Sources */,
-				14FAAA6C1FD8E51000F51E4E /* MultiPartFormDataRequest.swift in Sources */,
-				1421528D1F1F97B700EB421A /* BaseRequestDispatcher.swift in Sources */,
-				142152881F1F97B700EB421A /* Request.swift in Sources */,
-				1421528B1F1F97B700EB421A /* Response.swift in Sources */,
-				14B723AF201C93B500C669D1 /* MediaType.swift in Sources */,
-				14DD743D1F44831900AEB5C7 /* JSONStrategy.swift in Sources */,
-				1421528E1F1F97B700EB421A /* JSONResponse.swift in Sources */,
-				1421528C1F1F97B700EB421A /* BaseRequestBuilder.swift in Sources */,
-				14E87D4F1F6FF2E50062CCDD /* AbstractDownloadTracker.swift in Sources */,
-				14B723AD201C8E4900C669D1 /* Header.swift in Sources */,
-				142152871F1F97B700EB421A /* RequestConfiguration.swift in Sources */,
-				142152851F1F97B700EB421A /* NetworkingError.swift in Sources */,
-				142152861F1F97B700EB421A /* URLScheme.swift in Sources */,
-				14C70B3F1F6EB61D00C5AEB4 /* DownloadTracking.swift in Sources */,
-				142152841F1F97B700EB421A /* JSON.swift in Sources */,
-				14FAAA6A1FD8E46D00F51E4E /* MultiPartFormDataStrategy.swift in Sources */,
+				OBJ_101 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1421525D1F1F93A600EB421A /* Sources */ = {
+		OBJ_106 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 0;
 			files = (
-				14FE11952024CBEA002162CA /* FormURLEncodedResponse.swift in Sources */,
-				14BCAD88201CF13B0018DCD2 /* FormURLEncodedConfiguration.swift in Sources */,
-				14FE11912024C660002162CA /* BinHeaders.swift in Sources */,
-				142152671F1F93A600EB421A /* ResponseTests.swift in Sources */,
-				14FE11972024CD04002162CA /* FormURLEncodedPostRequest.swift in Sources */,
-				14BCAD86201CEFBD0018DCD2 /* BasicConfiguration.swift in Sources */,
-				148DD7A3201CF38F0043F59B /* BasicPostRequest.swift in Sources */,
-				14BCAD8A201CF1F50018DCD2 /* MultipartConfiguration.swift in Sources */,
-				14C670332025627D0092D1CD /* HeaderTests.swift in Sources */,
-				142152951F1F9C3400EB421A /* BinData.swift in Sources */,
-				148DD7A1201CF3020043F59B /* BasicGetRequest.swift in Sources */,
-				148DD7A5201CF43D0043F59B /* BasicMultipartFormDataRequest.swift in Sources */,
-				14FE11932024C6A3002162CA /* PostResponse.swift in Sources */,
-				14FE118E2024C625002162CA /* GetResponse.swift in Sources */,
-				14FE11992024CE67002162CA /* MultipartFormDataResponse.swift in Sources */,
+				OBJ_107 /* BasicConfiguration.swift in Sources */,
+				OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */,
+				OBJ_109 /* MultipartConfiguration.swift in Sources */,
+				OBJ_110 /* HeaderTests.swift in Sources */,
+				OBJ_111 /* BasicGetRequest.swift in Sources */,
+				OBJ_112 /* BasicMultipartFormDataRequest.swift in Sources */,
+				OBJ_113 /* BasicPostRequest.swift in Sources */,
+				OBJ_114 /* FormURLEncodedPostRequest.swift in Sources */,
+				OBJ_115 /* ResponseTests.swift in Sources */,
+				OBJ_116 /* FormURLEncodedResponse.swift in Sources */,
+				OBJ_117 /* GetResponse.swift in Sources */,
+				OBJ_118 /* MultipartFormDataResponse.swift in Sources */,
+				OBJ_119 /* PostResponse.swift in Sources */,
+				OBJ_120 /* BinData.swift in Sources */,
+				OBJ_121 /* BinHeaders.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_135 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_136 /* AbstractDownloadTracker.swift in Sources */,
+				OBJ_137 /* BaseRequestBuilder.swift in Sources */,
+				OBJ_138 /* BaseRequestDispatcher.swift in Sources */,
+				OBJ_139 /* DataStrategy.swift in Sources */,
+				OBJ_140 /* DownloadManager.swift in Sources */,
+				OBJ_141 /* DownloadTracking.swift in Sources */,
+				OBJ_142 /* FormFile.swift in Sources */,
+				OBJ_143 /* FormURLEncodedStrategy.swift in Sources */,
+				OBJ_144 /* HTTPMethod.swift in Sources */,
+				OBJ_145 /* Header.swift in Sources */,
+				OBJ_146 /* JSON.swift in Sources */,
+				OBJ_147 /* JSONResponse.swift in Sources */,
+				OBJ_148 /* JSONStrategy.swift in Sources */,
+				OBJ_149 /* MediaType.swift in Sources */,
+				OBJ_150 /* MultiPartFormDataRequest.swift in Sources */,
+				OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */,
+				OBJ_152 /* NetworkingError.swift in Sources */,
+				OBJ_153 /* Request.swift in Sources */,
+				OBJ_154 /* RequestBuilder.swift in Sources */,
+				OBJ_155 /* RequestConfiguration.swift in Sources */,
+				OBJ_156 /* RequestDispatcher.swift in Sources */,
+				OBJ_157 /* Response.swift in Sources */,
+				OBJ_158 /* URLScheme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_167 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_168 /* Async.swift in Sources */,
+				OBJ_169 /* AsyncType+Debug.swift in Sources */,
+				OBJ_170 /* AsyncType+ResultType.swift in Sources */,
+				OBJ_171 /* AsyncType.swift in Sources */,
+				OBJ_172 /* Dispatch+BrightFutures.swift in Sources */,
+				OBJ_173 /* Errors.swift in Sources */,
+				OBJ_174 /* ExecutionContext.swift in Sources */,
+				OBJ_175 /* Future.swift in Sources */,
+				OBJ_176 /* InvalidationToken.swift in Sources */,
+				OBJ_177 /* MutableAsyncType+ResultType.swift in Sources */,
+				OBJ_178 /* MutableAsyncType.swift in Sources */,
+				OBJ_179 /* NSOperationQueue+BrightFutures.swift in Sources */,
+				OBJ_180 /* Number+BrightFutures.swift in Sources */,
+				OBJ_181 /* Promise.swift in Sources */,
+				OBJ_182 /* Result+BrightFutures.swift in Sources */,
+				OBJ_183 /* SequenceType+BrightFutures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_191 /* Result.swift in Sources */,
+				OBJ_192 /* ResultProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_89 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_95 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		142152641F1F93A600EB421A /* PBXTargetDependency */ = {
+		OBJ_126 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 142152581F1F93A500EB421A /* Astral */;
-			targetProxy = 142152631F1F93A600EB421A /* PBXContainerItemProxy */;
+			target = "Astral::Astral" /* Astral */;
+			targetProxy = 14C4BF972025C33C00938416 /* PBXContainerItemProxy */;
+		};
+		OBJ_128 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "BrightFutures::BrightFutures" /* BrightFutures */;
+			targetProxy = 14C4BF982025C33C00938416 /* PBXContainerItemProxy */;
+		};
+		OBJ_130 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Result::Result" /* Result */;
+			targetProxy = 14C4BF992025C33C00938416 /* PBXContainerItemProxy */;
+		};
+		OBJ_162 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "BrightFutures::BrightFutures" /* BrightFutures */;
+			targetProxy = 14C4BF942025C33C00938416 /* PBXContainerItemProxy */;
+		};
+		OBJ_163 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Result::Result" /* Result */;
+			targetProxy = 14C4BF962025C33C00938416 /* PBXContainerItemProxy */;
+		};
+		OBJ_186 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Result::Result" /* Result */;
+			targetProxy = 14C4BF952025C33C00938416 /* PBXContainerItemProxy */;
+		};
+		OBJ_198 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Astral::AstralTests" /* AstralTests */;
+			targetProxy = 14C4BF9A2025C33C00938416 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1421526A1F1F93A600EB421A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9519D6E3BB05F1645E0F6333 /* Pods-Astral.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S886WPSL95;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.Astral;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1421526B1F1F93A600EB421A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6E858261982AEA702D8F8A5 /* Pods-Astral.release.xcconfig */;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S886WPSL95;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.Astral;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1421526C1F1F93A600EB421A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BAE2AE57E6EE494BEEB613A /* Pods-AstralTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = S886WPSL95;
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.AstralTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		1421526D1F1F93A600EB421A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C676A5FDB0FDC2D282194CD /* Pods-AstralTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = S886WPSL95;
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.someenterprises.AstralTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		607FACED1AFB9204008FA782 /* Debug */ = {
+		OBJ_104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/AstralTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = AstralTests;
 			};
 			name = Debug;
 		};
-		607FACEE1AFB9204008FA782 /* Release */ = {
+		OBJ_105 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/AstralTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = AstralTests;
+			};
+			name = Release;
+		};
+		OBJ_133 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/Astral_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Astral;
+			};
+			name = Debug;
+		};
+		OBJ_134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/Astral_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = Astral;
+			};
+			name = Release;
+		};
+		OBJ_165 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/BrightFutures_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = BrightFutures;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = BrightFutures;
+			};
+			name = Debug;
+		};
+		OBJ_166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/BrightFutures_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = BrightFutures;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = BrightFutures;
+			};
+			name = Release;
+		};
+		OBJ_188 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/Result_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Result;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = Result;
+			};
+			name = Debug;
+		};
+		OBJ_189 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Astral.xcodeproj/Result_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Result;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = Result;
+			};
+			name = Release;
+		};
+		OBJ_196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_197 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VALIDATE_PRODUCT = YES;
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		OBJ_93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		OBJ_98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		OBJ_99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1421526E1F1F93A600EB421A /* Build configuration list for PBXNativeTarget "Astral" */ = {
+		OBJ_103 /* Build configuration list for PBXNativeTarget "AstralTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1421526A1F1F93A600EB421A /* Debug */,
-				1421526B1F1F93A600EB421A /* Release */,
+				OBJ_104 /* Debug */,
+				OBJ_105 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		1421526F1F1F93A600EB421A /* Build configuration list for PBXNativeTarget "AstralTests" */ = {
+		OBJ_132 /* Build configuration list for PBXNativeTarget "Astral" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1421526C1F1F93A600EB421A /* Debug */,
-				1421526D1F1F93A600EB421A /* Release */,
+				OBJ_133 /* Debug */,
+				OBJ_134 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Astral" */ = {
+		OBJ_164 /* Build configuration list for PBXNativeTarget "BrightFutures" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				607FACED1AFB9204008FA782 /* Debug */,
-				607FACEE1AFB9204008FA782 /* Release */,
+				OBJ_165 /* Debug */,
+				OBJ_166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_187 /* Build configuration list for PBXNativeTarget "Result" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_188 /* Debug */,
+				OBJ_189 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_195 /* Build configuration list for PBXAggregateTarget "AstralPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_196 /* Debug */,
+				OBJ_197 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "Astral" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_85 /* Build configuration list for PBXNativeTarget "AstralPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_86 /* Debug */,
+				OBJ_87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_91 /* Build configuration list for PBXNativeTarget "BrightFuturesPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_92 /* Debug */,
+				OBJ_93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_97 /* Build configuration list for PBXNativeTarget "ResultPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_98 /* Debug */,
+				OBJ_99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
+	rootObject = OBJ_1 /* Project object */;
 }
