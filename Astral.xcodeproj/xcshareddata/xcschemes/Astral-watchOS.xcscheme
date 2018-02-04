@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Astral::Astral"
+               BlueprintIdentifier = "14C4C0292026DDD700938416"
                BuildableName = "Astral.framework"
-               BlueprintName = "Astral"
+               BlueprintName = "Astral-watchOS"
                ReferencedContainer = "container:Astral.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,26 +29,7 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Astral::AstralTests"
-               BuildableName = "AstralTests.xctest"
-               BlueprintName = "AstralTests"
-               ReferencedContainer = "container:Astral.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Astral::Astral"
-            BuildableName = "Astral.framework"
-            BlueprintName = "Astral"
-            ReferencedContainer = "container:Astral.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -66,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Astral::Astral"
+            BlueprintIdentifier = "14C4C0292026DDD700938416"
             BuildableName = "Astral.framework"
-            BlueprintName = "Astral"
+            BlueprintName = "Astral-watchOS"
             ReferencedContainer = "container:Astral.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Astral::Astral"
+            BlueprintIdentifier = "14C4C0292026DDD700938416"
             BuildableName = "Astral.framework"
-            BlueprintName = "Astral"
+            BlueprintName = "Astral-watchOS"
             ReferencedContainer = "container:Astral.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

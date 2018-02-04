@@ -7,10 +7,87 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07324B08BE2E79F083B34214 /* Pods_AstralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6509F9F4565542F1D09C5CEA /* Pods_AstralTests.framework */; };
-		14C4BFAA2026D10D00938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAB2026D10D00938416 /* Result.framework */; };
-		14C4BFAC2026D11200938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAD2026D11200938416 /* BrightFutures.framework */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
+		14C4BFBB2026DC2400938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB72026DBC800938416 /* BrightFutures.framework */; };
+		14C4BFBC2026DC2400938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB92026DBD200938416 /* Result.framework */; };
+		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
+		14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		14C4BFC12026DC2B00938416 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
+		14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
+		14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
+		14C4BFC52026DC2B00938416 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
+		14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
+		14C4BFC82026DC2B00938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
+		14C4BFC92026DC2B00938416 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
+		14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
+		14C4BFCB2026DC2B00938416 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
+		14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
+		14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
+		14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
+		14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
+		14C4BFD02026DC2B00938416 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
+		14C4BFD12026DC2B00938416 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
+		14C4BFD22026DC2B00938416 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
+		14C4BFD32026DC2B00938416 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
+		14C4BFD42026DC2B00938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
+		14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
+		14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
+		14C4C0082026DDAE00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		14C4C0092026DDAE00938416 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
+		14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
+		14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
+		14C4C00D2026DDAE00938416 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
+		14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
+		14C4C0102026DDAE00938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
+		14C4C0112026DDAE00938416 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
+		14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
+		14C4C0132026DDAE00938416 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
+		14C4C0142026DDAE00938416 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
+		14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
+		14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
+		14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
+		14C4C0182026DDAE00938416 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
+		14C4C0192026DDAE00938416 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
+		14C4C01A2026DDAE00938416 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
+		14C4C01B2026DDAE00938416 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
+		14C4C01C2026DDAE00938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
+		14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
+		14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
+		14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
+		14C4C02C2026DDD700938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		14C4C02D2026DDD700938416 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
+		14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
+		14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
+		14C4C0312026DDD700938416 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		14C4C0322026DDD700938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
+		14C4C0332026DDD700938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
+		14C4C0342026DDD700938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
+		14C4C0352026DDD700938416 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
+		14C4C0362026DDD700938416 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
+		14C4C0372026DDD700938416 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
+		14C4C0382026DDD700938416 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
+		14C4C0392026DDD700938416 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
+		14C4C03A2026DDD700938416 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
+		14C4C03B2026DDD700938416 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
+		14C4C03C2026DDD700938416 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
+		14C4C03D2026DDD700938416 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
+		14C4C03E2026DDD700938416 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
+		14C4C03F2026DDD700938416 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
+		14C4C0402026DDD700938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
+		14C4C0412026DDD700938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
+		14C4C0452026DDD700938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
+		14C4C0532026E03D00938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0512026E03D00938416 /* Result.framework */; };
+		14C4C0542026E03D00938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0522026E03D00938416 /* BrightFutures.framework */; };
+		14C4C0572026E05000938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0552026E05000938416 /* BrightFutures.framework */; };
+		14C4C0582026E05000938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0562026E05000938416 /* Result.framework */; };
+		14C4C0652026E7F800938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C04D2026E02D00938416 /* BrightFutures.framework */; };
+		14C4C0662026E7F800938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C04E2026E02D00938416 /* Result.framework */; };
+		14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C05B2026E0B000938416 /* Foundation.framework */; };
 		OBJ_107 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
 		OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
 		OBJ_109 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
@@ -64,18 +141,23 @@
 
 /* Begin PBXFileReference section */
 		031355BB61D79BC44D57A1FF /* Pods_Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		12A0C4E30037ED668603DC62 /* Pods-AstralTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.release.xcconfig"; sourceTree = "<group>"; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		14C4BF9F2026221400938416 /* Astral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
 		14C4BFA02026221400938416 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14C4BFAB2026D10D00938416 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		14C4BFAD2026D11200938416 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C4BFAE2026D12000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1BEBFFD5F6C4103B1CE26C79 /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
-		61AB6A68B6122172E8CD836C /* Pods-Astral.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astral/Pods-Astral.release.xcconfig"; sourceTree = "<group>"; };
-		6509F9F4565542F1D09C5CEA /* Pods_AstralTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AstralTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADDC11F0D88E4CB1D5F41DFF /* Pods-Astral.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astral/Pods-Astral.debug.xcconfig"; sourceTree = "<group>"; };
+		14C4BFB72026DBC800938416 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
+		14C4BFB92026DBD200938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		14C4BFDF2026DC2B00938416 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C4C0272026DDAE00938416 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C4C04B2026DDD700938416 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C4C04D2026E02D00938416 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/Mac/BrightFutures.framework; sourceTree = "<group>"; };
+		14C4C04E2026E02D00938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		14C4C0512026E03D00938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		14C4C0522026E03D00938416 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/tvOS/BrightFutures.framework; sourceTree = "<group>"; };
+		14C4C0552026E05000938416 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/watchOS/BrightFutures.framework; sourceTree = "<group>"; };
+		14C4C0562026E05000938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
+		14C4C05B2026E0B000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
@@ -120,12 +202,41 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		14C4BFD62026DC2B00938416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */,
+				14C4C0652026E7F800938416 /* BrightFutures.framework in Frameworks */,
+				14C4C0662026E7F800938416 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14C4C01E2026DDAE00938416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14C4C0532026E03D00938416 /* Result.framework in Frameworks */,
+				14C4C0542026E03D00938416 /* BrightFutures.framework in Frameworks */,
+				14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14C4C0422026DDD700938416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14C4C0572026E05000938416 /* BrightFutures.framework in Frameworks */,
+				14C4C0582026E05000938416 /* Result.framework in Frameworks */,
+				14C4C0452026DDD700938416 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_122 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 				OBJ_123 /* Astral.framework in Frameworks */,
-				07324B08BE2E79F083B34214 /* Pods_AstralTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,9 +244,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14C4BFBB2026DC2400938416 /* BrightFutures.framework in Frameworks */,
+				14C4BFBC2026DC2400938416 /* Result.framework in Frameworks */,
 				14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */,
-				14C4BFAC2026D11200938416 /* BrightFutures.framework in Frameworks */,
-				14C4BFAA2026D10D00938416 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,25 +272,20 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5584B1F18488ADFC1C40EEF2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ADDC11F0D88E4CB1D5F41DFF /* Pods-Astral.debug.xcconfig */,
-				61AB6A68B6122172E8CD836C /* Pods-Astral.release.xcconfig */,
-				1BEBFFD5F6C4103B1CE26C79 /* Pods-AstralTests.debug.xcconfig */,
-				12A0C4E30037ED668603DC62 /* Pods-AstralTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		E3711620A170412C2CC81F86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14C4C05B2026E0B000938416 /* Foundation.framework */,
+				14C4C0522026E03D00938416 /* BrightFutures.framework */,
+				14C4BFB92026DBD200938416 /* Result.framework */,
+				14C4BFB72026DBC800938416 /* BrightFutures.framework */,
+				14C4C04D2026E02D00938416 /* BrightFutures.framework */,
+				14C4C04E2026E02D00938416 /* Result.framework */,
+				14C4C0512026E03D00938416 /* Result.framework */,
+				14C4C0552026E05000938416 /* BrightFutures.framework */,
+				14C4C0562026E05000938416 /* Result.framework */,
 				14C4BFAE2026D12000938416 /* Foundation.framework */,
-				14C4BFAD2026D11200938416 /* BrightFutures.framework */,
-				14C4BFAB2026D10D00938416 /* Result.framework */,
 				031355BB61D79BC44D57A1FF /* Pods_Astral.framework */,
-				6509F9F4565542F1D09C5CEA /* Pods_AstralTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,7 +352,6 @@
 				OBJ_31 /* Tests */,
 				14C4BF9E2026221400938416 /* Supporting Files */,
 				OBJ_79 /* Products */,
-				5584B1F18488ADFC1C40EEF2 /* Pods */,
 				E3711620A170412C2CC81F86 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -286,6 +391,9 @@
 			children = (
 				"Astral::AstralTests::Product" /* AstralTests.xctest */,
 				"Astral::Astral::Product" /* Astral.framework */,
+				14C4BFDF2026DC2B00938416 /* Astral.framework */,
+				14C4C0272026DDAE00938416 /* Astral.framework */,
+				14C4C04B2026DDD700938416 /* Astral.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -293,21 +401,74 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		"Astral::Astral" /* Astral */ = {
+		14C4BFBD2026DC2B00938416 /* Astral-Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_132 /* Build configuration list for PBXNativeTarget "Astral" */;
+			buildConfigurationList = 14C4BFDC2026DC2B00938416 /* Build configuration list for PBXNativeTarget "Astral-Mac" */;
 			buildPhases = (
-				993BFA0E9D4AAA736014905A /* [CP] Check Pods Manifest.lock */,
-				OBJ_135 /* Sources */,
-				OBJ_159 /* Frameworks */,
-				36DB5D0B7773CA5EB87B76B6 /* [CP] Copy Pods Resources */,
-				14C4BFB02026D22900938416 /* Swiftlint */,
+				14C4BFBE2026DC2B00938416 /* Sources */,
+				14C4BFD62026DC2B00938416 /* Frameworks */,
+				14C4BFDA2026DC2B00938416 /* Swiftlint */,
+				14C4BFDB2026DC2B00938416 /* Carthage */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Astral;
+			name = "Astral-Mac";
+			productName = Astral;
+			productReference = 14C4BFDF2026DC2B00938416 /* Astral.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		14C4C0052026DDAE00938416 /* Astral-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14C4C0242026DDAE00938416 /* Build configuration list for PBXNativeTarget "Astral-tvOS" */;
+			buildPhases = (
+				14C4C0062026DDAE00938416 /* Sources */,
+				14C4C01E2026DDAE00938416 /* Frameworks */,
+				14C4C0222026DDAE00938416 /* Swiftlint */,
+				14C4C0232026DDAE00938416 /* Carthage */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Astral-tvOS";
+			productName = Astral;
+			productReference = 14C4C0272026DDAE00938416 /* Astral.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		14C4C0292026DDD700938416 /* Astral-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14C4C0482026DDD700938416 /* Build configuration list for PBXNativeTarget "Astral-watchOS" */;
+			buildPhases = (
+				14C4C02A2026DDD700938416 /* Sources */,
+				14C4C0422026DDD700938416 /* Frameworks */,
+				14C4C0462026DDD700938416 /* Swiftlint */,
+				14C4C0472026DDD700938416 /* Carthage */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Astral-watchOS";
+			productName = Astral;
+			productReference = 14C4C04B2026DDD700938416 /* Astral.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Astral::Astral" /* Astral-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_132 /* Build configuration list for PBXNativeTarget "Astral-iOS" */;
+			buildPhases = (
+				OBJ_135 /* Sources */,
+				OBJ_159 /* Frameworks */,
+				14C4BFB02026D22900938416 /* Swiftlint */,
+				14C4BFB62026DAE900938416 /* Carthage */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Astral-iOS";
 			productName = Astral;
 			productReference = "Astral::Astral::Product" /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
@@ -339,6 +500,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
+				TargetAttributes = {
+					14C4BFBD2026DC2B00938416 = {
+						ProvisioningStyle = Automatic;
+					};
+					"Astral::Astral" = {
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Astral" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -352,7 +521,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"Astral::Astral" /* Astral */,
+				"Astral::Astral" /* Astral-iOS */,
+				14C4BFBD2026DC2B00938416 /* Astral-Mac */,
+				14C4C0052026DDAE00938416 /* Astral-tvOS */,
+				14C4C0292026DDD700938416 /* Astral-watchOS */,
 				"Astral::AstralTests" /* AstralTests */,
 			);
 		};
@@ -372,6 +544,120 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		14C4BFB62026DAE900938416 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		14C4BFDA2026DC2B00938416 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		14C4BFDB2026DC2B00938416 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/BrightFutures.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		14C4C0222026DDAE00938416 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		14C4C0232026DDAE00938416 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		14C4C0462026DDD700938416 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		14C4C0472026DDD700938416 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/watchOS/BrightFutures.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		151B65E1E1C5A40C14465DAD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -393,21 +679,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		36DB5D0B7773CA5EB87B76B6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Astral/Pods-Astral-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		73486F65B2147B80FF204B79 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,24 +691,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AstralTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		993BFA0E9D4AAA736014905A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Astral-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -462,6 +715,96 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		14C4BFBE2026DC2B00938416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */,
+				14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */,
+				14C4BFC12026DC2B00938416 /* BaseRequestDispatcher.swift in Sources */,
+				14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */,
+				14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */,
+				14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */,
+				14C4BFC52026DC2B00938416 /* FormFile.swift in Sources */,
+				14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */,
+				14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */,
+				14C4BFC82026DC2B00938416 /* Header.swift in Sources */,
+				14C4BFC92026DC2B00938416 /* JSON.swift in Sources */,
+				14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */,
+				14C4BFCB2026DC2B00938416 /* JSONStrategy.swift in Sources */,
+				14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */,
+				14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */,
+				14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */,
+				14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */,
+				14C4BFD02026DC2B00938416 /* Request.swift in Sources */,
+				14C4BFD12026DC2B00938416 /* RequestBuilder.swift in Sources */,
+				14C4BFD22026DC2B00938416 /* RequestConfiguration.swift in Sources */,
+				14C4BFD32026DC2B00938416 /* RequestDispatcher.swift in Sources */,
+				14C4BFD42026DC2B00938416 /* Response.swift in Sources */,
+				14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14C4C0062026DDAE00938416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */,
+				14C4C0082026DDAE00938416 /* BaseRequestBuilder.swift in Sources */,
+				14C4C0092026DDAE00938416 /* BaseRequestDispatcher.swift in Sources */,
+				14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */,
+				14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */,
+				14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */,
+				14C4C00D2026DDAE00938416 /* FormFile.swift in Sources */,
+				14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */,
+				14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */,
+				14C4C0102026DDAE00938416 /* Header.swift in Sources */,
+				14C4C0112026DDAE00938416 /* JSON.swift in Sources */,
+				14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */,
+				14C4C0132026DDAE00938416 /* JSONStrategy.swift in Sources */,
+				14C4C0142026DDAE00938416 /* MediaType.swift in Sources */,
+				14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */,
+				14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */,
+				14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */,
+				14C4C0182026DDAE00938416 /* Request.swift in Sources */,
+				14C4C0192026DDAE00938416 /* RequestBuilder.swift in Sources */,
+				14C4C01A2026DDAE00938416 /* RequestConfiguration.swift in Sources */,
+				14C4C01B2026DDAE00938416 /* RequestDispatcher.swift in Sources */,
+				14C4C01C2026DDAE00938416 /* Response.swift in Sources */,
+				14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14C4C02A2026DDD700938416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */,
+				14C4C02C2026DDD700938416 /* BaseRequestBuilder.swift in Sources */,
+				14C4C02D2026DDD700938416 /* BaseRequestDispatcher.swift in Sources */,
+				14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */,
+				14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */,
+				14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */,
+				14C4C0312026DDD700938416 /* FormFile.swift in Sources */,
+				14C4C0322026DDD700938416 /* FormURLEncodedStrategy.swift in Sources */,
+				14C4C0332026DDD700938416 /* HTTPMethod.swift in Sources */,
+				14C4C0342026DDD700938416 /* Header.swift in Sources */,
+				14C4C0352026DDD700938416 /* JSON.swift in Sources */,
+				14C4C0362026DDD700938416 /* JSONResponse.swift in Sources */,
+				14C4C0372026DDD700938416 /* JSONStrategy.swift in Sources */,
+				14C4C0382026DDD700938416 /* MediaType.swift in Sources */,
+				14C4C0392026DDD700938416 /* MultiPartFormDataRequest.swift in Sources */,
+				14C4C03A2026DDD700938416 /* MultiPartFormDataStrategy.swift in Sources */,
+				14C4C03B2026DDD700938416 /* NetworkingError.swift in Sources */,
+				14C4C03C2026DDD700938416 /* Request.swift in Sources */,
+				14C4C03D2026DDD700938416 /* RequestBuilder.swift in Sources */,
+				14C4C03E2026DDD700938416 /* RequestConfiguration.swift in Sources */,
+				14C4C03F2026DDD700938416 /* RequestDispatcher.swift in Sources */,
+				14C4C0402026DDD700938416 /* Response.swift in Sources */,
+				14C4C0412026DDD700938416 /* URLScheme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		OBJ_106 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -519,15 +862,192 @@
 /* Begin PBXTargetDependency section */
 		OBJ_126 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = "Astral::Astral" /* Astral */;
+			target = "Astral::Astral" /* Astral-iOS */;
 			targetProxy = 14C4BF972025C33C00938416 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		14C4BFDD2026DC2B00938416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGET_NAME = Astral;
+			};
+			name = Debug;
+		};
+		14C4BFDE2026DC2B00938416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGET_NAME = Astral;
+			};
+			name = Release;
+		};
+		14C4C0252026DDAE00938416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TARGET_NAME = Astral;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		14C4C0262026DDAE00938416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TARGET_NAME = Astral;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		14C4C0492026DDD700938416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TARGET_NAME = Astral;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		14C4C04A2026DDD700938416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Astral;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RESOURCES_TARGETED_DEVICE_FAMILY = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TARGET_NAME = Astral;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
 		OBJ_104 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BEBFFD5F6C4103B1CE26C79 /* Pods-AstralTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -546,7 +1066,6 @@
 		};
 		OBJ_105 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12A0C4E30037ED668603DC62 /* Pods-AstralTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -565,12 +1084,15 @@
 		};
 		OBJ_133 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADDC11F0D88E4CB1D5F41DFF /* Pods-Astral.debug.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
@@ -581,6 +1103,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
@@ -591,12 +1114,15 @@
 		};
 		OBJ_134 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61AB6A68B6122172E8CD836C /* Pods-Astral.release.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
@@ -607,6 +1133,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
@@ -655,11 +1182,13 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				USE_HEADERMAP = NO;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -700,17 +1229,46 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				USE_HEADERMAP = NO;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		14C4BFDC2026DC2B00938416 /* Build configuration list for PBXNativeTarget "Astral-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14C4BFDD2026DC2B00938416 /* Debug */,
+				14C4BFDE2026DC2B00938416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		14C4C0242026DDAE00938416 /* Build configuration list for PBXNativeTarget "Astral-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14C4C0252026DDAE00938416 /* Debug */,
+				14C4C0262026DDAE00938416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		14C4C0482026DDD700938416 /* Build configuration list for PBXNativeTarget "Astral-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14C4C0492026DDD700938416 /* Debug */,
+				14C4C04A2026DDD700938416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		OBJ_103 /* Build configuration list for PBXNativeTarget "AstralTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -720,7 +1278,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_132 /* Build configuration list for PBXNativeTarget "Astral" */ = {
+		OBJ_132 /* Build configuration list for PBXNativeTarget "Astral-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_133 /* Debug */,
