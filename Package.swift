@@ -14,7 +14,7 @@ let package = Package(
         .library(
             name: "Astral",
             targets: ["Astral"]
-        ),
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/Thomvis/BrightFutures", from: "6.0.0")
@@ -29,6 +29,6 @@ let package = Package(
             name: "AstralTests",
             dependencies: ["Astral"],
             path: "Tests"
-        ),
+        )
     ]
 )

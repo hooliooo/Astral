@@ -7,7 +7,7 @@
 import Foundation
 
 /**
- A base implementation of the DownTracking protocol
+ A base implementation of the DownloadTracking protocol
 */
 open class AbstractDownloadTracker<Model: Equatable> {
 

@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		07324B08BE2E79F083B34214 /* Pods_AstralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6509F9F4565542F1D09C5CEA /* Pods_AstralTests.framework */; };
-		AB26C9502D3E287ED8E382AA /* Pods_Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031355BB61D79BC44D57A1FF /* Pods_Astral.framework */; };
+		14C4BFAA2026D10D00938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAB2026D10D00938416 /* Result.framework */; };
+		14C4BFAC2026D11200938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAD2026D11200938416 /* BrightFutures.framework */; };
+		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		OBJ_107 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
 		OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
 		OBJ_109 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
@@ -67,6 +69,9 @@
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		14C4BF9F2026221400938416 /* Astral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
 		14C4BFA02026221400938416 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14C4BFAB2026D10D00938416 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C4BFAD2026D11200938416 /* BrightFutures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BrightFutures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C4BFAE2026D12000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BEBFFD5F6C4103B1CE26C79 /* Pods-AstralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AstralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests.debug.xcconfig"; sourceTree = "<group>"; };
 		61AB6A68B6122172E8CD836C /* Pods-Astral.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astral.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astral/Pods-Astral.release.xcconfig"; sourceTree = "<group>"; };
 		6509F9F4565542F1D09C5CEA /* Pods_AstralTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AstralTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +133,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				AB26C9502D3E287ED8E382AA /* Pods_Astral.framework in Frameworks */,
+				14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */,
+				14C4BFAC2026D11200938416 /* BrightFutures.framework in Frameworks */,
+				14C4BFAA2026D10D00938416 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +175,9 @@
 		E3711620A170412C2CC81F86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14C4BFAE2026D12000938416 /* Foundation.framework */,
+				14C4BFAD2026D11200938416 /* BrightFutures.framework */,
+				14C4BFAB2026D10D00938416 /* Result.framework */,
 				031355BB61D79BC44D57A1FF /* Pods_Astral.framework */,
 				6509F9F4565542F1D09C5CEA /* Pods_AstralTests.framework */,
 			);
@@ -291,6 +301,7 @@
 				OBJ_135 /* Sources */,
 				OBJ_159 /* Frameworks */,
 				36DB5D0B7773CA5EB87B76B6 /* [CP] Copy Pods Resources */,
+				14C4BFB02026D22900938416 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -348,6 +359,20 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		14C4BFB02026D22900938416 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		151B65E1E1C5A40C14465DAD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -557,6 +582,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = Astral;
@@ -582,6 +608,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = Astral;
@@ -628,7 +655,7 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -673,7 +700,7 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
