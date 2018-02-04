@@ -140,7 +140,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		031355BB61D79BC44D57A1FF /* Pods_Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		14C4BF9F2026221400938416 /* Astral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
@@ -158,6 +157,7 @@
 		14C4C0552026E05000938416 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/watchOS/BrightFutures.framework; sourceTree = "<group>"; };
 		14C4C0562026E05000938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		14C4C05B2026E0B000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		14C4C0682026EF5000938416 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
@@ -258,6 +258,7 @@
 			children = (
 				14C4BF9C2025C55700938416 /* Astral.podspec */,
 				14C4BF9D2025C56E00938416 /* LICENSE */,
+				14C4C0682026EF5000938416 /* Podfile */,
 				OBJ_6 /* Package.swift */,
 			);
 			name = "Meta Data";
@@ -275,17 +276,16 @@
 		E3711620A170412C2CC81F86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				14C4C05B2026E0B000938416 /* Foundation.framework */,
 				14C4C0522026E03D00938416 /* BrightFutures.framework */,
-				14C4BFB92026DBD200938416 /* Result.framework */,
 				14C4BFB72026DBC800938416 /* BrightFutures.framework */,
 				14C4C04D2026E02D00938416 /* BrightFutures.framework */,
+				14C4C0552026E05000938416 /* BrightFutures.framework */,
+				14C4C05B2026E0B000938416 /* Foundation.framework */,
+				14C4BFAE2026D12000938416 /* Foundation.framework */,
+				14C4BFB92026DBD200938416 /* Result.framework */,
 				14C4C04E2026E02D00938416 /* Result.framework */,
 				14C4C0512026E03D00938416 /* Result.framework */,
-				14C4C0552026E05000938416 /* BrightFutures.framework */,
 				14C4C0562026E05000938416 /* Result.framework */,
-				14C4BFAE2026D12000938416 /* Foundation.framework */,
-				031355BB61D79BC44D57A1FF /* Pods_Astral.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -994,7 +994,6 @@
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -1023,7 +1022,6 @@
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
