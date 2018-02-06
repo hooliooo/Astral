@@ -21,6 +21,7 @@ Podfile.lock
 .build
 # Bundler
 .bundle
+*.playground
 
 Carthage/
 Pods/

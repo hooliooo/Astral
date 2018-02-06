@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Astral.xcodeproj">
+      location = "container:Astral.xcodeproj">
    </FileRef>
 </Workspace>

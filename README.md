@@ -78,9 +78,9 @@ struct PokemonRequest: Request {
 let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
-let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request)
+let dispatcher: RequestDispatcher = BaseRequestDispatcher()
 
-dispatcher.response()
+dispatcher.response(of: request)
     .onSuccess(queue.context) { (response: Response) -> Void in
         // let responseData: Data = response.data
         // Do something with data
@@ -147,9 +147,9 @@ struct YourRequest: Request {
 let queue: DispatchQueue = DispatchQueue(label: "NetworkQueue", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = YourRequest()
-let dispatcher: RequestDispatcher = BaseRequestDispatcher(request: request, isDebugMode: true)
+let dispatcher: RequestDispatcher = BaseRequestDispatcher(isDebugMode: true)
 
-dispatcher.response()
+dispatcher.response(of: request)
 ```
 
 With these lines of code, your hypothetical request would create the following URL:
