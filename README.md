@@ -30,6 +30,20 @@ pod 'Astral'
 2. Integrate your dependencies using frameworks: add `use_frameworks!` to your Podfile. 
 3. Run `pod install`.
 
+### [Carthage](https://github.com/Carthage/Carthage)
+
+Add the following to your Cartfile:
+```
+github "hooliooo/Astral"
+```
+
+### [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+Add the following  dependency in your Package.swift file:
+```
+.package(url: "https://github.com/hooliooo/Astral.git", from: "0.9.0")
+```
+
 ## A Simple Example
 Here's an example using the [Pokemon API](http://pokeapi.co) and the implementations of RequestBuilder and RequestDispatcher
 provided by Astral.
@@ -120,7 +134,6 @@ struct YourAPIConfiguration: RequestConfiguration {
 
 ```swift
 struct YourRequest: Request {
-
 
     let configuration: RequestConfiguration = YourAPIConfiguration()
 
