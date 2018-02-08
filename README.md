@@ -37,7 +37,7 @@ Add the following to your Cartfile:
 github "hooliooo/Astral"
 ```
 
-### [Swift Package Manager](https://github.com/apple/swift-package-manager)
+### [Swift Package Manager](https://swift.org/package-manager/)
 
 Add the following  dependency in your Package.swift file:
 ```
