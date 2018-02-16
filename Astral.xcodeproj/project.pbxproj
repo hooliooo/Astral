@@ -141,7 +141,6 @@
 
 /* Begin PBXFileReference section */
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		148C9FCF2029880D00DB58C6 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		14C4BF9F2026221400938416 /* Astral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
@@ -350,7 +349,6 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				148C9FCF2029880D00DB58C6 /* Playground.playground */,
 				14C4BF9B2025C53C00938416 /* Meta Data */,
 				OBJ_7 /* Sources */,
 				OBJ_31 /* Tests */,
