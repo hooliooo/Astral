@@ -140,6 +140,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14361B542036FA0400564AD2 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -261,6 +262,7 @@
 				14C4BF9D2025C56E00938416 /* LICENSE */,
 				14C4C0682026EF5000938416 /* Podfile */,
 				148C9FCE2029849300DB58C6 /* README.md */,
+				14361B542036FA0400564AD2 /* Cartfile */,
 				OBJ_6 /* Package.swift */,
 			);
 			name = "Meta Data";
