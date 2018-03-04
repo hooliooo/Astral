@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1409FBD6204C2BF90040FDF2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB92026DBD200938416 /* Result.framework */; };
+		1409FBD7204C2C010040FDF2 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB72026DBC800938416 /* BrightFutures.framework */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4BFBB2026DC2400938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB72026DBC800938416 /* BrightFutures.framework */; };
 		14C4BFBC2026DC2400938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB92026DBD200938416 /* Result.framework */; };
@@ -238,6 +240,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				1409FBD7204C2C010040FDF2 /* BrightFutures.framework in Frameworks */,
+				1409FBD6204C2BF90040FDF2 /* Result.framework in Frameworks */,
 				OBJ_123 /* Astral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,11 +485,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "AstralTests" */;
 			buildPhases = (
-				73486F65B2147B80FF204B79 /* [CP] Check Pods Manifest.lock */,
 				OBJ_106 /* Sources */,
 				OBJ_122 /* Frameworks */,
-				151B65E1E1C5A40C14465DAD /* [CP] Embed Pods Frameworks */,
-				A190986076D53A677EB56386 /* [CP] Copy Pods Resources */,
+				1409FBD5204C2B980040FDF2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -535,6 +537,23 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1409FBD5204C2B980040FDF2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		14C4BFB02026D22900938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -662,59 +681,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		151B65E1E1C5A40C14465DAD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BrightFutures/BrightFutures.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightFutures.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		73486F65B2147B80FF204B79 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AstralTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A190986076D53A677EB56386 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AstralTests/Pods-AstralTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1055,10 +1021,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Astral.xcodeproj/AstralTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_VERSION = 4.0;
@@ -1073,10 +1040,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Astral.xcodeproj/AstralTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_VERSION = 4.0;

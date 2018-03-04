@@ -62,9 +62,9 @@ struct PokeAPIConfiguration: RequestConfiguration {
         "v2"
     ]
 
-    let baseHeaders: Set<Header> = Set<Header>(arrayLiteral:
+    let baseHeaders: Set<Header> = [
         Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
-    )
+    ]
 }
 ```
 
@@ -84,7 +84,7 @@ struct PokemonRequest: Request {
 
     let parameters: [String : Any] = [:]
 
-    let headers: Set<Header> = Set<Header>()
+    let headers: Set<Header> = []
 }
 ```
 
@@ -126,9 +126,9 @@ struct YourAPIConfiguration: RequestConfiguration {
         "v1"
     ]
 
-    let baseHeaders: Set<Header> = Set<Header>(arrayLiteral:
+    let baseHeaders: Set<Header> = [
         Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
-    )
+    ]
 }
 ```
 
@@ -150,9 +150,9 @@ struct YourRequest: Request {
         "anotherKey": "anotherValue"
     ]
 
-    let headers: Set<Header> = Set<Header>(arrayLiteral:
+    let headers: Set<Header> = [
         Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
-    )
+    ]
 }
 ```
 
