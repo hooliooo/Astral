@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Astral'
   s.module_name      = 'Astral'
-  s.version          = '0.9.94'
+  s.version          = '0.9.95'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.summary          = 'An HTTP networking library that uses protocols and Futures'
@@ -19,6 +19,9 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/hooliooo/Astral.git', :tag => s.version }
 
   s.ios.deployment_target = '9.3'
+  s.osx.deployment_target = '10.11'
+  s.tvos.deployment_target = '11.0'
+  s.watchos.deployment_target = '4.0'
 
   s.source_files = 'Sources/*.swift'
   s.requires_arc = true
