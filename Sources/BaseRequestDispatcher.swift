@@ -30,8 +30,8 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
         super.init(builder: builder, isDebugMode: isDebugMode)
     }
 
-    public init(strategy: DataStrategy, isDebugMode: Bool = true) {
-        self._queue = DispatchQueue.main
+    public init(strategy: DataStrategy, isDebugMode: Bool = true, queue: DispatchQueue = DispatchQueue.main) {
+        self._queue = queue
         super.init(builder: BaseRequestBuilder(strategy: strategy), isDebugMode: isDebugMode)
     }
 
@@ -45,18 +45,19 @@ extension BaseRequestDispatcher: BaseDispatcher {
         return self._queue
     }
 
+    @discardableResult
     open func response(
         of request: Request,
         onSuccess: @escaping (_ response: Response) -> Void,
         onFailure: @escaping (_ error: NetworkingError) -> Void,
         onComplete: @escaping () -> Void
-    ) {
+    ) -> URLSessionTask {
         let isDebugMode: Bool = self.isDebugMode
         let method: String = request.method.stringValue
         let urlRequest: URLRequest = self.urlRequest(of: request)
         let queue: DispatchQueue = self.queue
 
-        BaseRequestDispatcher.session.dataTask(with: urlRequest) {
+        let task: URLSessionTask = BaseRequestDispatcher.session.dataTask(with: urlRequest) {
             (data: Data?, response: URLResponse?, error: Error?) -> Void in
             // swiftlint:disable:previous closure_parameter_position
             queue.async {
@@ -110,7 +111,11 @@ extension BaseRequestDispatcher: BaseDispatcher {
                 }
             }
 
-        }.resume()
+        }
+
+        task.resume()
+
+        return task
     }
 
 }

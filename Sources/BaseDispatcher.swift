@@ -24,11 +24,12 @@ public protocol BaseDispatcher: RequestDispatcher {
      - parameter error:  The Error from the completion handler transformed as a NetworkingError.
      - parameter onComplete: The callback that is executed when the completion handler returns either Data or en Error.
     */
+    @discardableResult
     func response(
         of request: Request,
         onSuccess: @escaping (_ response: Response) -> Void,
         onFailure: @escaping (_ error: NetworkingError) -> Void,
         onComplete: @escaping () -> Void
-    )
+    ) -> URLSessionTask
 
 }
