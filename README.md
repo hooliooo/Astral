@@ -4,9 +4,6 @@ the steps needed to create a network request into multiple objects.
 
 It aims to shy away from the typical network layer singleton by encapsulating each part of network request as an object.
 
-Astral makes use of the [BrightFutures](https://github.com/Thomvis/BrightFutures) library to flatten the asynchronous calls
-associated with networking, making your code base as readable as possible.
-
 Inspired by Soroush Khanlou's [blog post](http://khanlou.com/2016/05/protocol-oriented-programming/) on Protocol Oriented 
 Programming.
 
