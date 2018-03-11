@@ -14,8 +14,6 @@
 		14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14292E1D20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
-		14C4BFBB2026DC2400938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB72026DBC800938416 /* BrightFutures.framework */; };
-		14C4BFBC2026DC2400938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB92026DBD200938416 /* Result.framework */; };
 		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
 		14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
@@ -87,12 +85,6 @@
 		14C4C0402026DDD700938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
 		14C4C0412026DDD700938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0452026DDD700938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
-		14C4C0532026E03D00938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0512026E03D00938416 /* Result.framework */; };
-		14C4C0542026E03D00938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0522026E03D00938416 /* BrightFutures.framework */; };
-		14C4C0572026E05000938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0552026E05000938416 /* BrightFutures.framework */; };
-		14C4C0582026E05000938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C0562026E05000938416 /* Result.framework */; };
-		14C4C0652026E7F800938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C04D2026E02D00938416 /* BrightFutures.framework */; };
-		14C4C0662026E7F800938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C04E2026E02D00938416 /* Result.framework */; };
 		14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C05B2026E0B000938416 /* Foundation.framework */; };
 		14E5E37E204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
 		14E5E37F204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
@@ -226,8 +218,6 @@
 			buildActionMask = 0;
 			files = (
 				14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */,
-				14C4C0652026E7F800938416 /* BrightFutures.framework in Frameworks */,
-				14C4C0662026E7F800938416 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,8 +225,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14C4C0532026E03D00938416 /* Result.framework in Frameworks */,
-				14C4C0542026E03D00938416 /* BrightFutures.framework in Frameworks */,
 				14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,8 +233,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14C4C0572026E05000938416 /* BrightFutures.framework in Frameworks */,
-				14C4C0582026E05000938416 /* Result.framework in Frameworks */,
 				14C4C0452026DDD700938416 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,8 +251,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14C4BFBB2026DC2400938416 /* BrightFutures.framework in Frameworks */,
-				14C4BFBC2026DC2400938416 /* Result.framework in Frameworks */,
 				14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
