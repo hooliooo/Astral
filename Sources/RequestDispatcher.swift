@@ -36,7 +36,7 @@ public protocol RequestDispatcher: class {
     /**
      The URLSessionTasks created by this instance
     */
-    var tasks: [URLSessionTask] { get }
+    var tasks: [URLSessionTask] { get set }
 
     /**
      The URLRequest associated with the RequestDispatcher.
@@ -48,4 +48,23 @@ public protocol RequestDispatcher: class {
      Cancels all URLSessionTasks created by this RequestDispatcher
     */
     func cancel()
+
+    /**
+     Adds a task to the tasks array
+     - parameter task: URLSessionTask to add.
+    */
+    func add(task: URLSessionTask)
+
+    /**
+     Removes a task to the tasks array
+     - parameter task: URLSessionTask to remove.
+    */
+    @discardableResult
+    func remove(task: URLSessionTask) -> URLSessionTask?
+
+    /**
+     Removes all tasks from the tasks array.
+    */
+    @discardableResult
+    func removeTasks() -> [URLSessionTask]
 }

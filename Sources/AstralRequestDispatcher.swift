@@ -37,21 +37,6 @@ open class AstralRequestDispatcher {
         return URLSession.shared
     }
 
-    // MARK: Instance Methods
-    public final func add(task: URLSessionTask) {
-        self._tasks.append(task)
-    }
-
-    public final func remove(task: URLSessionTask) {
-        if let idx = self._tasks.index(of: task) {
-            self._tasks.remove(at: idx)
-        }
-    }
-
-    public final func removeTasks() {
-        self._tasks.removeAll()
-    }
-
 }
 
 extension AstralRequestDispatcher: RequestDispatcher {
@@ -68,7 +53,9 @@ extension AstralRequestDispatcher: RequestDispatcher {
     }
 
     open var tasks: [URLSessionTask] {
-        return self._tasks
+        get { return self._tasks }
+
+        set { self._tasks = newValue }
     }
 
     open func urlRequest(of request: Request) -> URLRequest {
@@ -81,5 +68,25 @@ extension AstralRequestDispatcher: RequestDispatcher {
         }
 
         self.removeTasks()
+    }
+
+    public final func add(task: URLSessionTask) {
+        self._tasks.append(task)
+    }
+
+    @discardableResult
+    public final func remove(task: URLSessionTask) -> URLSessionTask? {
+        if let idx = self._tasks.index(of: task) {
+            return self._tasks.remove(at: idx)
+        } else {
+            return nil
+        }
+    }
+
+    @discardableResult
+    public final func removeTasks() -> [URLSessionTask] {
+        let tasks: [URLSessionTask] = self._tasks
+        self._tasks.removeAll()
+        return tasks
     }
 }
