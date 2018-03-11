@@ -26,7 +26,13 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
     }
 
     public required init(builder: RequestBuilder, isDebugMode: Bool) {
-        fatalError("init(builder:isDebugMode:) has not been implemented")
+        self._queue = DispatchQueue.main
+        super.init(builder: builder, isDebugMode: isDebugMode)
+    }
+
+    public init(strategy: DataStrategy, isDebugMode: Bool = true) {
+        self._queue = DispatchQueue.main
+        super.init(builder: BaseRequestBuilder(strategy: strategy), isDebugMode: isDebugMode)
     }
 
     // MARK: Stored Properties
