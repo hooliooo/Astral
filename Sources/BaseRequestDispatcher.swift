@@ -51,13 +51,13 @@ extension BaseRequestDispatcher: BaseDispatcher {
         onSuccess: @escaping (_ response: Response) -> Void,
         onFailure: @escaping (_ error: NetworkingError) -> Void,
         onComplete: @escaping () -> Void
-    ) -> URLSessionTask {
+    ) -> URLSessionDataTask {
         let isDebugMode: Bool = self.isDebugMode
         let method: String = request.method.stringValue
         let urlRequest: URLRequest = self.urlRequest(of: request)
         let queue: DispatchQueue = self.queue
 
-        let task: URLSessionTask = BaseRequestDispatcher.session.dataTask(with: urlRequest) {
+        let task: URLSessionDataTask = BaseRequestDispatcher.session.dataTask(with: urlRequest) {
             (data: Data?, response: URLResponse?, error: Error?) -> Void in
             // swiftlint:disable:previous closure_parameter_position
             queue.async {
