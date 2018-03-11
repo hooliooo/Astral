@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		1409FBD6204C2BF90040FDF2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB92026DBD200938416 /* Result.framework */; };
 		1409FBD7204C2C010040FDF2 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB72026DBC800938416 /* BrightFutures.framework */; };
+		14292E1A20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
+		14292E1B20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
+		14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
+		14292E1D20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4BFBB2026DC2400938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB72026DBC800938416 /* BrightFutures.framework */; };
 		14C4BFBC2026DC2400938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFB92026DBD200938416 /* Result.framework */; };
 		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
-		14C4BFC12026DC2B00938416 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
@@ -37,7 +41,7 @@
 		14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		14C4C0082026DDAE00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
-		14C4C0092026DDAE00938416 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
@@ -61,7 +65,7 @@
 		14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		14C4C02C2026DDD700938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
-		14C4C02D2026DDD700938416 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		14C4C02D2026DDD700938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
@@ -90,6 +94,14 @@
 		14C4C0652026E7F800938416 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C04D2026E02D00938416 /* BrightFutures.framework */; };
 		14C4C0662026E7F800938416 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C04E2026E02D00938416 /* Result.framework */; };
 		14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C05B2026E0B000938416 /* Foundation.framework */; };
+		14E5E37E204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
+		14E5E37F204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
+		14E5E380204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
+		14E5E381204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
+		14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
+		14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
+		14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
+		14E5E386204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
 		OBJ_107 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
 		OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
 		OBJ_109 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
@@ -108,7 +120,7 @@
 		OBJ_123 /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Astral::Astral::Product" /* Astral.framework */; };
 		OBJ_136 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		OBJ_137 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
-		OBJ_138 /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* BaseRequestDispatcher.swift */; };
+		OBJ_138 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		OBJ_139 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		OBJ_140 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		OBJ_141 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
@@ -142,6 +154,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Astral.swift"; sourceTree = "<group>"; };
 		14361B542036FA0400564AD2 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
@@ -162,9 +175,11 @@
 		14C4C0562026E05000938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		14C4C05B2026E0B000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		14C4C0682026EF5000938416 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDispatcher.swift; sourceTree = "<group>"; };
+		14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
 		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
+		OBJ_10 /* AstralRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralRequestDispatcher.swift; sourceTree = "<group>"; };
 		OBJ_11 /* DataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
 		OBJ_12 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		OBJ_13 /* DownloadTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTracking.swift; sourceTree = "<group>"; };
@@ -369,7 +384,8 @@
 			children = (
 				OBJ_8 /* AbstractDownloadTracker.swift */,
 				OBJ_9 /* BaseRequestBuilder.swift */,
-				OBJ_10 /* BaseRequestDispatcher.swift */,
+				OBJ_10 /* AstralRequestDispatcher.swift */,
+				14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */,
 				OBJ_11 /* DataStrategy.swift */,
 				OBJ_12 /* DownloadManager.swift */,
 				OBJ_13 /* DownloadTracking.swift */,
@@ -390,6 +406,8 @@
 				OBJ_28 /* RequestDispatcher.swift */,
 				OBJ_29 /* Response.swift */,
 				OBJ_30 /* URLScheme.swift */,
+				14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */,
+				14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -416,7 +434,6 @@
 				14C4BFBE2026DC2B00938416 /* Sources */,
 				14C4BFD62026DC2B00938416 /* Frameworks */,
 				14C4BFDA2026DC2B00938416 /* Swiftlint */,
-				14C4BFDB2026DC2B00938416 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -434,7 +451,6 @@
 				14C4C0062026DDAE00938416 /* Sources */,
 				14C4C01E2026DDAE00938416 /* Frameworks */,
 				14C4C0222026DDAE00938416 /* Swiftlint */,
-				14C4C0232026DDAE00938416 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -452,7 +468,6 @@
 				14C4C02A2026DDD700938416 /* Sources */,
 				14C4C0422026DDD700938416 /* Frameworks */,
 				14C4C0462026DDD700938416 /* Swiftlint */,
-				14C4C0472026DDD700938416 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -470,7 +485,6 @@
 				OBJ_135 /* Sources */,
 				OBJ_159 /* Frameworks */,
 				14C4BFB02026D22900938416 /* Swiftlint */,
-				14C4BFB62026DAE900938416 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -487,7 +501,6 @@
 			buildPhases = (
 				OBJ_106 /* Sources */,
 				OBJ_122 /* Frameworks */,
-				1409FBD5204C2B980040FDF2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -537,23 +550,6 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1409FBD5204C2B980040FDF2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		14C4BFB02026D22900938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -567,24 +563,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		14C4BFB62026DAE900938416 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/BrightFutures.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		14C4BFDA2026DC2B00938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -600,24 +578,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		14C4BFDB2026DC2B00938416 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/Result.framework",
-				"$(SRCROOT)/Carthage/Build/Mac/BrightFutures.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		14C4C0222026DDAE00938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,24 +591,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		14C4C0232026DDAE00938416 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/tvOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/tvOS/BrightFutures.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		14C4C0462026DDD700938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -664,24 +606,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
-		14C4C0472026DDD700938416 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/watchOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/watchOS/BrightFutures.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BrightFutures.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -689,20 +613,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14292E1B20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
 				14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */,
 				14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */,
-				14C4BFC12026DC2B00938416 /* BaseRequestDispatcher.swift in Sources */,
+				14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */,
 				14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */,
 				14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */,
 				14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */,
 				14C4BFC52026DC2B00938416 /* FormFile.swift in Sources */,
 				14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */,
 				14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */,
+				14E5E37F204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				14C4BFC82026DC2B00938416 /* Header.swift in Sources */,
 				14C4BFC92026DC2B00938416 /* JSON.swift in Sources */,
 				14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */,
 				14C4BFCB2026DC2B00938416 /* JSONStrategy.swift in Sources */,
 				14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */,
+				14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */,
 				14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */,
@@ -719,20 +646,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
 				14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */,
 				14C4C0082026DDAE00938416 /* BaseRequestBuilder.swift in Sources */,
-				14C4C0092026DDAE00938416 /* BaseRequestDispatcher.swift in Sources */,
+				14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */,
 				14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */,
 				14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */,
 				14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */,
 				14C4C00D2026DDAE00938416 /* FormFile.swift in Sources */,
 				14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */,
 				14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */,
+				14E5E380204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				14C4C0102026DDAE00938416 /* Header.swift in Sources */,
 				14C4C0112026DDAE00938416 /* JSON.swift in Sources */,
 				14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */,
 				14C4C0132026DDAE00938416 /* JSONStrategy.swift in Sources */,
 				14C4C0142026DDAE00938416 /* MediaType.swift in Sources */,
+				14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */,
 				14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */,
@@ -749,20 +679,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14292E1D20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
 				14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */,
 				14C4C02C2026DDD700938416 /* BaseRequestBuilder.swift in Sources */,
-				14C4C02D2026DDD700938416 /* BaseRequestDispatcher.swift in Sources */,
+				14C4C02D2026DDD700938416 /* AstralRequestDispatcher.swift in Sources */,
 				14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */,
 				14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */,
 				14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */,
 				14C4C0312026DDD700938416 /* FormFile.swift in Sources */,
 				14C4C0322026DDD700938416 /* FormURLEncodedStrategy.swift in Sources */,
 				14C4C0332026DDD700938416 /* HTTPMethod.swift in Sources */,
+				14E5E381204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				14C4C0342026DDD700938416 /* Header.swift in Sources */,
 				14C4C0352026DDD700938416 /* JSON.swift in Sources */,
 				14C4C0362026DDD700938416 /* JSONResponse.swift in Sources */,
 				14C4C0372026DDD700938416 /* JSONStrategy.swift in Sources */,
 				14C4C0382026DDD700938416 /* MediaType.swift in Sources */,
+				14E5E386204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0392026DDD700938416 /* MultiPartFormDataRequest.swift in Sources */,
 				14C4C03A2026DDD700938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4C03B2026DDD700938416 /* NetworkingError.swift in Sources */,
@@ -801,20 +734,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14292E1A20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
 				OBJ_136 /* AbstractDownloadTracker.swift in Sources */,
 				OBJ_137 /* BaseRequestBuilder.swift in Sources */,
-				OBJ_138 /* BaseRequestDispatcher.swift in Sources */,
+				OBJ_138 /* AstralRequestDispatcher.swift in Sources */,
 				OBJ_139 /* DataStrategy.swift in Sources */,
 				OBJ_140 /* DownloadManager.swift in Sources */,
 				OBJ_141 /* DownloadTracking.swift in Sources */,
 				OBJ_142 /* FormFile.swift in Sources */,
 				OBJ_143 /* FormURLEncodedStrategy.swift in Sources */,
 				OBJ_144 /* HTTPMethod.swift in Sources */,
+				14E5E37E204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				OBJ_145 /* Header.swift in Sources */,
 				OBJ_146 /* JSON.swift in Sources */,
 				OBJ_147 /* JSONResponse.swift in Sources */,
 				OBJ_148 /* JSONStrategy.swift in Sources */,
 				OBJ_149 /* MediaType.swift in Sources */,
+				14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				OBJ_150 /* MultiPartFormDataRequest.swift in Sources */,
 				OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */,
 				OBJ_152 /* NetworkingError.swift in Sources */,
@@ -1066,7 +1002,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1096,7 +1032,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1146,8 +1082,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1194,8 +1130,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

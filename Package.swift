@@ -17,14 +17,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Thomvis/BrightFutures", from: "6.0.0")
     ],
     targets: [
-        .target(
-            name: "Astral",
-            dependencies: ["BrightFutures"],
-            path: "Sources"
-        ),
         .testTarget(
             name: "AstralTests",
             dependencies: ["Astral"],

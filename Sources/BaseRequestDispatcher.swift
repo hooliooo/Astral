@@ -1,120 +1,69 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2018 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation
-import BrightFutures
-import Result
 
-public typealias HTTPRequestResult = (Result<Response, NetworkingError>) -> Void
+open class BaseRequestDispatcher: AstralRequestDispatcher {
 
-/**
- An implementation of RequestDispatcher that uses the URLSession shared instance for http network requests.
-*/
-open class BaseRequestDispatcher {
-
-    // MARK: Intializers
+    // MARK: Intializer
     /**
-     Initializer with a Request and a RequestBuilder type.
-     - parameter request: The Request instance used to build a URLRequest in the RequestBuilder.
-
-     - parameter builderType: The type of RequestBuilder that will be initialized to create the URLRequest.
-
-       Default value is BaseRequestBuilder.
-
-     - parameter strategy: The DataStrategy used to create the body of the http request.
-
-       Default value is JSONStrategy.
-
-     - parameter isDebugMode: Indicates whether the HTTPURLResponse will be printed to the console or not.
-
-       Default value is true.
+     BaseRequestDispatcher is a subclass of AstralRequestDispatcher that uses callbacks to handle the asynchronous nature of networking.
+     - parameter builder: The RequestBuilder used to create the URLRequest instance.
+     - parameter isDebugMode: If true, the console will print out information related to the http networking request. If false, prints nothing.
+     - parameter queue: The DispatchQueue that the callbacks will execute on.
     */
-    public convenience required init(
-        builderType: RequestBuilder.Type = BaseRequestBuilder.self,
-        strategy: DataStrategy = JSONStrategy(),
-        isDebugMode: Bool = true
+    public init(
+        builder: RequestBuilder = BaseRequestBuilder(strategy: JSONStrategy()),
+        isDebugMode: Bool = true,
+        queue: DispatchQueue = DispatchQueue.main
     ) {
-        self.init(
-            builder: builderType.init(strategy: strategy),
-            isDebugMode: isDebugMode
-        )
+        self._queue = queue
+        super.init(builder: builder, isDebugMode: isDebugMode)
+
     }
 
     public required init(builder: RequestBuilder, isDebugMode: Bool) {
-        self._requestBuilder = builder
-        self._isDebugMode = isDebugMode
-    }
-
-    deinit {
-        switch self._isDebugMode {
-            case true:
-                print("\(type(of: self)) was deallocated")
-
-            case false:
-                break
-        }
+        fatalError("init(builder:isDebugMode:) has not been implemented")
     }
 
     // MARK: Stored Properties
-    private var _requestBuilder: RequestBuilder
-    private let _isDebugMode: Bool
-    private var _tasks: [URLSessionTask] = []
-
-    // MARK: Static Properties
-    open class var session: URLSession {
-        return URLSession.shared
-    }
+    private let _queue: DispatchQueue
 
 }
 
-extension BaseRequestDispatcher: RequestDispatcher {
-
-    // MARK: Getter/Setter Properties
-    open var builder: RequestBuilder {
-        get { return self._requestBuilder }
-
-        set { self._requestBuilder = newValue }
+extension BaseRequestDispatcher: BaseDispatcher {
+    open var queue: DispatchQueue {
+        return self._queue
     }
 
-    open var isDebugMode: Bool {
-        return self._isDebugMode
-    }
-
-    open var tasks: [URLSessionTask] {
-        return self._tasks
-    }
-
-    open func urlRequest(of request: Request) -> URLRequest {
-        return self._requestBuilder.urlRequest(of: request)
-    }
-
-    open func response(of request: Request) -> Future<Response, NetworkingError> {
-
-        self._tasks = self._tasks.filter { $0.state != URLSessionTask.State.running }
-
-        let isDebugMode: Bool = self._isDebugMode
+    open func response(
+        of request: Request,
+        onSuccess: @escaping (_ response: Response) -> Void,
+        onFailure: @escaping (_ error: NetworkingError) -> Void,
+        onComplete: @escaping () -> Void
+    ) {
+        let isDebugMode: Bool = self.isDebugMode
         let method: String = request.method.stringValue
         let urlRequest: URLRequest = self.urlRequest(of: request)
+        let queue: DispatchQueue = self.queue
 
-        return Future(resolver: { [weak self] (callback: @escaping HTTPRequestResult) -> Void in
+        BaseRequestDispatcher.session.dataTask(with: urlRequest) {
+            (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            // swiftlint:disable:previous closure_parameter_position
+            queue.async {
 
-            let task: URLSessionDataTask = BaseRequestDispatcher.session.dataTask(with: urlRequest) {
-                (data: Data?, response: URLResponse?, error: Error?) -> Void in
-                // swiftlint:disable:previous closure_parameter_position
+                onComplete()
 
                 if let error = error {
 
-                    callback(
-                        Result.failure(
-                            NetworkingError.connection(error)
-                        )
+                    onFailure(
+                        NetworkingError.connection(error)
                     )
 
                 } else if let data = data, let response = response as? HTTPURLResponse {
-
                     switch isDebugMode {
                         case true:
                             print("HTTP Method: \(method)")
@@ -126,53 +75,36 @@ extension BaseRequestDispatcher: RequestDispatcher {
 
                     switch response.statusCode {
                         case 200...399:
-                            callback(
-                                Result.success(
+                            onSuccess(
+                                JSONResponse(httpResponse: response, data: data)
+                            )
+
+                        case 400...599:
+                            onFailure(
+                                NetworkingError.response(
                                     JSONResponse(httpResponse: response, data: data)
                                 )
                             )
 
-                        case 400...599:
-                            callback(
-                                Result.failure(
-                                    NetworkingError.response(
-                                        JSONResponse(httpResponse: response, data: data)
-                                    )
-                                )
-                            )
-
                         default:
-                            callback(
-                                Result.failure(
-                                    NetworkingError.unknownResponse(
-                                        JSONResponse(httpResponse: response, data: data),
-                                        "Unhandled status code: \(response.statusCode)"
-                                    )
+                            onFailure(
+                                NetworkingError.unknownResponse(
+                                    JSONResponse(httpResponse: response, data: data),
+                                    "Unhandled status code: \(response.statusCode)"
                                 )
                             )
                     }
+
                 } else {
 
-                    callback(
-                        Result.failure(
-                            NetworkingError.unknown("Unknown error occured")
-                        )
+                    onFailure(
+                        NetworkingError.unknown("Unknown error occured")
                     )
 
                 }
             }
 
-            task.resume()
-
-            self?._tasks.append(task)
-        })
+        }.resume()
     }
 
-    open func cancel() {
-        for task in self._tasks {
-            task.cancel()
-        }
-
-        self._tasks = []
-    }
 }

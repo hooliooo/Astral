@@ -17,7 +17,7 @@ Programming.
 
 ## Requirements
 
-Astral requires iOS 10.0 or higher and Swift 3.x
+Astral requires iOS 9.3 or higher and Swift 3.x
 
 ## Installation
 ### [CocoaPods](http://cocoapods.org/)
@@ -92,23 +92,25 @@ struct PokemonRequest: Request {
 let queue: DispatchQueue = DispatchQueue(label: "pokeapi", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = PokemonRequest(id: 1)
-let dispatcher: RequestDispatcher = BaseRequestDispatcher()
+let dispatcher: RequestDispatcher = BaseRequestDispatcher(queue: queue)
 
-dispatcher.response(of: request)
-    .onSuccess(queue.context) { (response: Response) -> Void in
+dispatcher.response(
+    of: request,
+    onSuccess: { [weak self] (response: Response) -> Void in
         // let responseData: Data = response.data
         // Do something with data
         // or
         // let dictionary: [String: Any] = response.json.dictValue
         // Do something with dictionary
-    }
-    .onFailure(queue.context) { (error: NetworkingError) -> Void in
+    },
+    onFailure: { (error: NetworkingError) -> Void in
         // Handle the error
-    }
-    .onComplete(queue.context) { (result: Result<Data, NetworkingError>) -> Void in
+    },
+    onComplete: { () -> Void in
         // Handle the completion of the network request
         // such as clean up of the UI
     }
+)
 ```
 
 ## In-depth Example
@@ -162,7 +164,7 @@ let queue: DispatchQueue = DispatchQueue(label: "NetworkQueue", qos: DispatchQoS
 let request: Request = YourRequest()
 let dispatcher: RequestDispatcher = BaseRequestDispatcher(isDebugMode: true)
 
-dispatcher.response(of: request)
+dispatcher.urlRequest(of: request).url
 ```
 
 With these lines of code, your hypothetical request would create the following URL:
