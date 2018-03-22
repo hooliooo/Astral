@@ -57,7 +57,7 @@ extension BaseRequestDispatcher: BaseDispatcher {
         let urlRequest: URLRequest = self.urlRequest(of: request)
         let queue: DispatchQueue = self.queue
 
-        let task: URLSessionDataTask = BaseRequestDispatcher.session.dataTask(with: urlRequest) {
+        let task: URLSessionDataTask = self.session.dataTask(with: urlRequest) {
             (data: Data?, response: URLResponse?, error: Error?) -> Void in
             // swiftlint:disable:previous closure_parameter_position
             queue.async {

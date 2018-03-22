@@ -14,7 +14,7 @@ public protocol RequestDispatcher: class {
     /**
      The URLSession used for the RequestDispatcher type
     */
-    static var session: URLSession { get }
+    var session: URLSession { get }
 
     /**
      Initializer using a RequestBuiler

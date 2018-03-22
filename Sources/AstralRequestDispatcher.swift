@@ -32,14 +32,13 @@ open class AstralRequestDispatcher {
     private let _isDebugMode: Bool
     private var _tasks: [URLSessionTask] = []
 
-    // MARK: Static Properties
-    open class var session: URLSession {
-        return URLSession.shared
-    }
-
 }
 
 extension AstralRequestDispatcher: RequestDispatcher {
+
+    open var session: URLSession {
+        return URLSession.shared
+    }
 
     // MARK: Getter/Setter Properties
     open var builder: RequestBuilder {
