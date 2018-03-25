@@ -1,6 +1,4 @@
 import XCTest
-import BrightFutures
-import Result
 @testable import Astral
 
 class ResponseTests: XCTestCase {
@@ -14,6 +12,17 @@ class ResponseTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: Stored Properties
+    let decoder: JSONDecoder = JSONDecoder()
+    let queue: DispatchQueue = DispatchQueue(
+        label: "TestQueue",
+        qos: DispatchQoS.utility,
+        attributes: DispatchQueue.Attributes.concurrent
+    )
+
+    private lazy var dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(queue: self.queue)
+
+    // MARK: Instance Methods
     func transform<U: Decodable>(response: Response) -> U {
         do {
 
@@ -25,14 +34,12 @@ class ResponseTests: XCTestCase {
         }
     }
 
-    let decoder: JSONDecoder = JSONDecoder()
-
     func testHeaders() {
-        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
+        let expectation: XCTestExpectation = self.expectation(description: "Header Test")
 
         let request: BasicGetRequest = BasicGetRequest()
 
-        BaseRequestDispatcher(queue: DispatchQueue.global(qos: DispatchQoS.QoSClass.utility)).response(
+        self.dispatcher.response(
             of: request,
             onSuccess: { [weak self] (_ response: Response) -> Void in
                 guard let s = self else { return }
@@ -61,184 +68,127 @@ class ResponseTests: XCTestCase {
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-//    func testHeaders() {
-//        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
-//
-//        let request: BasicGetRequest = BasicGetRequest()
-//
-//        BaseRequestDispatcher().response(of: request)
-//            .map { [unowned self] (response: Response) -> GetResponse in
-//
-//                do {
-//
-//                    return try self.decoder.decode(GetResponse.self, from: response.data)
-//
-//                } catch {
-//                    XCTFail("Failed to get args or url")
-//                    fatalError(error.localizedDescription)
-//                }
-//
-//            }
-//            .onSuccess { (response: GetResponse) -> Void in
-//
-//                let accept: Header = request.headers.filter { $0.key == .accept }.first!
-//                let contentType: Header = request.headers.filter { $0.key == .contentType }.first!
-//                let custom: Header = request.headers.filter { $0.key == Header.Field.custom("Get-Request") }.first!
-//
-//                XCTAssertTrue(response.headers.accept == accept.value.stringValue)
-//                XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
-//                XCTAssertTrue(response.headers.custom == custom.value.stringValue)
-//                expectation.fulfill()
-//            }
-//            .onFailure { (error: NetworkingError) -> Void in
-//                XCTFail(error.localizedDescription)
-//            }
-//
-//        self.waitForExpectations(timeout: 5.0, handler: nil)
-//    }
-//
-//    func testGetRequest() {
-//
-//        let expectation: XCTestExpectation = self.expectation(description: "Get Request Query")
-//
-//        let request: Request = BasicGetRequest()
-//
-//        let dispatcher: RequestDispatcher = BaseRequestDispatcher()
-//
-//        dispatcher.response(of: request)
-//            .map { (response: Response) -> GetResponse in
-//
-//                do {
-//
-//                    return try self.decoder.decode(GetResponse.self, from: response.data)
-//
-//                } catch {
-//                    XCTFail("Failed to get args or url")
-//                    fatalError(error.localizedDescription)
-//                }
-//
-//            }
-//            .onSuccess { (response: GetResponse) -> Void in
-//
-//                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-//                XCTAssertTrue(response.args.this == request.parameters["this"]! as! String)
-//                XCTAssertTrue(response.args.what == request.parameters["what"]! as! String)
-//                XCTAssertTrue(response.args.why == request.parameters["why"]! as! String)
-//                expectation.fulfill()
-//
-//            }
-//            .onFailure { (error: NetworkingError) -> Void in
-//
-//                XCTFail(error.localizedDescription)
-//
-//            }
-//
-//        self.waitForExpectations(timeout: 5.0, handler: nil)
-//
-//    }
-//
-//    /**
-//     PUT and DELETE http methods produce identical results with POST request
-//    */
-//    func testPostRequest() {
-//        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
-//
-//        let request: Request = BasicPostRequest()
-//
-//        let dispatcher: RequestDispatcher = BaseRequestDispatcher()
-//
-//        dispatcher.response(of: request)
-//            .map { (response: Response) -> PostResponse in
-//                do {
-//
-//                    return try self.decoder.decode(PostResponse.self, from: response.data)
-//
-//                } catch {
-//                    XCTFail("Failed to get json or url")
-//                    fatalError(error.localizedDescription)
-//                }
-//            }
-//            .onSuccess { (response: PostResponse) -> Void in
-//                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-//                XCTAssertTrue(response.json.this == request.parameters["this"]! as! String)
-//                XCTAssertTrue(response.json.what == request.parameters["what"]! as! String)
-//                XCTAssertTrue(response.json.why == request.parameters["why"]! as! String)
-//                expectation.fulfill()
-//            }
-//            .onFailure { (error: NetworkingError) -> Void in
-//                XCTFail(error.localizedDescription)
-//            }
-//
-//        self.waitForExpectations(timeout: 5.0, handler: nil)
-//    }
-//
-//    func testFormURLEncodedRequest() {
-//        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
-//
-//        let request: Request = FormURLEncodedPostRequest()
-//
-//        let dispatcher: RequestDispatcher = BaseRequestDispatcher(strategy: FormURLEncodedStrategy())
-//
-//        dispatcher.response(of: request)
-//            .map { (response: Response) -> FormURLEncodedResponse in
-//                do {
-//
-//                    return try self.decoder.decode(FormURLEncodedResponse.self, from: response.data)
-//
-//                } catch {
-//                    XCTFail("Failed to get form or url")
-//                    fatalError(error.localizedDescription)
-//                }
-//            }
-//            .onSuccess { (response: FormURLEncodedResponse) -> Void in
-//                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-//                XCTAssertTrue(response.form.this == request.parameters["this"]! as! String)
-//                XCTAssertTrue(response.form.what == request.parameters["what"]! as! String)
-//                XCTAssertTrue(response.form.why == request.parameters["why"]! as! String)
-//                expectation.fulfill()
-//            }
-//            .onFailure { (error: NetworkingError) -> Void in
-//                XCTFail(error.localizedDescription)
-//            }
-//
-//        self.waitForExpectations(timeout: 5.0, handler: nil)
-//    }
-//
-//    func testMultiPartFormDataRequest() {
-//
-//        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
-//
-//        let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
-//
-//        let dispatcher: RequestDispatcher = BaseRequestDispatcher(
-//            strategy: MultiPartFormDataStrategy(request: request)
-//        )
-//
-//        dispatcher.response(of: request)
-//            .map { (response: Response) -> MultipartFormDataResponse in
-//                do {
-//
-//                    return try self.decoder.decode(MultipartFormDataResponse.self, from: response.data)
-//
-//                } catch {
-//                    XCTFail("Failed to get form or url")
-//                    fatalError(error.localizedDescription)
-//                }
-//            }
-//            .onSuccess { (response: MultipartFormDataResponse) -> Void in
-//                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-//                XCTAssertTrue(response.form.this == request.parameters["this"]! as! String)
-//                XCTAssertTrue(response.form.what == request.parameters["what"]! as! String)
-//                XCTAssertTrue(response.form.why == request.parameters["why"]! as! String)
-//                XCTAssertFalse(response.files.isEmpty)
-//                expectation.fulfill()
-//            }
-//            .onFailure { (error: NetworkingError) -> Void in
-//                XCTFail(error.localizedDescription)
-//            }
-//
-//        self.waitForExpectations(timeout: 5.0, handler: nil)
-//
-//    }
+    func testGetRequest() {
+
+        let expectation: XCTestExpectation = self.expectation(description: "Get Request Test")
+
+        let request: Request = BasicGetRequest()
+
+        self.dispatcher.response(
+            of: request,
+            onSuccess: { [weak self] (response: Response) -> Void in
+                guard let s = self else { return }
+
+                let response: GetResponse = s.transform(response: response)
+
+                XCTAssertTrue(response.url == s.dispatcher.urlRequest(of: request).url!)
+                XCTAssertTrue(response.args.this == request.parameters["this"]! as! String)
+                XCTAssertTrue(response.args.what == request.parameters["what"]! as! String)
+                XCTAssertTrue(response.args.why == request.parameters["why"]! as! String)
+                expectation.fulfill()
+
+            },
+            onFailure: { (error: NetworkingError) -> Void in
+                XCTFail(error.localizedDescription)
+            },
+            onComplete: {}
+        )
+
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+
+    }
+
+    /**
+     PUT and DELETE http methods produce identical results with POST request
+    */
+    func testPostRequest() {
+        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
+
+        let request: Request = BasicPostRequest()
+
+        self.dispatcher.response(
+            of: request,
+            onSuccess: { [weak self] (response: Response) -> Void in
+                guard let s = self else { return }
+
+                let response: PostResponse = s.transform(response: response)
+
+                XCTAssertTrue(response.url == s.dispatcher.urlRequest(of: request).url!)
+                XCTAssertTrue(response.json.this == request.parameters["this"]! as! String)
+                XCTAssertTrue(response.json.what == request.parameters["what"]! as! String)
+                XCTAssertTrue(response.json.why == request.parameters["why"]! as! String)
+                expectation.fulfill()
+            },
+            onFailure: { (error: NetworkingError) -> Void in
+                XCTFail(error.localizedDescription)
+            },
+            onComplete: {}
+        )
+
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+    }
+
+    func testFormURLEncodedRequest() {
+        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
+
+        let request: Request = FormURLEncodedPostRequest()
+
+        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(strategy: FormURLEncodedStrategy(), queue: self.queue)
+
+        dispatcher.response(
+            of: request,
+            onSuccess: { [weak self] (response: Response) -> Void in
+                guard let s = self else { return }
+
+                let response: FormURLEncodedResponse = s.transform(response: response)
+
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                XCTAssertTrue(response.form.this == request.parameters["this"]! as! String)
+                XCTAssertTrue(response.form.what == request.parameters["what"]! as! String)
+                XCTAssertTrue(response.form.why == request.parameters["why"]! as! String)
+                expectation.fulfill()
+            },
+            onFailure: { (error: NetworkingError) -> Void in
+                XCTFail(error.localizedDescription)
+            },
+            onComplete: {}
+        )
+
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+    }
+
+    func testMultiPartFormDataRequest() {
+
+        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
+
+        let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
+
+        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(
+            strategy: MultiPartFormDataStrategy(request: request)
+        )
+
+        dispatcher.response(
+            of: request,
+            onSuccess: { [weak self] (response: Response) -> Void in
+                guard let s = self else { return }
+
+                let response: MultipartFormDataResponse = s.transform(response: response)
+
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                XCTAssertTrue(response.form.this == request.parameters["this"]! as! String)
+                XCTAssertTrue(response.form.what == request.parameters["what"]! as! String)
+                XCTAssertTrue(response.form.why == request.parameters["why"]! as! String)
+                XCTAssertFalse(response.files.isEmpty)
+                expectation.fulfill()
+            },
+            onFailure: { (error: NetworkingError) -> Void in
+                XCTFail(error.localizedDescription)
+            },
+            onComplete: {}
+        )
+
+        self.waitForExpectations(timeout: 5.0, handler: nil)
+
+    }
 
 }

@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct BinHeaders: Decodable {
+public struct BinHeaders: Decodable {
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case accept = "Accept"
         case contentType = "Content-Type"
         case custom = "Get-Request"

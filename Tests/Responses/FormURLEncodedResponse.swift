@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct FormURLEncodedResponse: Decodable {
+public struct FormURLEncodedResponse: Decodable {
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case form
         case headers
         case url

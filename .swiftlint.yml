@@ -5,6 +5,7 @@ disabled_rules:
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - Carthage
+  - Tests
 
 line_length:
   ignores_function_declarations: true

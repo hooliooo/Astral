@@ -8,9 +8,9 @@
 
 import Astral
 
-struct BinData: Decodable {
+public struct BinData: Decodable {
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case this
         case what
         case why

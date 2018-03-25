@@ -29,7 +29,7 @@ open class AbstractDownloadTracker<Model: Equatable> {
     // MARK: Stored Properties
     private let _object: Model
     private var _tasks: [URLSessionDownloadTask]
-    private var _bytesWritten: Int64 = 0
+    public let progress: Progress = Progress()
 
     // MARK: Computed Properties
     /**
@@ -49,19 +49,22 @@ extension AbstractDownloadTracker: DownloadTracking {
     }
 
     open var totalBytesToDownload: Int64 {
-        return self._tasks.reduce(into: 0) { (result: inout Int64, task: URLSessionDownloadTask) -> Void in
-            if let response = task.response {
-                result += response.expectedContentLength
+        self.progress.totalUnitCount = self._tasks
+            .reduce(into: 0) { (result: inout Int64, task: URLSessionDownloadTask) -> Void in
+                if let response = task.response {
+                    result += response.expectedContentLength
+                }
             }
-        }
+
+        return self.progress.totalUnitCount
     }
 
     open var bytesWritten: Int64 {
-        return self._bytesWritten
+        return self.progress.completedUnitCount
     }
 
     open var downloadPercentage: Double {
-        return Double(self._bytesWritten) / Double(self.totalBytesToDownload)
+        return self.progress.fractionCompleted
     }
 
     open var isComplete: Bool {
@@ -70,7 +73,7 @@ extension AbstractDownloadTracker: DownloadTracking {
 
     // MARK: Methods
     open func add(bytes: Int64) {
-        fatalError("add(bytes:) method must be overridden with your implementation")
+        self.progress.completedUnitCount += bytes
     }
 
 }

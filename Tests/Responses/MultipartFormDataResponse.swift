@@ -8,28 +8,28 @@
 
 import Foundation
 
-struct MultipartFormDataResponse: Decodable {
+public struct MultipartFormDataResponse: Decodable {
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case form
         case headers
         case url
         case files
     }
 
-    struct DynamicKey: CodingKey {
+    public struct DynamicKey: CodingKey {
 
-        init?(stringValue: String) {
+        public init?(stringValue: String) {
             self._stringValue = stringValue
         }
 
         private let _stringValue: String
 
-        var stringValue: String { return self._stringValue }
+        public var stringValue: String { return self._stringValue }
 
-        init?(intValue: Int) { return nil }
+        public init?(intValue: Int) { return nil }
 
-        var intValue: Int? { return nil }
+        public var intValue: Int? { return nil }
 
     }
 

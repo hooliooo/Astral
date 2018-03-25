@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct GetResponse: Decodable {
+public struct GetResponse: Decodable {
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case args
         case headers
         case url
