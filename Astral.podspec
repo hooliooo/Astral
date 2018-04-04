@@ -28,5 +28,5 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'Foundation'
 
-  s.swift_version = '4.0'
+  s.swift_version = '4.1'
 end
