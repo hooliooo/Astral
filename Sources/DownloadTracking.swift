@@ -10,35 +10,41 @@ import Foundation
  A DownloadTracking object contains information about its downloading progress such as its URLSessionDownloadTasks,
  total bytes to download, the current bytes downloaded, and status.
 */
-public protocol DownloadTracking {
-    /**
-     URLSessionDownloadTasks associated with the DownloadTracking instance
-    */
-    var tasks: [URLSessionDownloadTask] { get }
+public protocol SessionTracking {
 
     /**
-     Total bytes to be downloaded from the URLSessionDownloadTasks
+     URLSessionDownloadTasks associated with the DownloadTracking instance.
     */
-    var totalBytesToDownload: Int64 { get }
+    var tasks: [URLSessionTask] { get }
 
     /**
-     Total bytes written so far associated with the download of URLSessionDownloadTasks
+     The Progress object managing the information about the state of the tasks.
     */
-    var bytesWritten: Int64 { get }
+    var progress: Progress { get }
 
     /**
-     The percentage of bytesWritten to the totalBytesToDownload
+     The total bytes to be downloaded from the tasks.
     */
-    var downloadPercentage: Double { get }
+    var totalUnitCount: Int64 { get }
 
     /**
-     Checks whether all the URLSessionDownloadTasks are complete or not
+     The total bytes that have been completed so far.
+    */
+    var completedUnitCount: Int64 { get }
+
+    /**
+     The percentage of the totalUnitCount that is completed.
+    */
+    var fractionCompleted: Double { get }
+
+    /**
+     Checks whether all the URLSessionDownloadTasks are complete or not.
     */
     var isComplete: Bool { get }
 
     /**
-     Method used to increment bytesWritten.
-     - parameter bytes: Bytes downloaded from a task associated with URLSessionDownloadTasks of this DownloadTracking instance.
+     Method used to increment the progress of the tasks.
+     - parameter unitCount: The bytes of a download to be incremented to the Progress instance's completeUnitCount property.
     */
-    func add(bytes: Int64)
+    func add(unitCount: Int64)
 }

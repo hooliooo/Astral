@@ -7,7 +7,7 @@
 import Foundation
 
 /**
- A String Enum that represents http methods
+ An enum that represents http methods
 */
 public enum HTTPMethod {
     /**

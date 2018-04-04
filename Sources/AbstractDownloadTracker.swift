@@ -7,50 +7,38 @@
 import Foundation
 
 /**
- A base implementation of the DownloadTracking protocol
+ A base implementation of the DownloadTracking protocol. An AbstractDownloadTracker is a data structure that stores information about the
+ progress of the URLSessionDownloadTasks associated with its underlying Model. It uses a Progress object to manage the state of the
+ URLSessionDownloadTasks.
 */
-open class AbstractDownloadTracker<Model: Equatable> {
+open class AbstractSessionTracker<Model: Equatable>: SessionTracking {
 
     // MARK: Initializer
     /**
-     Initializer for the DownloadTracker
-     - parameter object: Object associated with the DownloadTracker instance
-     - parameter tasks: URLSessionsDownloadTasks associated with the object instance
+     A base implementation of the DownloadTracking protocol. An AbstractDownloadTracker is a data structure that stores information about the
+     progress of the URLSessionDownloadTasks associated with its underlying Model. It uses a Progress object to manage the state of the
+     URLSessionDownloadTasks.
+     - parameter object: The Model associated with the DownloadTracker.
+     - parameter tasks: URLSessionsDownloadTasks associated with the Model.
     */
-    public init(object: Model, tasks: [URLSessionDownloadTask]) {
-        guard type(of: self) != AbstractDownloadTracker.self else {
+    public init(object: Model, tasks: [URLSessionTask]) {
+        guard type(of: self) != AbstractSessionTracker.self else {
             fatalError("AbstractDownloadTracker instances cannot be created. Use subclasses instead")
         }
 
-        self._object = object
-        self._tasks = tasks
+        self.object = object
+        self.tasks = tasks
     }
 
     // MARK: Stored Properties
-    private let _object: Model
-    private var _tasks: [URLSessionDownloadTask]
+    public let object: Model
+    public private(set) var tasks: [URLSessionTask]
     public let progress: Progress = Progress()
 
     // MARK: Computed Properties
-    /**
-     Object instance associated with the DownloadTracker instance
-    */
-    open var object: Model {
-        return self._object
-    }
-
-}
-
-extension AbstractDownloadTracker: DownloadTracking {
-
-    // MARK: Properties
-    open var tasks: [URLSessionDownloadTask] {
-        return self._tasks
-    }
-
-    open var totalBytesToDownload: Int64 {
-        self.progress.totalUnitCount = self._tasks
-            .reduce(into: 0) { (result: inout Int64, task: URLSessionDownloadTask) -> Void in
+    open var totalUnitCount: Int64 {
+        self.progress.totalUnitCount = self.tasks
+            .reduce(into: 0) { (result: inout Int64, task: URLSessionTask) -> Void in
                 if let response = task.response {
                     result += response.expectedContentLength
                 }
@@ -59,32 +47,45 @@ extension AbstractDownloadTracker: DownloadTracking {
         return self.progress.totalUnitCount
     }
 
-    open var bytesWritten: Int64 {
+    open var completedUnitCount: Int64 {
         return self.progress.completedUnitCount
     }
 
-    open var downloadPercentage: Double {
+    open var fractionCompleted: Double {
         return self.progress.fractionCompleted
     }
 
     open var isComplete: Bool {
-        return self._tasks.contains { $0.state != URLSessionTask.State.completed } == false
+        return self.tasks.contains { $0.state != URLSessionTask.State.completed } == false
     }
 
-    // MARK: Methods
-    open func add(bytes: Int64) {
-        self.progress.completedUnitCount += bytes
+    // MARK: Instance Methods
+    open func add(unitCount: Int64) {
+        self.progress.completedUnitCount += unitCount
+    }
+
+    open func add(task: URLSessionTask) {
+        self.tasks.append(task)
+    }
+
+    open func remove(task: URLSessionTask) -> URLSessionTask? {
+        if let idx = self.tasks.index(of: task) {
+            let task: URLSessionTask = self.tasks.remove(at: idx)
+            return task
+        } else {
+            return nil
+        }
     }
 
 }
 
-extension AbstractDownloadTracker: Equatable {
+extension AbstractSessionTracker: Equatable {
 
-    open static func == (lhs: AbstractDownloadTracker<Model>, rhs: AbstractDownloadTracker<Model>) -> Bool {
+    open static func == (lhs: AbstractSessionTracker<Model>, rhs: AbstractSessionTracker<Model>) -> Bool {
         return lhs.object == rhs.object &&
             lhs.tasks == rhs.tasks &&
-            lhs.totalBytesToDownload == rhs.totalBytesToDownload &&
-            lhs.bytesWritten == rhs.bytesWritten
+            lhs.totalUnitCount == rhs.totalUnitCount &&
+            lhs.completedUnitCount == rhs.completedUnitCount
     }
 
 }

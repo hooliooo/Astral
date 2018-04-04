@@ -30,7 +30,7 @@ public struct FormURLEncodedStrategy {
     }
 
     private func convert(dict: [String: Any]) -> [String: String]? {
-        let bodyDict: [(String, String)] = dict.flatMap { (dict: (key: String, value: Any)) -> (String, String) in
+        let bodyDict: [(String, String)] = dict.compactMap { (dict: (key: String, value: Any)) -> (String, String) in
             return (dict.key, String(describing: dict.value))
         }
 

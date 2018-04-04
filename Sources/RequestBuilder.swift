@@ -41,7 +41,7 @@ public extension RequestBuilder {
      - parameter request: The Request instance used to create the URLQueryItems.
     */
     private func queryItems(of request: Request) -> [URLQueryItem] {
-        return request.parameters.flatMap { (item: (key: String, value: Any)) -> URLQueryItem? in
+        return request.parameters.compactMap { (item: (key: String, value: Any)) -> URLQueryItem? in
             return URLQueryItem(name: item.key, value: String(describing: item.value))
         }
     }

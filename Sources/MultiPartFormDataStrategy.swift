@@ -66,16 +66,16 @@ extension MultiPartFormDataStrategy: DataStrategy {
                 }
         }
 
-        for formData in self.files {
+        for file in self.files {
             self.append(string: boundaryPrefix, to: &body)
             self.append(
-                string: "Content-Disposition: form-data; name=\"\(formData.name)\"; filename=\"\(formData.filename)\"\r\n",
+                string: "Content-Disposition: form-data; name=\"\(file.name)\"; filename=\"\(file.fileName)\"\r\n",
                 to: &body
             )
 
-            self.append(string: "Content-Type: \(formData.contentType)\r\n\r\n", to: &body)
+            self.append(string: "Content-Type: \(file.contentType)\r\n\r\n", to: &body)
 
-            body.append(formData.data)
+            body.append(file.data)
 
             self.append(string: "\r\n", to: &body)
         }

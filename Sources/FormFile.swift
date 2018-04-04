@@ -14,13 +14,13 @@ public struct FormFile {
     /**
      Intializer of a FormData instance
      - parameter name: The name for the file to be used in the multipart form-data request
-     - parameter filename: Name of the file
+     - parameter fileName: Name of the file
      - parameter contentType: The mime type of the file
      - parameter data: Contents of the file
     */
-    public init(name: String, filename: String, contentType: String, data: Data) {
+    public init(name: String, fileName: String, contentType: String, data: Data) {
         self.name = name
-        self.filename = filename
+        self.fileName = fileName
         self.contentType = contentType
         self.data = data
     }
@@ -34,7 +34,7 @@ public struct FormFile {
     /**
      The file's name
     */
-    public let filename: String
+    public let fileName: String
 
     /**
      The mime type of the file
