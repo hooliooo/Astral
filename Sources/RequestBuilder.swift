@@ -41,9 +41,34 @@ public extension RequestBuilder {
      - parameter request: The Request instance used to create the URLQueryItems.
     */
     private func queryItems(of request: Request) -> [URLQueryItem] {
-        return request.parameters.compactMap { (item: (key: String, value: Any)) -> URLQueryItem? in
-            return URLQueryItem(name: item.key, value: String(describing: item.value))
+
+        var queryItems: [URLQueryItem] = []
+
+        for (key, value) in request.parameters {
+
+            if let value = value as? [String: Any],
+                let data = try? JSONSerialization.data(withJSONObject: value),
+                let stringifiedJSON = String(data: data, encoding: String.Encoding.utf8) {
+
+                queryItems.append(URLQueryItem(name: key, value: stringifiedJSON))
+
+            } else if let arrayValues = value as? [Any] {
+
+                for arrayValue in arrayValues {
+
+                    queryItems.append(URLQueryItem(name: key, value: String(describing: arrayValue)))
+
+                }
+
+            } else {
+
+                queryItems.append(URLQueryItem(name: key, value: String(describing: value)))
+
+            }
+
         }
+
+        return queryItems
     }
 
     /**

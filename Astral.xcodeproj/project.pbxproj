@@ -11,6 +11,8 @@
 		14292E1B20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14292E1D20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
+		145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
+		145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
@@ -146,6 +148,8 @@
 /* Begin PBXFileReference section */
 		14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Astral.swift"; sourceTree = "<group>"; };
 		14361B542036FA0400564AD2 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
+		145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedParametersGetRequest.swift; sourceTree = "<group>"; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				OBJ_43 /* Responses */,
 				OBJ_48 /* Utilities */,
 				OBJ_36 /* HeaderTests.swift */,
+				145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */,
 				OBJ_42 /* ResponseTests.swift */,
 			);
 			path = Tests;
@@ -323,6 +328,7 @@
 				OBJ_39 /* BasicMultipartFormDataRequest.swift */,
 				OBJ_40 /* BasicPostRequest.swift */,
 				OBJ_41 /* FormURLEncodedPostRequest.swift */,
+				145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -694,11 +700,13 @@
 			files = (
 				OBJ_107 /* BasicConfiguration.swift in Sources */,
 				OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */,
+				145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */,
 				OBJ_109 /* MultipartConfiguration.swift in Sources */,
 				OBJ_110 /* HeaderTests.swift in Sources */,
 				OBJ_111 /* BasicGetRequest.swift in Sources */,
 				OBJ_112 /* BasicMultipartFormDataRequest.swift in Sources */,
 				OBJ_113 /* BasicPostRequest.swift in Sources */,
+				145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */,
 				OBJ_114 /* FormURLEncodedPostRequest.swift in Sources */,
 				OBJ_115 /* ResponseTests.swift in Sources */,
 				OBJ_116 /* FormURLEncodedResponse.swift in Sources */,

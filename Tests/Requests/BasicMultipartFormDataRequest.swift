@@ -37,13 +37,13 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
     let files: [FormFile] = [
         FormFile(
             name: "file1",
-            filename: "image1.png",
+            fileName: "image1.png",
             contentType: "image/png",
             data: Data()
         ),
         FormFile(
             name: "file2",
-            filename: "image2.png",
+            fileName: "image2.png",
             contentType: "image/png",
             data: Data()
         )

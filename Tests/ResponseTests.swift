@@ -1,14 +1,14 @@
 import XCTest
 @testable import Astral
 
-class ResponseTests: XCTestCase {
+public class ResponseTests: XCTestCase {
 
-    override func setUp() {
+    public override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDown() {
+    public override func tearDown() {
         super.tearDown()
     }
 
@@ -23,7 +23,7 @@ class ResponseTests: XCTestCase {
     private lazy var dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(queue: self.queue)
 
     // MARK: Instance Methods
-    func transform<U: Decodable>(response: Response) -> U {
+    public func transform<U: Decodable>(response: Response) -> U {
         do {
 
             return try self.decoder.decode(U.self, from: response.data)
@@ -34,7 +34,7 @@ class ResponseTests: XCTestCase {
         }
     }
 
-    func testHeaders() {
+    public func testHeaders() {
         let expectation: XCTestExpectation = self.expectation(description: "Header Test")
 
         let request: BasicGetRequest = BasicGetRequest()
@@ -68,7 +68,7 @@ class ResponseTests: XCTestCase {
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    func testGetRequest() {
+    public func testGetRequest() {
 
         let expectation: XCTestExpectation = self.expectation(description: "Get Request Test")
 
@@ -101,7 +101,7 @@ class ResponseTests: XCTestCase {
     /**
      PUT and DELETE http methods produce identical results with POST request
     */
-    func testPostRequest() {
+    public func testPostRequest() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
         let request: Request = BasicPostRequest()
@@ -128,7 +128,7 @@ class ResponseTests: XCTestCase {
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    func testFormURLEncodedRequest() {
+    public func testFormURLEncodedRequest() {
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 
         let request: Request = FormURLEncodedPostRequest()
@@ -157,7 +157,7 @@ class ResponseTests: XCTestCase {
         self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    func testMultiPartFormDataRequest() {
+    public func testMultiPartFormDataRequest() {
 
         let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
 

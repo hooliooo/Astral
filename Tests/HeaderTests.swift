@@ -1,39 +1,31 @@
-//
-//  HeaderTests.swift
-//  AstralTests
-//
-//  Created by Julio Alorro on 2/3/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
-//
-
 import XCTest
 @testable import Astral
 
-class HeaderTests: XCTestCase {
+public final class HeaderTests: XCTestCase {
 
-    override func setUp() {
+    public override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
-    override func tearDown() {
+    public override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
-    func testHeaderFields() {
+    public func testHeaderFields() {
         XCTAssertTrue(Header.Field.accept.stringValue == "Accept")
         XCTAssertTrue(Header.Field.authorization.stringValue == "Authorization")
         XCTAssertTrue(Header.Field.contentType.stringValue == "Content-Type")
         XCTAssertTrue(Header.Field.custom("MyCustomField").stringValue == "MyCustomField")
     }
 
-    func testHeaderValues() {
+    public func testHeaderValues() {
         XCTAssertTrue(Header.Value.custom("MyCustomValue").stringValue == "MyCustomValue")
         XCTAssertTrue(Header.Value.basicAuthorization("myToken").stringValue == "Basic myToken")
     }
 
-    func testMediaTypes() {
+    public func testMediaTypes() {
         XCTAssertTrue(MediaType.application("customFormat").stringValue == "application/customFormat")
         XCTAssertTrue(MediaType.applicationJSON.stringValue == "application/json")
         XCTAssertTrue(MediaType.applicationURLEncoded.stringValue == "application/x-www-form-urlencoded")
@@ -45,7 +37,7 @@ class HeaderTests: XCTestCase {
         XCTAssertTrue(MediaType.multipartFormData(boundary).stringValue == "multipart/form-data; boundary=\(boundary)")
     }
 
-    func testEquality() {
+    public func testEquality() {
 
         let header1: Header = Header(key: Header.Field.accept, value: Header.Value.custom("Custom"))
         let header2: Header = Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
@@ -54,7 +46,7 @@ class HeaderTests: XCTestCase {
 
     }
 
-    func testOverwrite() {
+    public func testOverwrite() {
 
         let set1: Set<Header> = [Header(key: Header.Field.accept, value: Header.Value.custom("Custom"))]
         let set2: Set<Header> = [Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))]
