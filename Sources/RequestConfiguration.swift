@@ -30,8 +30,7 @@ public protocol RequestConfiguration: CustomStringConvertible, CustomDebugString
      
      The default implementation creates a URLComponents instance and adds the scheme and host.
      
-     The basePathComponents are typically appended by different endpoints in an API therefore aren't added to the URLComponents'
-     path property. Should be finalized in the RequestBuilder.
+     The path property of baseURLComponents is finalized by the RequestBuilder.
     */
     var baseURLComponents: URLComponents { get }
 
