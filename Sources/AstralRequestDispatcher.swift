@@ -12,7 +12,12 @@ import Foundation
 open class AstralRequestDispatcher {
 
     // MARK: Intializers
-    public required init(builder: RequestBuilder = BaseRequestBuilder(strategy: JSONStrategy()), isDebugMode: Bool = true) {
+    public required init(
+        builder: RequestBuilder = BaseRequestBuilder(
+            strategy: JSONStrategy(kind: JSONStrategy.Kind.dict)
+        ),
+        isDebugMode: Bool = true
+    ) {
         self._requestBuilder = builder
         self._isDebugMode = isDebugMode
     }
