@@ -19,11 +19,11 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         "post"
     ]
 
-    let parameters: [String: Any] = [
-        "this": "that",
-        "what": "where",
-        "why": "what"
-    ]
+    let parameters: Parameters = Parameters.dict([
+    "this": "that",
+    "what": "where",
+    "why": "what"
+    ])
 
     var headers: Set<Header> {
         return [

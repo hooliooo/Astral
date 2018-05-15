@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1413034020AABA2C0083CE27 /* AstralSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* AstralSession.swift */; };
+		1413034120AABA2C0083CE27 /* AstralSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* AstralSession.swift */; };
+		1413034220AABA2C0083CE27 /* AstralSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* AstralSession.swift */; };
+		1413034320AABA2C0083CE27 /* AstralSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* AstralSession.swift */; };
 		14292E1A20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14292E1B20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
 		14292E1D20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
+		143A5BAC20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
+		143A5BAD20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
+		143A5BAE20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
+		143A5BAF20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
 		145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
 		145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
@@ -146,8 +154,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1413033F20AABA2C0083CE27 /* AstralSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralSession.swift; sourceTree = "<group>"; };
 		14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Astral.swift"; sourceTree = "<group>"; };
 		14361B542036FA0400564AD2 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		143A5BAB20AAC4CD004EE209 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
 		145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedParametersGetRequest.swift; sourceTree = "<group>"; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -369,16 +379,18 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* AbstractDownloadTracker.swift */,
-				OBJ_9 /* BaseRequestBuilder.swift */,
 				OBJ_10 /* AstralRequestDispatcher.swift */,
+				1413033F20AABA2C0083CE27 /* AstralSession.swift */,
+				14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */,
+				OBJ_9 /* BaseRequestBuilder.swift */,
 				14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */,
 				OBJ_11 /* DataStrategy.swift */,
 				OBJ_12 /* DownloadManager.swift */,
 				OBJ_13 /* DownloadTracking.swift */,
 				OBJ_14 /* FormFile.swift */,
 				OBJ_15 /* FormURLEncodedStrategy.swift */,
-				OBJ_16 /* HTTPMethod.swift */,
 				OBJ_17 /* Header.swift */,
+				OBJ_16 /* HTTPMethod.swift */,
 				OBJ_18 /* JSON.swift */,
 				OBJ_19 /* JSONResponse.swift */,
 				OBJ_20 /* JSONStrategy.swift */,
@@ -386,14 +398,14 @@
 				OBJ_22 /* MultiPartFormDataRequest.swift */,
 				OBJ_23 /* MultiPartFormDataStrategy.swift */,
 				OBJ_24 /* NetworkingError.swift */,
+				143A5BAB20AAC4CD004EE209 /* Parameters.swift */,
 				OBJ_25 /* Request.swift */,
 				OBJ_26 /* RequestBuilder.swift */,
 				OBJ_27 /* RequestConfiguration.swift */,
 				OBJ_28 /* RequestDispatcher.swift */,
 				OBJ_29 /* Response.swift */,
-				OBJ_30 /* URLScheme.swift */,
-				14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */,
 				14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */,
+				OBJ_30 /* URLScheme.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -614,6 +626,7 @@
 				14C4BFC92026DC2B00938416 /* JSON.swift in Sources */,
 				14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */,
 				14C4BFCB2026DC2B00938416 /* JSONStrategy.swift in Sources */,
+				143A5BAD20AAC4CD004EE209 /* Parameters.swift in Sources */,
 				14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */,
 				14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */,
@@ -623,6 +636,7 @@
 				14C4BFD12026DC2B00938416 /* RequestBuilder.swift in Sources */,
 				14C4BFD22026DC2B00938416 /* RequestConfiguration.swift in Sources */,
 				14C4BFD32026DC2B00938416 /* RequestDispatcher.swift in Sources */,
+				1413034120AABA2C0083CE27 /* AstralSession.swift in Sources */,
 				14C4BFD42026DC2B00938416 /* Response.swift in Sources */,
 				14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */,
 			);
@@ -647,6 +661,7 @@
 				14C4C0112026DDAE00938416 /* JSON.swift in Sources */,
 				14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */,
 				14C4C0132026DDAE00938416 /* JSONStrategy.swift in Sources */,
+				143A5BAE20AAC4CD004EE209 /* Parameters.swift in Sources */,
 				14C4C0142026DDAE00938416 /* MediaType.swift in Sources */,
 				14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */,
@@ -656,6 +671,7 @@
 				14C4C0192026DDAE00938416 /* RequestBuilder.swift in Sources */,
 				14C4C01A2026DDAE00938416 /* RequestConfiguration.swift in Sources */,
 				14C4C01B2026DDAE00938416 /* RequestDispatcher.swift in Sources */,
+				1413034220AABA2C0083CE27 /* AstralSession.swift in Sources */,
 				14C4C01C2026DDAE00938416 /* Response.swift in Sources */,
 				14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */,
 			);
@@ -680,6 +696,7 @@
 				14C4C0352026DDD700938416 /* JSON.swift in Sources */,
 				14C4C0362026DDD700938416 /* JSONResponse.swift in Sources */,
 				14C4C0372026DDD700938416 /* JSONStrategy.swift in Sources */,
+				143A5BAF20AAC4CD004EE209 /* Parameters.swift in Sources */,
 				14C4C0382026DDD700938416 /* MediaType.swift in Sources */,
 				14E5E386204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0392026DDD700938416 /* MultiPartFormDataRequest.swift in Sources */,
@@ -689,6 +706,7 @@
 				14C4C03D2026DDD700938416 /* RequestBuilder.swift in Sources */,
 				14C4C03E2026DDD700938416 /* RequestConfiguration.swift in Sources */,
 				14C4C03F2026DDD700938416 /* RequestDispatcher.swift in Sources */,
+				1413034320AABA2C0083CE27 /* AstralSession.swift in Sources */,
 				14C4C0402026DDD700938416 /* Response.swift in Sources */,
 				14C4C0412026DDD700938416 /* URLScheme.swift in Sources */,
 			);
@@ -737,6 +755,7 @@
 				OBJ_146 /* JSON.swift in Sources */,
 				OBJ_147 /* JSONResponse.swift in Sources */,
 				OBJ_148 /* JSONStrategy.swift in Sources */,
+				143A5BAC20AAC4CD004EE209 /* Parameters.swift in Sources */,
 				OBJ_149 /* MediaType.swift in Sources */,
 				14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				OBJ_150 /* MultiPartFormDataRequest.swift in Sources */,
@@ -746,6 +765,7 @@
 				OBJ_154 /* RequestBuilder.swift in Sources */,
 				OBJ_155 /* RequestConfiguration.swift in Sources */,
 				OBJ_156 /* RequestDispatcher.swift in Sources */,
+				1413034020AABA2C0083CE27 /* AstralSession.swift in Sources */,
 				OBJ_157 /* Response.swift in Sources */,
 				OBJ_158 /* URLScheme.swift in Sources */,
 			);

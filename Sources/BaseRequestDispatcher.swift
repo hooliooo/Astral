@@ -16,7 +16,7 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
      - parameter queue: The DispatchQueue that the callbacks will execute on.
     */
     public init(
-        builder: RequestBuilder = BaseRequestBuilder(strategy: JSONStrategy(kind: JSONStrategy.Kind.dict)),
+        builder: RequestBuilder = BaseRequestBuilder(strategy: JSONStrategy()),
         isDebugMode: Bool = true,
         queue: DispatchQueue = DispatchQueue.main
     ) {

@@ -18,11 +18,11 @@ struct NestedParametersGetRequest: Request {
         "get"
     ]
 
-    let parameters: [String: Any] = [
+    let parameters: Parameters = Parameters.dict([
         "nested": ["aDict": "someValue"],
         "anotherNested": ["anotherDict": 3],
         "nestedArray": ["this", "that", "what"]
-    ]
+    ])
 
     let headers: Set<Header> = [
         Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("YES")),

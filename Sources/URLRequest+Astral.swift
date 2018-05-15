@@ -1,8 +1,7 @@
 //
-//  URLRequest+Astral.swift
 //  Astral
-//
-//  Created by Julio Miguel Alorro on 3/11/18.
+//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation

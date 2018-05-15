@@ -79,7 +79,7 @@ struct PokemonRequest: Request {
         "\(self.id)"
     ]
 
-    let parameters: [String : Any] = [:]
+    let parameters: Parameters = .none
 
     let headers: Set<Header> = []
 }
@@ -144,10 +144,10 @@ struct YourRequest: Request {
         "components"
     ]
 
-    let parameters: [String : Any] = [
+    let parameters: Parameters = .dict([
         "yourKey": "yourValue,
         "anotherKey": "anotherValue"
-    ]
+    ])
 
     let headers: Set<Header> = [
         Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))

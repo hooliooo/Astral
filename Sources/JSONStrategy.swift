@@ -13,35 +13,22 @@ import Foundation
 */
 public struct JSONStrategy: DataStrategy {
 
-    // MARK: Enum
-    public enum Kind {
-        case dict
-        case array
-    }
-
     // MARK: Initializer
-    public init(kind: JSONStrategy.Kind) {
-        self.kind = kind
-    }
-
-    // MARK: Stored Properties
-    public let kind: JSONStrategy.Kind
+    public init () {}
 
     // MARK: Instance Methods
-    public func createHTTPBody(from dict: [String: Any]) -> Data? {
+    public func createHTTPBody(from parameters: Parameters) -> Data? {
 
-        switch self.kind {
-            case .dict:
+        switch parameters {
+            case .dict(let dict):
                 return try? JSONSerialization.data(withJSONObject: dict)
 
-            case .array:
-                switch dict.count == 1 {
-                    case true:
-                        return try? JSONSerialization.data(withJSONObject: dict.values.first!)
+            case .array(let array):
+                return try? JSONSerialization.data(withJSONObject: array)
 
-                    case false:
-                        fatalError("You specified array but your dictionary contains more than one key-value pair")
-                }
+            case .none:
+                return nil
+
         }
 
     }

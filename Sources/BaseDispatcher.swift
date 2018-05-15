@@ -19,9 +19,9 @@ public protocol BaseDispatcher: RequestDispatcher {
      Executed Asynchronously on the DispatchQueue. Returns the URLSessionDataTask created.
      - parameter request:    The Request instance used to build the URLRequest from the RequestBuilder.
      - parameter onSuccess:  The callback that is executed when the completion handler returns valid Data.
-     - parameter response: The Data from the completion handler transformed as a Response.
+     - parameter response:   The Data from the completion handler transformed as a Response.
      - parameter onFailure:  The callback that is executed when the completion handler return an Error.
-     - parameter error:  The Error from the completion handler transformed as a NetworkingError.
+     - parameter error:      The Error from the completion handler transformed as a NetworkingError.
      - parameter onComplete: The callback that is executed when the completion handler returns either Data or en Error.
     */
     @discardableResult

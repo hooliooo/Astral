@@ -28,7 +28,7 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      http parameters to be sent in the http network request body or as query string(s) in the URL
     */
-    var parameters: [String: Any] { get }
+    var parameters: Parameters { get }
 
     /**
      http headers to be sent with the http network request

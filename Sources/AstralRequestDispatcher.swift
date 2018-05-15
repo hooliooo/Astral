@@ -14,7 +14,7 @@ open class AstralRequestDispatcher {
     // MARK: Intializers
     public required init(
         builder: RequestBuilder = BaseRequestBuilder(
-            strategy: JSONStrategy(kind: JSONStrategy.Kind.dict)
+            strategy: JSONStrategy()
         ),
         isDebugMode: Bool = true
     ) {
@@ -39,7 +39,7 @@ open class AstralRequestDispatcher {
 
     // MARK: Computed Properties
     open var session: URLSession {
-        return URLSession.shared
+        return Astral.shared.session
     }
 
 }

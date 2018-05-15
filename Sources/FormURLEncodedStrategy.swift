@@ -43,16 +43,24 @@ public struct FormURLEncodedStrategy {
 
 extension FormURLEncodedStrategy: DataStrategy {
 
-    public func createHTTPBody(from dict: [String: Any]) -> Data? {
-        guard let parametersDict = self.convert(dict: dict) else { return nil }
+    public func createHTTPBody(from parameters: Parameters) -> Data? {
 
-        let parameters: [String] = parametersDict.map { (dict: (key: String, value: String)) -> String in
-            return "\(dict.key)=\(self.percentEscaped(string: dict.value))"
+        switch parameters {
+            case .array, .none:
+                return nil
+
+            case .dict(let dict):
+
+                guard let parametersDict = self.convert(dict: dict) else { return nil }
+
+                let parameters: [String] = parametersDict.map { (dict: (key: String, value: String)) -> String in
+                    return "\(dict.key)=\(self.percentEscaped(string: dict.value))"
+                }
+
+                let parameterString: String = parameters.joined(separator: "&")
+
+                return parameterString.data(using: String.Encoding.utf8)
         }
-
-        let parameterString: String = parameters.joined(separator: "&")
-
-        return parameterString.data(using: String.Encoding.utf8)
     }
 
 }

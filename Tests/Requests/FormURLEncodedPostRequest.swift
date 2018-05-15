@@ -19,11 +19,11 @@ struct FormURLEncodedPostRequest: Request {
         "post"
     ]
 
-    let parameters: [String: Any] = [
+    let parameters: Parameters = Parameters.dict([
         "this": "that",
         "what": "where",
         "why": "what"
-    ]
+    ])
 
     let headers: Set<Header> = [
         Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes"))

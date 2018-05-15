@@ -48,40 +48,47 @@ public struct MultiPartFormDataStrategy {
 // MARK: - DataStrategy Methods
 extension MultiPartFormDataStrategy: DataStrategy {
 
-    public func createHTTPBody(from dict: [String: Any]) -> Data? {
-        var body: Data = Data()
-        let boundaryPrefix: String = "--\(self.boundary)\r\n"
+    public func createHTTPBody(from parameters: Parameters) -> Data? {
 
-        switch dict.isEmpty {
-            case true:
-                break
+        switch parameters {
+            case .array, .none:
+                return nil
 
-            case false:
-                for (key, value) in dict {
-                    self.append(string: boundaryPrefix, to: &body)
-                    self.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n", to: &body)
+            case .dict(let dict):
+                var body: Data = Data()
+                let boundaryPrefix: String = "--\(self.boundary)\r\n"
 
-                    let value: String = String(describing: value)
-                    self.append(string: "\(value)\r\n", to: &body)
+                switch dict.isEmpty {
+                    case true:
+                        break
+
+                    case false:
+                        for (key, value) in dict {
+                            self.append(string: boundaryPrefix, to: &body)
+                            self.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n", to: &body)
+
+                            let value: String = String(describing: value)
+                            self.append(string: "\(value)\r\n", to: &body)
+                        }
                 }
+
+                for file in self.files {
+                    self.append(string: boundaryPrefix, to: &body)
+                    self.append(
+                        string: "Content-Disposition: form-data; name=\"\(file.name)\"; filename=\"\(file.fileName)\"\r\n",
+                        to: &body
+                    )
+
+                    self.append(string: "Content-Type: \(file.contentType)\r\n\r\n", to: &body)
+
+                    body.append(file.data)
+
+                    self.append(string: "\r\n", to: &body)
+                }
+
+                self.append(string: "--\(self.boundary)--\r\n", to: &body)
+
+                return body
         }
-
-        for file in self.files {
-            self.append(string: boundaryPrefix, to: &body)
-            self.append(
-                string: "Content-Disposition: form-data; name=\"\(file.name)\"; filename=\"\(file.fileName)\"\r\n",
-                to: &body
-            )
-
-            self.append(string: "Content-Type: \(file.contentType)\r\n\r\n", to: &body)
-
-            body.append(file.data)
-
-            self.append(string: "\r\n", to: &body)
-        }
-
-        self.append(string: "--\(self.boundary)--\r\n", to: &body)
-
-        return body
     }
 }
