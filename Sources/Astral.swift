@@ -30,6 +30,14 @@ public final class Astral {
             set { self._defaultConfiguration = newValue }
         }
 
+        // MARK: Initializer
+        /**
+         Astral.Configuration simply holds the URLSession to be used by RequestDispatchers that adopt that session.
+        */
+        public init(session: URLSession) {
+            self.session = session
+        }
+
         // MARK: Stored Properties
         /**
          The URLSession managed by this Configuration
