@@ -49,8 +49,28 @@ public extension AstralURLExtension {
                 }
             }
 
-            if let body = self.base.httpBody, !body.isEmpty, let string = String(data: body, encoding: .utf8), !string.isEmpty {
-                result += "-d '\(string)' \\\n"
+            if let body = self.base.httpBody, !body.isEmpty {
+
+                let dataString: String
+
+                if let string = String(data: body, encoding: String.Encoding.utf8) {
+
+                    dataString = string
+
+                } else {
+
+                    dataString = body.base64EncodedString()
+
+                }
+
+                switch dataString.isEmpty {
+                    case true:
+                        break
+
+                    case false:
+                        result += "-d '\(dataString)' \\\n"
+                }
+
             }
 
             if let url = self.base.url {

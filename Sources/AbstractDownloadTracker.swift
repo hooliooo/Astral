@@ -81,7 +81,7 @@ open class AbstractSessionTracker<Model: Equatable>: SessionTracking {
 
 extension AbstractSessionTracker: Equatable {
 
-    open static func == (lhs: AbstractSessionTracker<Model>, rhs: AbstractSessionTracker<Model>) -> Bool {
+    public static func == (lhs: AbstractSessionTracker<Model>, rhs: AbstractSessionTracker<Model>) -> Bool {
         return lhs.object == rhs.object &&
             lhs.tasks == rhs.tasks &&
             lhs.totalUnitCount == rhs.totalUnitCount &&
