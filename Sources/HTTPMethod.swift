@@ -4,8 +4,6 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
-
 /**
  An enum that represents http methods
 */

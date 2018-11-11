@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Data
+import class Foundation.JSONSerialization
 
 /**
  An implementation of DataStrategy that is suited for a Content-Type of application/json for the body of an http request.

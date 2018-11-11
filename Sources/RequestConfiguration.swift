@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.URLComponents
 
 /**
  A RequestConfiguration defines the base URL and base headers of a Request

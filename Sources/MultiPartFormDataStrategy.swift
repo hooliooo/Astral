@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Data
 
 /**
  An implementation of DataStrategy specifically for creating an HTTP body for multipart form-data.

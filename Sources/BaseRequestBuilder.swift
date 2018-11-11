@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Data
 
 /**
  An implementation of RequestBuilder that can build URLRequests for simple http network requests.

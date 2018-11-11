@@ -4,7 +4,12 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Data
+import struct Foundation.URL
+import struct Foundation.URLRequest
+import struct Foundation.URLQueryItem
+import struct Foundation.URLComponents
+import class Foundation.JSONSerialization
 
 /**
  A RequestBuilder uses the information of a Request to create an instance of URLRequest

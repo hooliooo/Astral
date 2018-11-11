@@ -5,17 +5,30 @@
 //  Created by Julio Miguel Alorro on 5/15/18.
 //
 
-import Foundation
-
+/**
+ Representation of an HTTP request's body (when the method is POST, PUT, DELETE) or query (when the method is GET).
+*/
 public enum Parameters {
 
+    /**
+     A single [String: Any] dictionary.
+    */
     case dict([String: Any])
 
+    /**
+     An array of [String: Any] dictionaries.
+    */
     case array([[String: Any]])
 
+    /**
+     No parameters.
+    */
     case none
 
     // MARK: Computed Properties
+    /**
+     Boolean that checks if Parameters exist.
+    */
     public var isEmpty: Bool {
         switch self {
             case .dict(let dict):

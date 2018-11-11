@@ -6,8 +6,6 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import Foundation
-
 /**
  Representation of a Media Type for HTTP requests.
 */

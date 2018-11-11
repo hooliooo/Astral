@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Data
 
 /**
  A DataStrategy defines the steps used to create the body for an http request

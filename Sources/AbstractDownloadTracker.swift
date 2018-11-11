@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.URLSessionTask
+import class Foundation.Progress
 
 /**
  A base implementation of the DownloadTracking protocol. An AbstractDownloadTracker is a data structure that stores information about the

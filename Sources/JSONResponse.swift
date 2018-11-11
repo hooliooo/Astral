@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.HTTPURLResponse
+import struct Foundation.Data
 
 /**
  An implementation of Response that represents the data from an HTTPURLResponse.

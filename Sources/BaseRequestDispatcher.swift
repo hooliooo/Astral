@@ -4,7 +4,12 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.DispatchQueue
+import class Foundation.URLSessionDataTask
+import struct Foundation.URLRequest
+import class Foundation.URLResponse
+import class Foundation.HTTPURLResponse
+import struct Foundation.Data
 
 open class BaseRequestDispatcher: AstralRequestDispatcher {
 

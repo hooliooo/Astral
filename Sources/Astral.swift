@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.URLSession
 
 /**
  Astral is used to do URLSession configuration for RequestDispatchers. It is typically a singleton that configures the URLSession

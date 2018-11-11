@@ -4,7 +4,9 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.URLSessionTask
+import class Foundation.URLSession
+import struct Foundation.URLRequest
 
 /**
  An implementation of RequestDispatcher that uses the URLSession shared instance for http network requests.

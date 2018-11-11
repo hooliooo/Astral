@@ -6,8 +6,6 @@
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
-import Foundation
-
 /**
  Representation of an HTTP header's name and value
 */

@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.URLSessionTask
+import class Foundation.Progress
 
 /**
  A DownloadTracking object contains information about its downloading progress such as its URLSessionDownloadTasks,

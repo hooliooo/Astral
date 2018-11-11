@@ -4,7 +4,9 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import protocol Foundation.URLSessionDownloadDelegate
+import class Foundation.OperationQueue
+import class Foundation.URLSession
 
 /**
  A DownloadManager is the basic interface used to facilitate the management of URLSessionDownloadTasks during the download phase

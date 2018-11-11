@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.JSONSerialization
+import struct Foundation.Data
 
 /**
  The JSON enum represents the data from an http response as either an array of dictionaries or a single dictionary

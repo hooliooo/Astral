@@ -4,8 +4,6 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
-
 /**
  A MultiPartFormDataRequest is a type of Request used specifically for creating multipart form-data requests.
  It is designed to work with the MultipartFormDataStrategy struct to reduce boilerplate code, therefore is a convenience interface.

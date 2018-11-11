@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.CharacterSet
+import struct Foundation.Data
 
 /**
  An implementation of DataStrategy that is suited for a Content-Type of application/x-www-form-urlencoded for 

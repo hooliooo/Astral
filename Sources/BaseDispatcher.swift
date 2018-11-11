@@ -5,7 +5,8 @@
 //  Created by Julio Miguel Alorro on 3/4/18.
 //
 
-import Foundation
+import class Foundation.URLSessionDataTask
+import class Foundation.DispatchQueue
 
 public protocol BaseDispatcher: RequestDispatcher {
 

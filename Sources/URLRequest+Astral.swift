@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.URLRequest
 
 /**
  The DSL used for URLRequest extensions.

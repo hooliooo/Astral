@@ -21,6 +21,7 @@
 		143A5BAF20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
 		145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
 		145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
+		1468733821510CB50003FA3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1468733721510CB50003FA3D /* Foundation.framework */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
 		14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
@@ -93,7 +94,6 @@
 		14C4C0402026DDD700938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
 		14C4C0412026DDD700938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0452026DDD700938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
-		14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4C05B2026E0B000938416 /* Foundation.framework */; };
 		14E5E37E204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
 		14E5E37F204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
 		14E5E380204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
@@ -160,6 +160,7 @@
 		143A5BAB20AAC4CD004EE209 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
 		145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedParametersGetRequest.swift; sourceTree = "<group>"; };
+		1468733721510CB50003FA3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -229,7 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14C4C0672026E7FF00938416 /* Foundation.framework in Frameworks */,
+				1468733821510CB50003FA3D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +294,7 @@
 		E3711620A170412C2CC81F86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1468733721510CB50003FA3D /* Foundation.framework */,
 				14C4C0522026E03D00938416 /* BrightFutures.framework */,
 				14C4BFB72026DBC800938416 /* BrightFutures.framework */,
 				14C4C04D2026E02D00938416 /* BrightFutures.framework */,
@@ -516,7 +518,7 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					14C4BFBD2026DC2B00938416 = {
 						ProvisioningStyle = Automatic;
@@ -564,7 +566,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		14C4BFDA2026DC2B00938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -578,7 +580,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		14C4C0222026DDAE00938416 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -4,7 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Data
+import class Foundation.HTTPURLResponse
 
 /**
  A Response encapsulates the data retreived after an http request was made.

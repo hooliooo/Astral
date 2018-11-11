@@ -4,7 +4,9 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.URLSession
+import class Foundation.URLSessionTask
+import struct Foundation.URLRequest
 
 /**
  A RequestDispatcher uses the URLRequest of the RequestBuilder to make an

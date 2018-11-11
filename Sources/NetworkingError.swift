@@ -4,7 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import protocol Foundation.LocalizedError
 
 /**
  An Enum that represents errors related to http network requests
