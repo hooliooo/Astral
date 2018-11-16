@@ -19,6 +19,7 @@ struct BasicConfiguration: RequestConfiguration {
 
     let baseHeaders: Set<Header> = [
         Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON)),
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
+        Header(key: Header.Field.custom("User-Agent"), value: Header.Value.custom("ios:com.julio.alorro.Astral:v2.0.4"))
     ]
 }

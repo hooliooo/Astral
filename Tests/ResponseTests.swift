@@ -8,6 +8,7 @@ public class ResponseTests: XCTestCase {
         var configuration: URLSessionConfiguration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 20.0
         configuration.timeoutIntervalForResource = 20.0
+        configuration.httpAdditionalHeaders = ["User-Agent": "ios:com.julio.alorro.Astral:v2.0.4"]
         let session: URLSession = URLSession(configuration: configuration)
         return session
     }()
@@ -52,18 +53,20 @@ public class ResponseTests: XCTestCase {
 
         self.dispatcher.response(
             of: request,
-            onSuccess: { [weak self] (_ response: Response) -> Void in
+            onSuccess: { [weak self] (response: Response) -> Void in
                 guard let s = self else { return }
-
+                print(response.json.dictValue)
                 let response: GetResponse = s.transform(response: response)
 
                 let accept: Header = request.headers.filter { $0.key == .accept }.first!
                 let contentType: Header = request.headers.filter { $0.key == .contentType }.first!
                 let custom: Header = request.headers.filter { $0.key == Header.Field.custom("Get-Request") }.first!
+                let userAgent: Header = request.configuration.baseHeaders.first(where: { $0.key == Header.Field.custom("User-Agent")})!
 
                 XCTAssertTrue(response.headers.accept == accept.value.stringValue)
                 XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
                 XCTAssertTrue(response.headers.custom == custom.value.stringValue)
+                XCTAssertTrue(response.headers.userAgent == userAgent.value.stringValue)
                 expectation.fulfill()
 
             },

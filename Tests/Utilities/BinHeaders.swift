@@ -14,10 +14,12 @@ public struct BinHeaders: Decodable {
         case accept = "Accept"
         case contentType = "Content-Type"
         case custom = "Get-Request"
+        case userAgent = "User-Agent"
     }
 
     public let accept: String
     public let contentType: String
     public let custom: String
+    public let userAgent: String
 
 }
