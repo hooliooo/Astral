@@ -16,7 +16,7 @@ public class ResponseTests: XCTestCase {
     public override func setUp() {
         super.setUp()
         Astral.shared.configuration = Astral.Configuration(
-            session: ResponseTests.session
+            session: ResponseTests.session, boundary: UUID().uuidString
         )
     }
 
@@ -187,48 +187,6 @@ public class ResponseTests: XCTestCase {
         )
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
-    }
-
-    public func testMultiPartFormDataRequest() {
-
-        let expectation: XCTestExpectation = self.expectation(description: "Post Request Query")
-
-        let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
-
-        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(
-            strategy: MultiPartFormDataStrategy(request: request)
-        )
-
-        dispatcher.response(
-            of: request,
-            onSuccess: { [weak self] (response: Response) -> Void in
-                guard let s = self else { return }
-
-                let response: MultipartFormDataResponse = s.transform(response: response)
-
-                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-
-                switch request.parameters {
-                    case .dict(let parameters):
-                        XCTAssertTrue(response.form.this == parameters["this"]! as! String)
-                        XCTAssertTrue(response.form.what == parameters["what"]! as! String)
-                        XCTAssertTrue(response.form.why == parameters["why"]! as! String)
-
-                    case .array, .none:
-                        XCTFail()
-                }
-
-                XCTAssertFalse(response.files.isEmpty)
-                expectation.fulfill()
-            },
-            onFailure: { (error: NetworkingError) -> Void in
-                XCTFail(error.localizedDescription)
-            },
-            onComplete: {}
-        )
-
-        self.waitForExpectations(timeout: 5.0, handler: nil)
-
     }
 
 }

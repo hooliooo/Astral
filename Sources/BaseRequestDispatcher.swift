@@ -21,13 +21,12 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
      - parameter queue: The DispatchQueue that the callbacks will execute on.
     */
     public init(
-        builder: RequestBuilder = BaseRequestBuilder(strategy: JSONStrategy()),
+        builder: RequestBuilder = BaseHTTPBodyBuilder(strategy: JSONStrategy()),
         isDebugMode: Bool = true,
         queue: DispatchQueue = DispatchQueue.main
     ) {
         self._queue = queue
         super.init(builder: builder, isDebugMode: isDebugMode)
-
     }
 
     public required init(builder: RequestBuilder, isDebugMode: Bool) {
@@ -35,9 +34,9 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
         super.init(builder: builder, isDebugMode: isDebugMode)
     }
 
-    public init(strategy: DataStrategy, isDebugMode: Bool = true, queue: DispatchQueue = DispatchQueue.main) {
+    public init(strategy: HTTPBodyStrategy, isDebugMode: Bool = true, queue: DispatchQueue = DispatchQueue.main) {
         self._queue = queue
-        super.init(builder: BaseRequestBuilder(strategy: strategy), isDebugMode: isDebugMode)
+        super.init(builder: BaseHTTPBodyBuilder(strategy: strategy), isDebugMode: isDebugMode)
     }
 
     // MARK: Stored Properties
@@ -59,7 +58,8 @@ extension BaseRequestDispatcher: BaseDispatcher {
     ) -> URLSessionDataTask {
         let isDebugMode: Bool = self.isDebugMode
         let method: String = request.method.stringValue
-        let urlRequest: URLRequest = self.urlRequest(of: request)
+
+        let urlRequest: URLRequest = self.builder.urlRequest(of: request)
         let queue: DispatchQueue = self.queue
 
         let task: URLSessionDataTask = self.session.dataTask(with: urlRequest) {
@@ -115,12 +115,10 @@ extension BaseRequestDispatcher: BaseDispatcher {
 
                 }
             }
-
         }
 
         task.resume()
 
         return task
     }
-
 }

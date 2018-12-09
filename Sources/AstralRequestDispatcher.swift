@@ -7,18 +7,17 @@
 import class Foundation.URLSessionTask
 import class Foundation.URLSession
 import struct Foundation.URLRequest
+import class Foundation.NSObject
 
 /**
  An implementation of RequestDispatcher that uses the URLSession shared instance for http network requests.
 */
-open class AstralRequestDispatcher {
+open class AstralRequestDispatcher: NSObject {
 
     // MARK: Intializers
     public required init(
-        builder: RequestBuilder = BaseRequestBuilder(
-            strategy: JSONStrategy()
-        ),
-        isDebugMode: Bool = true
+        builder: RequestBuilder,
+        isDebugMode: Bool
     ) {
         self._requestBuilder = builder
         self._isDebugMode = isDebugMode
@@ -37,7 +36,7 @@ open class AstralRequestDispatcher {
     // MARK: Stored Properties
     private var _requestBuilder: RequestBuilder
     private let _isDebugMode: Bool
-    private var _tasks: [URLSessionTask] = []
+    private var _taskCache: [URLSessionTask: Request] = [:]
 
     // MARK: Computed Properties
     open var session: URLSession {
@@ -59,10 +58,10 @@ extension AstralRequestDispatcher: RequestDispatcher {
         return self._isDebugMode
     }
 
-    open var tasks: [URLSessionTask] {
-        get { return self._tasks }
+    open var taskCache: [URLSessionTask: Request] {
+        get { return self._taskCache }
 
-        set { self._tasks = newValue }
+        set { self._taskCache = newValue }
     }
 
     open func urlRequest(of request: Request) -> URLRequest {
@@ -70,30 +69,27 @@ extension AstralRequestDispatcher: RequestDispatcher {
     }
 
     open func cancel() {
-        for task in self._tasks {
+        for task in self._taskCache.keys {
             task.cancel()
         }
 
         self.removeTasks()
     }
 
-    public final func add(task: URLSessionTask) {
-        self._tasks.append(task)
+    public final func add(task: URLSessionTask, with request: Request) {
+        self._taskCache.updateValue(request, forKey: task)
     }
 
     @discardableResult
-    public final func remove(task: URLSessionTask) -> URLSessionTask? {
-        if let idx = self._tasks.index(of: task) {
-            return self._tasks.remove(at: idx)
+    public final func remove(task: URLSessionTask) -> (URLSessionTask, Request)? {
+        if let request = self._taskCache.removeValue(forKey: task) {
+            return (task, request)
         } else {
             return nil
         }
     }
 
-    @discardableResult
-    public final func removeTasks() -> [URLSessionTask] {
-        let tasks: [URLSessionTask] = self._tasks
-        self._tasks.removeAll()
-        return tasks
+    public final func removeTasks() {
+        self._taskCache.removeAll()
     }
 }

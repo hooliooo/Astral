@@ -15,12 +15,18 @@ public final class RequestBuilderTests: XCTestCase {
 
     public func testQueryItems() {
 
-        let builder: RequestBuilder = BaseRequestBuilder(strategy: JSONStrategy())
+        let builder: RequestBuilder = BaseHTTPBodyBuilder(strategy: JSONStrategy())
         let urlRequest: URLRequest = builder.urlRequest(of: NestedParametersGetRequest())
 
-        let isIdentical: Bool = "https://httpbin.org/get?nestedArray=this&nestedArray=that&nestedArray=what&nested={\"aDict\":\"someValue\"}&anotherNested={\"anotherDict\":3}" == urlRequest.url!.absoluteString.removingPercentEncoding!
+        let string: String = urlRequest.url!.absoluteString.removingPercentEncoding!
 
-        XCTAssertTrue(isIdentical)
+        var isIdentical: [Bool] = []
+
+        NestedParametersGetRequest().parameters.dictValue!.keys.forEach {
+            isIdentical.append(string.contains($0))
+        }
+
+        XCTAssertFalse(isIdentical.contains(false))
 
     }
     

@@ -41,4 +41,20 @@ public enum Parameters {
                 return true
         }
     }
+
+    /**
+     The dictionary value of the Parameters instance if it is a .dict. Otherwise, returns nil.
+    */
+    public var dictValue: [String: Any]? {
+        guard case .dict(let dict) = self else { return nil }
+        return dict
+    }
+
+    /**
+     The array value of the Parameters instance if it is a .array. Otherwise, returns nil.
+    */
+    public var arrayValue: [[String: Any]]? {
+        guard case .array(let array) = self else { return nil }
+        return array
+    }
 }

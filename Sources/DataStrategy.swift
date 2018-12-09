@@ -17,3 +17,5 @@ public protocol DataStrategy {
     func createHTTPBody(from parameters: Parameters) -> Data?
 
 }
+
+public protocol HTTPBodyStrategy: DataStrategy {}

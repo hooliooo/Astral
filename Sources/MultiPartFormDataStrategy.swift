@@ -14,23 +14,8 @@ public struct MultiPartFormDataStrategy {
     // MARK: Initializer
     /**
      Initializer.
-     - parameter request: The MultiPartFormDataRequest instance used to create the MultiPartFormDataStrategy instance.
     */
-    public init(request: MultiPartFormDataRequest) {
-        self.boundary = request.boundary
-        self.files = request.files
-    }
-
-    // MARK: Stored Properties
-    /**
-     The defined boundary to be used in creating the multipart form-data HTTP body.
-    */
-    public let boundary: String
-
-    /**
-     The files to be uploaded in the http body
-    */
-    public let files: [FormFile]
+    public init() {}
 
     // MARK: Instance Methods
     /**
@@ -43,52 +28,51 @@ public struct MultiPartFormDataStrategy {
         data.append(stringData)
     }
 
+    /**
+     Creates the end part of the Data body needed for a multipart-form data HTTP Request.
+    */
+    public var postfixData: Data {
+        var data: Data = Data()
+        self.append(string: "--\(Astral.shared.boundary)--\r\n", to: &data)
+        return data
+    }
+
 }
 
 // MARK: - DataStrategy Methods
 extension MultiPartFormDataStrategy: DataStrategy {
 
+    /**
+     Creates the beginning part of the Data body needed for a multipart-form data HTTP Request.
+     - parameter parameters: The Parameters instance used to create the beginning part of the Data body.
+    */
     public func createHTTPBody(from parameters: Parameters) -> Data? {
+
+        var data: Data = Data()
+
+        let boundaryPrefix: String = "--\(Astral.shared.boundary)\r\n"
 
         switch parameters {
             case .array, .none:
-                return nil
+                break
 
             case .dict(let dict):
-                var body: Data = Data()
-                let boundaryPrefix: String = "--\(self.boundary)\r\n"
-
                 switch dict.isEmpty {
                     case true:
                         break
 
                     case false:
                         for (key, value) in dict {
-                            self.append(string: boundaryPrefix, to: &body)
-                            self.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n", to: &body)
-
+                            self.append(string: boundaryPrefix, to: &data)
+                            self.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n", to: &data)
+                            //                            self.append(string: "Content-Type: text/plain\r\n", to: &data)
                             let value: String = String(describing: value)
-                            self.append(string: "\(value)\r\n", to: &body)
+                            self.append(string: "\(value)", to: &data)
+                            self.append(string: "\r\n", to: &data)
                         }
                 }
-
-                for file in self.files {
-                    self.append(string: boundaryPrefix, to: &body)
-                    self.append(
-                        string: "Content-Disposition: form-data; name=\"\(file.name)\"; filename=\"\(file.fileName)\"\r\n",
-                        to: &body
-                    )
-
-                    self.append(string: "Content-Type: \(file.contentType)\r\n\r\n", to: &body)
-
-                    body.append(file.data)
-
-                    self.append(string: "\r\n", to: &body)
-                }
-
-                self.append(string: "--\(self.boundary)--\r\n", to: &body)
-
-                return body
         }
+
+        return data
     }
 }

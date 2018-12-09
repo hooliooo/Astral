@@ -18,11 +18,12 @@ public struct FormFile {
      - parameter contentType: The mime type of the file
      - parameter data: Contents of the file
     */
-    public init(name: String, fileName: String, contentType: String, data: Data) {
+    public init(name: String, fileName: String, contentType: String, data: Data, parameters: Parameters) {
         self.name = name
         self.fileName = fileName
         self.contentType = contentType
         self.data = data
+        self.parameters = parameters
     }
 
     // MARK: Stored Properties
@@ -45,5 +46,28 @@ public struct FormFile {
      The contents of the file
     */
     public let data: Data
+
+    public let parameters: Parameters
+
+    public var bodyData: Data {
+        let boundaryPrefix: String = "--\(Astral.shared.boundary)\r\n"
+        var data: Data = Data()
+
+        self.append(string: boundaryPrefix, to: &data)
+        self.append(
+            string: "Content-Disposition: form-data; name=\"\(self.name)\"; filename=\"\(self.fileName)\"\r\n",
+            to: &data
+        )
+
+        self.append(string: "Content-Type: \(self.contentType)\r\n\r\n", to: &data)
+        data.append(self.data)
+        self.append(string: "\r\n", to: &data)
+        return data
+    }
+
+    private func append(string: String, to data: inout Data) {
+        let stringData: Data = string.data(using: String.Encoding.utf8)!
+        data.append(stringData)
+    }
 
 }

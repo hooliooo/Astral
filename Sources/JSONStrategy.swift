@@ -12,7 +12,7 @@ import class Foundation.JSONSerialization
  When using this strategy and your httpBody is supposed to be an array of JSON objects, make sure the parameters of your Request object has only
  ONE key-value pair in the dictionary. Otherwise the createHTTPBody method will induce a crash.
 */
-public struct JSONStrategy: DataStrategy {
+public struct JSONStrategy: HTTPBodyStrategy {
 
     // MARK: Initializer
     public init () {}

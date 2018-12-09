@@ -42,7 +42,7 @@ public struct FormURLEncodedStrategy {
 
 }
 
-extension FormURLEncodedStrategy: DataStrategy {
+extension FormURLEncodedStrategy: HTTPBodyStrategy {
 
     public func createHTTPBody(from parameters: Parameters) -> Data? {
 
