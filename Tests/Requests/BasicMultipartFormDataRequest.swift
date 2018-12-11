@@ -35,22 +35,26 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         ]
     }
 
-    public var files: [FormFile] {
+    public var components: [MultiPartFormDataComponent] {
         return [
-            FormFile(
+            MultiPartFormDataComponent(
                 name: "file1",
                 fileName: "image1.png",
                 contentType: "image/png",
-                data: UIImage(named: "pic1")!.pngData()!,
-                parameters: self.parameters
+                file: MultiPartFormDataComponent.File.data(UIImage(named: "pic1")!.pngData()!)
             ),
-            FormFile(
+            MultiPartFormDataComponent(
                 name: "file2",
                 fileName: "image2.png",
                 contentType: "image/png",
-                data: UIImage(named: "pic2")!.pngData()!,
-                parameters: self.parameters
-            )
+                file: MultiPartFormDataComponent.File.data(UIImage(named: "pic2")!.pngData()!)
+            ),
+            MultiPartFormDataComponent(
+                name: "file1",
+                fileName: "image1.png",
+                contentType: "image/png",
+                file: MultiPartFormDataComponent.File.data(UIImage(named: "pic3")!.pngData()!)
+            ),
         ]
     }
 

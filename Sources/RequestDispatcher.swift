@@ -19,13 +19,6 @@ public protocol RequestDispatcher: class {
     var session: URLSession { get }
 
     /**
-     Initializer using a RequestBuiler
-     - parameter builder: The RequestBuilder instance used to build a URLRequest
-     - parameter isDebugMode: Indicates whether the HTTPURLResponse will be printed to the console or not
-    */
-    init(builder: RequestBuilder, isDebugMode: Bool)
-
-    /**
      The Request Builder associated with the RequestDispatcher
     */
     var builder: RequestBuilder { get set }

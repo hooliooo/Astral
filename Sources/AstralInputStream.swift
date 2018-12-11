@@ -112,12 +112,8 @@ public class AstralInputStream: InputStream {
         return false
     }
 
-    public override func schedule(in aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {
+    public override func schedule(in aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {}
 
-    }
-
-    public override func remove(from aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {
-
-    }
+    public override func remove(from aRunLoop: RunLoop, forMode mode: RunLoop.Mode) {}
 
 }

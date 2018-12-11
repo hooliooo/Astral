@@ -23,7 +23,7 @@ public struct MultiPartFormDataStrategy {
      - parameter string: The string to be converted into Data.
      - parameter data: The data the string will be appended to.
     */
-    private func append(string: String, to data: inout Data) {
+    internal func append(string: String, to data: inout Data) {
         let stringData: Data = string.data(using: String.Encoding.utf8)!
         data.append(stringData)
     }

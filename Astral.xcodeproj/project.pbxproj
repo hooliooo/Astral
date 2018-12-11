@@ -80,7 +80,7 @@
 		14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
-		14C4BFC52026DC2B00938416 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		14C4BFC52026DC2B00938416 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
 		14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
 		14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
 		14C4BFC82026DC2B00938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
@@ -103,7 +103,7 @@
 		14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
-		14C4C00D2026DDAE00938416 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		14C4C00D2026DDAE00938416 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
 		14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
 		14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
 		14C4C0102026DDAE00938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
@@ -127,7 +127,7 @@
 		14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
-		14C4C0312026DDD700938416 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		14C4C0312026DDD700938416 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
 		14C4C0322026DDD700938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
 		14C4C0332026DDD700938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
 		14C4C0342026DDD700938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
@@ -145,10 +145,6 @@
 		14C4C0402026DDD700938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
 		14C4C0412026DDD700938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0452026DDD700938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
-		14E5E37E204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
-		14E5E37F204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
-		14E5E380204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
-		14E5E381204C3D2700097A4A /* BaseDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */; };
 		14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
 		14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
 		14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
@@ -174,7 +170,7 @@
 		OBJ_139 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		OBJ_140 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
 		OBJ_141 /* DownloadTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* DownloadTracking.swift */; };
-		OBJ_142 /* FormFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* FormFile.swift */; };
+		OBJ_142 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
 		OBJ_143 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
 		OBJ_144 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
 		OBJ_145 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
@@ -262,7 +258,6 @@
 		14C4C0562026E05000938416 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		14C4C05B2026E0B000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		14C4C0682026EF5000938416 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDispatcher.swift; sourceTree = "<group>"; };
 		14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
 		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,7 +265,7 @@
 		OBJ_11 /* DataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
 		OBJ_12 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		OBJ_13 /* DownloadTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTracking.swift; sourceTree = "<group>"; };
-		OBJ_14 /* FormFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFile.swift; sourceTree = "<group>"; };
+		OBJ_14 /* MultiPartFormDataComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataComponent.swift; sourceTree = "<group>"; };
 		OBJ_15 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
 		OBJ_16 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		OBJ_17 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -520,16 +515,13 @@
 				1413033F20AABA2C0083CE27 /* Astral.swift */,
 				14BFC07D21BC541900FDC12F /* AstralInputStream.swift */,
 				OBJ_10 /* AstralRequestDispatcher.swift */,
-				14E5E37D204C3D2700097A4A /* BaseDispatcher.swift */,
 				14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */,
-				14718F0F21BDCFB20096E88A /* UploadDelegate.swift */,
 				OBJ_9 /* BaseRequestBuilder.swift */,
 				14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */,
 				OBJ_11 /* DataStrategy.swift */,
 				OBJ_12 /* DownloadManager.swift */,
 				OBJ_13 /* DownloadTracking.swift */,
 				14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */,
-				OBJ_14 /* FormFile.swift */,
 				OBJ_15 /* FormURLEncodedStrategy.swift */,
 				OBJ_17 /* Header.swift */,
 				1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */,
@@ -539,6 +531,7 @@
 				OBJ_20 /* JSONStrategy.swift */,
 				OBJ_21 /* MediaType.swift */,
 				1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */,
+				OBJ_14 /* MultiPartFormDataComponent.swift */,
 				OBJ_22 /* MultiPartFormDataRequest.swift */,
 				OBJ_23 /* MultiPartFormDataStrategy.swift */,
 				OBJ_24 /* NetworkingError.swift */,
@@ -548,6 +541,7 @@
 				OBJ_27 /* RequestConfiguration.swift */,
 				OBJ_28 /* RequestDispatcher.swift */,
 				OBJ_29 /* Response.swift */,
+				14718F0F21BDCFB20096E88A /* UploadDelegate.swift */,
 				14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */,
 				OBJ_30 /* URLScheme.swift */,
 			);
@@ -880,10 +874,9 @@
 				14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */,
 				14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */,
 				14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */,
-				14C4BFC52026DC2B00938416 /* FormFile.swift in Sources */,
+				14C4BFC52026DC2B00938416 /* MultiPartFormDataComponent.swift in Sources */,
 				14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */,
 				14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */,
-				14E5E37F204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				14C4BFC82026DC2B00938416 /* Header.swift in Sources */,
 				14C4BFC92026DC2B00938416 /* JSON.swift in Sources */,
 				14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */,
@@ -921,10 +914,9 @@
 				14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */,
 				14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */,
 				14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */,
-				14C4C00D2026DDAE00938416 /* FormFile.swift in Sources */,
+				14C4C00D2026DDAE00938416 /* MultiPartFormDataComponent.swift in Sources */,
 				14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */,
 				14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */,
-				14E5E380204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				14C4C0102026DDAE00938416 /* Header.swift in Sources */,
 				14C4C0112026DDAE00938416 /* JSON.swift in Sources */,
 				14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */,
@@ -962,10 +954,9 @@
 				14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */,
 				14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */,
 				14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */,
-				14C4C0312026DDD700938416 /* FormFile.swift in Sources */,
+				14C4C0312026DDD700938416 /* MultiPartFormDataComponent.swift in Sources */,
 				14C4C0322026DDD700938416 /* FormURLEncodedStrategy.swift in Sources */,
 				14C4C0332026DDD700938416 /* HTTPMethod.swift in Sources */,
-				14E5E381204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				14C4C0342026DDD700938416 /* Header.swift in Sources */,
 				14C4C0352026DDD700938416 /* JSON.swift in Sources */,
 				14C4C0362026DDD700938416 /* JSONResponse.swift in Sources */,
@@ -1027,10 +1018,9 @@
 				OBJ_139 /* DataStrategy.swift in Sources */,
 				OBJ_140 /* DownloadManager.swift in Sources */,
 				OBJ_141 /* DownloadTracking.swift in Sources */,
-				OBJ_142 /* FormFile.swift in Sources */,
+				OBJ_142 /* MultiPartFormDataComponent.swift in Sources */,
 				OBJ_143 /* FormURLEncodedStrategy.swift in Sources */,
 				OBJ_144 /* HTTPMethod.swift in Sources */,
-				14E5E37E204C3D2700097A4A /* BaseDispatcher.swift in Sources */,
 				OBJ_145 /* Header.swift in Sources */,
 				OBJ_146 /* JSON.swift in Sources */,
 				OBJ_147 /* JSONResponse.swift in Sources */,

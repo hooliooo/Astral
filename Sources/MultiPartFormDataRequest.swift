@@ -15,7 +15,7 @@ public protocol MultiPartFormDataRequest: Request {
     /**
      The form data to be included in the multipart form data payload
     */
-    var files: [FormFile] { get }
+    var components: [MultiPartFormDataComponent] { get }
 
     /**
      File name used by the multipart data to be uploaded from the File system

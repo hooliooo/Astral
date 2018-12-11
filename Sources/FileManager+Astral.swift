@@ -41,15 +41,19 @@ public extension AstralFileManagerExtension {
     }
 
     func fileURL(of request: MultiPartFormDataRequest) -> URL {
-        return cacheDirectory.appendingPathComponent(request.fileName)
+        return self.cacheDirectory.appendingPathComponent(request.fileName)
     }
 
     @discardableResult
-    func save(data: Data, of request: MultiPartFormDataRequest) -> Bool {
-        let fileName: String = request.fileName
-        let fileURL: URL = self.cacheDirectory.appendingPathComponent(fileName)
+    func writeAndCheck(data: Data, of request: MultiPartFormDataRequest) -> Bool {
+        let fileURL: URL = self.fileURL(of: request)
         try? data.write(to: fileURL)
         return self.base.fileExists(atPath: fileURL.path)
+    }
+
+    func write(data: Data, of request: MultiPartFormDataRequest) throws {
+        let fileURL: URL = self.fileURL(of: request)
+        try data.write(to: fileURL)
     }
 
     @discardableResult

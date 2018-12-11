@@ -23,10 +23,6 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
         self._session = URLSession(configuration: configuration, delegate: self, delegateQueue: queue)
     }
 
-    public required init(builder: RequestBuilder, isDebugMode: Bool) {
-        fatalError("Didn't implement it")
-    }
-
     // MARK: Stored Properties
     private var _session: URLSession!
     public let onUploadDidFinish: () -> Void
@@ -44,14 +40,27 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
     public func upload(request: MultiPartFormDataRequest) {
         let urlRequest: URLRequest = self.multipartFormDataBuilder.urlRequest(of: request)
         let fileURL: URL = FileManager.default.ast.fileURL(of: request)
-        let data: Data = self.multipartFormDataBuilder.data(of: request)
+        guard let data = try? self.multipartFormDataBuilder.data(of: request)
+            else { print("Multipart form data was invalid"); return }
 
-        FileManager.default.ast.save(data: data, of: request)
+        FileManager.default.ast.writeAndCheck(data: data, of: request)
 
         let task: URLSessionUploadTask = self.session.uploadTask(with: urlRequest, fromFile: fileURL)
         self.add(task: task, with: request)
         task.resume()
 
+    }
+
+    public func tryUploading(request: MultiPartFormDataRequest) throws {
+        let urlRequest: URLRequest = self.multipartFormDataBuilder.urlRequest(of: request)
+        let fileURL: URL = FileManager.default.ast.fileURL(of: request)
+        let data: Data = try self.multipartFormDataBuilder.data(of: request)
+
+        try FileManager.default.ast.write(data: data, of: request)
+
+        let task: URLSessionUploadTask = self.session.uploadTask(with: urlRequest, fromFile: fileURL)
+        self.add(task: task, with: request)
+        task.resume()
     }
 
 }

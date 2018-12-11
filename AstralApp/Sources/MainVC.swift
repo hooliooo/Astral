@@ -61,6 +61,6 @@ class MainVC: UIViewController {
 
     @objc func loadButtonTapped() {
         let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
-        self.dispatcher.upload(request: request)
+        try! self.dispatcher.tryUploading(request: request)
     }
 }

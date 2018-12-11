@@ -15,12 +15,24 @@ import class Foundation.NSObject
 open class AstralRequestDispatcher: NSObject {
 
     // MARK: Intializers
-    public required init(
+    /**
+     AstralRequestDispatcher is an abstract class that provides the base implementation of the RequestDispatcher protocol.
+     - parameter builder: The RequestBuilder used to create the URLRequest instance.
+     - parameter isDebugMode: If true, the console will print out information related to the http networking request. If false, prints nothing.
+    */
+    public init(
         builder: RequestBuilder,
         isDebugMode: Bool
     ) {
+        guard type(of: self) != AstralRequestDispatcher.self else {
+            fatalError(
+                "AstralRequestDispatcher instances cannot be created. Use subclasses instead"
+            )
+        }
+
         self._requestBuilder = builder
         self._isDebugMode = isDebugMode
+        super.init()
     }
 
     deinit {
