@@ -32,7 +32,7 @@ public class ResponseTests: XCTestCase {
         attributes: DispatchQueue.Attributes.concurrent
     )
 
-    private lazy var dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(queue: self.queue)
+    private lazy var dispatcher: BaseRequestDispatcher = BaseRequestDispatcher()
 
     // MARK: Instance Methods
     public func transform<U: Decodable>(response: Response) -> U {
@@ -50,6 +50,9 @@ public class ResponseTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Header Test")
 
         let request: BasicGetRequest = BasicGetRequest()
+
+        print(request)
+        print(BasicMultipartFormDataRequest())
 
         self.dispatcher.response(
             of: request,
@@ -159,7 +162,7 @@ public class ResponseTests: XCTestCase {
 
         let request: Request = FormURLEncodedPostRequest()
 
-        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(strategy: FormURLEncodedStrategy(), queue: self.queue)
+        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(strategy: FormURLEncodedStrategy())
 
         dispatcher.response(
             of: request,

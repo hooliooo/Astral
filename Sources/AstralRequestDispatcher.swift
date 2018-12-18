@@ -22,7 +22,7 @@ open class AstralRequestDispatcher: NSObject {
     */
     public init(
         builder: RequestBuilder,
-        isDebugMode: Bool
+        isDebugMode: Bool = true
     ) {
         guard type(of: self) != AstralRequestDispatcher.self else {
             fatalError(

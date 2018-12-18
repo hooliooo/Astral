@@ -46,6 +46,8 @@ class MainVC: UIViewController {
         isDebugMode: true
     )
 
+    private let dispatcher2: BaseRequestDispatcher = BaseRequestDispatcher(builder: MultiPartFormDataBuilder())
+
     let queue: OperationQueue = {
         let op = OperationQueue()
         op.qualityOfService = QualityOfService.utility
@@ -61,6 +63,16 @@ class MainVC: UIViewController {
 
     @objc func loadButtonTapped() {
         let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
-        try! self.dispatcher.tryUploading(request: request)
+//        try! self.dispatcher.tryUploading(request: request) // swiftlint:disable:this force_try
+        try! self.dispatcher2.multipartFormDataResponse( // swiftlint:disable:this force_try
+            of: request,
+            onSuccess: { (response: Response) -> Void in
+                print("Success")
+            },
+            onFailure: { (error: NetworkingError) -> Void in
+                print("Error")
+            },
+            onComplete: {}
+        )
     }
 }

@@ -10,6 +10,9 @@ import struct Foundation.URLRequest
 import class Foundation.URLResponse
 import class Foundation.HTTPURLResponse
 import struct Foundation.Data
+import struct Foundation.URL
+import class Foundation.NSNumber
+import struct Foundation.FileAttributeKey
 
 /**
  A subclass of AstralRequestDispatcher that executes a URLSession's dataTask(with request:completionHandler:) method.
@@ -17,9 +20,23 @@ import struct Foundation.Data
 */
 open class BaseRequestDispatcher: AstralRequestDispatcher {
 
+    // MARK: Enums
+    public enum Error: Swift.Error {
+        case builder(String)
+    }
+
+    // MARK: Initializer
+    public convenience init(strategy: HTTPBodyStrategy, isDebugMode: Bool = true) {
+        self.init(builder: BaseHTTPBodyBuilder(strategy: strategy), isDebugMode: isDebugMode)
+    }
+
+    public convenience init(isDebugMode: Bool = true) {
+        self.init(builder: BaseHTTPBodyBuilder(strategy: JSONStrategy()), isDebugMode: isDebugMode)
+    }
+
     /**
      Creates and executes a URLSessionDataTask with onSuccess, onFailure, and onComplete completion handlers.
-     Executed Asynchronously on the DispatchQueue. Returns the URLSessionDataTask created.
+     Returns the URLSessionDataTask created.
      - parameter request:    The Request instance used to build the URLRequest from the RequestBuilder.
      - parameter onSuccess:  The callback that is executed when the completion handler returns valid Data.
      - parameter response:   The Data from the completion handler transformed as a Response.
@@ -40,7 +57,7 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
         let urlRequest: URLRequest = self.builder.urlRequest(of: request)
 
         let task: URLSessionDataTask = self.session.dataTask(with: urlRequest) {
-            (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
             // swiftlint:disable:previous closure_parameter_position
 
             onComplete()
@@ -55,6 +72,7 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
                 switch isDebugMode {
                     case true:
                         print("HTTP Method: \(method)")
+                        print("URLRequest: \(urlRequest)")
                         print("Response: \(response)")
 
                     case false:
@@ -95,5 +113,95 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
         task.resume()
 
         return task
+    }
+
+    /**
+     Creates and executes a URLSessionDataTask with onSuccess, onFailure, and onComplete completion handlers.
+     Use specifically for multipart form data requests. Can throw an error.
+     Returns the URLSessionDataTask created.
+     - parameter request:    The MultipartFormDataRequest instance used to build the URLRequest from the RequestBuilder.
+     - parameter onSuccess:  The callback that is executed when the completion handler returns valid Data.
+     - parameter response:   The Data from the completion handler transformed as a Response.
+     - parameter onFailure:  The callback that is executed when the completion handler return an Error.
+     - parameter error:      The Error from the completion handler transformed as a NetworkingError.
+     - parameter onComplete: The callback that is executed when the completion handler returns either Data or en Error.
+     */
+    @discardableResult
+    open func multipartFormDataResponse(
+        of request: MultiPartFormDataRequest,
+        onSuccess: @escaping (_ response: Response) -> Void,
+        onFailure: @escaping (_ error: NetworkingError) -> Void,
+        onComplete: @escaping () -> Void
+    ) throws -> URLSessionDataTask {
+        guard let builder = self.builder as? MultiPartFormDataBuilder else {
+            throw BaseRequestDispatcher.Error.builder("RequestBuilder instance is not a MultiPartFormDataBuilder")
+        }
+
+        let isDebugMode: Bool = self.isDebugMode
+        let method: String = request.method.stringValue
+
+        let urlRequest: URLRequest = try builder.multipartFormDataURLRequest(of: request)
+        let fileURL: URL = builder.fileManager.ast.fileURL(of: request)
+
+        let task: URLSessionDataTask = self.session.dataTask(with: urlRequest) {
+            (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
+            // swiftlint:disable:previous closure_parameter_position
+
+            onComplete()
+
+            if let error = error {
+
+                onFailure(
+                    NetworkingError.connection(error)
+                )
+
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                switch isDebugMode {
+                    case true:
+                        print("HTTP Method: \(method)")
+                        print("URLRequest: \(urlRequest)")
+                        print("Response: \(response)")
+
+                    case false:
+                        break
+                }
+
+                switch response.statusCode {
+                    case 200...399:
+                        onSuccess(
+                            JSONResponse(httpResponse: response, data: data)
+                        )
+
+                        try? builder.fileManager.removeItem(at: fileURL)
+
+                    case 400...599:
+                        onFailure(
+                            NetworkingError.response(
+                                JSONResponse(httpResponse: response, data: data)
+                            )
+                        )
+
+                    default:
+                        onFailure(
+                            NetworkingError.unknownResponse(
+                                JSONResponse(httpResponse: response, data: data),
+                                "Unhandled status code: \(response.statusCode)"
+                            )
+                        )
+                }
+
+            } else {
+
+                onFailure(
+                    NetworkingError.unknown("Unknown error occured")
+                )
+
+            }
+        }
+
+        task.resume()
+
+        return task
+
     }
 }

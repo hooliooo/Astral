@@ -44,7 +44,7 @@ public enum HTTPMethod {
 
      - parameter method: The stringValue of the HTTPMethod to be created
     */
-    public init(_ method: String ) {
+    public init(_ method: String) {
         switch method {
             case "GET": self = HTTPMethod.get
             case "DELETE": self = HTTPMethod.delete
@@ -70,23 +70,20 @@ public enum HTTPMethod {
     }
 }
 
-extension HTTPMethod: Equatable {
+// MARK: Hashable Protocol
+extension HTTPMethod: Hashable {
 
     public static func == (lhs: HTTPMethod, rhs: HTTPMethod) -> Bool {
         switch (lhs, rhs) {
-            case (.get, .get): return true
-            case (.delete, .delete): return true
-            case (.post, .post): return true
-            case (.put, .put): return true
-            case (.patch, .patch): return true
-            case (.other(let lhsMethod), .other(let rhsMethod)): return lhsMethod == rhsMethod
-            default: return false
+        case (.get, .get): return true
+        case (.delete, .delete): return true
+        case (.post, .post): return true
+        case (.put, .put): return true
+        case (.patch, .patch): return true
+        case (.other(let lhsMethod), .other(let rhsMethod)): return lhsMethod == rhsMethod
+        default: return false
         }
     }
-
-}
-
-extension HTTPMethod: Hashable {
 
     public var hashValue: Int {
         switch self {

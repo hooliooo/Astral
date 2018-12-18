@@ -23,3 +23,26 @@ public protocol MultiPartFormDataRequest: Request {
     var fileName: String { get }
 
 }
+
+public extension MultiPartFormDataRequest {
+
+    var description: String {
+        let string: String = self._description
+        let componentDescriptions: String = self.components
+            .map { (component: MultiPartFormDataComponent) -> String in
+                return "\t" + component.description.replacingOccurrences(of: "\n", with: "\n\t")
+            }
+            .joined(separator: "\n\n")
+
+        return """
+
+        \(string)
+        Components:
+        \(componentDescriptions)
+        File Name: \(self.fileName)
+
+        """
+
+    }
+
+}

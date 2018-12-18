@@ -65,7 +65,6 @@ extension MultiPartFormDataStrategy: DataStrategy {
                         for (key, value) in dict {
                             self.append(string: boundaryPrefix, to: &data)
                             self.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n", to: &data)
-                            //                            self.append(string: "Content-Type: text/plain\r\n", to: &data)
                             let value: String = String(describing: value)
                             self.append(string: "\(value)", to: &data)
                             self.append(string: "\r\n", to: &data)

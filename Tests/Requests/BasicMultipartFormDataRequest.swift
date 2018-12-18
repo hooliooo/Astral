@@ -20,11 +20,12 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         "post"
     ]
 
-    let parameters: Parameters = Parameters.dict([
-        "this": "that",
-        "what": "where",
-        "why": "what"
-    ])
+//    let parameters: Parameters = Parameters.dict([
+//        "this": "that",
+//        "what": "where",
+//        "why": "what"
+//    ])
+    let parameters: Parameters = .none
 
     var headers: Set<Header> {
 
@@ -51,12 +52,14 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
             ),
             MultiPartFormDataComponent(
                 name: "file1",
-                fileName: "image1.png",
+                fileName: "image3.png",
                 contentType: "image/png",
                 file: MultiPartFormDataComponent.File.data(UIImage(named: "pic3")!.pngData()!)
             ),
         ]
     }
 
-    public let fileName: String = UUID().uuidString
+    public var fileName: String {
+        return String(describing: Mirror(reflecting: self).subjectType)
+    }
 }

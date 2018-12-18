@@ -39,7 +39,7 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
 
     public func upload(request: MultiPartFormDataRequest) {
         let urlRequest: URLRequest = self.multipartFormDataBuilder.urlRequest(of: request)
-        let fileURL: URL = FileManager.default.ast.fileURL(of: request)
+        let fileURL: URL = self.multipartFormDataBuilder.fileManager.ast.fileURL(of: request)
         guard let data = try? self.multipartFormDataBuilder.data(of: request)
             else { print("Multipart form data was invalid"); return }
 
@@ -53,14 +53,12 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
 
     public func tryUploading(request: MultiPartFormDataRequest) throws {
         let urlRequest: URLRequest = self.multipartFormDataBuilder.urlRequest(of: request)
-        let fileURL: URL = FileManager.default.ast.fileURL(of: request)
-        let data: Data = try self.multipartFormDataBuilder.data(of: request)
-
-        try FileManager.default.ast.write(data: data, of: request)
-
+        let fileURL: URL = self.multipartFormDataBuilder.fileManager.ast.fileURL(of: request)
+        try self.multipartFormDataBuilder.writeData(to: fileURL, for: request)
         let task: URLSessionUploadTask = self.session.uploadTask(with: urlRequest, fromFile: fileURL)
         self.add(task: task, with: request)
         task.resume()
+
     }
 
 }

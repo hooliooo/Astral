@@ -8,7 +8,7 @@
 /**
  Representation of an HTTP request's body (when the method is POST, PUT, DELETE) or query (when the method is GET).
 */
-public enum Parameters {
+public enum Parameters: CustomStringConvertible, CustomDebugStringConvertible {
 
     /**
      A single [String: Any] dictionary.
@@ -56,5 +56,20 @@ public enum Parameters {
     public var arrayValue: [[String: Any]]? {
         guard case .array(let array) = self else { return nil }
         return array
+    }
+
+    public var description: String {
+        switch self {
+            case .dict(let dict):
+                return dict.description
+            case .array(let array):
+                return array.description
+            case .none:
+                return "No parameters"
+        }
+    }
+
+    public var debugDescription: String {
+        return self.description
     }
 }

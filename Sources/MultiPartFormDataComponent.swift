@@ -15,7 +15,7 @@ public struct MultiPartFormDataComponent {
     /**
      Represent the File either as Data or its URL in the file system.
     */
-    public enum File {
+    public enum File: CustomStringConvertible, CustomDebugStringConvertible {
         /**
          Content of the file as Data.
         */
@@ -25,6 +25,21 @@ public struct MultiPartFormDataComponent {
          URL of the file in the file system.
         */
         case url(URL)
+
+        public var description: String {
+            switch self {
+                case .data(let data):
+                    return data.description
+
+                case .url(let url):
+                    return url.description
+            }
+        }
+
+        public var debugDescription: String {
+            return self.description
+        }
+
     }
 
     /**
@@ -61,5 +76,22 @@ public struct MultiPartFormDataComponent {
      The file as Data or its URL in the file system
     */
     public let file: MultiPartFormDataComponent.File
+
+}
+
+extension MultiPartFormDataComponent: CustomStringConvertible, CustomDebugStringConvertible {
+
+    public var description: String {
+        return """
+        Name: \(self.name)
+        File name: \(self.fileName)
+        Content type: \(self.contentType)
+        File: \(self.file)
+        """
+    }
+
+    public var debugDescription: String {
+        return self.description
+    }
 
 }

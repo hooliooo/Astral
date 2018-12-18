@@ -75,7 +75,7 @@
 		14BFC08121BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		14C4BFC02026DC2B00938416 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
 		14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -98,7 +98,7 @@
 		14C4BFD42026DC2B00938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
 		14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		14C4C0082026DDAE00938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		14C4C0082026DDAE00938416 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
 		14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -122,7 +122,7 @@
 		14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		14C4C02C2026DDD700938416 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		14C4C02C2026DDD700938416 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
 		14C4C02D2026DDD700938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -165,7 +165,7 @@
 		OBJ_120 /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
 		OBJ_121 /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
 		OBJ_136 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		OBJ_137 /* BaseRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseRequestBuilder.swift */; };
+		OBJ_137 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
 		OBJ_138 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		OBJ_139 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		OBJ_140 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -298,7 +298,7 @@
 		OBJ_50 /* BinHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinHeaders.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_8 /* AbstractDownloadTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDownloadTracker.swift; sourceTree = "<group>"; };
-		OBJ_9 /* BaseRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestBuilder.swift; sourceTree = "<group>"; };
+		OBJ_9 /* BaseHTTPBodyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHTTPBodyBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,7 +516,7 @@
 				14BFC07D21BC541900FDC12F /* AstralInputStream.swift */,
 				OBJ_10 /* AstralRequestDispatcher.swift */,
 				14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */,
-				OBJ_9 /* BaseRequestBuilder.swift */,
+				OBJ_9 /* BaseHTTPBodyBuilder.swift */,
 				14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */,
 				OBJ_11 /* DataStrategy.swift */,
 				OBJ_12 /* DownloadManager.swift */,
@@ -866,7 +866,7 @@
 				14BFC07F21BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */,
 				14A007E821BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4BFC02026DC2B00938416 /* BaseRequestBuilder.swift in Sources */,
+				14C4BFC02026DC2B00938416 /* BaseHTTPBodyBuilder.swift in Sources */,
 				14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70D21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1121BDCFB20096E88A /* UploadDelegate.swift in Sources */,
@@ -906,7 +906,7 @@
 				14BFC08021BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */,
 				14A007E921BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4C0082026DDAE00938416 /* BaseRequestBuilder.swift in Sources */,
+				14C4C0082026DDAE00938416 /* BaseHTTPBodyBuilder.swift in Sources */,
 				14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70E21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1221BDCFB20096E88A /* UploadDelegate.swift in Sources */,
@@ -946,7 +946,7 @@
 				14BFC08121BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */,
 				14A007EA21BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4C02C2026DDD700938416 /* BaseRequestBuilder.swift in Sources */,
+				14C4C02C2026DDD700938416 /* BaseHTTPBodyBuilder.swift in Sources */,
 				14C4C02D2026DDD700938416 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70F21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1321BDCFB20096E88A /* UploadDelegate.swift in Sources */,
@@ -1010,7 +1010,7 @@
 				14BFC07E21BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				OBJ_136 /* AbstractDownloadTracker.swift in Sources */,
 				14A007E721BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				OBJ_137 /* BaseRequestBuilder.swift in Sources */,
+				OBJ_137 /* BaseHTTPBodyBuilder.swift in Sources */,
 				OBJ_138 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70C21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1021BDCFB20096E88A /* UploadDelegate.swift in Sources */,
