@@ -1,8 +1,7 @@
 //
-//  Parameters.swift
 //  Astral
-//
-//  Created by Julio Miguel Alorro on 5/15/18.
+//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 /**

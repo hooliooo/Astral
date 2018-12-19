@@ -28,18 +28,22 @@
 		14718F0621BD6CCD0096E88A /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
 		14718F0721BD6CD50096E88A /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
 		14718F0921BD6D290096E88A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0821BD6D290096E88A /* MainView.swift */; };
-		14718F0B21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
-		14718F0C21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
-		14718F0D21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
-		14718F0E21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
+		14718F0B21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateRequestDispatcher.swift */; };
+		14718F0C21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateRequestDispatcher.swift */; };
+		14718F0D21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateRequestDispatcher.swift */; };
+		14718F0E21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateRequestDispatcher.swift */; };
 		14718F1021BDCFB20096E88A /* UploadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0F21BDCFB20096E88A /* UploadDelegate.swift */; };
 		14718F1121BDCFB20096E88A /* UploadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0F21BDCFB20096E88A /* UploadDelegate.swift */; };
 		14718F1221BDCFB20096E88A /* UploadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0F21BDCFB20096E88A /* UploadDelegate.swift */; };
 		14718F1321BDCFB20096E88A /* UploadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0F21BDCFB20096E88A /* UploadDelegate.swift */; };
-		1487E70721BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */; };
-		1487E70821BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */; };
-		1487E70921BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */; };
-		1487E70A21BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */; };
+		147CA7DB21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
+		147CA7DC21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
+		147CA7DD21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
+		147CA7DE21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
+		1487E70721BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
+		1487E70821BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
+		1487E70921BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
+		1487E70A21BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
 		1487E70C21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
 		1487E70D21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
 		1487E70E21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
@@ -75,7 +79,7 @@
 		14BFC08121BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
 		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		14C4BFC02026DC2B00938416 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
+		14C4BFC02026DC2B00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
 		14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -98,7 +102,7 @@
 		14C4BFD42026DC2B00938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
 		14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		14C4C0082026DDAE00938416 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
+		14C4C0082026DDAE00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
 		14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -122,7 +126,7 @@
 		14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
 		14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
 		14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		14C4C02C2026DDD700938416 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
+		14C4C02C2026DDD700938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
 		14C4C02D2026DDD700938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -165,7 +169,7 @@
 		OBJ_120 /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
 		OBJ_121 /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
 		OBJ_136 /* AbstractDownloadTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* AbstractDownloadTracker.swift */; };
-		OBJ_137 /* BaseHTTPBodyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyBuilder.swift */; };
+		OBJ_137 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
 		OBJ_138 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
 		OBJ_139 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
 		OBJ_140 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DownloadManager.swift */; };
@@ -222,9 +226,10 @@
 		145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedParametersGetRequest.swift; sourceTree = "<group>"; };
 		1468733721510CB50003FA3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		14718F0821BD6D290096E88A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateDispatcher.swift; sourceTree = "<group>"; };
+		14718F0A21BD88430096E88A /* BaseDelegateRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateRequestDispatcher.swift; sourceTree = "<group>"; };
 		14718F0F21BDCFB20096E88A /* UploadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDelegate.swift; sourceTree = "<group>"; };
-		1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBodyBuilder.swift; sourceTree = "<group>"; };
+		147CA7DA21CACF1800BD5E98 /* AstralTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralTask.swift; sourceTree = "<group>"; };
+		1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBodyRequestBuilder.swift; sourceTree = "<group>"; };
 		1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataBuilder.swift; sourceTree = "<group>"; };
 		1487E74421BC787400759E3D /* AstralApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AstralApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1487E74621BC787400759E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -298,7 +303,7 @@
 		OBJ_50 /* BinHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinHeaders.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_8 /* AbstractDownloadTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDownloadTracker.swift; sourceTree = "<group>"; };
-		OBJ_9 /* BaseHTTPBodyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHTTPBodyBuilder.swift; sourceTree = "<group>"; };
+		OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHTTPBodyRequestBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -515,8 +520,9 @@
 				1413033F20AABA2C0083CE27 /* Astral.swift */,
 				14BFC07D21BC541900FDC12F /* AstralInputStream.swift */,
 				OBJ_10 /* AstralRequestDispatcher.swift */,
-				14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */,
-				OBJ_9 /* BaseHTTPBodyBuilder.swift */,
+				147CA7DA21CACF1800BD5E98 /* AstralTask.swift */,
+				14718F0A21BD88430096E88A /* BaseDelegateRequestDispatcher.swift */,
+				OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */,
 				14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */,
 				OBJ_11 /* DataStrategy.swift */,
 				OBJ_12 /* DownloadManager.swift */,
@@ -524,7 +530,7 @@
 				14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */,
 				OBJ_15 /* FormURLEncodedStrategy.swift */,
 				OBJ_17 /* Header.swift */,
-				1487E70621BC64FD00759E3D /* HTTPBodyBuilder.swift */,
+				1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */,
 				OBJ_16 /* HTTPMethod.swift */,
 				OBJ_18 /* JSON.swift */,
 				OBJ_19 /* JSONResponse.swift */,
@@ -866,11 +872,12 @@
 				14BFC07F21BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				14C4BFBF2026DC2B00938416 /* AbstractDownloadTracker.swift in Sources */,
 				14A007E821BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4BFC02026DC2B00938416 /* BaseHTTPBodyBuilder.swift in Sources */,
+				14C4BFC02026DC2B00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
+				147CA7DC21CACF1800BD5E98 /* AstralTask.swift in Sources */,
 				14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70D21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1121BDCFB20096E88A /* UploadDelegate.swift in Sources */,
-				1487E70821BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */,
+				1487E70821BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
 				14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */,
 				14C4BFC32026DC2B00938416 /* DownloadManager.swift in Sources */,
 				14C4BFC42026DC2B00938416 /* DownloadTracking.swift in Sources */,
@@ -885,7 +892,7 @@
 				14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */,
 				14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */,
-				14718F0C21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */,
+				14718F0C21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */,
 				14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */,
 				14C4BFD02026DC2B00938416 /* Request.swift in Sources */,
@@ -906,11 +913,12 @@
 				14BFC08021BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				14C4C0072026DDAE00938416 /* AbstractDownloadTracker.swift in Sources */,
 				14A007E921BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4C0082026DDAE00938416 /* BaseHTTPBodyBuilder.swift in Sources */,
+				14C4C0082026DDAE00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
+				147CA7DD21CACF1800BD5E98 /* AstralTask.swift in Sources */,
 				14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70E21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1221BDCFB20096E88A /* UploadDelegate.swift in Sources */,
-				1487E70921BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */,
+				1487E70921BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
 				14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */,
 				14C4C00B2026DDAE00938416 /* DownloadManager.swift in Sources */,
 				14C4C00C2026DDAE00938416 /* DownloadTracking.swift in Sources */,
@@ -925,7 +933,7 @@
 				14C4C0142026DDAE00938416 /* MediaType.swift in Sources */,
 				14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */,
-				14718F0D21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */,
+				14718F0D21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */,
 				14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */,
 				14C4C0182026DDAE00938416 /* Request.swift in Sources */,
@@ -946,11 +954,12 @@
 				14BFC08121BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				14C4C02B2026DDD700938416 /* AbstractDownloadTracker.swift in Sources */,
 				14A007EA21BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4C02C2026DDD700938416 /* BaseHTTPBodyBuilder.swift in Sources */,
+				14C4C02C2026DDD700938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
+				147CA7DE21CACF1800BD5E98 /* AstralTask.swift in Sources */,
 				14C4C02D2026DDD700938416 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70F21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1321BDCFB20096E88A /* UploadDelegate.swift in Sources */,
-				1487E70A21BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */,
+				1487E70A21BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
 				14C4C02E2026DDD700938416 /* DataStrategy.swift in Sources */,
 				14C4C02F2026DDD700938416 /* DownloadManager.swift in Sources */,
 				14C4C0302026DDD700938416 /* DownloadTracking.swift in Sources */,
@@ -965,7 +974,7 @@
 				14C4C0382026DDD700938416 /* MediaType.swift in Sources */,
 				14E5E386204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0392026DDD700938416 /* MultiPartFormDataRequest.swift in Sources */,
-				14718F0E21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */,
+				14718F0E21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */,
 				14C4C03A2026DDD700938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4C03B2026DDD700938416 /* NetworkingError.swift in Sources */,
 				14C4C03C2026DDD700938416 /* Request.swift in Sources */,
@@ -1010,11 +1019,12 @@
 				14BFC07E21BC541900FDC12F /* AstralInputStream.swift in Sources */,
 				OBJ_136 /* AbstractDownloadTracker.swift in Sources */,
 				14A007E721BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				OBJ_137 /* BaseHTTPBodyBuilder.swift in Sources */,
+				OBJ_137 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
+				147CA7DB21CACF1800BD5E98 /* AstralTask.swift in Sources */,
 				OBJ_138 /* AstralRequestDispatcher.swift in Sources */,
 				1487E70C21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
 				14718F1021BDCFB20096E88A /* UploadDelegate.swift in Sources */,
-				1487E70721BC64FD00759E3D /* HTTPBodyBuilder.swift in Sources */,
+				1487E70721BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
 				OBJ_139 /* DataStrategy.swift in Sources */,
 				OBJ_140 /* DownloadManager.swift in Sources */,
 				OBJ_141 /* DownloadTracking.swift in Sources */,
@@ -1029,7 +1039,7 @@
 				OBJ_149 /* MediaType.swift in Sources */,
 				14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				OBJ_150 /* MultiPartFormDataRequest.swift in Sources */,
-				14718F0B21BD88430096E88A /* BaseDelegateDispatcher.swift in Sources */,
+				14718F0B21BD88430096E88A /* BaseDelegateRequestDispatcher.swift in Sources */,
 				OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */,
 				OBJ_152 /* NetworkingError.swift in Sources */,
 				OBJ_153 /* Request.swift in Sources */,

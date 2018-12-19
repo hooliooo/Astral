@@ -6,6 +6,7 @@
 
 import class Foundation.URLSession
 import struct Foundation.UUID
+import class Foundation.FileManager
 
 /**
  Astral is used to do URLSession configuration for RequestDispatchers. It is typically a singleton that configures the URLSession
@@ -39,8 +40,9 @@ public final class Astral {
         /**
          Astral.Configuration simply holds the URLSession to be used by RequestDispatchers that adopt that session.
         */
-        public init(session: URLSession, boundary: String) {
+        public init(session: URLSession, fileManager: FileManager, boundary: String) {
             self.session = session
+            self.fileManager = fileManager
             self.boundary = boundary
         }
 
@@ -51,12 +53,18 @@ public final class Astral {
         public let session: URLSession
 
         /**
+         The FileManager used by this Configuration
+        */
+        public let fileManager: FileManager
+
+        /**
          The boundary string used for Multipart form data
-         */
+        */
         public let boundary: String
 
         private static var _defaultConfiguration: Astral.Configuration = Astral.Configuration(
             session: URLSession.shared,
+            fileManager: FileManager.default,
             boundary: UUID().uuidString
         )
 
@@ -97,6 +105,10 @@ public final class Astral {
     */
     public var session: URLSession {
         return self.configuration.session
+    }
+
+    public var fileManager: FileManager {
+        return self.configuration.fileManager
     }
 
     /**

@@ -29,37 +29,9 @@ public protocol RequestDispatcher: class {
     var isDebugMode: Bool { get }
 
     /**
-     The URLSessionTasks created by this instance
-    */
-    var taskCache: [URLSessionTask: Request] { get set }
-
-    /**
      The URLRequest associated with the RequestDispatcher.
      - parameter request: The Request instance used to build the URLRequest from the RequestBuilder.
     */
     func urlRequest(of request: Request) -> URLRequest
 
-    /**
-     Cancels all URLSessionTasks created by this RequestDispatcher
-    */
-    func cancel()
-
-    /**
-     Adds a task to the tasks array
-     - parameter task: URLSessionTask to add.
-     - parameter request: The URLSessionTask's associated Request.
-    */
-    func add(task: URLSessionTask, with request: Request)
-
-    /**
-     Removes a task to the task cache
-     - parameter task: URLSessionTask to remove.
-    */
-    @discardableResult
-    func remove(task: URLSessionTask) -> (URLSessionTask, Request)?
-
-    /**
-     Removes all tasks from the tasks array.
-    */
-    func removeTasks()
 }

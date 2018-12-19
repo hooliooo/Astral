@@ -48,7 +48,6 @@ open class AstralRequestDispatcher: NSObject {
     // MARK: Stored Properties
     private var _requestBuilder: RequestBuilder
     private let _isDebugMode: Bool
-    private var _taskCache: [URLSessionTask: Request] = [:]
 
     // MARK: Computed Properties
     open var session: URLSession {
@@ -70,38 +69,8 @@ extension AstralRequestDispatcher: RequestDispatcher {
         return self._isDebugMode
     }
 
-    open var taskCache: [URLSessionTask: Request] {
-        get { return self._taskCache }
-
-        set { self._taskCache = newValue }
-    }
-
     open func urlRequest(of request: Request) -> URLRequest {
         return self._requestBuilder.urlRequest(of: request)
     }
 
-    open func cancel() {
-        for task in self._taskCache.keys {
-            task.cancel()
-        }
-
-        self.removeTasks()
-    }
-
-    public final func add(task: URLSessionTask, with request: Request) {
-        self._taskCache.updateValue(request, forKey: task)
-    }
-
-    @discardableResult
-    public final func remove(task: URLSessionTask) -> (URLSessionTask, Request)? {
-        if let request = self._taskCache.removeValue(forKey: task) {
-            return (task, request)
-        } else {
-            return nil
-        }
-    }
-
-    public final func removeTasks() {
-        self._taskCache.removeAll()
-    }
 }

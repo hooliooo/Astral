@@ -6,18 +6,18 @@
 
 import struct Foundation.Data
 
-public protocol HTTPBodyBuilder: RequestBuilder {
+public protocol HTTPBodyRequestBuilder: RequestBuilder {
 
     /**
      Initializer used to create a RequestBuilder
      - parameter strategy: The DataStrategy used to create the body of the http request
     */
-    init(strategy: HTTPBodyStrategy)
+    init(strategy: DataStrategy)
 
     /**
      The DataStrategy used to create the http body of the request
     */
-    var strategy: HTTPBodyStrategy { get set }
+    var strategy: DataStrategy { get set }
 
     /**
      Creates httpBody from the Request based on the DataStrategy if the Request is NOT a GET request. Otherwise returns nil.

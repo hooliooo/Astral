@@ -12,10 +12,8 @@ import struct Foundation.Data
 public protocol DataStrategy {
     /**
      The method transforms the object instance into an optional Data
-     - parameter dict: The key-value pairs to be transformed as part of the HTTP body payload.
+     - parameter request: The Request instance used to create the httpBody of a URLRequest.
     */
-    func createHTTPBody(from parameters: Parameters) -> Data?
+    func createHTTPBody(from request: Request) -> Data?
 
 }
-
-public protocol HTTPBodyStrategy: DataStrategy {}

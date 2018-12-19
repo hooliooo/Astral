@@ -18,6 +18,6 @@ struct MultiPartFormConfiguration: RequestConfiguration {
     let basePathComponents: [String] = []
 
     let baseHeaders: Set<Header> = [
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
 }

@@ -10,23 +10,23 @@ import struct Foundation.URLRequest
 /**
  An implementation of RequestBuilder that can build URLRequests for simple http network requests.
 */
-public struct BaseHTTPBodyBuilder {
+public struct BaseHTTPBodyRequestBuilder {
 
     // MARK: Stored Properties
-    private var _strategy: HTTPBodyStrategy
+    private var _strategy: DataStrategy
 
 }
 
 // MARK: - RequestBuilder Protocol
-extension BaseHTTPBodyBuilder: RequestBuilder, HTTPBodyBuilder {
+extension BaseHTTPBodyRequestBuilder: RequestBuilder, HTTPBodyRequestBuilder {
 
     // MARK: Initializer
-    public init(strategy: HTTPBodyStrategy) {
+    public init(strategy: DataStrategy) {
         self._strategy = strategy
     }
 
     // MARK: Getter/Setter Properties
-    public var strategy: HTTPBodyStrategy {
+    public var strategy: DataStrategy {
         get { return self._strategy }
 
         set { self._strategy = newValue }
@@ -42,7 +42,7 @@ extension BaseHTTPBodyBuilder: RequestBuilder, HTTPBodyBuilder {
                 return nil
 
             case false:
-                return self._strategy.createHTTPBody(from: request.parameters)
+                return self._strategy.createHTTPBody(from: request)
         }
     }
 

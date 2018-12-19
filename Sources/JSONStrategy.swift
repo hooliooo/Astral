@@ -12,15 +12,15 @@ import class Foundation.JSONSerialization
  When using this strategy and your httpBody is supposed to be an array of JSON objects, make sure the parameters of your Request object has only
  ONE key-value pair in the dictionary. Otherwise the createHTTPBody method will induce a crash.
 */
-public struct JSONStrategy: HTTPBodyStrategy {
+public struct JSONStrategy: DataStrategy {
 
     // MARK: Initializer
-    public init () {}
+    public init() {}
 
     // MARK: Instance Methods
-    public func createHTTPBody(from parameters: Parameters) -> Data? {
+    public func createHTTPBody(from request: Request) -> Data? {
 
-        switch parameters {
+        switch request.parameters {
             case .dict(let dict):
                 return try? JSONSerialization.data(withJSONObject: dict)
 

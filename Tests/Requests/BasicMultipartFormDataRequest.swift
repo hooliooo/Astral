@@ -20,19 +20,19 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         "post"
     ]
 
-//    let parameters: Parameters = Parameters.dict([
-//        "this": "that",
-//        "what": "where",
-//        "why": "what"
-//    ])
-    let parameters: Parameters = .none
+    let parameters: Parameters = Parameters.dict([
+        "this": "that",
+        "what": "where",
+        "why": "what"
+    ])
+//    let parameters: Parameters = .none
 
     var headers: Set<Header> {
 
         return [
-            Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes")),
-            Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.multipartFormData(Astral.shared.boundary))),
-            Header(key: Header.Field.custom("Connection"), value: Header.Value.custom("Keep-Alive"))
+            Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes")),
+            Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.multipartFormData(Astral.shared.boundary))),
+            Header(key: Header.Key.custom("Connection"), value: Header.Value.custom("Keep-Alive"))
         ]
     }
 

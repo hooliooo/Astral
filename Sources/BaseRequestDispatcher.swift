@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2018 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -26,12 +26,12 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
     }
 
     // MARK: Initializer
-    public convenience init(strategy: HTTPBodyStrategy, isDebugMode: Bool = true) {
-        self.init(builder: BaseHTTPBodyBuilder(strategy: strategy), isDebugMode: isDebugMode)
+    public convenience init(strategy: DataStrategy, isDebugMode: Bool = true) {
+        self.init(builder: BaseHTTPBodyRequestBuilder(strategy: strategy), isDebugMode: isDebugMode)
     }
 
     public convenience init(isDebugMode: Bool = true) {
-        self.init(builder: BaseHTTPBodyBuilder(strategy: JSONStrategy()), isDebugMode: isDebugMode)
+        self.init(builder: BaseHTTPBodyRequestBuilder(strategy: JSONStrategy()), isDebugMode: isDebugMode)
     }
 
     /**
@@ -72,7 +72,7 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
                 switch isDebugMode {
                     case true:
                         print("HTTP Method: \(method)")
-                        print("URLRequest: \(urlRequest)")
+                        dump("URLRequest: \(urlRequest)")
                         print("Response: \(response)")
 
                     case false:
@@ -159,7 +159,7 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
                 switch isDebugMode {
                     case true:
                         print("HTTP Method: \(method)")
-                        print("URLRequest: \(urlRequest)")
+                        dump("URLRequest: \(urlRequest)")
                         print("Response: \(response)")
 
                     case false:

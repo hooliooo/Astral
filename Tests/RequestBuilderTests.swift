@@ -15,7 +15,7 @@ public final class RequestBuilderTests: XCTestCase {
 
     public func testQueryItems() {
 
-        let builder: RequestBuilder = BaseHTTPBodyBuilder(strategy: JSONStrategy())
+        let builder: RequestBuilder = BaseHTTPBodyRequestBuilder(strategy: JSONStrategy())
         let urlRequest: URLRequest = builder.urlRequest(of: NestedParametersGetRequest())
 
         let string: String = urlRequest.url!.absoluteString.removingPercentEncoding!

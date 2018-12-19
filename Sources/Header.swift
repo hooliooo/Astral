@@ -1,9 +1,7 @@
 //
-//  Header.swift
 //  Astral
-//
-//  Created by Julio Alorro on 1/27/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 /**
@@ -14,7 +12,7 @@ public struct Header {
     /**
      Representation of an HTTP header field
     */
-    public enum Field: Hashable {
+    public enum Key: Hashable {
 
         /**
          Accept header field.
@@ -59,7 +57,7 @@ public struct Header {
             return self.stringValue.hashValue
         }
 
-        public static func == (lhs: Header.Field, rhs: Header.Field) -> Bool {
+        public static func == (lhs: Header.Key, rhs: Header.Key) -> Bool {
             switch (lhs, rhs) {
                 case (.accept, .accept): return true
                 case (.authorization, .authorization): return true
@@ -127,7 +125,7 @@ public struct Header {
      - parameter key: The HTTP header field name.
      - parameter value: The HTTP header field name's value.
     */
-    public init(key: Header.Field, value: Header.Value) {
+    public init(key: Header.Key, value: Header.Value) {
         self.key = key
         self.value = value
     }
@@ -136,7 +134,7 @@ public struct Header {
     /**
      The header field name.
     */
-    public let key: Header.Field
+    public let key: Header.Key
 
     /**
      The header field name's value.

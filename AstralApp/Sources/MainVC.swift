@@ -47,6 +47,7 @@ class MainVC: UIViewController {
     )
 
     private let dispatcher2: BaseRequestDispatcher = BaseRequestDispatcher(builder: MultiPartFormDataBuilder())
+    private let dispatcher3: BaseRequestDispatcher = BaseRequestDispatcher(strategy: MultiPartFormDataStrategy())
 
     let queue: OperationQueue = {
         let op = OperationQueue()
@@ -63,16 +64,26 @@ class MainVC: UIViewController {
 
     @objc func loadButtonTapped() {
         let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
-//        try! self.dispatcher.tryUploading(request: request) // swiftlint:disable:this force_try
-        try! self.dispatcher2.multipartFormDataResponse( // swiftlint:disable:this force_try
-            of: request,
-            onSuccess: { (response: Response) -> Void in
-                print("Success")
-            },
-            onFailure: { (error: NetworkingError) -> Void in
-                print("Error")
-            },
-            onComplete: {}
-        )
+        try! self.dispatcher.upload(request: request) // swiftlint:disable:this force_try
+//        try! self.dispatcher2.multipartFormDataResponse( // swiftlint:disable:this force_try
+//            of: request,
+//            onSuccess: { (_: Response) -> Void in
+//                print("Success")
+//            },
+//            onFailure: { (_: NetworkingError) -> Void in
+//                print("Error")
+//            },
+//            onComplete: {}
+//        )
+//        self.dispatcher3.response(
+//            of: request,
+//            onSuccess: { (_: Response) -> Void in
+//                print("Success")
+//            },
+//            onFailure: { (_: NetworkingError) -> Void in
+//                print("Error")
+//            },
+//            onComplete: {}
+//        )
     }
 }
