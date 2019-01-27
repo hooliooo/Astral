@@ -18,7 +18,7 @@ struct FormURLEncodedConfiguration: RequestConfiguration {
     let basePathComponents: [String] = []
 
     let baseHeaders: Set<Header> = [
-        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationURLEncoded)),
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationURLEncoded)),
+        Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
 }

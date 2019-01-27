@@ -18,8 +18,8 @@ struct BasicConfiguration: RequestConfiguration {
     let basePathComponents: [String] = []
 
     let baseHeaders: Set<Header> = [
-        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON)),
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
-        Header(key: Header.Field.custom("User-Agent"), value: Header.Value.custom("ios:com.julio.alorro.Astral:v2.0.4"))
+        Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationJSON)),
+        Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
+        Header(key: Header.Key.custom("User-Agent"), value: Header.Value.custom("ios:com.julio.alorro.Astral:v2.0.4"))
     ]
 }

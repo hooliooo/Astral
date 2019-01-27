@@ -65,18 +65,18 @@ public enum MediaType: Hashable {
         }
     }
 
-    public var hashValue: Int {
-        return self.stringValue.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.stringValue)
     }
 
     public static func == (lhs: MediaType, rhs: MediaType) -> Bool {
         switch (lhs, rhs) {
-            case (.application(let lhsValue), .application(let rhsValue)): return lhsValue == rhsValue
+            case (.application, .application): return lhs.stringValue == rhs.stringValue
             case (.applicationJSON, .applicationJSON): return true
             case (.applicationURLEncoded, .applicationURLEncoded): return true
-            case (.multipart(let lhsValue), .multipart(let rhsValue)): return lhsValue == rhsValue
-            case (.multipartFormData(let lhsValue), .multipartFormData(let rhsValue)): return lhsValue == rhsValue
-            case (.custom(let lhsValue), .custom(let rhsValue)): return lhsValue == rhsValue
+            case (.multipart, .multipart): return lhs.stringValue == rhs.stringValue
+            case (.multipartFormData, .multipartFormData): return lhs.stringValue == rhs.stringValue
+            case (.custom, .custom): return lhs.stringValue == rhs.stringValue
             default: return false
         }
     }

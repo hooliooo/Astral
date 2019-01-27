@@ -13,6 +13,7 @@ import struct Foundation.Data
 import struct Foundation.URL
 import class Foundation.NSNumber
 import struct Foundation.FileAttributeKey
+import protocol Foundation.LocalizedError
 
 /**
  A subclass of AstralRequestDispatcher that executes a URLSession's dataTask(with request:completionHandler:) method.
@@ -21,8 +22,27 @@ import struct Foundation.FileAttributeKey
 open class BaseRequestDispatcher: AstralRequestDispatcher {
 
     // MARK: Enums
-    public enum Error: Swift.Error {
+    public enum Error: LocalizedError, CustomStringConvertible {
         case builder(String)
+
+        public var localizedDescription: String {
+            switch self {
+                case .builder(let string):
+                    return string
+            }
+        }
+
+        public var errorDescription: String? {
+            return self.localizedDescription
+        }
+
+        public var failureReason: String? {
+            return self.localizedDescription
+        }
+
+        public var description: String {
+            return self.localizedDescription
+        }
     }
 
     // MARK: Initializer

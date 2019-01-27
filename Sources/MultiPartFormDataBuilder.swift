@@ -56,13 +56,6 @@ public class MultiPartFormDataBuilder: RequestBuilder {
     public func multipartFormDataURLRequest(of request: MultiPartFormDataRequest) throws -> URLRequest {
         var urlRequest: URLRequest = self._urlRequest(of: request)
         let fileURL: URL = self.strategy.fileURL(for: request)
-        //        let attributeDict: [FileAttributeKey: Any] = try self.fileManager.attributesOfItem(atPath: fileURL.path)
-        //
-        //        guard let fileSize = attributeDict[FileAttributeKey.size] as? NSNumber else {
-        //            throw MultiPartFormDataBuilder.ReadError.couldNotReadFileSize
-        //        }
-        //
-        //        urlRequest.addValue("\(fileSize.uint64Value)", forHTTPHeaderField: "Content-Length")
         urlRequest.httpBodyStream = try self.strategy.createHTTPStreamBody(from: request, at: fileURL)
         return urlRequest
     }

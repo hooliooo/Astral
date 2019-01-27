@@ -9,28 +9,23 @@ public class ResponseTests: XCTestCase {
         configuration.timeoutIntervalForRequest = 20.0
         configuration.timeoutIntervalForResource = 20.0
         configuration.httpAdditionalHeaders = ["User-Agent": "ios:com.julio.alorro.Astral:v2.0.4"]
-        let session: URLSession = URLSession(configuration: configuration)
+
+        let queue: OperationQueue = OperationQueue()
+        queue.qualityOfService = QualityOfService.utility
+
+        let session: URLSession = URLSession(configuration: configuration, delegate: nil, delegateQueue: queue)
         return session
     }()
 
-    public override func setUp() {
+    public override class func setUp() {
         super.setUp()
         Astral.shared.configuration = Astral.Configuration(
-            session: ResponseTests.session, boundary: UUID().uuidString
+            session: ResponseTests.session, fileManager: FileManager.default, boundary: UUID().uuidString
         )
-    }
-
-    public override func tearDown() {
-        super.tearDown()
     }
 
     // MARK: Stored Properties
     let decoder: JSONDecoder = JSONDecoder()
-    let queue: DispatchQueue = DispatchQueue(
-        label: "TestQueue",
-        qos: DispatchQoS.utility,
-        attributes: DispatchQueue.Attributes.concurrent
-    )
 
     private lazy var dispatcher: BaseRequestDispatcher = BaseRequestDispatcher()
 
@@ -63,8 +58,8 @@ public class ResponseTests: XCTestCase {
 
                 let accept: Header = request.headers.filter { $0.key == .accept }.first!
                 let contentType: Header = request.headers.filter { $0.key == .contentType }.first!
-                let custom: Header = request.headers.filter { $0.key == Header.Field.custom("Get-Request") }.first!
-                let userAgent: Header = request.configuration.baseHeaders.first(where: { $0.key == Header.Field.custom("User-Agent")})!
+                let custom: Header = request.headers.filter { $0.key == Header.Key.custom("Get-Request") }.first!
+                let userAgent: Header = request.configuration.baseHeaders.first(where: { $0.key == Header.Key.custom("User-Agent")})!
 
                 XCTAssertTrue(response.headers.accept == accept.value.stringValue)
                 XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
@@ -78,7 +73,6 @@ public class ResponseTests: XCTestCase {
             },
             onComplete: {
                 print("Thread is Utility:", Thread.current.qualityOfService == QualityOfService.utility)
-                print("Thread:", Thread.current.isMainThread)
             }
         )
 
@@ -190,6 +184,81 @@ public class ResponseTests: XCTestCase {
         )
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
+    }
+
+    public func testForMultipartFormDataRequest() {
+
+        let expectation: XCTestExpectation = self.expectation(description: "Multipart form data")
+
+        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(strategy: MultiPartFormDataStrategy())
+        let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
+
+        dispatcher.response(
+            of: request,
+            onSuccess: { [weak self] (response: Response) -> Void in
+                guard let s = self else { return }
+                let response: MultipartFormDataResponse = s.transform(response: response)
+
+                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                switch request.parameters {
+                    case .dict(let parameters):
+                        XCTAssertTrue(response.form.this == parameters["this"]! as! String)
+                        XCTAssertTrue(response.form.what == parameters["what"]! as! String)
+                        XCTAssertTrue(response.form.why == parameters["why"]! as! String)
+
+                    case .array, .none:
+                        XCTFail()
+                }
+                expectation.fulfill()
+            },
+            onFailure: { (error: NetworkingError) -> Void in
+                XCTFail(error.localizedDescription)
+            },
+            onComplete: {}
+        )
+
+        self.waitForExpectations(timeout: 20.0, handler: nil)
+    }
+
+    public func testForMultipartFormDataRequest2() {
+
+        let expectation: XCTestExpectation = self.expectation(description: "Multipart form data")
+
+        let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(builder: MultiPartFormDataBuilder())
+        let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
+
+        do {
+            try dispatcher.multipartFormDataResponse(
+                of: request,
+                onSuccess: { [weak self] (response: Response) -> Void in
+                    guard let s = self else { return }
+                    let response: MultipartFormDataResponse = s.transform(response: response)
+
+                    XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                    switch request.parameters {
+                        case .dict(let parameters):
+                            XCTAssertTrue(response.form.this == parameters["this"]! as! String)
+                            XCTAssertTrue(response.form.what == parameters["what"]! as! String)
+                            XCTAssertTrue(response.form.why == parameters["why"]! as! String)
+
+                        case .array, .none:
+                            XCTFail()
+                    }
+                    expectation.fulfill()
+                },
+                onFailure: { (error: NetworkingError) -> Void in
+                    XCTFail(error.localizedDescription)
+                },
+                onComplete: {
+                    XCTAssertTrue(Thread.current.qualityOfService == .utility)
+                }
+            )
+
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+
+        self.waitForExpectations(timeout: 20.0, handler: nil)
     }
 
 }

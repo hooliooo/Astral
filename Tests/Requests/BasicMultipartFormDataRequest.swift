@@ -37,24 +37,31 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
     }
 
     public var components: [MultiPartFormDataComponent] {
+
+        let bundle: Bundle = Bundle(for: HeaderTests.self)
+
+        let getData: (String) -> Data = { (imageName: String) -> Data in
+            return UIImage(named: imageName, in: bundle, compatibleWith: nil)!.pngData()!
+        }
+        
         return [
             MultiPartFormDataComponent(
                 name: "file1",
                 fileName: "image1.png",
                 contentType: "image/png",
-                file: MultiPartFormDataComponent.File.data(UIImage(named: "pic1")!.pngData()!)
+                file: MultiPartFormDataComponent.File.data(getData("pic1"))
             ),
             MultiPartFormDataComponent(
                 name: "file2",
                 fileName: "image2.png",
                 contentType: "image/png",
-                file: MultiPartFormDataComponent.File.data(UIImage(named: "pic2")!.pngData()!)
+                file: MultiPartFormDataComponent.File.data(getData("pic2"))
             ),
             MultiPartFormDataComponent(
                 name: "file1",
                 fileName: "image3.png",
                 contentType: "image/png",
-                file: MultiPartFormDataComponent.File.data(UIImage(named: "pic3")!.pngData()!)
+                file: MultiPartFormDataComponent.File.data(getData("pic3"))
             ),
         ]
     }

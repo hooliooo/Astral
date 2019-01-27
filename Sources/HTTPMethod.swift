@@ -85,14 +85,14 @@ extension HTTPMethod: Hashable {
         }
     }
 
-    public var hashValue: Int {
+    public func hash(into hasher: inout Hasher) {
         switch self {
-            case .get: return 1337
-            case .delete: return 1338
-            case .post: return 1339
-            case .put: return 1340
-            case .patch: return 1341
-            case .other(let method):  return 1342 &+ method.hashValue
+            case .get: hasher.combine(1337)
+            case .delete: hasher.combine(1338)
+            case .post: hasher.combine(1339)
+            case .put: hasher.combine(1340)
+            case .patch: hasher.combine(1341)
+            case .other(let method):  hasher.combine(1342 &+ method.hashValue)
         }
     }
 

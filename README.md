@@ -60,7 +60,7 @@ struct PokeAPIConfiguration: RequestConfiguration {
     ]
 
     let baseHeaders: Set<Header> = [
-        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
 }
 ```
@@ -126,7 +126,7 @@ struct YourAPIConfiguration: RequestConfiguration {
     ]
 
     let baseHeaders: Set<Header> = [
-        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
 }
 ```
@@ -150,13 +150,12 @@ struct YourRequest: Request {
     ])
 
     let headers: Set<Header> = [
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
 }
 ```
 
 ```swift
-let queue: DispatchQueue = DispatchQueue(label: "NetworkQueue", qos: DispatchQoS.utility, attributes: [DispatchQueue.Attributes.concurrent])
 
 let request: Request = YourRequest()
 let dispatcher: RequestDispatcher = BaseRequestDispatcher(isDebugMode: true)

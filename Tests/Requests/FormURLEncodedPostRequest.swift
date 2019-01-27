@@ -26,6 +26,6 @@ struct FormURLEncodedPostRequest: Request {
     ])
 
     let headers: Set<Header> = [
-        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("Yes"))
+        Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes"))
     ]
 }

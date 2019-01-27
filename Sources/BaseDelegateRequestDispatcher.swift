@@ -18,12 +18,18 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
     public init(
         configuration: URLSessionConfiguration,
         queue: OperationQueue,
+        whileUploading: @escaping (AstralTask) -> Void,
         onUploadDidFinish: @escaping () -> Void,
+        whileDownloading: @escaping (AstralTask) -> Void,
         onDownloadDidFinish: @escaping (URL) -> Void,
+        onError: @escaping (Error) -> Void,
         isDebugMode: Bool
     ) {
+        self.whileUploading = whileUploading
         self.onUploadDidFinish = onUploadDidFinish
+        self.whileDownloading = whileDownloading
         self.onDownloadDidFinish = onDownloadDidFinish
+        self.onError = onError
         super.init(builder: MultiPartFormDataBuilder(), isDebugMode: isDebugMode)
 
         self._session = URLSession(configuration: configuration, delegate: self, delegateQueue: queue)
@@ -31,8 +37,11 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
 
     // MARK: Stored Properties
     private var _session: URLSession!
+    public let whileUploading: (AstralTask) -> Void
     public let onUploadDidFinish: () -> Void
+    public let whileDownloading: (AstralTask) -> Void
     public let onDownloadDidFinish: (URL) -> Void
+    public let onError: (Error) -> Void
 
     private var taskCache: Set<AstralTask> = []
 
@@ -41,17 +50,20 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
         return self.builder as! MultiPartFormDataBuilder // swiftlint:disable:this force_cast
     }
 
+    private var fileManager: FileManager {
+        return self.multipartFormDataBuilder.fileManager
+    }
+
     open override var session: URLSession {
         return self._session
     }
 
     public func upload(request: MultiPartFormDataRequest) throws {
         let urlRequest: URLRequest = self.multipartFormDataBuilder._urlRequest(of: request)
-        let fileURL: URL = self.multipartFormDataBuilder.fileManager.ast.fileURL(of: request)
+        let fileURL: URL = self.fileManager.ast.fileURL(of: request)
         try self.multipartFormDataBuilder.strategy.writeData(to: fileURL, for: request)
 
-        let fileAttributes: [FileAttributeKey: Any] = try self.multipartFormDataBuilder
-            .fileManager
+        let fileAttributes: [FileAttributeKey: Any] = try self.fileManager
             .attributesOfItem(atPath: fileURL.path)
 
         guard let fileSize = fileAttributes[FileAttributeKey.size] as? NSNumber else {
@@ -78,7 +90,8 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
 extension BaseDelegateDispatcher: URLSessionDelegate {
 
     public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        print(error as Any)
+        guard let error = error else { return }
+        self.onError(error)
     }
 
 }
@@ -86,29 +99,34 @@ extension BaseDelegateDispatcher: URLSessionDelegate {
 extension BaseDelegateDispatcher: URLSessionDataDelegate {
 
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print(error as Any)
+        guard let error = error else { return }
+        self.onError(error)
     }
 
     public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == task }) else { return }
 
-        astralTask.progress.completedUnitCount += bytesSent
-        astralTask.progress.totalUnitCount = totalBytesExpectedToSend
+        astralTask.completedUnitCount += bytesSent
+        astralTask.totalUnitCount = totalBytesExpectedToSend
 
-        print("Upload Progress: \(astralTask.progress.fractionCompleted)")
+        self.whileUploading(astralTask)
     }
 
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+        guard let astralTask = self.taskCache.first(where: { $0.sessionTask == dataTask }) else { return }
+
         self.onUploadDidFinish()
 
-//        guard let task = self.taskCache.first(where: { $0.sessionTask == dataTask }) else { return }
+        if let request = astralTask.request as? MultiPartFormDataRequest {
+            let fileURL: URL = self.fileManager.ast.fileURL(of: request)
+            try? self.fileManager.removeItem(at: fileURL)
+        }
 
         print(response)
         completionHandler(.becomeDownload)
     }
 
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didBecome downloadTask: URLSessionDownloadTask) {
-
 
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == dataTask }) else { return }
 
@@ -126,10 +144,10 @@ extension BaseDelegateDispatcher: URLSessionDownloadDelegate {
 
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == downloadTask }) else { return }
 
-        astralTask.progress.completedUnitCount += bytesWritten
-        astralTask.progress.totalUnitCount = totalBytesExpectedToWrite
+        astralTask.completedUnitCount += bytesWritten
+        astralTask.totalUnitCount = totalBytesExpectedToWrite
 
-        print("Download Progress: \(astralTask.progress.fractionCompleted)")
+        self.whileDownloading(astralTask)
     }
 
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {

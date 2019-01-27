@@ -25,8 +25,8 @@ struct NestedParametersGetRequest: Request {
     ])
 
     let headers: Set<Header> = [
-        Header(key: Header.Field.custom("Get-Request"), value: Header.Value.custom("YES")),
-        Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
-        Header(key: Header.Field.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
+        Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("YES")),
+        Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
+        Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
 }

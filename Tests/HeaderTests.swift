@@ -14,10 +14,11 @@ public final class HeaderTests: XCTestCase {
     }
 
     public func testHeaderFields() {
-        XCTAssertTrue(Header.Field.accept.stringValue == "Accept")
-        XCTAssertTrue(Header.Field.authorization.stringValue == "Authorization")
-        XCTAssertTrue(Header.Field.contentType.stringValue == "Content-Type")
-        XCTAssertTrue(Header.Field.custom("MyCustomField").stringValue == "MyCustomField")
+        
+        XCTAssertTrue(Header.Key.accept.stringValue == "Accept")
+        XCTAssertTrue(Header.Key.authorization.stringValue == "Authorization")
+        XCTAssertTrue(Header.Key.contentType.stringValue == "Content-Type")
+        XCTAssertTrue(Header.Key.custom("MyCustomField").stringValue == "MyCustomField")
     }
 
     public func testHeaderValues() {
@@ -39,8 +40,8 @@ public final class HeaderTests: XCTestCase {
 
     public func testEquality() {
 
-        let header1: Header = Header(key: Header.Field.accept, value: Header.Value.custom("Custom"))
-        let header2: Header = Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
+        let header1: Header = Header(key: Header.Key.accept, value: Header.Value.custom("Custom"))
+        let header2: Header = Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON))
 
         XCTAssertTrue(header1 == header2)
 
@@ -48,8 +49,8 @@ public final class HeaderTests: XCTestCase {
 
     public func testOverwrite() {
 
-        let set1: Set<Header> = [Header(key: Header.Field.accept, value: Header.Value.custom("Custom"))]
-        let set2: Set<Header> = [Header(key: Header.Field.accept, value: Header.Value.mediaType(MediaType.applicationJSON))]
+        let set1: Set<Header> = [Header(key: Header.Key.accept, value: Header.Value.custom("Custom"))]
+        let set2: Set<Header> = [Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON))]
 
         let combinedSet: Set<Header> = set2.union(set1)
 

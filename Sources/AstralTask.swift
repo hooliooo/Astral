@@ -4,7 +4,6 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-
 import class Foundation.URLSessionTask
 import class Foundation.Progress
 
@@ -34,19 +33,36 @@ public class AstralTask {
     public let progress: Progress
 
     // MARK: Computed Properties
+    /**
+     The completedUnitCount of the Progress instance.
+    */
     public var completedUnitCount: Int64 {
-        return self.progress.completedUnitCount
+        get { return self.progress.completedUnitCount }
+
+        set { self.progress.completedUnitCount = newValue }
     }
 
+    /**
+     The totalUnitCount of the Progress instance.
+    */
     public var totalUnitCount: Int64 {
-        return self.progress.totalUnitCount
+        get { return self.progress.totalUnitCount }
+
+        set { self.progress.totalUnitCount = newValue }
+    }
+
+    /**
+     The fractionCompleted of the Progress instance.
+    */
+    public var fractionCompleted: Double {
+        return self.progress.fractionCompleted
     }
 
 }
 
 extension AstralTask: Hashable {
-    public var hashValue: Int {
-        return self.sessionTask.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.sessionTask)
     }
 
     public static func == (lhs: AstralTask, rhs: AstralTask) -> Bool {

@@ -53,8 +53,8 @@ public struct Header {
             }
         }
 
-        public var hashValue: Int {
-            return self.stringValue.hashValue
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(self.stringValue)
         }
 
         public static func == (lhs: Header.Key, rhs: Header.Key) -> Bool {
@@ -62,7 +62,7 @@ public struct Header {
                 case (.accept, .accept): return true
                 case (.authorization, .authorization): return true
                 case (.contentType, .contentType): return true
-                case (.custom(let lhsValue), .custom(let rhsValue)): return lhsValue == rhsValue
+                case (.custom, .custom): return lhs.stringValue == rhs.stringValue
                 default: return false
             }
         }
@@ -105,15 +105,15 @@ public struct Header {
             }
         }
 
-        public var hashValue: Int {
-            return self.stringValue.hashValue
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(self.stringValue)
         }
 
         public static func == (lhs: Header.Value, rhs: Header.Value) -> Bool {
             switch (lhs, rhs) {
-                case (.basicAuthorization(let lhsValue), .basicAuthorization(let rhsValue)): return lhsValue == rhsValue
-                case (.custom(let lhsValue), .custom(let rhsValue)): return lhsValue == rhsValue
-                case (.mediaType(let lhsValue), .mediaType(let rhsValue)): return lhsValue == rhsValue
+                case (.basicAuthorization, .basicAuthorization): return lhs.stringValue == rhs.stringValue
+                case (.custom, .custom): return lhs.stringValue == rhs.stringValue
+                case (.mediaType, .mediaType): return lhs.stringValue == rhs.stringValue
                 default: return false
             }
         }
@@ -154,8 +154,8 @@ extension Header: Hashable {
         return lhs.key == rhs.key
     }
 
-    public var hashValue: Int {
-        return self.key.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.key)
     }
 
 }
