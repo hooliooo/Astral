@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -75,13 +75,13 @@ extension HTTPMethod: Hashable {
 
     public static func == (lhs: HTTPMethod, rhs: HTTPMethod) -> Bool {
         switch (lhs, rhs) {
-        case (.get, .get): return true
-        case (.delete, .delete): return true
-        case (.post, .post): return true
-        case (.put, .put): return true
-        case (.patch, .patch): return true
-        case (.other(let lhsMethod), .other(let rhsMethod)): return lhsMethod == rhsMethod
-        default: return false
+            case (.get, .get): return true
+            case (.delete, .delete): return true
+            case (.post, .post): return true
+            case (.put, .put): return true
+            case (.patch, .patch): return true
+            case let (.other(lhsMethod), .other(rhsMethod)): return lhsMethod == rhsMethod
+            default: return false
         }
     }
 

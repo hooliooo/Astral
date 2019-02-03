@@ -1,17 +1,13 @@
+//
+//  Astral
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
+//
+
 import XCTest
 @testable import Astral
 
 public final class HeaderTests: XCTestCase {
-
-    public override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    public override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
 
     public func testHeaderFields() {
         

@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -79,9 +79,9 @@ fileprivate func createHeadersString(from request: Request) -> String { // swift
     var headerString: String = ""
 
     let headers: [String] = request.headers
-        .sorted(by: { (first: Header, second: Header) -> Bool in
+        .sorted { (first: Header, second: Header) -> Bool in
             return first.key.stringValue < second.key.stringValue
-        })
+        }
         .map { (header: Header) -> String in
             return "\(header.key.stringValue): \(header.value.stringValue)"
         }

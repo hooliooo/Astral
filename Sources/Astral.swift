@@ -1,12 +1,14 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
 import class Foundation.URLSession
 import struct Foundation.UUID
 import class Foundation.FileManager
+import class Foundation.OperationQueue
+import enum Foundation.QualityOfService
 
 /**
  Astral is used to do URLSession configuration for RequestDispatchers. It is typically a singleton that configures the URLSession
@@ -28,7 +30,11 @@ public final class Astral {
 
          The default URLSession used is the URLSession.shared singleton.
 
+         The default FileManager used is the FileManager.default singleton.
+
          The default boundary used is a UUID string. **Using this default value changes in between app launches**
+
+         The default OperationQueue used is the delegateQueue of the URLSession.
         */
         public static var defaultConfiguration: Astral.Configuration {
             get { return Astral.Configuration._defaultConfiguration }
@@ -44,6 +50,7 @@ public final class Astral {
             self.session = session
             self.fileManager = fileManager
             self.boundary = boundary
+            self.queue = session.delegateQueue
         }
 
         // MARK: Stored Properties
@@ -62,6 +69,11 @@ public final class Astral {
         */
         public let boundary: String
 
+        /**
+         The operation queue the URLSessionTasks execute on
+        */
+        public let queue: OperationQueue
+
         private static var _defaultConfiguration: Astral.Configuration = Astral.Configuration(
             session: URLSession.shared,
             fileManager: FileManager.default,
@@ -78,8 +90,9 @@ public final class Astral {
 
     // MARK: Initializers
     /**
-     Astral is used to do URLSession configuration for RequestDispatchers. It is typically a singleton that configures the URLSession
-     for general http networking of RequestDispatchers. The the default implementation of defaultConfiguration uses the URLSession shared instance.
+     Astral is used to do URLSession configuration for RequestDispatchers. It is typically a singleton that configures
+     the URLSession for general http networking of RequestDispatchers. The the default implementation
+     of defaultConfiguration uses the URLSession shared instance.
      If you want more control what the specifications of a URLSession for certain RequestDispatchers. Simply create another instance of Astral and override
      the RequestDispatcher(s)' session to use that Astral's session.
 
@@ -116,6 +129,13 @@ public final class Astral {
     */
     public var boundary: String {
         return self.configuration.boundary
+    }
+
+    /**
+     The OperationQueue used by the current Configuration instance.
+    */
+    public var queue: OperationQueue {
+        return self.configuration.queue
     }
 
 }

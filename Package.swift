@@ -8,7 +8,7 @@
 
 import PackageDescription
 
-let package = Package(
+let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level_acl multiline_arguments_brackets
     name: "Astral",
     products: [
         .library(

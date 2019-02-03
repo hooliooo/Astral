@@ -1,8 +1,7 @@
 //
-//  NestedParametersGetRequest.swift
-//  AstralTests
-//
-//  Created by Julio Miguel Alorro on 5/4/18.
+//  Astral
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation

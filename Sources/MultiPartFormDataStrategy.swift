@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -81,7 +81,7 @@ public struct MultiPartFormDataStrategy {
      - parameter data: The data the string will be appended to.
     */
     private func append(string: String, to data: inout Data) {
-        let stringData: Data = string.data(using: String.Encoding.utf8)!
+        let stringData: Data = string.data(using: String.Encoding.utf8)! // swiftlint:disable:this force_unwrapping
         data.append(stringData)
     }
 

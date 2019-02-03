@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -82,12 +82,8 @@ public extension RequestBuilder {
             case false:
                 var path: String = pathComponents.joined(separator: "/")
 
-                switch path.first! != "/" {
-                    case true:
-                        path.insert("/", at: path.startIndex)
-
-                    case false:
-                        break
+                if let firstPath = path.first, firstPath != "/" {
+                    path.insert("/", at: path.startIndex)
                 }
 
                 components.path = path

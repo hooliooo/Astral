@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -31,38 +31,25 @@ public struct AstralFileManagerExtension {
 
 public extension AstralFileManagerExtension {
 
+    /**
+     The URL to the caches directory in the user domain mask.
+    */
     var cacheDirectory: URL {
         return self.base
             .urls(
                 for: FileManager.SearchPathDirectory.cachesDirectory,
                 in: FileManager.SearchPathDomainMask.userDomainMask
             )
-            .first!
+            .first! // swiftlint:disable:this force_unwrapping
     }
 
+    /**
+     Creates a URL leading to the caches directory with the MultiPartFormDataRequest fileName as a path component.
+    */
     func fileURL(of request: MultiPartFormDataRequest) -> URL {
         return self.cacheDirectory.appendingPathComponent(request.fileName)
     }
 
-    @discardableResult
-    func writeAndCheck(data: Data, of request: MultiPartFormDataRequest) -> Bool {
-        let fileURL: URL = self.fileURL(of: request)
-        try? data.write(to: fileURL)
-        return self.base.fileExists(atPath: fileURL.path)
-    }
-
-    func write(data: Data, of request: MultiPartFormDataRequest) throws {
-        let fileURL: URL = self.fileURL(of: request)
-        try data.write(to: fileURL)
-    }
-
-    @discardableResult
-    func removeUploadedData(of request: MultiPartFormDataRequest) -> Bool {
-        let fileURL: URL = self.cacheDirectory.appendingPathComponent(request.fileName)
-        try? self.base.removeItem(at: fileURL)
-
-        return self.base.fileExists(atPath: fileURL.path) == false
-    }
 }
 
 public extension FileManager {

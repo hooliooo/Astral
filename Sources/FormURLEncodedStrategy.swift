@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -26,12 +26,13 @@ public struct FormURLEncodedStrategy {
     // MARK: Instance Methods
     private func percentEscaped(string: String) -> String {
         return string
+            // swiftlint:disable:next force_unwrapping
             .addingPercentEncoding(withAllowedCharacters: FormURLEncodedStrategy.characterSet)!
             .replacingOccurrences(of: " ", with: "+")
     }
 
-    private func convert(dict: [String: Any]) -> [String: String]? {
-        let bodyDict: [(String, String)] = dict.compactMap { (dict: (key: String, value: Any)) -> (String, String) in
+    private func convert(dict: [String: Any]) -> [String: String] {
+        let bodyDict: [(String, String)] = dict.map { (dict: (key: String, value: Any)) -> (String, String) in
             return (dict.key, String(describing: dict.value))
         }
 
@@ -52,7 +53,9 @@ extension FormURLEncodedStrategy: DataStrategy {
 
             case .dict(let dict):
 
-                guard let parametersDict = self.convert(dict: dict) else { return nil }
+                let parametersDict: [String: String] = self.convert(dict: dict)
+
+                guard parametersDict.isEmpty == false else { return nil }
 
                 let parameters: [String] = parametersDict.map { (dict: (key: String, value: String)) -> String in
                     return "\(dict.key)=\(self.percentEscaped(string: dict.value))"

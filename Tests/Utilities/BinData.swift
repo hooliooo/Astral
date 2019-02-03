@@ -1,9 +1,7 @@
 //
-//  BinData.swift
 //  Astral
-//
-//  Created by Julio Alorro on 6/13/17.
-//  Copyright (c) 2017 CocoaPods. All rights reserved.
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Astral

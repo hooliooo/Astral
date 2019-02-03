@@ -1,9 +1,7 @@
 //
-//  BasicGetRequest.swift
 //  Astral
-//
-//  Created by Julio Alorro on 1/28/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation

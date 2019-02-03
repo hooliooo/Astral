@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -22,7 +22,13 @@ import protocol Foundation.LocalizedError
 open class BaseRequestDispatcher: AstralRequestDispatcher {
 
     // MARK: Enums
+    /**
+     Errors associated with methods of BaseRequestDispatcher
+    */
     public enum Error: LocalizedError, CustomStringConvertible {
+        /**
+         The RequestBuilder is not a MultiPartFormDataBuilder
+        */
         case builder(String)
 
         public var localizedDescription: String {

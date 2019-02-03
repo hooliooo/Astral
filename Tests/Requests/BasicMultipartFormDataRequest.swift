@@ -1,9 +1,7 @@
 //
-//  BasicMultipartFormDataRequest.swift
-//  AstralTests
-//
-//  Created by Julio Alorro on 1/28/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Astral
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation
@@ -43,6 +41,11 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         let getData: (String) -> Data = { (imageName: String) -> Data in
             return UIImage(named: imageName, in: bundle, compatibleWith: nil)!.pngData()!
         }
+
+        let getURL: (String, String) -> URL = { (imageName: String, fileExtension: String) -> URL in
+            return bundle.url(forResource: imageName, withExtension: fileExtension)! // swiftlint:disable:this force_unwrapping
+
+        }
         
         return [
             MultiPartFormDataComponent(
@@ -55,10 +58,10 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
                 name: "file2",
                 fileName: "image2.png",
                 contentType: "image/png",
-                file: MultiPartFormDataComponent.File.data(getData("pic2"))
+                file: MultiPartFormDataComponent.File.url(getURL("pic2", "png"))
             ),
             MultiPartFormDataComponent(
-                name: "file1",
+                name: "file3",
                 fileName: "image3.png",
                 contentType: "image/png",
                 file: MultiPartFormDataComponent.File.data(getData("pic3"))

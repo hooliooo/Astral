@@ -1,3 +1,9 @@
+//
+//  Astral
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
+//
+
 import XCTest
 @testable import Astral
 
@@ -17,7 +23,7 @@ public class ResponseTests: XCTestCase {
         return session
     }()
 
-    public override class func setUp() {
+    override public class func setUp() {
         super.setUp()
         Astral.shared.configuration = Astral.Configuration(
             session: ResponseTests.session, fileManager: FileManager.default, boundary: UUID().uuidString
@@ -47,7 +53,6 @@ public class ResponseTests: XCTestCase {
         let request: BasicGetRequest = BasicGetRequest()
 
         print(request)
-        print(BasicMultipartFormDataRequest())
 
         self.dispatcher.response(
             of: request,
@@ -72,7 +77,7 @@ public class ResponseTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             },
             onComplete: {
-                print("Thread is Utility:", Thread.current.qualityOfService == QualityOfService.utility)
+                print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
             }
         )
 
@@ -192,7 +197,6 @@ public class ResponseTests: XCTestCase {
 
         let dispatcher: BaseRequestDispatcher = BaseRequestDispatcher(strategy: MultiPartFormDataStrategy())
         let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
-
         dispatcher.response(
             of: request,
             onSuccess: { [weak self] (response: Response) -> Void in
@@ -214,7 +218,9 @@ public class ResponseTests: XCTestCase {
             onFailure: { (error: NetworkingError) -> Void in
                 XCTFail(error.localizedDescription)
             },
-            onComplete: {}
+            onComplete: {
+                print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
+            }
         )
 
         self.waitForExpectations(timeout: 20.0, handler: nil)
@@ -250,7 +256,7 @@ public class ResponseTests: XCTestCase {
                     XCTFail(error.localizedDescription)
                 },
                 onComplete: {
-                    XCTAssertTrue(Thread.current.qualityOfService == .utility)
+                    print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
                 }
             )
 

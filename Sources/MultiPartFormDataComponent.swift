@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -37,7 +37,13 @@ public struct MultiPartFormDataComponent {
         }
 
         public var debugDescription: String {
-            return self.description
+            switch self {
+                case .data(let data):
+                    return data.debugDescription
+
+                case .url(let url):
+                    return url.debugDescription
+            }
         }
 
     }

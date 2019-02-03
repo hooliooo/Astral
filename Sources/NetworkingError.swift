@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -31,6 +31,10 @@ public enum NetworkingError: LocalizedError {
     case unknown(String)
 
     public var errorDescription: String? {
+        return self.localizedDescription
+    }
+
+    public var localizedDescription: String {
         switch self {
             case .connection(let error):
                 return error.localizedDescription
@@ -38,7 +42,7 @@ public enum NetworkingError: LocalizedError {
             case .response(let response):
                 return response.json.description
 
-            case .unknownResponse(let response, let text):
+            case let .unknownResponse(response, text):
                 return "\(text)\n\n\(response)"
 
             case .unknown(let text):
@@ -46,11 +50,7 @@ public enum NetworkingError: LocalizedError {
         }
     }
 
-    public var localizedDescription: String {
-        return self.errorDescription!
-    }
-
     public var failureReason: String? {
-        return self.errorDescription
+        return self.localizedDescription
     }
 }

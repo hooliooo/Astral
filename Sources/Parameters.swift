@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -44,7 +44,7 @@ public enum Parameters: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      The dictionary value of the Parameters instance if it is a .dict. Otherwise, returns nil.
     */
-    public var dictValue: [String: Any]? {
+    public var dictValue: [String: Any]? { // swiftlint:disable:this discouraged_optional_collection
         guard case .dict(let dict) = self else { return nil }
         return dict
     }
@@ -52,7 +52,7 @@ public enum Parameters: CustomStringConvertible, CustomDebugStringConvertible {
     /**
      The array value of the Parameters instance if it is a .array. Otherwise, returns nil.
     */
-    public var arrayValue: [[String: Any]]? {
+    public var arrayValue: [[String: Any]]? { // swiftlint:disable:this discouraged_optional_collection
         guard case .array(let array) = self else { return nil }
         return array
     }

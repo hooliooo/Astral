@@ -60,7 +60,7 @@ public enum MediaType: Hashable {
             case .multipartFormData(let boundary):
                 return "multipart/form-data; boundary=\(boundary)"
 
-            case .custom(let type, let subtype):
+            case let .custom(type, subtype):
                 return "\(type)/\(subtype)"
         }
     }

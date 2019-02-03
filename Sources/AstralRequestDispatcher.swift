@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -10,7 +10,7 @@ import struct Foundation.URLRequest
 import class Foundation.NSObject
 
 /**
- An implementation of RequestDispatcher that uses the URLSession shared instance for http network requests.
+ An implementation of RequestDispatcher that is used for simple http network requests.
 */
 open class AstralRequestDispatcher: NSObject {
 
@@ -50,6 +50,9 @@ open class AstralRequestDispatcher: NSObject {
     private let _isDebugMode: Bool
 
     // MARK: Computed Properties
+    /**
+     The URLSession used to make HTTP requests. The default implementation uses the URLSession supplied by the Astral singleton.
+    */
     open var session: URLSession {
         return Astral.shared.session
     }

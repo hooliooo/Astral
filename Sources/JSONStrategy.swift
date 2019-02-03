@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2018 Julio Miguel Alorro
+//  Copyright (c) 2017-2019 Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -8,9 +8,8 @@ import struct Foundation.Data
 import class Foundation.JSONSerialization
 
 /**
- An implementation of DataStrategy that is suited for a Content-Type of application/json for the body of an http request.
- When using this strategy and your httpBody is supposed to be an array of JSON objects, make sure the parameters of your Request object has only
- ONE key-value pair in the dictionary. Otherwise the createHTTPBody method will induce a crash.
+ An implementation of DataStrategy that is suited for a Content-Type of application/json for the body of an
+ http request.
 */
 public struct JSONStrategy: DataStrategy {
 
