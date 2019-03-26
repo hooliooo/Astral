@@ -20,6 +20,9 @@
 		143A5BAE20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
 		143A5BAF20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
 		145051BB2206395A009A9F69 /* BaseDelegateDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */; };
+		145051C02206F40E009A9F69 /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BD2206F40E009A9F69 /* pic2.png */; };
+		145051C12206F40E009A9F69 /* pic3.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BE2206F40E009A9F69 /* pic3.png */; };
+		145051C22206F40E009A9F69 /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BF2206F40E009A9F69 /* pic1.png */; };
 		145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
 		145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
 		1468733821510CB50003FA3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1468733721510CB50003FA3D /* Foundation.framework */; };
@@ -116,9 +119,6 @@
 		14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
 		14E5E386204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
 		14F08D7D2067045B00BB7438 /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Astral::Astral::Product" /* Astral.framework */; };
-		14F2533C21FE5FA6009FEAC3 /* pic3.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F2533921FE5FA6009FEAC3 /* pic3.png */; };
-		14F2533D21FE5FA6009FEAC3 /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F2533A21FE5FA6009FEAC3 /* pic2.png */; };
-		14F2533E21FE5FA6009FEAC3 /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F2533B21FE5FA6009FEAC3 /* pic1.png */; };
 		OBJ_107 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
 		OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
 		OBJ_109 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
@@ -171,6 +171,9 @@
 		14361B542036FA0400564AD2 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		143A5BAB20AAC4CD004EE209 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateDispatcherTests.swift; sourceTree = "<group>"; };
+		145051BD2206F40E009A9F69 /* pic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic2.png; path = "Tests/Supporting Files/pic2.png"; sourceTree = SOURCE_ROOT; };
+		145051BE2206F40E009A9F69 /* pic3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic3.png; path = "Tests/Supporting Files/pic3.png"; sourceTree = SOURCE_ROOT; };
+		145051BF2206F40E009A9F69 /* pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic1.png; path = "Tests/Supporting Files/pic1.png"; sourceTree = SOURCE_ROOT; };
 		145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
 		145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedParametersGetRequest.swift; sourceTree = "<group>"; };
 		14678D71220190F60095C801 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -203,9 +206,6 @@
 		14C4C05B2026E0B000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		14C4C0682026EF5000938416 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
-		14F2533921FE5FA6009FEAC3 /* pic3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic3.png; sourceTree = "<group>"; };
-		14F2533A21FE5FA6009FEAC3 /* pic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic2.png; sourceTree = "<group>"; };
-		14F2533B21FE5FA6009FEAC3 /* pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic1.png; sourceTree = "<group>"; };
 		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* AstralRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralRequestDispatcher.swift; sourceTree = "<group>"; };
@@ -289,6 +289,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145051BC2206F3EF009A9F69 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				145051BF2206F40E009A9F69 /* pic1.png */,
+				145051BD2206F40E009A9F69 /* pic2.png */,
+				145051BE2206F40E009A9F69 /* pic3.png */,
+				1487E76E21BC7B0800759E3D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		14C4BF9B2025C53C00938416 /* Meta Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,9 +317,6 @@
 		14C4BF9E2026221400938416 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				14F2533B21FE5FA6009FEAC3 /* pic1.png */,
-				14F2533A21FE5FA6009FEAC3 /* pic2.png */,
-				14F2533921FE5FA6009FEAC3 /* pic3.png */,
 				14C4BF9F2026221400938416 /* Astral.h */,
 				14C4BFA02026221400938416 /* Info.plist */,
 			);
@@ -336,6 +344,7 @@
 		OBJ_31 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				145051BC2206F3EF009A9F69 /* Supporting Files */,
 				OBJ_32 /* Configurations */,
 				OBJ_37 /* Requests */,
 				OBJ_43 /* Responses */,
@@ -344,7 +353,6 @@
 				145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */,
 				1487E76C21BC7AE400759E3D /* ResponseTests.swift */,
 				145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */,
-				1487E76E21BC7B0800759E3D /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -548,23 +556,23 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				TargetAttributes = {
 					14C4BFBD2026DC2B00938416 = {
 						ProvisioningStyle = Automatic;
 					};
 					"Astral::Astral" = {
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					"Astral::AstralTests" = {
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Astral" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -589,9 +597,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14F2533C21FE5FA6009FEAC3 /* pic3.png in Resources */,
-				14F2533D21FE5FA6009FEAC3 /* pic2.png in Resources */,
-				14F2533E21FE5FA6009FEAC3 /* pic1.png in Resources */,
+				145051C12206F40E009A9F69 /* pic3.png in Resources */,
+				145051C22206F40E009A9F69 /* pic1.png in Resources */,
+				145051C02206F40E009A9F69 /* pic2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,11 +1026,11 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Astral.xcodeproj/AstralTests_Info.plist;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AstralTests;
 			};
 			name = Debug;
@@ -1036,11 +1044,11 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Astral.xcodeproj/AstralTests_Info.plist;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/Frameworks $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AstralTests;
 			};
 			name = Release;
@@ -1069,7 +1077,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = Astral;
 			};
@@ -1099,7 +1107,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TARGET_NAME = Astral;
 			};
@@ -1108,6 +1116,7 @@
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1160,6 +1169,7 @@
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;

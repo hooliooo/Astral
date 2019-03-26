@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Copyright (c) Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -29,7 +29,7 @@ public extension RequestBuilder {
      Creates URLQueryItems from the Request's parameters if the Request is a GET request. Otherwise returns an empty array.
      - parameter request: The Request instance used to create the URLQueryItems.
     */
-    public func queryItems(of request: Request) -> [URLQueryItem] {
+    func queryItems(of request: Request) -> [URLQueryItem] {
 
         switch request.parameters {
             case .dict(let dict):
@@ -70,7 +70,7 @@ public extension RequestBuilder {
      Creates a URL instance from the Request
      - parameter request: The Request instance used to create the URL.
     */
-    public func url(of request: Request) -> URL {
+    func url(of request: Request) -> URL {
         var components: URLComponents = request.configuration.baseURLComponents
 
         let pathComponents: [String] = request.configuration.basePathComponents + request.pathComponents
@@ -111,7 +111,7 @@ public extension RequestBuilder {
      A Request's Header will overwrite its RequestConfiguration Header if they have identfical keys.
      - parameter request: The Request instance used to create the HTTP header fields for the URLRequest.
     */
-    public func headers(for request: Request) -> Set<Header> {
+    func headers(for request: Request) -> Set<Header> {
         return request.headers.union(request.configuration.baseHeaders)
     }
 

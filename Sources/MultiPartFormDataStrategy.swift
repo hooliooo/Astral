@@ -1,6 +1,6 @@
 //
 //  Astral
-//  Copyright (c) 2017-2019 Julio Miguel Alorro
+//  Copyright (c) Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
 //
 
@@ -299,7 +299,7 @@ public extension MultiPartFormDataStrategy {
      - parameter request: The MultiPartFormDataRequest instance.
      - returns: URL
     */
-    public func fileURL(for request: MultiPartFormDataRequest) -> URL {
+    func fileURL(for request: MultiPartFormDataRequest) -> URL {
         return self.fileManager.ast.fileURL(of: request)
     }
 
@@ -311,7 +311,7 @@ public extension MultiPartFormDataStrategy {
         - fileURL: The URL of the file the InputStream will point to.
      - returns: InputStream
     */
-    public func createHTTPStreamBody(from request: MultiPartFormDataRequest, at fileURL: URL) throws -> InputStream {
+    func createHTTPStreamBody(from request: MultiPartFormDataRequest, at fileURL: URL) throws -> InputStream {
         try self.writeData(to: fileURL, for: request)
         guard let inputStream = InputStream(url: fileURL) else {
             throw MultiPartFormDataStrategy.ReadError.couldNotCreateInputStream
