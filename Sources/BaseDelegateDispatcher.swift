@@ -21,6 +21,7 @@ import class Foundation.URLSessionUploadTask
 import class Foundation.Progress
 import class Foundation.URLResponse
 import class Foundation.NSNumber
+import os
 
 /**
  BaseDelegateDispatcher is a RequestDispatcher that is the delegate of the URLSession it manages. It's used when you need finer control of
@@ -36,6 +37,21 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
          Could not read file's size attribute.
          */
         case couldNotReadFileSize
+    }
+
+    public enum ResponseError: Error {
+
+        /**
+         Could not determine the response's expectedContentLength, which could be a server-side error
+        */
+        case unknownContentLength
+
+        var intValue: Int {
+            switch self {
+                case .unknownContentLength:
+                    return -1
+            }
+        }
     }
 
     // MARK: Initializer
@@ -135,12 +151,6 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
         return self._session
     }
 
-    private func printValue(_ value: CustomStringConvertible) {
-        if self.isDebugMode {
-            print(value)
-        }
-    }
-
     /**
      Uploads the multipart form data http request. This method throws.
      - parameters:
@@ -203,17 +213,33 @@ extension BaseDelegateDispatcher: URLSessionDataDelegate {
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == task }) else { return }
         astralTask.completedUnitCount = totalBytesSent
 
-        self.printValue(
+        let completedUnitCount: Int64 = astralTask.completedUnitCount
+        let percentage: Double = Double(totalBytesSent) / Double(totalBytesExpectedToSend)
+
+        os_log(
             """
-            didSendBodyData: \(bytesSent)
-            totalBytesSent: \(totalBytesSent)
-            totalBytesExpectedToSend: \(totalBytesExpectedToSend)
-            totalUnitCount: \(astralTask.completedUnitCount)
-            percentage: \(Double(totalBytesSent / totalBytesExpectedToSend))
-            """
+
+            didSendBodyData: %{public}d
+            totalBytesSent: %{public}d
+            totalBytesExpectedToSend: %{public}d
+            totalUnitCount: %{public}d
+            percentage: %{public}.2f
+
+            """,
+            log: Astral.shared.logger,
+            type: OSLogType.info,
+            bytesSent,
+            totalBytesSent,
+            totalBytesExpectedToSend,
+            completedUnitCount,
+            percentage
         )
 
         astralTask.totalUnitCount = totalBytesExpectedToSend
+
+        if percentage == 1.0 {
+            print("Uploaded at 100%: \(percentage)")
+        }
         self.whileUploading(astralTask)
     }
 
@@ -231,7 +257,13 @@ extension BaseDelegateDispatcher: URLSessionDataDelegate {
             }
         }
 
-        self.printValue(response)
+        os_log("Did receive response : %@", log: Astral.shared.logger, type: OSLogType.info, response)
+
+        if response.expectedContentLength == ResponseError.unknownContentLength.intValue {
+            print("\(astralTask.sessionTask.countOfBytesExpectedToReceive)")
+            os_log("Unknown Content Length from response", log: Astral.shared.logger, type: OSLogType.info)
+        }
+
         completionHandler(.becomeDownload)
     }
 
@@ -251,24 +283,46 @@ extension BaseDelegateDispatcher: URLSessionDownloadDelegate {
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == downloadTask }) else { return }
         astralTask.completedUnitCount += bytesWritten
 
-        self.printValue(
-            """
-            bytesWritten: \(bytesWritten),
-            totalBytesWritten: \(totalBytesWritten),
-            totalBytesExpectedToWrite: \(totalBytesExpectedToWrite)
-            totalUnitCount: \(astralTask.completedUnitCount)
-            percentage: \(Double(totalBytesWritten / totalBytesExpectedToWrite))
-            """
-        )
+        let completedUnitCount: Int64 = astralTask.completedUnitCount
+        let percentage: Double = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
 
-        astralTask.totalUnitCount = totalBytesExpectedToWrite
+        os_log(
+            """
+
+            bytesWritten: %{public}d
+            totalBytesWritten: %{public}d
+            totalBytesExpectedToWrite: %{public}d
+            totalUnitCount: %{public}d
+            percentage: %{public}.2f
+
+            """,
+            log: Astral.shared.logger,
+            type: OSLogType.info,
+            bytesWritten,
+            totalBytesWritten,
+            totalBytesExpectedToWrite,
+            completedUnitCount,
+            percentage
+        )
+        if totalBytesExpectedToWrite == ResponseError.unknownContentLength.intValue {
+
+            if astralTask.totalUnitCount == 0 { // not set yet
+                astralTask.totalUnitCount = totalBytesWritten + 1_000 // prevent it from being 100%
+            } else {
+                astralTask.totalUnitCount = totalBytesWritten
+            }
+
+        } else {
+            astralTask.totalUnitCount = totalBytesExpectedToWrite
+        }
+
         self.whileDownloading(astralTask)
     }
 
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == downloadTask }) else { return }
         self.taskCache.remove(astralTask)
-        self.printValue("Location: \(location)")
+        os_log("Downloaded file to %{public}@", log: Astral.shared.logger, type: OSLogType.info, location.absoluteString)
         self.onDownloadDidFinish(location)
     }
 

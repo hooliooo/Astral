@@ -22,6 +22,7 @@ class BaseDelegateDispatcherTests: XCTestCase {
             queue: {
                 let queue: OperationQueue = OperationQueue()
                 queue.qualityOfService = QualityOfService.utility
+                queue.maxConcurrentOperationCount = 1
                 return queue
             }(),
             whileUploading: { (task: AstralTask) -> Void in
@@ -35,7 +36,7 @@ class BaseDelegateDispatcherTests: XCTestCase {
             whileDownloading: { _ in },
             onDownloadDidFinish: { _ in },
             onError: { _ in },
-            isDebugMode: false
+            isDebugMode: true
         )
 
         do {
@@ -44,7 +45,7 @@ class BaseDelegateDispatcherTests: XCTestCase {
             XCTFail("Upload failed: \(error)")
         }
 
-        self.waitForExpectations(timeout: 20.0, handler: nil)
+        self.waitForExpectations(timeout: 5.0, handler: nil)
     }
 
     func testWhileDownloadingAndOnDownloadDidFinish() {
@@ -60,13 +61,21 @@ class BaseDelegateDispatcherTests: XCTestCase {
             queue: {
                 let queue: OperationQueue = OperationQueue()
                 queue.qualityOfService = QualityOfService.utility
+                queue.maxConcurrentOperationCount = 1
                 return queue
             }(),
             whileUploading: { _ in },
             onUploadDidFinish: { _ in },
             whileDownloading: { (task: AstralTask) -> Void in
+                guard task.sessionTask.countOfBytesExpectedToReceive != BaseDelegateDispatcher.ResponseError.unknownContentLength.intValue else {
+                    XCTFail("No Content-Length header in server response")
+                    return
+                }
+
                 guard task.fractionCompleted == 1.0 else { return }
+
                 XCTAssertTrue(Thread.current.qualityOfService == .utility)
+
                 expectationWhileDownloading.fulfill()
             },
             onDownloadDidFinish: { (url: URL) -> Void in

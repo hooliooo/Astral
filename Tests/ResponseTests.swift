@@ -77,6 +77,7 @@ public class ResponseTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             },
             onComplete: {
+                print("Thread: \(Thread.current)")
                 print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
             }
         )

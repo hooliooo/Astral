@@ -9,6 +9,7 @@ import struct Foundation.UUID
 import class Foundation.FileManager
 import class Foundation.OperationQueue
 import enum Foundation.QualityOfService
+import os.log
 
 /**
  Astral is used to do URLSession configuration for RequestDispatchers. It is typically a singleton that configures the URLSession
@@ -51,6 +52,7 @@ public final class Astral {
             self.fileManager = fileManager
             self.boundary = boundary
             self.queue = session.delegateQueue
+            self.logger = OSLog(subsystem: "com.Astral", category: "Astral Networking")
         }
 
         // MARK: Stored Properties
@@ -73,6 +75,8 @@ public final class Astral {
          The operation queue the URLSessionTasks execute on
         */
         public let queue: OperationQueue
+
+        internal let logger: OSLog
 
         private static var _defaultConfiguration: Astral.Configuration = Astral.Configuration(
             session: URLSession.shared,
@@ -136,6 +140,10 @@ public final class Astral {
     */
     public var queue: OperationQueue {
         return self.configuration.queue
+    }
+
+    internal var logger: OSLog {
+        return self.configuration.logger
     }
 
 }

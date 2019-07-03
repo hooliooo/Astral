@@ -37,6 +37,11 @@
                BlueprintName = "AstralTests"
                ReferencedContainer = "container:Astral.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BaseDelegateDispatcherTests/testWhileDownloadingAndOnDownloadDidFinish()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
