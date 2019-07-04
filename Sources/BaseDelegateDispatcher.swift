@@ -14,7 +14,9 @@ import class Foundation.FileManager
 import protocol Foundation.URLSessionDelegate
 import protocol Foundation.URLSessionDataDelegate
 import protocol Foundation.URLSessionDownloadDelegate
+import protocol Foundation.URLSessionTaskDelegate
 import class Foundation.URLSessionTask
+import class Foundation.URLSessionTaskMetrics
 import class Foundation.URLSessionDataTask
 import class Foundation.URLSessionDownloadTask
 import class Foundation.URLSessionUploadTask
@@ -82,6 +84,7 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
         onUploadDidFinish: @escaping (_ task: AstralTask) -> Void,
         whileDownloading: @escaping (_ task: AstralTask) -> Void,
         onDownloadDidFinish: @escaping (_ url: URL) -> Void,
+        onMetricsCollected: @escaping (_ metrics: URLSessionTaskMetrics) -> Void,
         onError: @escaping (_ error: Error) -> Void,
         isDebugMode: Bool
     ) {
@@ -89,6 +92,7 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
         self.onUploadDidFinish = onUploadDidFinish
         self.whileDownloading = whileDownloading
         self.onDownloadDidFinish = onDownloadDidFinish
+        self.onMetricsCollected = onMetricsCollected
         self.onError = onError
         super.init(builder: MultiPartFormDataBuilder(), isDebugMode: isDebugMode)
 
@@ -123,6 +127,11 @@ open class BaseDelegateDispatcher: AstralRequestDispatcher {
      is called.
     */
     public let onDownloadDidFinish: (URL) -> Void
+
+    /**
+     Excuted when urlSession(_:task:didFinishCollecting metrics:) is called
+    */
+    public let onMetricsCollected: (URLSessionTaskMetrics) -> Void
 
     /**
      Executed when urlSession(_:task:didCompleteWithError) and urlSession(_:didBecomeInvalidWithError) are called.
@@ -202,6 +211,32 @@ extension BaseDelegateDispatcher: URLSessionDelegate {
 
 }
 
+extension BaseDelegateDispatcher: URLSessionTaskDelegate {
+
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
+        guard let astralTask = self.taskCache.first(where: { $0.sessionTask == task }) else { return }
+        os_log("Redirect count: %d", log: Astral.shared.logger, type: OSLogType.info, metrics.redirectCount)
+        os_log("Task Interval: %s", log: Astral.shared.logger, type: OSLogType.info, metrics.taskInterval.description)
+
+        for transactionMetric in metrics.transactionMetrics {
+
+            astralTask.totalUnitCount = transactionMetric.response?.expectedContentLength ?? 0
+
+            os_log(
+                """
+                transactionMetric:
+                %@
+                """,
+                log: Astral.shared.logger,
+                type: OSLogType.info,
+                transactionMetric.description
+            )
+
+        }
+    }
+
+}
+
 extension BaseDelegateDispatcher: URLSessionDataDelegate {
 
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
@@ -214,7 +249,7 @@ extension BaseDelegateDispatcher: URLSessionDataDelegate {
         astralTask.completedUnitCount = totalBytesSent
 
         let completedUnitCount: Int64 = astralTask.completedUnitCount
-        let percentage: Double = Double(totalBytesSent) / Double(totalBytesExpectedToSend)
+        let percentage: Double = max(Double(totalBytesSent) / Double(totalBytesExpectedToSend), 0.0)
 
         os_log(
             """
@@ -253,11 +288,12 @@ extension BaseDelegateDispatcher: URLSessionDataDelegate {
             do {
                  try self.fileManager.removeItem(at: fileURL)
             } catch {
+                os_log("Could not remove file after receiving response", log: Astral.shared.logger, type: OSLogType.error)
                 self.onError(error)
             }
         }
 
-        os_log("Did receive response : %@", log: Astral.shared.logger, type: OSLogType.info, response)
+        os_log("Did receive response: %@", log: Astral.shared.logger, type: OSLogType.info, response)
 
         if response.expectedContentLength == ResponseError.unknownContentLength.intValue {
             print("\(astralTask.sessionTask.countOfBytesExpectedToReceive)")
@@ -281,10 +317,25 @@ extension BaseDelegateDispatcher: URLSessionDownloadDelegate {
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
 
         guard let astralTask = self.taskCache.first(where: { $0.sessionTask == downloadTask }) else { return }
-        astralTask.completedUnitCount += bytesWritten
+
+        if totalBytesExpectedToWrite != ResponseError.unknownContentLength.intValue {
+            astralTask.totalUnitCount = totalBytesExpectedToWrite
+            astralTask.completedUnitCount += bytesWritten
+        } else {
+            if astralTask.totalUnitCount != 0 { // was set in metrics method
+                astralTask.completedUnitCount = totalBytesWritten
+            }
+        }
 
         let completedUnitCount: Int64 = astralTask.completedUnitCount
-        let percentage: Double = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+
+        let percentage: Double = {
+            if astralTask.totalUnitCount != 0 {
+                return Double(totalBytesWritten) / Double(astralTask.totalUnitCount)
+            } else {
+                return 0.0
+            }
+        }()
 
         os_log(
             """
@@ -292,7 +343,7 @@ extension BaseDelegateDispatcher: URLSessionDownloadDelegate {
             bytesWritten: %{public}d
             totalBytesWritten: %{public}d
             totalBytesExpectedToWrite: %{public}d
-            totalUnitCount: %{public}d
+            completedUnitCount: %{public}d
             percentage: %{public}.2f
 
             """,
@@ -304,17 +355,6 @@ extension BaseDelegateDispatcher: URLSessionDownloadDelegate {
             completedUnitCount,
             percentage
         )
-        if totalBytesExpectedToWrite == ResponseError.unknownContentLength.intValue {
-
-            if astralTask.totalUnitCount == 0 { // not set yet
-                astralTask.totalUnitCount = totalBytesWritten + 1_000 // prevent it from being 100%
-            } else {
-                astralTask.totalUnitCount = totalBytesWritten
-            }
-
-        } else {
-            astralTask.totalUnitCount = totalBytesExpectedToWrite
-        }
 
         self.whileDownloading(astralTask)
     }

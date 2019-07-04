@@ -56,29 +56,30 @@ public class ResponseTests: XCTestCase {
 
         self.dispatcher.response(
             of: request,
-            onSuccess: { [weak self] (response: Response) -> Void in
+            onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
                 guard let s = self else { return }
-                print(response.json.dictValue)
-                let response: GetResponse = s.transform(response: response)
 
-                let accept: Header = request.headers.filter { $0.key == .accept }.first!
-                let contentType: Header = request.headers.filter { $0.key == .contentType }.first!
-                let custom: Header = request.headers.filter { $0.key == Header.Key.custom("Get-Request") }.first!
-                let userAgent: Header = request.configuration.baseHeaders.first(where: { $0.key == Header.Key.custom("User-Agent")})!
-
-                XCTAssertTrue(response.headers.accept == accept.value.stringValue)
-                XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
-                XCTAssertTrue(response.headers.custom == custom.value.stringValue)
-                XCTAssertTrue(response.headers.userAgent == userAgent.value.stringValue)
-                expectation.fulfill()
-
-            },
-            onFailure: { (_ error: NetworkingError) -> Void in
-                XCTFail(error.localizedDescription)
-            },
-            onComplete: {
                 print("Thread: \(Thread.current)")
                 print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
+
+                switch result {
+                    case .success(let response):
+                        print(response.json.dictValue)
+                        let response: GetResponse = s.transform(response: response)
+
+                        let accept: Header = request.headers.filter { $0.key == .accept }.first!
+                        let contentType: Header = request.headers.filter { $0.key == .contentType }.first!
+                        let custom: Header = request.headers.filter { $0.key == Header.Key.custom("Get-Request") }.first!
+                        let userAgent: Header = request.configuration.baseHeaders.first(where: { $0.key == Header.Key.custom("User-Agent")})!
+
+                        XCTAssertTrue(response.headers.accept == accept.value.stringValue)
+                        XCTAssertTrue(response.headers.contentType == contentType.value.stringValue)
+                        XCTAssertTrue(response.headers.custom == custom.value.stringValue)
+                        XCTAssertTrue(response.headers.userAgent == userAgent.value.stringValue)
+                        expectation.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                }
             }
         )
 
@@ -93,28 +94,28 @@ public class ResponseTests: XCTestCase {
 
         self.dispatcher.response(
             of: request,
-            onSuccess: { [weak self] (response: Response) -> Void in
+            onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
                 guard let s = self else { return }
 
-                let response: GetResponse = s.transform(response: response)
+                switch result {
+                    case .success(let response):
+                        let response: GetResponse = s.transform(response: response)
 
-                XCTAssertTrue(response.url == s.dispatcher.urlRequest(of: request).url!)
-                switch request.parameters {
-                    case .dict(let parameters):
-                        XCTAssertTrue(response.args.this == parameters["this"]! as! String)
-                        XCTAssertTrue(response.args.what == parameters["what"]! as! String)
-                        XCTAssertTrue(response.args.why == parameters["why"]! as! String)
+                        XCTAssertTrue(response.url == s.dispatcher.urlRequest(of: request).url!)
+                        switch request.parameters {
+                            case .dict(let parameters):
+                                XCTAssertTrue(response.args.this == parameters["this"]! as! String)
+                                XCTAssertTrue(response.args.what == parameters["what"]! as! String)
+                                XCTAssertTrue(response.args.why == parameters["why"]! as! String)
 
-                    case .array, .none:
-                        XCTFail()
+                            case .array, .none:
+                                XCTFail()
+                        }
+                        expectation.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
                 }
-                expectation.fulfill()
-
-            },
-            onFailure: { (error: NetworkingError) -> Void in
-                XCTFail(error.localizedDescription)
-            },
-            onComplete: {}
+            }
         )
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
@@ -131,27 +132,28 @@ public class ResponseTests: XCTestCase {
 
         self.dispatcher.response(
             of: request,
-            onSuccess: { [weak self] (response: Response) -> Void in
+            onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
                 guard let s = self else { return }
 
-                let response: PostResponse = s.transform(response: response)
+                switch result {
+                    case .success(let response):
+                        let response: PostResponse = s.transform(response: response)
 
-                XCTAssertTrue(response.url == s.dispatcher.urlRequest(of: request).url!)
-                switch request.parameters {
-                    case .dict(let parameters):
-                        XCTAssertTrue(response.json.this == parameters["this"]! as! String)
-                        XCTAssertTrue(response.json.what == parameters["what"]! as! String)
-                        XCTAssertTrue(response.json.why == parameters["why"]! as! String)
+                        XCTAssertTrue(response.url == s.dispatcher.urlRequest(of: request).url!)
+                        switch request.parameters {
+                            case .dict(let parameters):
+                                XCTAssertTrue(response.json.this == parameters["this"]! as! String)
+                                XCTAssertTrue(response.json.what == parameters["what"]! as! String)
+                                XCTAssertTrue(response.json.why == parameters["why"]! as! String)
 
-                    case .array, .none:
-                        XCTFail()
+                            case .array, .none:
+                                XCTFail()
+                        }
+                        expectation.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
                 }
-                expectation.fulfill()
-            },
-            onFailure: { (error: NetworkingError) -> Void in
-                XCTFail(error.localizedDescription)
-            },
-            onComplete: {}
+            }
         )
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
@@ -166,27 +168,28 @@ public class ResponseTests: XCTestCase {
 
         dispatcher.response(
             of: request,
-            onSuccess: { [weak self] (response: Response) -> Void in
+            onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
                 guard let s = self else { return }
+                switch result {
+                    case .success(let response):
+                        let response: FormURLEncodedResponse = s.transform(response: response)
 
-                let response: FormURLEncodedResponse = s.transform(response: response)
+                        XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                        switch request.parameters {
+                            case .dict(let parameters):
+                                XCTAssertTrue(response.form.this == parameters["this"]! as! String)
+                                XCTAssertTrue(response.form.what == parameters["what"]! as! String)
+                                XCTAssertTrue(response.form.why == parameters["why"]! as! String)
 
-                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-                switch request.parameters {
-                    case .dict(let parameters):
-                        XCTAssertTrue(response.form.this == parameters["this"]! as! String)
-                        XCTAssertTrue(response.form.what == parameters["what"]! as! String)
-                        XCTAssertTrue(response.form.why == parameters["why"]! as! String)
-
-                    case .array, .none:
-                        XCTFail()
+                            case .array, .none:
+                                XCTFail()
+                        }
+                        expectation.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
                 }
-                expectation.fulfill()
-            },
-            onFailure: { (error: NetworkingError) -> Void in
-                XCTFail(error.localizedDescription)
-            },
-            onComplete: {}
+
+            }
         )
 
         self.waitForExpectations(timeout: 5.0, handler: nil)
@@ -200,27 +203,27 @@ public class ResponseTests: XCTestCase {
         let request: MultiPartFormDataRequest = BasicMultipartFormDataRequest()
         dispatcher.response(
             of: request,
-            onSuccess: { [weak self] (response: Response) -> Void in
+            onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
                 guard let s = self else { return }
-                let response: MultipartFormDataResponse = s.transform(response: response)
-
-                XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-                switch request.parameters {
-                    case .dict(let parameters):
-                        XCTAssertTrue(response.form.this == parameters["this"]! as! String)
-                        XCTAssertTrue(response.form.what == parameters["what"]! as! String)
-                        XCTAssertTrue(response.form.why == parameters["why"]! as! String)
-
-                    case .array, .none:
-                        XCTFail()
-                }
-                expectation.fulfill()
-            },
-            onFailure: { (error: NetworkingError) -> Void in
-                XCTFail(error.localizedDescription)
-            },
-            onComplete: {
                 print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
+                switch result {
+                    case .success(let response):
+                        let response: MultipartFormDataResponse = s.transform(response: response)
+
+                        XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                        switch request.parameters {
+                            case .dict(let parameters):
+                                XCTAssertTrue(response.form.this == parameters["this"]! as! String)
+                                XCTAssertTrue(response.form.what == parameters["what"]! as! String)
+                                XCTAssertTrue(response.form.why == parameters["why"]! as! String)
+
+                            case .array, .none:
+                                XCTFail()
+                        }
+                        expectation.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                }
             }
         )
 
@@ -237,27 +240,29 @@ public class ResponseTests: XCTestCase {
         do {
             try dispatcher.multipartFormDataResponse(
                 of: request,
-                onSuccess: { [weak self] (response: Response) -> Void in
+                onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
                     guard let s = self else { return }
-                    let response: MultipartFormDataResponse = s.transform(response: response)
 
-                    XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
-                    switch request.parameters {
-                        case .dict(let parameters):
-                            XCTAssertTrue(response.form.this == parameters["this"]! as! String)
-                            XCTAssertTrue(response.form.what == parameters["what"]! as! String)
-                            XCTAssertTrue(response.form.why == parameters["why"]! as! String)
-
-                        case .array, .none:
-                            XCTFail()
-                    }
-                    expectation.fulfill()
-                },
-                onFailure: { (error: NetworkingError) -> Void in
-                    XCTFail(error.localizedDescription)
-                },
-                onComplete: {
                     print("Thread is Utility:", Thread.current.qualityOfService == Astral.shared.queue.qualityOfService)
+
+                    switch result {
+                        case .success(let response):
+                            let response: MultipartFormDataResponse = s.transform(response: response)
+
+                            XCTAssertTrue(response.url == dispatcher.urlRequest(of: request).url!)
+                            switch request.parameters {
+                                case .dict(let parameters):
+                                    XCTAssertTrue(response.form.this == parameters["this"]! as! String)
+                                    XCTAssertTrue(response.form.what == parameters["what"]! as! String)
+                                    XCTAssertTrue(response.form.why == parameters["why"]! as! String)
+
+                                case .array, .none:
+                                    XCTFail()
+                            }
+                            expectation.fulfill()
+                        case .failure(let error):
+                            XCTFail(error.localizedDescription)
+                    }
                 }
             )
 
