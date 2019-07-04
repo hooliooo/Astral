@@ -17,6 +17,7 @@ import protocol Foundation.URLSessionDownloadDelegate
 import protocol Foundation.URLSessionTaskDelegate
 import class Foundation.URLSessionTask
 import class Foundation.URLSessionTaskMetrics
+import class Foundation.URLSessionTaskTransactionMetrics
 import class Foundation.URLSessionDataTask
 import class Foundation.URLSessionDownloadTask
 import class Foundation.URLSessionUploadTask
@@ -218,7 +219,7 @@ extension BaseDelegateDispatcher: URLSessionTaskDelegate {
         os_log("Redirect count: %d", log: Astral.shared.logger, type: OSLogType.info, metrics.redirectCount)
         os_log("Task Interval: %s", log: Astral.shared.logger, type: OSLogType.info, metrics.taskInterval.description)
 
-        for transactionMetric in metrics.transactionMetrics {
+        for transactionMetric: URLSessionTaskTransactionMetrics in metrics.transactionMetrics {
 
             astralTask.totalUnitCount = transactionMetric.response?.expectedContentLength ?? 0
 
