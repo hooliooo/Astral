@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Astral'
   s.module_name      = 'Astral'
-  s.version          = '2.2.1'
+  s.version          = '2.3.0'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   s.summary          = 'An easy-to-use HTTP networking library'

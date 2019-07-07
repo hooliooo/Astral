@@ -6,7 +6,12 @@
 
 import Foundation
 import Astral
-import UIKit
+
+#if os(iOS) || os(watchOS) || os(tvOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
 struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
 
@@ -39,7 +44,15 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         let bundle: Bundle = Bundle(for: HeaderTests.self)
 
         let getData: (String) -> Data = { (imageName: String) -> Data in
-            return UIImage(named: imageName, in: bundle, compatibleWith: nil)!.pngData()!
+
+            #if os(iOS) || os(watchOS) || os(tvOS)
+                return UIImage(named: imageName, in: bundle, compatibleWith: nil)!.pngData()!
+            #else
+                let data = bundle.image(forResource: NSImage.Name(stringLiteral: imageName))!
+                    .tiffRepresentation!
+                let bitmap: NSBitmapImageRep = NSBitmapImageRep(data: data)!
+                return bitmap.representation(using: .png, properties: [:])!
+            #endif
         }
 
         let getURL: (String, String) -> URL = { (imageName: String, fileExtension: String) -> URL in

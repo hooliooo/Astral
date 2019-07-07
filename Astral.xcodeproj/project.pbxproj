@@ -39,6 +39,28 @@
 		14BE116F22CE9F8E003DAF56 /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
 		14BE117022CE9F8F003DAF56 /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
 		14BE117122CE9F90003DAF56 /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
+		14BE118022CF22CE003DAF56 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
+		14BE118122CF22CE003DAF56 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
+		14BE118222CF22CE003DAF56 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
+		14BE118322CF22CE003DAF56 /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E76C21BC7AE400759E3D /* ResponseTests.swift */; };
+		14BE118422CF22CE003DAF56 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
+		14BE118522CF22CE003DAF56 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* HeaderTests.swift */; };
+		14BE118622CF22CE003DAF56 /* BasicGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* BasicGetRequest.swift */; };
+		14BE118722CF22CE003DAF56 /* BasicMultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* BasicMultipartFormDataRequest.swift */; };
+		14BE118822CF22CE003DAF56 /* BasicPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* BasicPostRequest.swift */; };
+		14BE118922CF22CE003DAF56 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
+		14BE118A22CF22CE003DAF56 /* FormURLEncodedPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FormURLEncodedPostRequest.swift */; };
+		14BE118B22CF22CE003DAF56 /* FormURLEncodedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* FormURLEncodedResponse.swift */; };
+		14BE118C22CF22CE003DAF56 /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* GetResponse.swift */; };
+		14BE118D22CF22CE003DAF56 /* MultipartFormDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* MultipartFormDataResponse.swift */; };
+		14BE118E22CF22CE003DAF56 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* PostResponse.swift */; };
+		14BE118F22CF22CE003DAF56 /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
+		14BE119022CF22CE003DAF56 /* BaseDelegateDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */; };
+		14BE119122CF22CE003DAF56 /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
+		14BE119322CF22CE003DAF56 /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Astral::Astral::Product" /* Astral.framework */; };
+		14BE119522CF22CE003DAF56 /* pic3.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BE2206F40E009A9F69 /* pic3.png */; };
+		14BE119622CF22CE003DAF56 /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BF2206F40E009A9F69 /* pic1.png */; };
+		14BE119722CF22CE003DAF56 /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BD2206F40E009A9F69 /* pic2.png */; };
 		14BFC07E21BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
 		14BFC07F21BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
 		14BFC08021BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
@@ -125,6 +147,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		14BE117E22CF22CE003DAF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Astral::Astral";
+			remoteInfo = Astral;
+		};
 		14C4BF972025C33C00938416 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
@@ -155,6 +184,8 @@
 		1487E76E21BC7B0800759E3D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Astral.swift"; sourceTree = "<group>"; };
+		14BE119B22CF22CE003DAF56 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14BE119C22CF22CE003DAF56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/hooliooo/Swift Frameworks/Astral/Tests/Supporting Files/Mac/Info.plist"; sourceTree = "<absolute>"; };
 		14BFC07D21BC541900FDC12F /* AstralInputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralInputStream.swift; sourceTree = "<group>"; };
 		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
 		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -204,6 +235,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		14BE119222CF22CE003DAF56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14BE119322CF22CE003DAF56 /* Astral.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14C4BFD62026DC2B00938416 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
@@ -245,9 +284,26 @@
 				145051BF2206F40E009A9F69 /* pic1.png */,
 				145051BD2206F40E009A9F69 /* pic2.png */,
 				145051BE2206F40E009A9F69 /* pic3.png */,
-				1487E76E21BC7B0800759E3D /* Info.plist */,
+				14BE117B22CF2268003DAF56 /* iOS */,
+				14BE119D22CF230E003DAF56 /* Mac */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14BE117B22CF2268003DAF56 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1487E76E21BC7B0800759E3D /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		14BE119D22CF230E003DAF56 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				14BE119C22CF22CE003DAF56 /* Info.plist */,
+			);
+			path = Mac;
 			sourceTree = "<group>";
 		};
 		14C4BF9B2025C53C00938416 /* Meta Data */ = {
@@ -395,6 +451,7 @@
 				"Astral::Astral::Product" /* Astral.framework */,
 				14C4BFDF2026DC2B00938416 /* Astral.framework */,
 				14C4C0272026DDAE00938416 /* Astral.framework */,
+				14BE119B22CF22CE003DAF56 /* AstralTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -402,6 +459,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		14BE117C22CF22CE003DAF56 /* Astral-Mac Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14BE119822CF22CE003DAF56 /* Build configuration list for PBXNativeTarget "Astral-Mac Tests" */;
+			buildPhases = (
+				14BE117F22CF22CE003DAF56 /* Sources */,
+				14BE119222CF22CE003DAF56 /* Frameworks */,
+				14BE119422CF22CE003DAF56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14BE117D22CF22CE003DAF56 /* PBXTargetDependency */,
+			);
+			name = "Astral-Mac Tests";
+			productName = AstralTests;
+			productReference = 14BE119B22CF22CE003DAF56 /* AstralTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		14C4BFBD2026DC2B00938416 /* Astral-Mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14C4BFDC2026DC2B00938416 /* Build configuration list for PBXNativeTarget "Astral-Mac" */;
@@ -453,9 +528,9 @@
 			productReference = "Astral::Astral::Product" /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		"Astral::AstralTests" /* AstralTests */ = {
+		"Astral::AstralTests" /* Astral-IOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "AstralTests" */;
+			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "Astral-IOS Tests" */;
 			buildPhases = (
 				OBJ_106 /* Sources */,
 				OBJ_122 /* Frameworks */,
@@ -466,7 +541,7 @@
 			dependencies = (
 				OBJ_126 /* PBXTargetDependency */,
 			);
-			name = AstralTests;
+			name = "Astral-IOS Tests";
 			productName = AstralTests;
 			productReference = "Astral::AstralTests::Product" /* AstralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -489,7 +564,6 @@
 					};
 					"Astral::Astral" = {
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					"Astral::AstralTests" = {
 						LastSwiftMigration = 1020;
@@ -512,12 +586,23 @@
 				"Astral::Astral" /* Astral-iOS */,
 				14C4BFBD2026DC2B00938416 /* Astral-Mac */,
 				14C4C0052026DDAE00938416 /* Astral-tvOS */,
-				"Astral::AstralTests" /* AstralTests */,
+				"Astral::AstralTests" /* Astral-IOS Tests */,
+				14BE117C22CF22CE003DAF56 /* Astral-Mac Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		14BE119422CF22CE003DAF56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14BE119522CF22CE003DAF56 /* pic3.png in Resources */,
+				14BE119622CF22CE003DAF56 /* pic1.png in Resources */,
+				14BE119722CF22CE003DAF56 /* pic2.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14F2532921FE4ABE009FEAC3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,6 +661,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		14BE117F22CF22CE003DAF56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14BE118022CF22CE003DAF56 /* BasicConfiguration.swift in Sources */,
+				14BE118122CF22CE003DAF56 /* FormURLEncodedConfiguration.swift in Sources */,
+				14BE118222CF22CE003DAF56 /* NestedParametersGetRequest.swift in Sources */,
+				14BE118322CF22CE003DAF56 /* ResponseTests.swift in Sources */,
+				14BE118422CF22CE003DAF56 /* MultipartConfiguration.swift in Sources */,
+				14BE118522CF22CE003DAF56 /* HeaderTests.swift in Sources */,
+				14BE118622CF22CE003DAF56 /* BasicGetRequest.swift in Sources */,
+				14BE118722CF22CE003DAF56 /* BasicMultipartFormDataRequest.swift in Sources */,
+				14BE118822CF22CE003DAF56 /* BasicPostRequest.swift in Sources */,
+				14BE118922CF22CE003DAF56 /* RequestBuilderTests.swift in Sources */,
+				14BE118A22CF22CE003DAF56 /* FormURLEncodedPostRequest.swift in Sources */,
+				14BE118B22CF22CE003DAF56 /* FormURLEncodedResponse.swift in Sources */,
+				14BE118C22CF22CE003DAF56 /* GetResponse.swift in Sources */,
+				14BE118D22CF22CE003DAF56 /* MultipartFormDataResponse.swift in Sources */,
+				14BE118E22CF22CE003DAF56 /* PostResponse.swift in Sources */,
+				14BE118F22CF22CE003DAF56 /* BinData.swift in Sources */,
+				14BE119022CF22CE003DAF56 /* BaseDelegateDispatcherTests.swift in Sources */,
+				14BE119122CF22CE003DAF56 /* BinHeaders.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14C4BFBE2026DC2B00938416 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -715,6 +825,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		14BE117D22CF22CE003DAF56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Astral::Astral" /* Astral-iOS */;
+			targetProxy = 14BE117E22CF22CE003DAF56 /* PBXContainerItemProxy */;
+		};
 		OBJ_126 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Astral::Astral" /* Astral-iOS */;
@@ -723,6 +838,54 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		14BE119922CF22CE003DAF56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Tests/Supporting Files/Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/Frameworks",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = AstralTests;
+			};
+			name = Debug;
+		};
+		14BE119A22CF22CE003DAF56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Tests/Supporting Files/Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/Frameworks",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = AstralTests;
+			};
+			name = Release;
+		};
 		14C4BFDD2026DC2B00938416 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -848,7 +1011,7 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "Tests/Supporting Files/iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@loader_path/Frameworks",
 					"$(inherited)",
@@ -869,7 +1032,7 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "Tests/Supporting Files/iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@loader_path/Frameworks",
 					"$(inherited)",
@@ -886,7 +1049,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -916,7 +1079,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1048,6 +1211,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		14BE119822CF22CE003DAF56 /* Build configuration list for PBXNativeTarget "Astral-Mac Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14BE119922CF22CE003DAF56 /* Debug */,
+				14BE119A22CF22CE003DAF56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		14C4BFDC2026DC2B00938416 /* Build configuration list for PBXNativeTarget "Astral-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1066,7 +1238,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_103 /* Build configuration list for PBXNativeTarget "AstralTests" */ = {
+		OBJ_103 /* Build configuration list for PBXNativeTarget "Astral-IOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_104 /* Debug */,

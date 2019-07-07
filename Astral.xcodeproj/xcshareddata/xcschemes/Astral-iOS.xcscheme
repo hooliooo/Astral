@@ -34,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "Astral::AstralTests"
                BuildableName = "AstralTests.xctest"
-               BlueprintName = "AstralTests"
+               BlueprintName = "Astral-IOS Tests"
                ReferencedContainer = "container:Astral.xcodeproj">
             </BuildableReference>
          </TestableReference>
