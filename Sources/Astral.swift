@@ -5,6 +5,7 @@
 //
 
 import class Foundation.URLSession
+import class Foundation.URLSessionConfiguration
 import struct Foundation.UUID
 import class Foundation.FileManager
 import class Foundation.OperationQueue

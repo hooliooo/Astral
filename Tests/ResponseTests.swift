@@ -52,8 +52,6 @@ public class ResponseTests: XCTestCase {
 
         let request: BasicGetRequest = BasicGetRequest()
 
-        print(request)
-
         self.dispatcher.response(
             of: request,
             onComplete: { [weak self] (result: Result<Response, NetworkingError>) -> Void in
@@ -91,6 +89,9 @@ public class ResponseTests: XCTestCase {
         let expectation: XCTestExpectation = self.expectation(description: "Get Request Test")
 
         let request: Request = BasicGetRequest()
+        let urlRequest: URLRequest = self.dispatcher.urlRequest(of: request)
+
+        XCTAssertTrue(request.cachePolicy == urlRequest.cachePolicy)
 
         self.dispatcher.response(
             of: request,

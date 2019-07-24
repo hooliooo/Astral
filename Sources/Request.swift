@@ -4,6 +4,8 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import struct Foundation.URLRequest
+
 /**
  A Request contains the information required to make an http network request. A Request represents one network operation.
 */
@@ -33,6 +35,11 @@ public protocol Request: CustomStringConvertible, CustomDebugStringConvertible {
     */
     var headers: Set<Header> { get }
 
+    /**
+     Cache policy of the response returned by this http network request
+    */
+    var cachePolicy: URLRequest.CachePolicy? { get }
+
 }
 
 public extension Request {
@@ -45,14 +52,30 @@ public extension Request {
         let paths: [String] = self.configuration.basePathComponents + self.pathComponents
         let path: String = "/" + paths.joined(separator: "/")
 
+        let cachePolicy: String = {
+            if let cachePolicy = self.cachePolicy {
+                return cachePolicy.ast.stringValue
+            } else {
+                return Astral.shared.session.configuration.requestCachePolicy.ast.stringValue
+            }
+        }()
+
         let string: String = """
         Method: \(self.method.stringValue)
+
         Scheme: \(self.configuration.scheme)
+
         Host: \(self.configuration.host)
+
         Path: \(path)
+
+        Cache Policy: \(cachePolicy)
+
         Headers:
             \(createHeadersString(from: self))
+
         Parameters: \(self.parameters)
+
         """
 
         return """

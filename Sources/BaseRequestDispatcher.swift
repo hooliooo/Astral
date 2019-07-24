@@ -64,30 +64,40 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
     /**
      Creates and executes a URLSessionDataTask with an onComplete callback that returns a Result.
      Returns the URLSessionDataTask created.
-     - parameter request:    The Request instance used to build the URLRequest from the RequestBuilder.
+     - parameter request:    The URLRequest used to create an HTTP networking request.
      - parameter onComplete: The callback that is executed when the URLSessionDataTask returns with a success or failure.
      - parameter result:     The result of the URLSessionDataTask. Either a success or failure.
     */
     @discardableResult
-    open func response(of request: Request, onComplete: @escaping (_ result: Result<Response, NetworkingError>) -> Void) -> URLSessionDataTask {
-        let method: String = request.method.stringValue
-
-        let urlRequest: URLRequest = self.builder.urlRequest(of: request)
+    open func response(of request: URLRequest, onComplete: @escaping (_ result: Result<Response, NetworkingError>) -> Void) -> URLSessionDataTask {
+        // swiftlint:disable:previous function_body_length
         let logger: OSLog = Astral.shared.logger
 
-        os_log("URL: %@", log: logger, type: OSLogType.info, urlRequest.url?.absoluteString ?? "No URL")
-        os_log("HTTP Method: %@", log: logger, type: OSLogType.info, method)
+        os_log("URL: %@", log: logger, type: OSLogType.info, request.url?.absoluteString ?? "No URL")
+        os_log("HTTP Method: %@", log: logger, type: OSLogType.info, request.httpMethod ?? "No HTTP Method")
         os_log("HTTP Headers", log: logger, type: OSLogType.info)
 
-        if let headers = urlRequest.allHTTPHeaderFields {
+        if let headers = request.allHTTPHeaderFields {
             for header in headers {
                 os_log("HTTP Header: %@ => %@", log: Astral.shared.logger, type: OSLogType.info, header.key, header.value)
             }
         }
 
-        os_log("Parameters: %@", log: logger, type: OSLogType.info, request.parameters.description)
+        let body: String = {
+            if let body = request.httpBody {
+                if let value = String(data: body, encoding: String.Encoding.utf8) {
+                    return value
+                } else {
+                    return body.description
+                }
+            } else {
+                return "No body"
+            }
+        }()
 
-        let task: URLSessionDataTask = self.session.dataTask(with: urlRequest) {
+        os_log("Body: %s", log: logger, type: OSLogType.info, body)
+
+        let task: URLSessionDataTask = self.session.dataTask(with: request) {
             (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
             // swiftlint:disable:previous closure_parameter_position
 
@@ -130,6 +140,32 @@ open class BaseRequestDispatcher: AstralRequestDispatcher {
         task.resume()
 
         return task
+    }
+
+    /**
+     Creates and executes a URLSessionDataTask with an onComplete callback that returns a Result.
+     Returns the URLSessionDataTask created.
+     - parameter url:        The URL instance used to build the URLRequest.
+     - parameter onComplete: The callback that is executed when the URLSessionDataTask returns with a success or failure.
+     - parameter result:     The result of the URLSessionDataTask. Either a success or failure.
+     */
+    @discardableResult
+    open func response(of url: URL, onComplete: @escaping (_ result: Result<Response, NetworkingError>) -> Void) -> URLSessionDataTask {
+        let urlRequest: URLRequest = URLRequest(url: url)
+        return self.response(of: urlRequest, onComplete: onComplete)
+    }
+
+    /**
+     Creates and executes a URLSessionDataTask with an onComplete callback that returns a Result.
+     Returns the URLSessionDataTask created.
+     - parameter request:    The Request instance used to build the URLRequest from the RequestBuilder.
+     - parameter onComplete: The callback that is executed when the URLSessionDataTask returns with a success or failure.
+     - parameter result:     The result of the URLSessionDataTask. Either a success or failure.
+     */
+    @discardableResult
+    open func response(of request: Request, onComplete: @escaping (_ result: Result<Response, NetworkingError>) -> Void) -> URLSessionDataTask {
+        let urlRequest: URLRequest = self.builder.urlRequest(of: request)
+        return self.response(of: urlRequest, onComplete: onComplete)
     }
 
     /**

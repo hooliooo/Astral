@@ -39,6 +39,8 @@ struct BasicMultipartFormDataRequest: MultiPartFormDataRequest {
         ]
     }
 
+    let cachePolicy: URLRequest.CachePolicy? = nil
+
     public var components: [MultiPartFormDataComponent] {
 
         let bundle: Bundle = Bundle(for: HeaderTests.self)

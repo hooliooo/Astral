@@ -28,4 +28,6 @@ struct BasicGetRequest: Request {
         Header(key: Header.Key.accept, value: Header.Value.mediaType(MediaType.applicationJSON)),
         Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationJSON))
     ]
+
+    let cachePolicy: URLRequest.CachePolicy? = .returnCacheDataElseLoad
 }

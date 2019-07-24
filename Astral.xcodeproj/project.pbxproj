@@ -33,6 +33,9 @@
 		1487E70D21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
 		1487E70E21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
 		1487E76D21BC7AE400759E3D /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E76C21BC7AE400759E3D /* ResponseTests.swift */; };
+		148AE2A622DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */; };
+		148AE2A722DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */; };
+		148AE2A822DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */; };
 		14A007E721BD57B5002C2ABB /* FileManager+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */; };
 		14A007E821BD57B5002C2ABB /* FileManager+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */; };
 		14A007E921BD57B5002C2ABB /* FileManager+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */; };
@@ -182,6 +185,7 @@
 		1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataBuilder.swift; sourceTree = "<group>"; };
 		1487E76C21BC7AE400759E3D /* ResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
 		1487E76E21BC7B0800759E3D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLReqeustCachePolicy+Astral.swift"; sourceTree = "<group>"; };
 		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Astral.swift"; sourceTree = "<group>"; };
 		14BE119B22CF22CE003DAF56 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -440,6 +444,7 @@
 				OBJ_29 /* Response.swift */,
 				14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */,
 				OBJ_30 /* URLScheme.swift */,
+				148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -710,6 +715,7 @@
 				14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */,
 				14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */,
+				148AE2A722DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */,
 				14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */,
 				14BE117022CE9F8F003DAF56 /* BaseDelegateDispatcher.swift in Sources */,
@@ -747,6 +753,7 @@
 				14C4C0142026DDAE00938416 /* MediaType.swift in Sources */,
 				14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */,
+				148AE2A822DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */,
 				14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */,
 				14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */,
 				14BE117122CE9F90003DAF56 /* BaseDelegateDispatcher.swift in Sources */,
@@ -809,6 +816,7 @@
 				OBJ_149 /* MediaType.swift in Sources */,
 				14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
 				OBJ_150 /* MultiPartFormDataRequest.swift in Sources */,
+				148AE2A622DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */,
 				OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */,
 				OBJ_152 /* NetworkingError.swift in Sources */,
 				14BE116F22CE9F8E003DAF56 /* BaseDelegateDispatcher.swift in Sources */,

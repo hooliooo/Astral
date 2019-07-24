@@ -126,6 +126,10 @@ public extension RequestBuilder {
             urlRequest.addValue(header.value.stringValue, forHTTPHeaderField: header.key.stringValue)
         }
 
+        if let cachePolicy = request.cachePolicy {
+            urlRequest.cachePolicy = cachePolicy
+        }
+
         return urlRequest
 
     }
