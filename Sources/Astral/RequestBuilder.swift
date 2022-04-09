@@ -1,64 +1,43 @@
 //
-//  APIClient.swift
-//  
-//
-//  Created by Julio Alorro on 08.04.22.
+//  Astral
+//  Copyright (c) Julio Miguel Alorro
+//  Licensed under the MIT license. See LICENSE file
 //
 
 import Foundation
 
-public struct APIClient {
-
-  // MARK: Initializers
-  public init() {
-    self.session = {
-      let configuration: URLSessionConfiguration = URLSessionConfiguration.default
-      configuration.timeoutIntervalForRequest = 20.0
-      configuration.timeoutIntervalForResource = 20.0
-      configuration.httpAdditionalHeaders = ["User-Agent": "ios:com.julio.alorro.Astral:v2.0.4"]
-
-      let session: URLSession = URLSession(configuration: configuration)
-      return session
-    }()
-  }
-
-  // MARK: Properties
-  private let session: URLSession
-
-  // MARK: Functions
-  public func custom(url: String, method: String) throws -> RequestBuilder2 {
-    return try RequestBuilder2(session: self.session, url: url, method: HTTPMethod.other(method).stringValue)
-  }
-
-  public func get(url: String) throws -> RequestBuilder2 {
-    return try RequestBuilder2(session: self.session, url: url, method: HTTPMethod.get.stringValue)
-  }
-
-  public func delete(url: String) throws -> RequestBuilder2 {
-    return try RequestBuilder2(session: self.session, url: url, method: HTTPMethod.delete.stringValue)
-  }
-
-  public func post(url: String) throws -> RequestBuilder2 {
-    return try RequestBuilder2(session: self.session, url: url, method: HTTPMethod.post.stringValue)
-  }
-
-  public func put(url: String) throws -> RequestBuilder2 {
-    return try RequestBuilder2(session: self.session, url: url, method: HTTPMethod.put.stringValue)
-  }
-
-}
-
-public struct RequestBuilder2 {
+/**
+ A RequestBuilder constructs the properties of a URLRequest
+ */
+public struct RequestBuilder {
 
   // MARK: Stored Properties
+  /**
+   The URLSession used to make an http request with the constructed URLRequest
+   */
   private let session: URLSession
+  /**
+   The components that make up the url of the URLRequest
+   */
   public var urlComponents: URLComponents
+  /**
+   The URLRequest instance modified by the methods of the RequestBuilder and sent using the send methods
+   */
   public var request: URLRequest
+  /**
+   The url to the file being uploaded by the URLSession as a stream
+   */
   private var fileURL: URL?
 
   // MARK: Initializers
-  public init(session: URLSession, url: String, method: String) throws {
-
+  /**
+   The initialer of the RequestBuilder
+   - parameters:
+      - session: The URLSesson used to send the URLRequest
+      - url: The url of the URLRequest
+      - method: The http method of the URLRequest
+   */
+  public init(session: URLSession, url: String, method: HTTPMethod) throws {
     guard
       let components = URLComponents(string: url),
       let url = components.url
@@ -68,17 +47,38 @@ public struct RequestBuilder2 {
     self.session = session
     self.urlComponents = components
     self.request = URLRequest(url: url)
-    self.request.httpMethod = method
+    self.request.httpMethod = method.stringValue
   }
 
-  private func copy(with changes: (inout RequestBuilder2) throws -> Void) rethrows -> RequestBuilder2 {
+  // MARK: Private Functions
+  /**
+   Convenience method used under the hood to make a fluent API when building the URLRequest via the RequestBuilder
+   - parameter changes: The closure used to mutate the RequestBuilder. Returns a new RequestBuilder with the changes.
+   */
+  private func copy(with changes: (inout RequestBuilder) throws -> Void) rethrows -> RequestBuilder {
     var mutableSelf = self
     try changes(&mutableSelf)
     return mutableSelf
   }
 
+  /**
+   Convenience method to set headers appropriately for simple JSON http requests
+   */
+  private func setHttpHeadersForJSON() -> RequestBuilder {
+    return self.copy {
+      $0.request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+      $0.request.addValue("application/json", forHTTPHeaderField: "Accept")
+    }
+  }
+
   // MARK: Authentication Functions
-  public func basicAuthentication(username: String, password: String) throws -> RequestBuilder2 {
+  /**
+   Adds Basic Authentication to the URLRequest
+   - parameters:
+      - username: The username for the Basic Authentication header
+      - password: The password for the Basic Authentication header
+   */
+  public func basicAuthentication(username: String, password: String) throws -> RequestBuilder {
     guard let token = "\(username):\(password)".data(using: String.Encoding.utf8)?.base64EncodedString() else {
       throw Error.invalidDataConversion
     }
@@ -87,40 +87,43 @@ public struct RequestBuilder2 {
     }
   }
 
-  public func bearerAuthentication(token: String) -> RequestBuilder2 {
+  /**
+   Adds Bearer token Authentication to the URLRequest
+   - parameter token: The token for the Bearer Authentication header
+   */
+  public func bearerAuthentication(token: String) -> RequestBuilder {
     return self.copy {
       $0.request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     }
   }
 
   // MARK: Body Functions
-  @discardableResult
-  private func setHttpHeadersForJSON() -> RequestBuilder2 {
-    return self.copy {
-      $0.request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-      $0.request.addValue("application/json", forHTTPHeaderField: "Accept")
-    }
+  public func body(data: Data, mediaType: MediaType) -> RequestBuilder {
+    return self
+      .copy {
+        $0.request.httpBody = data
+        $0.request.addValue(mediaType.stringValue, forHTTPHeaderField: "Content-Type")
+      }
   }
 
-  public func body<T: Encodable>(body: T) throws -> RequestBuilder2 {
-    return try self
-      .copy { $0.request.httpBody = try JSONEncoder().encode(body) }
-      .setHttpHeadersForJSON()
+  // MARK: JSON Functions
+  public func json<T: Encodable>(body: T, encoder: JSONEncoder = JSONEncoder()) throws -> RequestBuilder {
+    let data: Data = try encoder.encode(body)
+    return self.body(data: data, mediaType: MediaType.applicationJSON)
   }
 
-  public func body(body: Any) throws -> RequestBuilder2 {
-    return try self
-      .copy { $0.request.httpBody = try JSONSerialization.data(withJSONObject: body) }
-      .setHttpHeadersForJSON()
+  public func json(body: Any) throws -> RequestBuilder {
+    let data = try JSONSerialization.data(withJSONObject: body)
+    return self.body(data: data, mediaType: MediaType.applicationJSON)
   }
 
   // MARK: Form URL Encoded Functions
-  public func form(items: [URLQueryItem]) -> RequestBuilder2 {
+  public func form(items: [URLQueryItem]) -> RequestBuilder {
     return self.copy {
       $0.request.httpBody = items.compactMap { (item: URLQueryItem) -> String? in
         guard
           let value = item.value,
-          let urlEncodedValue = value.addingPercentEncoding(withAllowedCharacters: RequestBuilder2.characterSet)
+          let urlEncodedValue = value.addingPercentEncoding(withAllowedCharacters: RequestBuilder.characterSet)
         else { return nil }
         return "\(item.name)=\(urlEncodedValue)"
       }
@@ -132,8 +135,8 @@ public struct RequestBuilder2 {
   }
 
   // MARK: Header Function
-  public func headers(headers: Set<Header>) -> RequestBuilder2 {
-    return self.copy { (builder: inout RequestBuilder2) -> Void in
+  public func headers(headers: Set<Header>) -> RequestBuilder {
+    return self.copy { (builder: inout RequestBuilder) -> Void in
       headers.forEach {
         builder.request.addValue($0.value.stringValue, forHTTPHeaderField: $0.key.stringValue)
       }
@@ -141,7 +144,7 @@ public struct RequestBuilder2 {
   }
 
   // MARK: Multipart Function
-  public func multipart(components: [MultiPartFormDataComponent]) throws -> RequestBuilder2 {
+  public func multipart(components: [MultiPartFormDataComponent]) throws -> RequestBuilder {
     let strategy: MultiPartFormDataStrategy = MultiPartFormDataStrategy()
     let fileName: UUID = UUID()
     let url: URL = strategy.fileURL(for: fileName.uuidString)
@@ -158,7 +161,7 @@ public struct RequestBuilder2 {
   }
 
   // MARK: Query Function
-  public func query(items: [URLQueryItem]) -> RequestBuilder2 {
+  public func query(items: [URLQueryItem]) -> RequestBuilder {
     var components = self.urlComponents
     components.queryItems = items
     return self
@@ -207,7 +210,7 @@ public struct RequestBuilder2 {
 
 }
 
-public extension RequestBuilder2 {
+public extension RequestBuilder {
 
   enum Error: Swift.Error {
     case invalidURL

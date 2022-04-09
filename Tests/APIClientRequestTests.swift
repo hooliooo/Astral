@@ -11,7 +11,7 @@ import XCTest
 class APIClientRequestTests: XCTestCase {
 
   public func testGetRequest() async throws {
-    let (json, response): (GetResponse, URLResponse) = try await APIClient()
+    let (json, response): (GetResponse, URLResponse) = try await Client()
       .get(url: "https://httpbin.org/get")
       .query(
         items: [
@@ -31,14 +31,14 @@ class APIClientRequestTests: XCTestCase {
   }
 
   public func testPostRequest() async throws {
-    let (json, response): (PostResponse, URLResponse) = try await APIClient()
+    let (json, response): (PostResponse, URLResponse) = try await Client()
       .post(url: "https://httpbin.org/post")
       .headers(
         headers: [
           Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes"))
         ]
       )
-      .body(body: [
+      .json(body: [
         "this": "that",
         "what": "where",
         "why": "what"
@@ -69,7 +69,7 @@ class APIClientRequestTests: XCTestCase {
 
     }
 
-    let (json, response): (MultipartFormDataResponse, URLResponse) = try await APIClient()
+    let (json, response): (MultipartFormDataResponse, URLResponse) = try await Client()
       .post(url: "https://httpbin.org/post")
       .headers(
         headers: [
