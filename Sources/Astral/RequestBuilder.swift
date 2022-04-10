@@ -92,9 +92,7 @@ public struct RequestBuilder {
     guard let token = "\(username):\(password)".data(using: String.Encoding.utf8)?.base64EncodedString() else {
       throw Error.invalidToken
     }
-    return self.copy {
-      $0.request.addValue("Basic \(token)", forHTTPHeaderField: "Authorization")
-    }
+    return self.headers(headers: [Header(key: Header.Key.authorization, value: Header.Value.basicAuthorization(token))])
   }
 
   /**
@@ -102,9 +100,7 @@ public struct RequestBuilder {
    - parameter token: The token for the Bearer Authentication header
    */
   public func bearerAuthentication(token: String) -> RequestBuilder {
-    return self.copy {
-      $0.request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    }
+    return self.headers(headers: [Header(key: Header.Key.authorization, value: Header.Value.custom("Bearer \(token)"))])
   }
 
   // MARK: Body Functions
@@ -115,10 +111,8 @@ public struct RequestBuilder {
       - medtiaType: The media type of the data added as the Content-Type header
    */
   public func body(data: Data, mediaType: MediaType) -> RequestBuilder {
-    return self.copy {
-      $0.request.httpBody = data
-      $0.request.addValue(mediaType.stringValue, forHTTPHeaderField: "Content-Type")
-    }
+    return self.copy { $0.request.httpBody = data }
+      .headers(headers: [Header(key: Header.Key.contentType, value: Header.Value.mediaType(mediaType))])
   }
 
   // MARK: Form URL Encoded Functions
@@ -137,9 +131,8 @@ public struct RequestBuilder {
       }
       .joined(separator: "&")
       .data(using: String.Encoding.utf8)
-
-      $0.request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     }
+    .headers(headers: [Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.applicationURLEncoded))])
   }
 
   // MARK: Header Function
@@ -196,9 +189,13 @@ public struct RequestBuilder {
     return self.copy {
       $0.fileURL = url
       $0.request.httpBodyStream = inputStream
-      $0.request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-      $0.request.addValue(fileSize.description, forHTTPHeaderField: "Content-Length")
     }
+    .headers(
+      headers: [
+        Header(key: Header.Key.contentType, value: Header.Value.mediaType(MediaType.multipartFormData(boundary))),
+        Header(key: Header.Key.custom("Content-Length"), value: Header.Value.custom(fileSize.description))
+      ]
+    )
   }
 
   // MARK: Query Function

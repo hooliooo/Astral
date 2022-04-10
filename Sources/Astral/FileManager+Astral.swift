@@ -43,13 +43,9 @@ public extension AstralFileManagerExtension {
       .first! // swiftlint:disable:this force_unwrapping
   }
 
-//  /**
-//   Creates a URL leading to the caches directory with the MultiPartFormDataRequest fileName as a path component.
-//   */
-//  func fileURL(of request: MultiPartFormDataRequest) -> URL {
-//    return self.fileURL(with: request.fileName)
-//  }
-
+  /**
+   Creates a URL leading to the caches directory with the MultiPartFormDataRequest fileName as a path component.
+   */
   func fileURL(with fileName: String) -> URL {
     return self.cacheDirectory.appendingPathComponent(fileName)
   }
