@@ -36,7 +36,7 @@ public enum HTTPMethod {
     /**
      - other http method
     */
-    case other(String)
+    case method(String)
 
     // MARK: Initializer
     /**
@@ -51,7 +51,7 @@ public enum HTTPMethod {
             case "POST": self = HTTPMethod.post
             case "PUT": self = HTTPMethod.put
             case "PATCH": self = HTTPMethod.patch
-            default: self = HTTPMethod.other(method)
+            default: self = HTTPMethod.method(method)
         }
     }
 
@@ -65,7 +65,7 @@ public enum HTTPMethod {
             case .post: return "POST"
             case .put: return "PUT"
             case .patch: return "PATCH"
-            case .other(let method): return method
+            case .method(let method): return method
         }
     }
 }
@@ -80,7 +80,7 @@ extension HTTPMethod: Hashable {
             case (.post, .post): return true
             case (.put, .put): return true
             case (.patch, .patch): return true
-            case let (.other(lhsMethod), .other(rhsMethod)): return lhsMethod == rhsMethod
+            case let (.method(lhsMethod), .method(rhsMethod)): return lhsMethod == rhsMethod
             default: return false
         }
     }
@@ -92,7 +92,7 @@ extension HTTPMethod: Hashable {
             case .post: hasher.combine(1339)
             case .put: hasher.combine(1340)
             case .patch: hasher.combine(1341)
-            case .other(let method):  hasher.combine(1342 &+ method.hashValue)
+            case .method(let method):  hasher.combine(1342 &+ method.hashValue)
         }
     }
 

@@ -5,6 +5,7 @@
 //
 
 import class Foundation.URLSession
+import class Foundation.FileManager
 
 /**
  A Client is an abstraction over a URLSesson with an easy to use API to communicate with RESTful APIs
@@ -14,9 +15,12 @@ public struct Client {
   // MARK: Initializers
   /**
    Initializer for a Client instance
-   - parameter session: The URLSession to be used by the Client instance
+   - parameters:
+      - fileManager: The FileManager used to create temporary multipart/form-data files in the cache directory
+      - session: The URLSession to be used by the Client instance
    */
-  public init(session: URLSession = URLSession.shared) {
+  public init(fileManager: FileManager = FileManager.default, session: URLSession = URLSession.shared) {
+    self.fileManager = fileManager
     self.session = session
     session.configuration.httpAdditionalHeaders?["User-Agent"] = "ios:com.julio.alorro.Astral:v2.0.4"
   }
@@ -27,6 +31,11 @@ public struct Client {
    */
   private let session: URLSession
 
+  /**
+   The FileManager used to create temporary multipart/form-data files in the cache directory
+   */
+  private let fileManager: FileManager
+
   // MARK: Functions
   /**
    Creates a request to the url with the specified http method
@@ -35,7 +44,7 @@ public struct Client {
       - method: The http method of the request
    */
   public func request(url: String, method: HTTPMethod) throws -> RequestBuilder {
-    return try RequestBuilder(session: self.session, url: url, method: method)
+    return try RequestBuilder(session: self.session, fileManager: self.fileManager, url: url, method: method)
   }
 
   /**

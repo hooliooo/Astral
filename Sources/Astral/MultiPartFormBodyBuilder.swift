@@ -15,7 +15,7 @@ import struct Foundation.FileAttributeKey
 /**
  An implementation of DataStrategy specifically for creating an HTTP body for multipart form-data.
  */
-public struct MultiPartFormDataStrategy: Hashable {
+public struct MultiPartFormBodyBuilder {
 
   // MARK: Enums
   /**
@@ -63,21 +63,18 @@ public struct MultiPartFormDataStrategy: Hashable {
   /**
    Initializer.
    */
-  public init() {
-    self.id = UUID()
+  public init(fileManager: FileManager, boundary: String) {
+    self.fileManager = fileManager
+    self.boundary = boundary
   }
 
   // MARK: Instance Properties
-  private let streamBufferSize: Int = 1_024
-  private let id: UUID
-
-  // MARK: Computed Properties
   /**
-   The FileManager used to write/read from the file system. The default value is the FileManager from the Astral singleton.
+   The FileManager used to create temporary multipart/form-data files in the cache directory
    */
-  public var fileManager: FileManager {
-    return Astral.shared.fileManager
-  }
+  private let fileManager: FileManager
+  private let boundary: String
+  private let streamBufferSize: Int = 1_024
 
   // MARK: Instance Methods
   /**
@@ -98,7 +95,7 @@ public struct MultiPartFormDataStrategy: Hashable {
   internal func prefixData(for parameters: [String: Any]) -> Data {
     var data: Data = Data()
 
-    let boundaryPrefix: String = "--\(Astral.shared.boundary)\r\n"
+    let boundaryPrefix: String = "--\(self.boundary)\r\n"
     switch parameters.isEmpty {
       case true:
         break
@@ -115,56 +112,56 @@ public struct MultiPartFormDataStrategy: Hashable {
     return data
   }
 
-  /**
-   Creates a Data instance based on the contents of MultiPartFormDataComponents. May throw an error.
-   - parameter components: The MultiPartFormDataComponent instances.
-   - returns: Data
-   */
-  internal func data(for components: [MultiPartFormDataComponent]) throws -> Data {
-    var data: Data = Data()
-
-    for component in components {
-      let boundaryPrefix: String = "--\(Astral.shared.boundary)\r\n"
-      self.append(string: boundaryPrefix, to: &data)
-      self.append(
-        string: "Content-Disposition: form-data; name=\"\(component.name)\";",
-        to: &data
-      )
-
-      if case let .image(_, fileName, _, _) = component {
-        self.append(string: " filename=\"\(fileName)\"\r\n", to: &data)
-      } else {
-        self.append(string: "\r\n", to: &data)
-      }
-
-      self.append(string: "Content-Type: \(component.contentType)\r\n\r\n", to: &data)
-
-      switch component {
-        case let .image(_, _, _, file):
-          switch file {
-            case .data(let fileData):
-              data.append(fileData)
-
-            case .url(let url):
-              data.append(try Data(contentsOf: url))
-          }
-        case .text, .json, .other:
-          self.append(string: "\(component.value)", to: &data)
-
-      }
-
-      self.append(string: "\r\n", to: &data)
-    }
-
-    return data
-  }
+//  /**
+//   Creates a Data instance based on the contents of MultiPartFormDataComponents. May throw an error.
+//   - parameter components: The MultiPartFormDataComponent instances.
+//   - returns: Data
+//   */
+//  internal func data(for components: [MultiPartFormDataComponent]) throws -> Data {
+//    var data: Data = Data()
+//
+//    for component in components {
+//      let boundaryPrefix: String = "--\(self.boundary)\r\n"
+//      self.append(string: boundaryPrefix, to: &data)
+//      self.append(
+//        string: "Content-Disposition: form-data; name=\"\(component.name)\";",
+//        to: &data
+//      )
+//
+//      if case let .image(_, fileName, _, _) = component {
+//        self.append(string: " filename=\"\(fileName)\"\r\n", to: &data)
+//      } else {
+//        self.append(string: "\r\n", to: &data)
+//      }
+//
+//      self.append(string: "Content-Type: \(component.contentType)\r\n\r\n", to: &data)
+//
+//      switch component {
+//        case let .image(_, _, _, file):
+//          switch file {
+//            case .data(let fileData):
+//              data.append(fileData)
+//
+//            case .url(let url):
+//              data.append(try Data(contentsOf: url))
+//          }
+//        case .text, .json, .other:
+//          self.append(string: "\(component.value)", to: &data)
+//
+//      }
+//
+//      self.append(string: "\r\n", to: &data)
+//    }
+//
+//    return data
+//  }
 
   /**
    Creates the end part of the Data body needed for a multipart-form data HTTP Request.
    */
   internal var postfixData: Data {
     var data: Data = Data()
-    self.append(string: "--\(Astral.shared.boundary)--\r\n", to: &data)
+    self.append(string: "--\(self.boundary)--\r\n", to: &data)
     return data
   }
 
@@ -178,17 +175,17 @@ public struct MultiPartFormDataStrategy: Hashable {
   public func writeData(to url: URL, components: [MultiPartFormDataComponent]) throws -> UInt64 {
 
     guard self.fileManager.fileExists(atPath: url.path) == false
-    else { throw MultiPartFormDataStrategy.WriteError.fileExists }
+    else { throw MultiPartFormBodyBuilder.WriteError.fileExists }
 
     guard let outputStream = OutputStream(url: url, append: false)
-    else { throw MultiPartFormDataStrategy.WriteError.couldNotCreateOutputStream }
+    else { throw MultiPartFormBodyBuilder.WriteError.couldNotCreateOutputStream }
 
     outputStream.open()
     defer { outputStream.close() }
 
     for component in components {
 
-      let boundaryPrefix: String = "--\(Astral.shared.boundary)\r\n"
+      let boundaryPrefix: String = "--\(self.boundary)\r\n"
       try self.write(string: boundaryPrefix, to: outputStream)
 
       try self.write(
@@ -213,7 +210,7 @@ public struct MultiPartFormDataStrategy: Hashable {
 
             case .url(let url):
               guard let possibleStream = InputStream(url: url)
-              else { throw MultiPartFormDataStrategy.ReadError.couldNotCreateInputStream }
+              else { throw MultiPartFormBodyBuilder.ReadError.couldNotCreateInputStream }
 
               inputStream = possibleStream
           }
@@ -226,7 +223,7 @@ public struct MultiPartFormDataStrategy: Hashable {
             let bytesRead: Int = inputStream.read(&buffer, maxLength: self.streamBufferSize)
 
             if let streamError = inputStream.streamError {
-              throw MultiPartFormDataStrategy.ReadError.inputStreamReadError(streamError)
+              throw MultiPartFormBodyBuilder.ReadError.inputStreamReadError(streamError)
             }
 
             guard bytesRead > 0 else { break }
@@ -261,7 +258,7 @@ public struct MultiPartFormDataStrategy: Hashable {
       let bytesWritten: Int = outputStream.write(buffer, maxLength: bytesToWrite)
 
       if let streamError = outputStream.streamError {
-        throw MultiPartFormDataStrategy.WriteError.outputStreamWriteError(streamError)
+        throw MultiPartFormBodyBuilder.WriteError.outputStreamWriteError(streamError)
       }
 
       bytesToWrite -= bytesWritten
@@ -274,7 +271,7 @@ public struct MultiPartFormDataStrategy: Hashable {
 
   private func write(string: String, to outputStream: OutputStream) throws {
     guard let stringData = string.data(using: String.Encoding.utf8) else {
-      throw MultiPartFormDataStrategy.WriteError.stringToDataFailed
+      throw MultiPartFormBodyBuilder.WriteError.stringToDataFailed
     }
     return try self.write(data: stringData, to: outputStream)
   }
@@ -288,7 +285,7 @@ public struct MultiPartFormDataStrategy: Hashable {
 }
 
 // MARK: Public API Functions
-public extension MultiPartFormDataStrategy {
+public extension MultiPartFormBodyBuilder {
 
   func fileURL(for fileName: String) -> URL {
     return self.fileManager.ast.fileURL(with: fileName)

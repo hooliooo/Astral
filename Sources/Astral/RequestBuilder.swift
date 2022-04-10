@@ -4,7 +4,21 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.FileManager
+import class Foundation.InputStream
+import class Foundation.JSONDecoder
+import class Foundation.JSONEncoder
+import class Foundation.JSONSerialization
+import class Foundation.OutputStream
+import class Foundation.URLResponse
+import class Foundation.URLSession
+import struct Foundation.CharacterSet
+import struct Foundation.Data
+import struct Foundation.URL
+import struct Foundation.URLComponents
+import struct Foundation.URLQueryItem
+import struct Foundation.URLRequest
+import struct Foundation.UUID
 
 /**
  A RequestBuilder constructs the properties of a URLRequest
@@ -12,6 +26,10 @@ import Foundation
 public struct RequestBuilder {
 
   // MARK: Stored Properties
+  /**
+   The FileManager used to create temporary multipart/form-data fiels in the cache directory
+   */
+  private let fileManager: FileManager
   /**
    The URLSession used to make an http request with the constructed URLRequest
    */
@@ -34,10 +52,11 @@ public struct RequestBuilder {
    The initialer of the RequestBuilder
    - parameters:
       - session: The URLSesson used to send the URLRequest
+      - fileManager: The FileManager used to create temporary multipart/form-data fiels in the cache directory
       - url: The url of the URLRequest
       - method: The http method of the URLRequest
    */
-  public init(session: URLSession, url: String, method: HTTPMethod) throws {
+  public init(session: URLSession, fileManager: FileManager, url: String, method: HTTPMethod) throws {
     guard
       let components = URLComponents(string: url),
       let url = components.url
@@ -45,6 +64,7 @@ public struct RequestBuilder {
       throw Error.invalidURL
     }
     self.session = session
+    self.fileManager = fileManager
     self.urlComponents = components
     self.request = URLRequest(url: url)
     self.request.httpMethod = method.stringValue
@@ -61,16 +81,6 @@ public struct RequestBuilder {
     return mutableSelf
   }
 
-  /**
-   Convenience method to set headers appropriately for simple JSON http requests
-   */
-  private func setHttpHeadersForJSON() -> RequestBuilder {
-    return self.copy {
-      $0.request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-      $0.request.addValue("application/json", forHTTPHeaderField: "Accept")
-    }
-  }
-
   // MARK: Authentication Functions
   /**
    Adds Basic Authentication to the URLRequest
@@ -80,7 +90,7 @@ public struct RequestBuilder {
    */
   public func basicAuthentication(username: String, password: String) throws -> RequestBuilder {
     guard let token = "\(username):\(password)".data(using: String.Encoding.utf8)?.base64EncodedString() else {
-      throw Error.invalidDataConversion
+      throw Error.invalidToken
     }
     return self.copy {
       $0.request.addValue("Basic \(token)", forHTTPHeaderField: "Authorization")
@@ -98,32 +108,30 @@ public struct RequestBuilder {
   }
 
   // MARK: Body Functions
+  /**
+   Adds a body to the URLRequest and sets the Content-Type to the specified Media Type
+   - parameters:
+      - data: The data to be added as the body to the URLRequest
+      - medtiaType: The media type of the data added as the Content-Type header
+   */
   public func body(data: Data, mediaType: MediaType) -> RequestBuilder {
-    return self
-      .copy {
-        $0.request.httpBody = data
-        $0.request.addValue(mediaType.stringValue, forHTTPHeaderField: "Content-Type")
-      }
-  }
-
-  // MARK: JSON Functions
-  public func json<T: Encodable>(body: T, encoder: JSONEncoder = JSONEncoder()) throws -> RequestBuilder {
-    let data: Data = try encoder.encode(body)
-    return self.body(data: data, mediaType: MediaType.applicationJSON)
-  }
-
-  public func json(body: Any) throws -> RequestBuilder {
-    let data = try JSONSerialization.data(withJSONObject: body)
-    return self.body(data: data, mediaType: MediaType.applicationJSON)
+    return self.copy {
+      $0.request.httpBody = data
+      $0.request.addValue(mediaType.stringValue, forHTTPHeaderField: "Content-Type")
+    }
   }
 
   // MARK: Form URL Encoded Functions
+  /**
+   Adds a url encoded form body to the URLRequest and sets the Content-Type to application/x-www-form-urlencoded
+   - parameter items: The form data to be url encoded as the body
+   */
   public func form(items: [URLQueryItem]) -> RequestBuilder {
     return self.copy {
       $0.request.httpBody = items.compactMap { (item: URLQueryItem) -> String? in
         guard
           let value = item.value,
-          let urlEncodedValue = value.addingPercentEncoding(withAllowedCharacters: RequestBuilder.characterSet)
+          let urlEncodedValue = value.addingPercentEncoding(withAllowedCharacters: RequestBuilder.urlEncodedSet)
         else { return nil }
         return "\(item.name)=\(urlEncodedValue)"
       }
@@ -135,6 +143,10 @@ public struct RequestBuilder {
   }
 
   // MARK: Header Function
+  /**
+   Adds headers to the URLRequest
+   - parameter headers: The headers to be added to the URLRequest
+   */
   public func headers(headers: Set<Header>) -> RequestBuilder {
     return self.copy { (builder: inout RequestBuilder) -> Void in
       headers.forEach {
@@ -143,24 +155,57 @@ public struct RequestBuilder {
     }
   }
 
+  // MARK: JSON Functions
+  /**
+   Adds a JSON body to the URLRequest and specifieds the Content-Type header as application/json
+   - parameters:
+      - body: The Encodable object to be serialized as the JSON body of the URLRequest.
+      - encoder: THe JSONEncoder that transforms the body object into JSON data
+   */
+  public func json<T: Encodable>(body: T, encoder: JSONEncoder = JSONEncoder()) throws -> RequestBuilder {
+    let data: Data = try encoder.encode(body)
+    return self.body(data: data, mediaType: MediaType.applicationJSON)
+  }
+
+  /**
+   Adds a JSON body to the URLRequest and specifieds the Content-Type header as application/json
+   - parameter body: The Encodable object to be serialized as the JSON body of the URLRequest.
+   */
+  public func json(body: Any) throws -> RequestBuilder {
+    let data = try JSONSerialization.data(withJSONObject: body)
+    return self.body(data: data, mediaType: MediaType.applicationJSON)
+  }
+
   // MARK: Multipart Function
+  /**
+   Adds a multipart/form-data body to the URLRequest as an httpBodyStream
+   - parameter components: The parts of used to create multipart/form-data request body
+   */
   public func multipart(components: [MultiPartFormDataComponent]) throws -> RequestBuilder {
-    let strategy: MultiPartFormDataStrategy = MultiPartFormDataStrategy()
+    let boundary: String = UUID().uuidString
+    let strategy: MultiPartFormBodyBuilder = MultiPartFormBodyBuilder(
+      fileManager: self.fileManager,
+      boundary: boundary
+    )
     let fileName: UUID = UUID()
     let url: URL = strategy.fileURL(for: fileName.uuidString)
     let fileSize: UInt64 = try strategy.writeData(to: url, components: components)
     guard let inputStream = InputStream(url: url) else {
-      throw MultiPartFormDataStrategy.ReadError.couldNotCreateInputStream
+      throw MultiPartFormBodyBuilder.ReadError.couldNotCreateInputStream
     }
     return self.copy {
       $0.fileURL = url
       $0.request.httpBodyStream = inputStream
-      $0.request.addValue("multipart/form-data; boundary=\(Astral.shared.boundary)", forHTTPHeaderField: "Content-Type")
+      $0.request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
       $0.request.addValue(fileSize.description, forHTTPHeaderField: "Content-Length")
     }
   }
 
   // MARK: Query Function
+  /**
+   Adds query items to the URL of the URLRequst
+    - parameter items: The URLQueryItems to be added to the URL of the URLRequest
+   */
   public func query(items: [URLQueryItem]) -> RequestBuilder {
     var components = self.urlComponents
     components.queryItems = items
@@ -169,55 +214,77 @@ public struct RequestBuilder {
         $0.urlComponents = components
         $0.request.url = components.url
       }
-      .setHttpHeadersForJSON()
   }
 
   // MARK: Send Functions
+  /**
+   Cleans up the file used to aggregate a multipart/form-data request into a stream
+   */
   private func cleanUpMultipartStream() throws {
     guard let url = self.fileURL else { return }
-    try Astral.shared.fileManager.removeItem(at: url)
+    try self.fileManager.removeItem(at: url)
   }
 
-  private func executeCatchingErrors<T>(block: () async throws -> T) async rethrows -> T {
+  /**
+   Sends the URLRequest and decodes the response into a Data instance. Also cleans up the multipart/form-data file created
+   if there is one.
+   */
+  public func send() async throws -> (Data, URLResponse) {
     defer { try? self.cleanUpMultipartStream() }
     do {
-      return try await block()
+      return try await self.session.data(for: self.request)
     } catch {
       throw error
     }
   }
 
+  /**
+   Sends the URLRequest and decodes the response into a Decodable object
+  - parameter decoder: THe JSONDecoder used to deserialize the response into the specified object
+   */
   public func send<T: Decodable>(decoder: JSONDecoder = JSONDecoder()) async throws -> (T, URLResponse) {
-    return try await self.executeCatchingErrors {
-      let (data, response) = try await self.session.data(for: self.request)
-      return (try decoder.decode(T.self, from: data), response)
-    }
+    let (data, response): (Data, URLResponse) = try await self.send()
+    return (try decoder.decode(T.self, from: data), response)
   }
 
+  /**
+   Sends the URLRequest and decodes the response into a String instance
+   */
   public func send() async throws -> (String, URLResponse) {
-    return try await self.executeCatchingErrors {
-      let (data, response) = try await self.session.data(for: self.request)
-      return (String(data: data, encoding: String.Encoding.utf8)!, response)
-    }
+    let (data, response): (Data, URLResponse) = try await self.send()
+    return (String(data: data, encoding: String.Encoding.utf8)!, response)
   }
 
+  /**
+   Sends the URLRequest and decodes the response into an Any instance
+   */
   public func send() async throws -> (Any, URLResponse) {
-    return try await self.executeCatchingErrors {
-      let (data, response) = try await self.session.data(for: self.request)
-      return (try JSONSerialization.jsonObject(with: data), response)
-    }
+    let (data, response): (Data, URLResponse) = try await self.send()
+    return (try JSONSerialization.jsonObject(with: data), response)
   }
 
 }
 
 public extension RequestBuilder {
 
+  /**
+   Represents the possible errors that can occur while mutating the RequestBuilder
+   */
   enum Error: Swift.Error {
+    /**
+     Error thrown when the URL created isn't valid
+     */
     case invalidURL
-    case invalidDataConversion
+    /**
+     Error thrown when the base64 encoding of the token of the Basic Authentication fails
+     */
+    case invalidToken
   }
 
-  static let characterSet: CharacterSet = {
+  /**
+   The character set used to url encode form values for a application/x-www-form-urlencoded URLRequest
+   */
+  static let urlEncodedSet: CharacterSet = {
     var set: CharacterSet = CharacterSet.alphanumerics
     set.insert(charactersIn: "-._* ")
     return set
