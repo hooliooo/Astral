@@ -174,8 +174,7 @@ public struct RequestBuilder {
    Adds a multipart/form-data body to the URLRequest as an httpBodyStream
    - parameter components: The parts of used to create multipart/form-data request body
    */
-  public func multipart(components: [MultiPartFormDataComponent]) throws -> RequestBuilder {
-    let boundary: String = UUID().uuidString
+  public func multipart(components: [MultiPartFormDataComponent], boundary: String = UUID().uuidString) throws -> RequestBuilder {
     let strategy: MultiPartFormBodyBuilder = MultiPartFormBodyBuilder(
       fileManager: self.fileManager,
       boundary: boundary

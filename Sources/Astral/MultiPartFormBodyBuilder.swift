@@ -17,48 +17,6 @@ import struct Foundation.FileAttributeKey
  */
 public struct MultiPartFormBodyBuilder {
 
-  // MARK: Enums
-  /**
-   WriteError represents errors related to writing to or creating an OutputStream
-   */
-  public enum WriteError: Swift.Error {
-    /**
-     The file already exists at the URL.
-     */
-    case fileExists
-
-    /**
-     The OutputStream instance could not be initialized.
-     */
-    case couldNotCreateOutputStream
-
-    /**
-     Writing to the OutputStream resulted in an error.
-     */
-    case outputStreamWriteError(Error)
-
-    /**
-     The String instance could not be transformed into a Data instance.
-     */
-    case stringToDataFailed
-  }
-
-  /**
-   ReadError represents errors related to reading or creating an InputStream or reading a file's attributes.
-   */
-  public enum ReadError: Swift.Error {
-    /**
-     The InputStream instance could not be initialized.
-     */
-    case couldNotCreateInputStream
-
-    /**
-     Reading an InputStream resulted in an error.
-     */
-    case inputStreamReadError(Error)
-
-  }
-
   // MARK: Initializer
   /**
    Initializer.
@@ -73,6 +31,9 @@ public struct MultiPartFormBodyBuilder {
    The FileManager used to create temporary multipart/form-data files in the cache directory
    */
   private let fileManager: FileManager
+  /**
+   The boundary used in creating the multipart/form-data
+   */
   private let boundary: String
   private let streamBufferSize: Int = 1_024
 
@@ -86,75 +47,6 @@ public struct MultiPartFormBodyBuilder {
     let stringData: Data = string.data(using: String.Encoding.utf8)! // swiftlint:disable:this force_unwrapping
     data.append(stringData)
   }
-
-  /**
-   Creates the beginning part of the Data body needed for a multipart-form data HTTP Request.
-   - parameter request: The MultiPartFormDataRequest instance.
-   - returns: Data
-   */
-  internal func prefixData(for parameters: [String: Any]) -> Data {
-    var data: Data = Data()
-
-    let boundaryPrefix: String = "--\(self.boundary)\r\n"
-    switch parameters.isEmpty {
-      case true:
-        break
-
-      case false:
-        for (key, value) in parameters {
-          self.append(string: boundaryPrefix, to: &data)
-          self.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n", to: &data)
-          let value: String = String(describing: value)
-          self.append(string: "\(value)", to: &data)
-          self.append(string: "\r\n", to: &data)
-        }
-    }
-    return data
-  }
-
-//  /**
-//   Creates a Data instance based on the contents of MultiPartFormDataComponents. May throw an error.
-//   - parameter components: The MultiPartFormDataComponent instances.
-//   - returns: Data
-//   */
-//  internal func data(for components: [MultiPartFormDataComponent]) throws -> Data {
-//    var data: Data = Data()
-//
-//    for component in components {
-//      let boundaryPrefix: String = "--\(self.boundary)\r\n"
-//      self.append(string: boundaryPrefix, to: &data)
-//      self.append(
-//        string: "Content-Disposition: form-data; name=\"\(component.name)\";",
-//        to: &data
-//      )
-//
-//      if case let .image(_, fileName, _, _) = component {
-//        self.append(string: " filename=\"\(fileName)\"\r\n", to: &data)
-//      } else {
-//        self.append(string: "\r\n", to: &data)
-//      }
-//
-//      self.append(string: "Content-Type: \(component.contentType)\r\n\r\n", to: &data)
-//
-//      switch component {
-//        case let .image(_, _, _, file):
-//          switch file {
-//            case .data(let fileData):
-//              data.append(fileData)
-//
-//            case .url(let url):
-//              data.append(try Data(contentsOf: url))
-//          }
-//        case .text, .json, .other:
-//          self.append(string: "\(component.value)", to: &data)
-//
-//      }
-//
-//      self.append(string: "\r\n", to: &data)
-//    }
-//
-//    return data
-//  }
 
   /**
    Creates the end part of the Data body needed for a multipart-form data HTTP Request.
@@ -290,5 +182,101 @@ public extension MultiPartFormBodyBuilder {
   func fileURL(for fileName: String) -> URL {
     return self.fileManager.ast.fileURL(with: fileName)
   }
+
+}
+
+// MARK: Enums
+public extension MultiPartFormBodyBuilder {
+
+  // MARK: Enums
+  /**
+   WriteError represents errors related to writing to or creating an OutputStream
+   */
+  enum WriteError: Swift.Error {
+    /**
+     The file already exists at the URL.
+     */
+    case fileExists
+
+    /**
+     The OutputStream instance could not be initialized.
+     */
+    case couldNotCreateOutputStream
+
+    /**
+     Writing to the OutputStream resulted in an error.
+     */
+    case outputStreamWriteError(Error)
+
+    /**
+     The String instance could not be transformed into a Data instance.
+     */
+    case stringToDataFailed
+  }
+
+  /**
+   ReadError represents errors related to reading or creating an InputStream or reading a file's attributes.
+   */
+  enum ReadError: Swift.Error {
+    /**
+     The InputStream instance could not be initialized.
+     */
+    case couldNotCreateInputStream
+
+    /**
+     Reading an InputStream resulted in an error.
+     */
+    case inputStreamReadError(Error)
+
+  }
+
+}
+
+// MARK: Old Implementations
+private extension MultiPartFormBodyBuilder {
+
+  //  /**
+  //   Creates a Data instance based on the contents of MultiPartFormDataComponents. May throw an error.
+  //   - parameter components: The MultiPartFormDataComponent instances.
+  //   - returns: Data
+  //   */
+  //  internal func data(for components: [MultiPartFormDataComponent]) throws -> Data {
+  //    var data: Data = Data()
+  //
+  //    for component in components {
+  //      let boundaryPrefix: String = "--\(self.boundary)\r\n"
+  //      self.append(string: boundaryPrefix, to: &data)
+  //      self.append(
+  //        string: "Content-Disposition: form-data; name=\"\(component.name)\";",
+  //        to: &data
+  //      )
+  //
+  //      if case let .image(_, fileName, _, _) = component {
+  //        self.append(string: " filename=\"\(fileName)\"\r\n", to: &data)
+  //      } else {
+  //        self.append(string: "\r\n", to: &data)
+  //      }
+  //
+  //      self.append(string: "Content-Type: \(component.contentType)\r\n\r\n", to: &data)
+  //
+  //      switch component {
+  //        case let .image(_, _, _, file):
+  //          switch file {
+  //            case .data(let fileData):
+  //              data.append(fileData)
+  //
+  //            case .url(let url):
+  //              data.append(try Data(contentsOf: url))
+  //          }
+  //        case .text, .json, .other:
+  //          self.append(string: "\(component.value)", to: &data)
+  //
+  //      }
+  //
+  //      self.append(string: "\r\n", to: &data)
+  //    }
+  //
+  //    return data
+  //  }
 
 }
