@@ -22,7 +22,9 @@ class APIClientRequestTests: XCTestCase {
       )
       .headers(
         headers: [
-          Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes"))
+          Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes")),
+          Header(key: Header.Key.accept, value: Header.Value.mediaType(.applicationJSON)),
+          Header(key: Header.Key.contentType, value: Header.Value.mediaType(.applicationJSON))
         ]
       )
       .send()

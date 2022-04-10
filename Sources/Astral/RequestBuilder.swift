@@ -209,11 +209,10 @@ public struct RequestBuilder {
   public func query(items: [URLQueryItem]) -> RequestBuilder {
     var components = self.urlComponents
     components.queryItems = items
-    return self
-      .copy {
-        $0.urlComponents = components
-        $0.request.url = components.url
-      }
+    return self.copy {
+      $0.urlComponents = components
+      $0.request.url = components.url
+    }
   }
 
   // MARK: Send Functions
