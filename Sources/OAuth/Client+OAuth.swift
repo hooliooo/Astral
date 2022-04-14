@@ -11,6 +11,14 @@ import struct Foundation.URLQueryItem
 
 public extension Client {
 
+  /**
+   Queries the given OAuth2.0 token url as a POST request with the necessary payload given the data
+   from the ResourceOwnerPasswordCredentialsGrant and ClientCredentials instances
+   - parameters:
+        - url: The URL of the OAuth2.0 token endpoint
+        - credentialGrant: The ResourceOwnerPasswordCredentialsGrant instance containing data necessary for the http POST request
+        - clientCredentials: The ClientCredentials instance containing data necessary for the http POST request
+   */
   func passwordCredentials(
     url: String,
     credentialGrant: ResourceOwnerPasswordCredentialsGrant,

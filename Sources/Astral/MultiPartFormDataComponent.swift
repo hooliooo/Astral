@@ -12,11 +12,26 @@ import struct Foundation.URL
 */
 public enum MultiPartFormDataComponent {
 
+  /**
+   Image to be uploaded as a part of multipart/form-data
+   */
   case image(name: String, fileName: String, contentType: String, file: MultiPartFormDataComponent.File)
+  /**
+   JSON to be uploaded as a part of multipart/form-data
+   */
   case json(name: String, payload: Any)
+  /**
+   Text to be uploaded as a part of multipart/form-data
+   */
   case text(name: String, value: String)
+  /**
+   Something to be uploaded as a part of multipart/form-data
+   */
   case other(name: String, value: Any, contentType: String)
 
+  /**
+   The name of the part
+   */
   public var name: String {
     switch self {
       case .image(let name, _, _, _), .json(let name, _), .text(let name, _), .other(let name, _, _):
@@ -24,6 +39,9 @@ public enum MultiPartFormDataComponent {
     }
   }
 
+  /**
+   The content type of the part
+   */
   public var contentType: String {
     switch self {
       case let .image(_, _, contentType, _), let .other(_, _, contentType): return contentType
@@ -32,6 +50,9 @@ public enum MultiPartFormDataComponent {
     }
   }
 
+  /**
+   The value of the part
+   */
   public var value: String {
     switch self {
       case let .image(_, _, _, file): return file.description
