@@ -75,7 +75,7 @@ public struct RequestBuilder {
    Convenience method used under the hood to make a fluent API when building the URLRequest via the RequestBuilder
    - parameter changes: The closure used to mutate the RequestBuilder. Returns a new RequestBuilder with the changes.
    */
-  private func copy(with changes: (inout RequestBuilder) throws -> Void) rethrows -> RequestBuilder {
+  public func copy(with changes: (inout RequestBuilder) throws -> Void) rethrows -> RequestBuilder {
     var mutableSelf = self
     try changes(&mutableSelf)
     return mutableSelf

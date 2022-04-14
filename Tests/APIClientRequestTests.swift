@@ -32,27 +32,6 @@ class APIClientRequestTests: XCTestCase {
     XCTAssertEqual(json.args.this, "that")
   }
 
-  public func testPostRequest() async throws {
-    let (json, response): (PostResponse, URLResponse) = try await Client()
-      .post(url: "https://httpbin.org/post")
-      .headers(
-        headers: [
-          Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes"))
-        ]
-      )
-      .json(body: [
-        "this": "that",
-        "what": "where",
-        "why": "what"
-      ])
-      .send()
-
-    XCTAssertEqual("https://httpbin.org/post", response.url!.absoluteString)
-    XCTAssertEqual(json.json.this, "that")
-    XCTAssertEqual(json.json.what, "where")
-    XCTAssertEqual(json.json.why, "what")
-  }
-
   public func testMultipartRequest() async throws {
     let bundle: Bundle = Bundle.module
     let getData: (String) -> Data = { (imageName: String) -> Data in

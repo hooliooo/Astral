@@ -4,11 +4,12 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+
 import Foundation
 
-public struct PostResponse: Decodable {
+public struct User: Codable {
 
-    public let json: User
-    public let url: URL
+  public let username: String
+  public let password: String
 
 }

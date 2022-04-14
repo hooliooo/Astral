@@ -25,3 +25,4 @@ Podfile.lock
 
 Carthage/
 Pods/
+Tests/OAuth2Tests.swift

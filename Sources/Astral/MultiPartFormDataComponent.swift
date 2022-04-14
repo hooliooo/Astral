@@ -12,42 +12,6 @@ import struct Foundation.URL
 */
 public enum MultiPartFormDataComponent {
 
-    /**
-     Represent the File either as Data or its URL in the file system.
-    */
-    public enum File: CustomStringConvertible, CustomDebugStringConvertible {
-        /**
-         Content of the file as Data.
-        */
-        case data(Data)
-
-        /**
-         URL of the file in the file system.
-        */
-        case url(URL)
-
-        public var description: String {
-            switch self {
-                case .data(let data):
-                    return data.description
-
-                case .url(let url):
-                    return url.description
-            }
-        }
-
-        public var debugDescription: String {
-            switch self {
-                case .data(let data):
-                    return data.debugDescription
-
-                case .url(let url):
-                    return url.debugDescription
-            }
-        }
-
-    }
-
   case image(name: String, fileName: String, contentType: String, file: MultiPartFormDataComponent.File)
   case json(name: String, payload: Any)
   case text(name: String, value: String)
@@ -79,3 +43,41 @@ public enum MultiPartFormDataComponent {
 
 }
 
+public extension MultiPartFormDataComponent {
+  /**
+   Represent the File either as Data or its URL in the file system.
+  */
+  enum File: CustomStringConvertible, CustomDebugStringConvertible {
+      /**
+       Content of the file as Data.
+      */
+      case data(Data)
+
+      /**
+       URL of the file in the file system.
+      */
+      case url(URL)
+
+      public var description: String {
+          switch self {
+              case .data(let data):
+                  return data.description
+
+              case .url(let url):
+                  return url.description
+          }
+      }
+
+      public var debugDescription: String {
+          switch self {
+              case .data(let data):
+                  return data.debugDescription
+
+              case .url(let url):
+                  return url.debugDescription
+          }
+      }
+
+  }
+
+}

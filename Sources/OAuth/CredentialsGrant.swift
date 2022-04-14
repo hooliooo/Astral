@@ -6,9 +6,11 @@
 
 import Foundation
 
-public struct PostResponse: Decodable {
+public protocol CredentialsGrant {
 
-    public let json: User
-    public let url: URL
+  /**
+   The grant type used for authentication
+   */
+  var grantType: String { get }
 
 }

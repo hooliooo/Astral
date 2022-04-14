@@ -12,7 +12,8 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
   name: "Astral",
   platforms: [.iOS(.v15), .macOS(.v12)],
   products: [
-    .library(name: "Astral",targets: ["Astral"])
+    .library(name: "Astral",targets: ["Astral"]),
+    .library(name: "AstralOAuth", targets: ["OAuth"])
   ],
   dependencies: [
   ],
@@ -20,9 +21,15 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
     .target(
       name: "Astral"
     ),
+    .target(
+      name: "OAuth",
+      dependencies: [
+        "Astral"
+      ]
+    ),
     .testTarget(
       name: "Tests",
-      dependencies: ["Astral"],
+      dependencies: ["Astral", "OAuth"],
       path: "Tests",
       exclude: [
         "Supporting Files/iOS/Info.plist",
