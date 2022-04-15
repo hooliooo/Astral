@@ -4,8 +4,10 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import class Foundation.URLSession
+import class Foundation.Bundle
 import class Foundation.FileManager
+import class Foundation.URLSession
+import class Foundation.URLSessionConfiguration
 
 /**
  A Client is an abstraction over a URLSesson with an easy to use API to communicate with RESTful APIs
@@ -19,10 +21,27 @@ public struct Client {
       - fileManager: The FileManager used to create temporary multipart/form-data files in the cache directory
       - session: The URLSession to be used by the Client instance
    */
-  public init(fileManager: FileManager = FileManager.default, session: URLSession = URLSession.shared) {
+  public init(fileManager: FileManager, session: URLSession) {
     self.fileManager = fileManager
     self.session = session
-    session.configuration.httpAdditionalHeaders?["User-Agent"] = "ios:com.julio.alorro.Astral:v2.0.4"
+  }
+
+  /**
+   Convenience initializer that creates a URLSession configured with a User-Agent in the following format:
+   "\(bundleIdentifier), buildVersion:\(appBuild), version:\(appShortVersion) Astral/v3.0.0" and
+   the Filemanager.default singleton
+   */
+  public init() {
+    let configuration: URLSessionConfiguration = .default
+    let info: [String: Any] = Bundle.main.infoDictionary ?? [:]
+    let bundleIdentifier = info["CFBundleIdentifier"] as? String ?? "Unknown Identifier"
+    let appBuild = info["CFBundleVersion"] as? String ?? "Unknown Bundle Version"
+    let appShortVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown Short Version"
+    configuration.httpAdditionalHeaders = [
+      "User-Agent": "\(bundleIdentifier), buildVersion:\(appBuild), version:\(appShortVersion) Astral/v3.0.0"
+    ]
+    let session: URLSession = URLSession(configuration: configuration)
+    self.init(fileManager: FileManager.default, session: session)
   }
 
   // MARK: Properties

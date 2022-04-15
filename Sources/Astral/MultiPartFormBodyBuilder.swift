@@ -4,12 +4,12 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import struct Foundation.Data
-import struct Foundation.URL
-import struct Foundation.UUID
 import class Foundation.InputStream
 import class Foundation.FileManager
 import class Foundation.OutputStream
+import struct Foundation.Data
+import struct Foundation.URL
+import struct Foundation.UUID
 import struct Foundation.FileAttributeKey
 
 /**

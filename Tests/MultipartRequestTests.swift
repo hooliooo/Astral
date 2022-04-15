@@ -1,36 +1,14 @@
 //
-//  APIClientRequestTests.swift
+//  MultipartRequestTests.swift
 //  
 //
-//  Created by Julio Alorro on 08.04.22.
+//  Created by Julio Alorro on 15.04.22.
 //
 
 import XCTest
 @testable import Astral
 
-class APIClientRequestTests: XCTestCase {
-
-  public func testGetRequest() async throws {
-    let (json, response): (GetResponse, URLResponse) = try await Client()
-      .get(url: "https://httpbin.org/get")
-      .query(
-        items: [
-          URLQueryItem(name: "this", value: "that"),
-          URLQueryItem(name: "what", value: "where"),
-          URLQueryItem(name: "why", value: "what")
-        ]
-      )
-      .headers(
-        headers: [
-          Header(key: Header.Key.custom("Get-Request"), value: Header.Value.custom("Yes")),
-          Header(key: Header.Key.accept, value: Header.Value.mediaType(.applicationJSON)),
-          Header(key: Header.Key.contentType, value: Header.Value.mediaType(.applicationJSON))
-        ]
-      )
-      .send()
-    XCTAssertEqual("https://httpbin.org/get?this=that&what=where&why=what", response.url!.absoluteString)
-    XCTAssertEqual(json.args.this, "that")
-  }
+class MultipartRequestTests: XCTestCase {
 
   public func testMultipartRequest() async throws {
     let bundle: Bundle = Bundle.module
@@ -50,7 +28,7 @@ class APIClientRequestTests: XCTestCase {
 
     }
 
-    let (json, response): (MultipartFormDataResponse, URLResponse) = try await Client()
+    let (json, response): (MultipartFormDataResponse, URLResponse) = try await Constants.client
       .post(url: "https://httpbin.org/post")
       .headers(
         headers: [
@@ -91,4 +69,5 @@ class APIClientRequestTests: XCTestCase {
     XCTAssertEqual(json.form.what, "where")
     XCTAssertEqual(json.form.why, "what")
   }
+
 }

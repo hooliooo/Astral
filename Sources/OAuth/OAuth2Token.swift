@@ -4,12 +4,22 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import struct Foundation.Date
 
 /**
  A struct that encapsulates the token information retrieved from an OAuth2.0 token endpoint
  */
 public struct OAuth2Token: Decodable {
+
+  public enum CodingKeys: String, CodingKey {
+    case accessToken
+    case expiresIn
+    case refreshToken
+    case refreshExpiresIn
+    case tokenType
+    case sessionState
+    case scope
+  }
 
   /**
    The access token
@@ -49,6 +59,6 @@ public struct OAuth2Token: Decodable {
   /**
    The date and time of the token's creation
    */
-  public private(set)var createdAtDate: Date = Date()
+  public let createdAtDate: Date = Date()
 
 }

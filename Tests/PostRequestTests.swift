@@ -12,7 +12,7 @@ class PostRequestTests: XCTestCase {
 
   public func testJSONPostRequest() async throws {
     let body: User = User(username: "Testing Tester", password: "aWeakPassword")
-    let builder = try Client()
+    let builder = try Constants.client
       .post(url: "https://httpbin.org/post")
       .headers(
         headers: [
@@ -37,7 +37,7 @@ class PostRequestTests: XCTestCase {
 
   public func testJSONPostRequestWithQuery() async throws {
     let body: User = User(username: "Testing Tester", password: "aWeakPassword")
-    let builder = try Client()
+    let builder = try Constants.client
       .post(url: "https://httpbin.org/post")
       .headers(
         headers: [

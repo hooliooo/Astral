@@ -4,8 +4,6 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
-
 public protocol CredentialsGrant {
 
   /**
