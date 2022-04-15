@@ -13,7 +13,7 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
   platforms: [.iOS(.v15), .macOS(.v12)],
   products: [
     .library(name: "Astral",targets: ["Astral"]),
-    .library(name: "AstralOAuth", targets: ["OAuth"])
+    .library(name: "OAuth", targets: ["OAuth"])
   ],
   dependencies: [
   ],
