@@ -48,12 +48,12 @@ public struct Client {
   /**
    The URLSession used to make http requests
    */
-  private let session: URLSession
+  public let session: URLSession
 
   /**
    The FileManager used to create temporary multipart/form-data files in the cache directory
    */
-  private let fileManager: FileManager
+  public let fileManager: FileManager
 
   // MARK: Functions
   /**

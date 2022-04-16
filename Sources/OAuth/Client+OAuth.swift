@@ -4,9 +4,13 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import class Foundation.FileManager
+import class Foundation.JSONEncoder
+import class Foundation.JSONDecoder
 import class Foundation.URLResponse
 import struct Astral.Client
 import struct Astral.RequestBuilder
+import struct Foundation.Data
 import struct Foundation.URLQueryItem
 
 public extension Client {
@@ -43,11 +47,28 @@ public extension Client {
 //    credentialGrant: ResourceOwnerPasswordCredentialsGrant,
 //    clientCredentials: ClientCredentials
 //  ) async throws -> Client {
-//    let (oauth2Response, response): (OAuth2Token, URLResponse) = try await self
+//    let decoder: JSONDecoder = JSONDecoder()
+//    decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
+//    let (token, response): (OAuth2Token, URLResponse) = try await self
 //      .passwordCredentials(url: url, credentialGrant: credentialGrant, clientCredentials: clientCredentials)
-//      .send()
+//      .send(decoder: decoder)
 //
-//    // Save OAuth2
+//    // Save OAuth2 in memory
+//    await OAuth2TokenStore.shared.store(token: token)
+//
+//    // Save OAuth2 to document directory
+//    let fileManager: FileManager = self.fileManager
+//    Task.detached(priority: TaskPriority.background) { () -> Void in
+//      let encoder: JSONEncoder = JSONEncoder()
+//      let data: Data = try encoder.encode(token)
+//      let url = fileManager.ast.documentDirectory.appendingPathComponent("token.json")
+//      // Check if it exists
+//      if fileManager.fileExists(atPath: url.path) {
+//        try fileManager.removeItem(at: url)
+//      }
+//
+//      try data.write(to: url)
+//    }
 //
 //    return self
 //  }

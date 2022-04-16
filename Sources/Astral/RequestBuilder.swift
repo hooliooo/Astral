@@ -100,7 +100,7 @@ public struct RequestBuilder {
    - parameter token: The token for the Bearer Authentication header
    */
   public func bearerAuthentication(token: String) -> RequestBuilder {
-    return self.headers(headers: [Header(key: Header.Key.authorization, value: Header.Value.custom("Bearer \(token)"))])
+    return self.headers(headers: [Header(key: Header.Key.authorization, value: Header.Value.bearerToken(token))])
   }
 
   // MARK: Body Functions

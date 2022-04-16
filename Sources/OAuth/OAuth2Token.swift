@@ -9,7 +9,7 @@ import struct Foundation.Date
 /**
  A struct that encapsulates the token information retrieved from an OAuth2.0 token endpoint
  */
-public struct OAuth2Token: Decodable {
+public struct OAuth2Token: Codable {
 
   public enum CodingKeys: String, CodingKey {
     case accessToken
@@ -60,5 +60,36 @@ public struct OAuth2Token: Decodable {
    The date and time of the token's creation
    */
   public let createdAtDate: Date = Date()
+
+  // MARK: Computed Properties
+  /**
+   The date and time of the access token's expiration
+   */
+  public var accessTokenExpirationDate: Date {
+    let seconds: Double = Double(self.expiresIn)
+    return self.createdAtDate.addingTimeInterval(seconds)
+  }
+
+  /**
+   Bool indicating if the access token is expired
+   */
+  public var isAccessTokenExpired: Bool {
+    self.accessTokenExpirationDate.timeIntervalSinceNow < 0.0
+  }
+
+  /**
+   The date and time of the refresh token's expiration
+   */
+  public var refreshTokenExpirationDate: Date {
+    let seconds: Double = Double(self.refreshExpiresIn)
+    return self.createdAtDate.addingTimeInterval(seconds)
+  }
+
+  /**
+   Bool indicating if the refresh token is expired
+   */
+  public var isRefreshTokenExpired: Bool {
+    self.refreshTokenExpirationDate.timeIntervalSinceNow < 0.0
+  }
 
 }

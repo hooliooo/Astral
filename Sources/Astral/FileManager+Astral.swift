@@ -44,6 +44,18 @@ public extension AstralFileManagerExtension {
   }
 
   /**
+   The URL to the caches directory in the user domain mask.
+   */
+  var documentDirectory: URL {
+    return self.base
+      .urls(
+        for: FileManager.SearchPathDirectory.documentDirectory,
+        in: FileManager.SearchPathDomainMask.userDomainMask
+      )
+      .first! // swiftlint:disable:this force_unwrapping
+  }
+
+  /**
    Creates a URL leading to the caches directory with the MultiPartFormDataRequest fileName as a path component.
    */
   func fileURL(with fileName: String) -> URL {

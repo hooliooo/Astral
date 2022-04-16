@@ -4,8 +4,6 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
-
 /**
  Struct containing the client_id and client_secret used in authenticating via OAuth2.0
  */
