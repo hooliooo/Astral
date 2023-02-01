@@ -19,6 +19,7 @@ import struct Foundation.URLComponents
 import struct Foundation.URLQueryItem
 import struct Foundation.URLRequest
 import struct Foundation.UUID
+import struct os.Logger
 
 /**
  A RequestBuilder constructs the properties of a URLRequest
@@ -46,6 +47,10 @@ public struct RequestBuilder {
    The url to the file being uploaded by the URLSession as a stream
    */
   private var fileURL: URL?
+  /**
+   The logger for this Client instance
+   */
+  private let logger: Logger
 
   // MARK: Initializers
   /**
@@ -57,10 +62,12 @@ public struct RequestBuilder {
       - method: The http method of the URLRequest
    */
   public init(session: URLSession, fileManager: FileManager, url: String, method: HTTPMethod) throws {
+    let logger: Logger = Logger(subsystem: "Astral", category: "RequestBuilder")
     guard
       let components = URLComponents(string: url),
       let url = components.url
     else {
+      logger.error("Invalid URL, cannot create the RequestBuilder instance")
       throw Error.invalidURL
     }
     self.session = session
@@ -68,6 +75,11 @@ public struct RequestBuilder {
     self.urlComponents = components
     self.request = URLRequest(url: url)
     self.request.httpMethod = method.stringValue
+    self.logger = logger
+
+    self.logger.log(
+      "URLRequest: \(method.stringValue) \(url.absoluteString)"
+    )
   }
 
   // MARK: Private Functions

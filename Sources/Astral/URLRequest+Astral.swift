@@ -54,13 +54,9 @@ public extension AstralURLExtension {
       let dataString: String
 
       if let string = String(data: body, encoding: String.Encoding.utf8) {
-
         dataString = string
-
       } else {
-
         dataString = body.base64EncodedString()
-
       }
 
       switch dataString.isEmpty {
@@ -70,7 +66,6 @@ public extension AstralURLExtension {
         case false:
           result += "-d '\(dataString)' \\\n"
       }
-
     }
 
     if let url = self.base.url {

@@ -10,7 +10,7 @@ import class Foundation.URLSession
 import class Foundation.URLSessionConfiguration
 
 /**
- A Client is an abstraction over a URLSesson with an easy to use API to communicate with RESTful APIs
+ A Client is an abstraction over a URLSession with an easy to use API to communicate with RESTful APIs
  */
 public struct Client {
 
