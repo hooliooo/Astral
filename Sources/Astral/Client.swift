@@ -8,6 +8,7 @@ import class Foundation.Bundle
 import class Foundation.FileManager
 import class Foundation.URLSession
 import class Foundation.URLSessionConfiguration
+import struct os.Logger
 
 /**
  A Client is an abstraction over a URLSession with an easy to use API to communicate with RESTful APIs
@@ -54,6 +55,11 @@ public struct Client {
    The FileManager used to create temporary multipart/form-data files in the cache directory
    */
   public let fileManager: FileManager
+
+  /**
+   The logger for the client
+   */
+  public let logger: Logger = Logger(subsystem: "Astral", category: "Client")
 
   // MARK: Functions
   /**

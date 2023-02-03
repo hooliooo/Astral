@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 
 //
 //  Astral
@@ -10,12 +10,13 @@ import PackageDescription
 
 let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level_acl multiline_arguments_brackets
   name: "Astral",
-  platforms: [.iOS(.v15), .macOS(.v12)],
+  platforms: [.iOS(.v16), .macOS(.v13)],
   products: [
     .library(name: "Astral",targets: ["Astral"]),
     .library(name: "OAuth", targets: ["OAuth"])
   ],
   dependencies: [
+    .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "3.0.0")
   ],
   targets: [
     .target(
@@ -24,12 +25,16 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
     .target(
       name: "OAuth",
       dependencies: [
+        .product(name: "Crypto", package: "swift-crypto"),
         "Astral"
       ]
     ),
     .testTarget(
       name: "Tests",
-      dependencies: ["Astral", "OAuth"],
+      dependencies: [
+        "Astral",
+        "OAuth"
+      ],
       path: "Tests",
       exclude: [
         "Supporting Files/iOS/Info.plist",

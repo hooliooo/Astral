@@ -13,6 +13,7 @@ import struct Astral.RequestBuilder
 import struct Foundation.Data
 import struct Foundation.URL
 import struct Foundation.URLQueryItem
+import struct os.OSLogType
 
 public extension Client {
 
@@ -33,6 +34,8 @@ public extension Client {
     let (token, response): (OAuth2Token, URLResponse) = try await self
       .oAuth2CredentialsGrant(url: url, credentialsGrant: credentialsGrant)
       .send(decoder: decoder)
+
+//    self.logger.log(level: OSLogType.info, "Response Status Code: \(response.statusCode)")
 
     // Save OAuth2 in memory
     await OAuth2TokenStore.shared.storeInMemory(token: token)
