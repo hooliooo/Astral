@@ -3,150 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1413034020AABA2C0083CE27 /* Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* Astral.swift */; };
-		1413034120AABA2C0083CE27 /* Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* Astral.swift */; };
-		1413034220AABA2C0083CE27 /* Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413033F20AABA2C0083CE27 /* Astral.swift */; };
-		14292E1A20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
-		14292E1B20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
-		14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */; };
-		143A5BAC20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
-		143A5BAD20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
-		143A5BAE20AAC4CD004EE209 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143A5BAB20AAC4CD004EE209 /* Parameters.swift */; };
-		145051BB2206395A009A9F69 /* BaseDelegateDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */; };
-		145051C02206F40E009A9F69 /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BD2206F40E009A9F69 /* pic2.png */; };
-		145051C12206F40E009A9F69 /* pic3.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BE2206F40E009A9F69 /* pic3.png */; };
-		145051C22206F40E009A9F69 /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BF2206F40E009A9F69 /* pic1.png */; };
-		145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
-		145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
-		1468733821510CB50003FA3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1468733721510CB50003FA3D /* Foundation.framework */; };
-		147CA7DB21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
-		147CA7DC21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
-		147CA7DD21CACF1800BD5E98 /* AstralTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147CA7DA21CACF1800BD5E98 /* AstralTask.swift */; };
-		1487E70721BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
-		1487E70821BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
-		1487E70921BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */; };
-		1487E70C21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
-		1487E70D21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
-		1487E70E21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */; };
-		1487E76D21BC7AE400759E3D /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E76C21BC7AE400759E3D /* ResponseTests.swift */; };
-		148AE2A622DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */; };
-		148AE2A722DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */; };
-		148AE2A822DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */; };
-		14A007E721BD57B5002C2ABB /* FileManager+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */; };
-		14A007E821BD57B5002C2ABB /* FileManager+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */; };
-		14A007E921BD57B5002C2ABB /* FileManager+Astral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */; };
-		14BE116F22CE9F8E003DAF56 /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
-		14BE117022CE9F8F003DAF56 /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
-		14BE117122CE9F90003DAF56 /* BaseDelegateDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */; };
-		14BE118022CF22CE003DAF56 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
-		14BE118122CF22CE003DAF56 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
-		14BE118222CF22CE003DAF56 /* NestedParametersGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */; };
-		14BE118322CF22CE003DAF56 /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487E76C21BC7AE400759E3D /* ResponseTests.swift */; };
-		14BE118422CF22CE003DAF56 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
-		14BE118522CF22CE003DAF56 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* HeaderTests.swift */; };
-		14BE118622CF22CE003DAF56 /* BasicGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* BasicGetRequest.swift */; };
-		14BE118722CF22CE003DAF56 /* BasicMultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* BasicMultipartFormDataRequest.swift */; };
-		14BE118822CF22CE003DAF56 /* BasicPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* BasicPostRequest.swift */; };
-		14BE118922CF22CE003DAF56 /* RequestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */; };
-		14BE118A22CF22CE003DAF56 /* FormURLEncodedPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FormURLEncodedPostRequest.swift */; };
-		14BE118B22CF22CE003DAF56 /* FormURLEncodedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* FormURLEncodedResponse.swift */; };
-		14BE118C22CF22CE003DAF56 /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* GetResponse.swift */; };
-		14BE118D22CF22CE003DAF56 /* MultipartFormDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* MultipartFormDataResponse.swift */; };
-		14BE118E22CF22CE003DAF56 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* PostResponse.swift */; };
-		14BE118F22CF22CE003DAF56 /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
-		14BE119022CF22CE003DAF56 /* BaseDelegateDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */; };
-		14BE119122CF22CE003DAF56 /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
-		14BE119322CF22CE003DAF56 /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Astral::Astral::Product" /* Astral.framework */; };
-		14BE119522CF22CE003DAF56 /* pic3.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BE2206F40E009A9F69 /* pic3.png */; };
-		14BE119622CF22CE003DAF56 /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BF2206F40E009A9F69 /* pic1.png */; };
-		14BE119722CF22CE003DAF56 /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = 145051BD2206F40E009A9F69 /* pic2.png */; };
-		14BFC07E21BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
-		14BFC07F21BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
-		14BFC08021BC541900FDC12F /* AstralInputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BFC07D21BC541900FDC12F /* AstralInputStream.swift */; };
-		14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
-		14C4BFC02026DC2B00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
-		14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
-		14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
-		14C4BFC52026DC2B00938416 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
-		14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
-		14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
-		14C4BFC82026DC2B00938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
-		14C4BFC92026DC2B00938416 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
-		14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
-		14C4BFCB2026DC2B00938416 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
-		14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
-		14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
-		14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
-		14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
-		14C4BFD02026DC2B00938416 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
-		14C4BFD12026DC2B00938416 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
-		14C4BFD22026DC2B00938416 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
-		14C4BFD32026DC2B00938416 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
-		14C4BFD42026DC2B00938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
-		14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
-		14C4C0082026DDAE00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
-		14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
-		14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
-		14C4C00D2026DDAE00938416 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
-		14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
-		14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
-		14C4C0102026DDAE00938416 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
-		14C4C0112026DDAE00938416 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
-		14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
-		14C4C0132026DDAE00938416 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
-		14C4C0142026DDAE00938416 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
-		14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
-		14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
-		14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
-		14C4C0182026DDAE00938416 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
-		14C4C0192026DDAE00938416 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
-		14C4C01A2026DDAE00938416 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
-		14C4C01B2026DDAE00938416 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
-		14C4C01C2026DDAE00938416 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
-		14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
-		14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14C4BFAE2026D12000938416 /* Foundation.framework */; };
-		14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
-		14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
-		14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */; };
-		14F08D7D2067045B00BB7438 /* Astral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Astral::Astral::Product" /* Astral.framework */; };
-		OBJ_107 /* BasicConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* BasicConfiguration.swift */; };
-		OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FormURLEncodedConfiguration.swift */; };
-		OBJ_109 /* MultipartConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* MultipartConfiguration.swift */; };
-		OBJ_110 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* HeaderTests.swift */; };
-		OBJ_111 /* BasicGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* BasicGetRequest.swift */; };
-		OBJ_112 /* BasicMultipartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* BasicMultipartFormDataRequest.swift */; };
-		OBJ_113 /* BasicPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* BasicPostRequest.swift */; };
-		OBJ_114 /* FormURLEncodedPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FormURLEncodedPostRequest.swift */; };
-		OBJ_116 /* FormURLEncodedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* FormURLEncodedResponse.swift */; };
-		OBJ_117 /* GetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* GetResponse.swift */; };
-		OBJ_118 /* MultipartFormDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* MultipartFormDataResponse.swift */; };
-		OBJ_119 /* PostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* PostResponse.swift */; };
-		OBJ_120 /* BinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* BinData.swift */; };
-		OBJ_121 /* BinHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* BinHeaders.swift */; };
-		OBJ_137 /* BaseHTTPBodyRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */; };
-		OBJ_138 /* AstralRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AstralRequestDispatcher.swift */; };
-		OBJ_139 /* DataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataStrategy.swift */; };
-		OBJ_142 /* MultiPartFormDataComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MultiPartFormDataComponent.swift */; };
-		OBJ_143 /* FormURLEncodedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FormURLEncodedStrategy.swift */; };
-		OBJ_144 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPMethod.swift */; };
-		OBJ_145 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Header.swift */; };
-		OBJ_146 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* JSON.swift */; };
-		OBJ_147 /* JSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* JSONResponse.swift */; };
-		OBJ_148 /* JSONStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* JSONStrategy.swift */; };
-		OBJ_149 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* MediaType.swift */; };
-		OBJ_150 /* MultiPartFormDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* MultiPartFormDataRequest.swift */; };
-		OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* MultiPartFormDataStrategy.swift */; };
-		OBJ_152 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NetworkingError.swift */; };
-		OBJ_153 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Request.swift */; };
-		OBJ_154 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* RequestBuilder.swift */; };
-		OBJ_155 /* RequestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RequestConfiguration.swift */; };
-		OBJ_156 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* RequestDispatcher.swift */; };
-		OBJ_157 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Response.swift */; };
-		OBJ_158 /* URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* URLScheme.swift */; };
+		14423907298EC722002571A9 /* TestAstralApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14423906298EC722002571A9 /* TestAstralApp.swift */; };
+		14423909298EC722002571A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14423908298EC722002571A9 /* ContentView.swift */; };
+		1442390B298EC723002571A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1442390A298EC723002571A9 /* Assets.xcassets */; };
+		1442390E298EC723002571A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1442390D298EC723002571A9 /* Preview Assets.xcassets */; };
+		14423913298EC780002571A9 /* Astral in Frameworks */ = {isa = PBXBuildFile; productRef = 14423912298EC780002571A9 /* Astral */; };
+		14423915298EC784002571A9 /* OAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 14423914298EC784002571A9 /* OAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,83 +33,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1407A65A22CE9AFA003BA98B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS5.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		1413033F20AABA2C0083CE27 /* Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astral.swift; sourceTree = "<group>"; };
-		14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Astral.swift"; sourceTree = "<group>"; };
-		143A5BAB20AAC4CD004EE209 /* Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
-		145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateDispatcherTests.swift; sourceTree = "<group>"; };
-		145051BD2206F40E009A9F69 /* pic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic2.png; path = "Tests/Supporting Files/pic2.png"; sourceTree = SOURCE_ROOT; };
-		145051BE2206F40E009A9F69 /* pic3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic3.png; path = "Tests/Supporting Files/pic3.png"; sourceTree = SOURCE_ROOT; };
-		145051BF2206F40E009A9F69 /* pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic1.png; path = "Tests/Supporting Files/pic1.png"; sourceTree = SOURCE_ROOT; };
-		145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
-		145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedParametersGetRequest.swift; sourceTree = "<group>"; };
+		14055E33298D989B0035CDB7 /* Astral */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Astral; sourceTree = "<group>"; };
+		144238C7298EC41C002571A9 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Astral.framework; path = "/Users/hooliooo/Swift/Astral/build/Debug-iphoneos/Astral.framework"; sourceTree = "<absolute>"; };
+		144238C8298EC41C002571A9 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Astral.framework; path = /Users/hooliooo/Swift/Astral/build/Debug/Astral.framework; sourceTree = "<absolute>"; };
+		144238C9298EC41C002571A9 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Astral.framework; path = "/Users/hooliooo/Swift/Astral/build/Debug-appletvos/Astral.framework"; sourceTree = "<absolute>"; };
+		144238CA298EC41C002571A9 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AstralTests.xctest; path = "/Users/hooliooo/Swift/Astral/build/Debug-iphoneos/AstralTests.xctest"; sourceTree = "<absolute>"; };
+		144238CB298EC41C002571A9 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AstralTests.xctest; path = /Users/hooliooo/Swift/Astral/build/Debug/AstralTests.xctest; sourceTree = "<absolute>"; };
+		14423904298EC722002571A9 /* TestAstral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAstral.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14423906298EC722002571A9 /* TestAstralApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAstralApp.swift; sourceTree = "<group>"; };
+		14423908298EC722002571A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1442390A298EC723002571A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1442390D298EC723002571A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		14678D71220190F60095C801 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		1468733721510CB50003FA3D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateDispatcher.swift; sourceTree = "<group>"; };
-		147CA7DA21CACF1800BD5E98 /* AstralTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralTask.swift; sourceTree = "<group>"; };
-		1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPBodyRequestBuilder.swift; sourceTree = "<group>"; };
-		1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataBuilder.swift; sourceTree = "<group>"; };
-		1487E76C21BC7AE400759E3D /* ResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
-		1487E76E21BC7B0800759E3D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLReqeustCachePolicy+Astral.swift"; sourceTree = "<group>"; };
-		148C9FCE2029849300DB58C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Astral.swift"; sourceTree = "<group>"; };
-		14BE119B22CF22CE003DAF56 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		14BE119C22CF22CE003DAF56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/hooliooo/Swift Frameworks/Astral/Tests/Supporting Files/Mac/Info.plist"; sourceTree = "<absolute>"; };
-		14BFC07D21BC541900FDC12F /* AstralInputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralInputStream.swift; sourceTree = "<group>"; };
-		14C4BF9C2025C55700938416 /* Astral.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Astral.podspec; sourceTree = "<group>"; };
-		14C4BF9D2025C56E00938416 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		14C4BF9F2026221400938416 /* Astral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Astral.h; sourceTree = "<group>"; };
-		14C4BFA02026221400938416 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		14C4BFAE2026D12000938416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		14C4BFDF2026DC2B00938416 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		14C4C0272026DDAE00938416 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestDispatcher.swift; sourceTree = "<group>"; };
-		"Astral::Astral::Product" /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Astral::AstralTests::Product" /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_10 /* AstralRequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstralRequestDispatcher.swift; sourceTree = "<group>"; };
-		OBJ_11 /* DataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStrategy.swift; sourceTree = "<group>"; };
-		OBJ_14 /* MultiPartFormDataComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataComponent.swift; sourceTree = "<group>"; };
-		OBJ_15 /* FormURLEncodedStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedStrategy.swift; sourceTree = "<group>"; };
-		OBJ_16 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		OBJ_17 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		OBJ_18 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		OBJ_19 /* JSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponse.swift; sourceTree = "<group>"; };
-		OBJ_20 /* JSONStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStrategy.swift; sourceTree = "<group>"; };
-		OBJ_21 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
-		OBJ_22 /* MultiPartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataRequest.swift; sourceTree = "<group>"; };
-		OBJ_23 /* MultiPartFormDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataStrategy.swift; sourceTree = "<group>"; };
-		OBJ_24 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
-		OBJ_25 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		OBJ_26 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		OBJ_27 /* RequestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConfiguration.swift; sourceTree = "<group>"; };
-		OBJ_28 /* RequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDispatcher.swift; sourceTree = "<group>"; };
-		OBJ_29 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		OBJ_30 /* URLScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLScheme.swift; sourceTree = "<group>"; };
-		OBJ_33 /* BasicConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicConfiguration.swift; sourceTree = "<group>"; };
-		OBJ_34 /* FormURLEncodedConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedConfiguration.swift; sourceTree = "<group>"; };
-		OBJ_35 /* MultipartConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartConfiguration.swift; sourceTree = "<group>"; };
-		OBJ_36 /* HeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTests.swift; sourceTree = "<group>"; };
-		OBJ_38 /* BasicGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicGetRequest.swift; sourceTree = "<group>"; };
-		OBJ_39 /* BasicMultipartFormDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMultipartFormDataRequest.swift; sourceTree = "<group>"; };
-		OBJ_40 /* BasicPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPostRequest.swift; sourceTree = "<group>"; };
-		OBJ_41 /* FormURLEncodedPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedPostRequest.swift; sourceTree = "<group>"; };
-		OBJ_44 /* FormURLEncodedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormURLEncodedResponse.swift; sourceTree = "<group>"; };
-		OBJ_45 /* GetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetResponse.swift; sourceTree = "<group>"; };
-		OBJ_46 /* MultipartFormDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataResponse.swift; sourceTree = "<group>"; };
-		OBJ_47 /* PostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponse.swift; sourceTree = "<group>"; };
-		OBJ_49 /* BinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinData.swift; sourceTree = "<group>"; };
-		OBJ_50 /* BinHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinHeaders.swift; sourceTree = "<group>"; };
-		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHTTPBodyRequestBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		14423901298EC722002571A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14423915298EC784002571A9 /* OAuth in Frameworks */,
+				14423913298EC780002571A9 /* Astral in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14BE119222CF22CE003DAF56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14BE119322CF22CE003DAF56 /* Astral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				1468733821510CB50003FA3D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14C4C0212026DDAE00938416 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14F08D7D2067045B00BB7438 /* Astral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,195 +89,81 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14C4BFAF2026D12000938416 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		145051BC2206F3EF009A9F69 /* Supporting Files */ = {
+		14358097298EBADF009C66B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				145051BF2206F40E009A9F69 /* pic1.png */,
-				145051BD2206F40E009A9F69 /* pic2.png */,
-				145051BE2206F40E009A9F69 /* pic3.png */,
-				14BE117B22CF2268003DAF56 /* iOS */,
-				14BE119D22CF230E003DAF56 /* Mac */,
 			);
-			path = "Supporting Files";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		14BE117B22CF2268003DAF56 /* iOS */ = {
+		14423905298EC722002571A9 /* TestAstral */ = {
 			isa = PBXGroup;
 			children = (
-				1487E76E21BC7B0800759E3D /* Info.plist */,
+				14423906298EC722002571A9 /* TestAstralApp.swift */,
+				14423908298EC722002571A9 /* ContentView.swift */,
+				1442390A298EC723002571A9 /* Assets.xcassets */,
+				1442390C298EC723002571A9 /* Preview Content */,
 			);
-			path = iOS;
+			path = TestAstral;
 			sourceTree = "<group>";
 		};
-		14BE119D22CF230E003DAF56 /* Mac */ = {
+		1442390C298EC723002571A9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				14BE119C22CF22CE003DAF56 /* Info.plist */,
+				1442390D298EC723002571A9 /* Preview Assets.xcassets */,
 			);
-			path = Mac;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		14C4BF9B2025C53C00938416 /* Meta Data */ = {
 			isa = PBXGroup;
 			children = (
-				14C4BF9C2025C55700938416 /* Astral.podspec */,
-				14C4BF9D2025C56E00938416 /* LICENSE */,
-				148C9FCE2029849300DB58C6 /* README.md */,
-				OBJ_6 /* Package.swift */,
 				14678D71220190F60095C801 /* .swiftlint.yml */,
 			);
 			name = "Meta Data";
 			sourceTree = "<group>";
 		};
-		14C4BF9E2026221400938416 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				14C4BF9F2026221400938416 /* Astral.h */,
-				14C4BFA02026221400938416 /* Info.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3711620A170412C2CC81F86 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1407A65A22CE9AFA003BA98B /* Foundation.framework */,
-				1468733721510CB50003FA3D /* Foundation.framework */,
-				14C4BFAE2026D12000938416 /* Foundation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		OBJ_31 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				145051BC2206F3EF009A9F69 /* Supporting Files */,
-				OBJ_32 /* Configurations */,
-				OBJ_37 /* Requests */,
-				OBJ_43 /* Responses */,
-				OBJ_48 /* Utilities */,
-				OBJ_36 /* HeaderTests.swift */,
-				145051BA2206395A009A9F69 /* BaseDelegateDispatcherTests.swift */,
-				1487E76C21BC7AE400759E3D /* ResponseTests.swift */,
-				145F530C209BF71C00B987B1 /* RequestBuilderTests.swift */,
-			);
-			path = Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_32 /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_33 /* BasicConfiguration.swift */,
-				OBJ_34 /* FormURLEncodedConfiguration.swift */,
-				OBJ_35 /* MultipartConfiguration.swift */,
-			);
-			path = Configurations;
-			sourceTree = "<group>";
-		};
-		OBJ_37 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_38 /* BasicGetRequest.swift */,
-				OBJ_39 /* BasicMultipartFormDataRequest.swift */,
-				OBJ_40 /* BasicPostRequest.swift */,
-				OBJ_41 /* FormURLEncodedPostRequest.swift */,
-				145F530F209BF7E700B987B1 /* NestedParametersGetRequest.swift */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
-		OBJ_43 /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_44 /* FormURLEncodedResponse.swift */,
-				OBJ_45 /* GetResponse.swift */,
-				OBJ_46 /* MultipartFormDataResponse.swift */,
-				OBJ_47 /* PostResponse.swift */,
-			);
-			path = Responses;
-			sourceTree = "<group>";
-		};
-		OBJ_48 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_49 /* BinData.swift */,
-				OBJ_50 /* BinHeaders.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				14055E33298D989B0035CDB7 /* Astral */,
 				14C4BF9B2025C53C00938416 /* Meta Data */,
-				OBJ_7 /* Sources */,
-				OBJ_31 /* Tests */,
-				14C4BF9E2026221400938416 /* Supporting Files */,
-				OBJ_79 /* Products */,
-				E3711620A170412C2CC81F86 /* Frameworks */,
+				14423905298EC722002571A9 /* TestAstral */,
+				14358097298EBADF009C66B3 /* Frameworks */,
+				14423904298EC722002571A9 /* TestAstral.app */,
 			);
 			sourceTree = "<group>";
-		};
-		OBJ_7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				1413033F20AABA2C0083CE27 /* Astral.swift */,
-				14BFC07D21BC541900FDC12F /* AstralInputStream.swift */,
-				OBJ_10 /* AstralRequestDispatcher.swift */,
-				147CA7DA21CACF1800BD5E98 /* AstralTask.swift */,
-				14718F0A21BD88430096E88A /* BaseDelegateDispatcher.swift */,
-				OBJ_9 /* BaseHTTPBodyRequestBuilder.swift */,
-				14E5E382204C452100097A4A /* BaseRequestDispatcher.swift */,
-				OBJ_11 /* DataStrategy.swift */,
-				14A007E621BD57B5002C2ABB /* FileManager+Astral.swift */,
-				OBJ_15 /* FormURLEncodedStrategy.swift */,
-				OBJ_17 /* Header.swift */,
-				1487E70621BC64FD00759E3D /* HTTPBodyRequestBuilder.swift */,
-				OBJ_16 /* HTTPMethod.swift */,
-				OBJ_18 /* JSON.swift */,
-				OBJ_19 /* JSONResponse.swift */,
-				OBJ_20 /* JSONStrategy.swift */,
-				OBJ_21 /* MediaType.swift */,
-				1487E70B21BC693300759E3D /* MultiPartFormDataBuilder.swift */,
-				OBJ_14 /* MultiPartFormDataComponent.swift */,
-				OBJ_22 /* MultiPartFormDataRequest.swift */,
-				OBJ_23 /* MultiPartFormDataStrategy.swift */,
-				OBJ_24 /* NetworkingError.swift */,
-				143A5BAB20AAC4CD004EE209 /* Parameters.swift */,
-				OBJ_25 /* Request.swift */,
-				OBJ_26 /* RequestBuilder.swift */,
-				OBJ_27 /* RequestConfiguration.swift */,
-				OBJ_28 /* RequestDispatcher.swift */,
-				OBJ_29 /* Response.swift */,
-				14292E1920552CF2004AFAE8 /* URLRequest+Astral.swift */,
-				OBJ_30 /* URLScheme.swift */,
-				148AE2A522DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift */,
-			);
-			path = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_79 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				"Astral::AstralTests::Product" /* AstralTests.xctest */,
-				"Astral::Astral::Product" /* Astral.framework */,
-				14C4BFDF2026DC2B00938416 /* Astral.framework */,
-				14C4C0272026DDAE00938416 /* Astral.framework */,
-				14BE119B22CF22CE003DAF56 /* AstralTests.xctest */,
-			);
-			name = Products;
-			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		14423903298EC722002571A9 /* TestAstral */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1442390F298EC723002571A9 /* Build configuration list for PBXNativeTarget "TestAstral" */;
+			buildPhases = (
+				14423900298EC722002571A9 /* Sources */,
+				14423901298EC722002571A9 /* Frameworks */,
+				14423902298EC722002571A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestAstral;
+			packageProductDependencies = (
+				14423912298EC780002571A9 /* Astral */,
+				14423914298EC784002571A9 /* OAuth */,
+			);
+			productName = TestAstral;
+			productReference = 14423904298EC722002571A9 /* TestAstral.app */;
+			productType = "com.apple.product-type.application";
+		};
 		14BE117C22CF22CE003DAF56 /* Astral-Mac Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14BE119822CF22CE003DAF56 /* Build configuration list for PBXNativeTarget "Astral-Mac Tests" */;
@@ -479,7 +179,7 @@
 			);
 			name = "Astral-Mac Tests";
 			productName = AstralTests;
-			productReference = 14BE119B22CF22CE003DAF56 /* AstralTests.xctest */;
+			productReference = 144238CB298EC41C002571A9 /* AstralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		14C4BFBD2026DC2B00938416 /* Astral-Mac */ = {
@@ -496,7 +196,7 @@
 			);
 			name = "Astral-Mac";
 			productName = Astral;
-			productReference = 14C4BFDF2026DC2B00938416 /* Astral.framework */;
+			productReference = 144238C8298EC41C002571A9 /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		14C4C0052026DDAE00938416 /* Astral-tvOS */ = {
@@ -513,7 +213,7 @@
 			);
 			name = "Astral-tvOS";
 			productName = Astral;
-			productReference = 14C4C0272026DDAE00938416 /* Astral.framework */;
+			productReference = 144238C9298EC41C002571A9 /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		"Astral::Astral" /* Astral-iOS */ = {
@@ -530,7 +230,7 @@
 			);
 			name = "Astral-iOS";
 			productName = Astral;
-			productReference = "Astral::Astral::Product" /* Astral.framework */;
+			productReference = 144238C7298EC41C002571A9 /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		"Astral::AstralTests" /* Astral-IOS Tests */ = {
@@ -548,7 +248,7 @@
 			);
 			name = "Astral-IOS Tests";
 			productName = AstralTests;
-			productReference = "Astral::AstralTests::Product" /* AstralTests.xctest */;
+			productReference = 144238CA298EC41C002571A9 /* AstralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -557,9 +257,12 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1020;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					14423903298EC722002571A9 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					14C4BFBD2026DC2B00938416 = {
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
@@ -584,7 +287,7 @@
 				Base,
 			);
 			mainGroup = OBJ_5;
-			productRefGroup = OBJ_79 /* Products */;
+			productRefGroup = OBJ_5;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -593,18 +296,25 @@
 				14C4C0052026DDAE00938416 /* Astral-tvOS */,
 				"Astral::AstralTests" /* Astral-IOS Tests */,
 				14BE117C22CF22CE003DAF56 /* Astral-Mac Tests */,
+				14423903298EC722002571A9 /* TestAstral */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		14423902298EC722002571A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1442390E298EC723002571A9 /* Preview Assets.xcassets in Resources */,
+				1442390B298EC723002571A9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14BE119422CF22CE003DAF56 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14BE119522CF22CE003DAF56 /* pic3.png in Resources */,
-				14BE119622CF22CE003DAF56 /* pic1.png in Resources */,
-				14BE119722CF22CE003DAF56 /* pic2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,9 +322,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				145051C12206F40E009A9F69 /* pic3.png in Resources */,
-				145051C22206F40E009A9F69 /* pic1.png in Resources */,
-				145051C02206F40E009A9F69 /* pic2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,28 +373,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		14423900298EC722002571A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14423909298EC722002571A9 /* ContentView.swift in Sources */,
+				14423907298EC722002571A9 /* TestAstralApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14BE117F22CF22CE003DAF56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14BE118022CF22CE003DAF56 /* BasicConfiguration.swift in Sources */,
-				14BE118122CF22CE003DAF56 /* FormURLEncodedConfiguration.swift in Sources */,
-				14BE118222CF22CE003DAF56 /* NestedParametersGetRequest.swift in Sources */,
-				14BE118322CF22CE003DAF56 /* ResponseTests.swift in Sources */,
-				14BE118422CF22CE003DAF56 /* MultipartConfiguration.swift in Sources */,
-				14BE118522CF22CE003DAF56 /* HeaderTests.swift in Sources */,
-				14BE118622CF22CE003DAF56 /* BasicGetRequest.swift in Sources */,
-				14BE118722CF22CE003DAF56 /* BasicMultipartFormDataRequest.swift in Sources */,
-				14BE118822CF22CE003DAF56 /* BasicPostRequest.swift in Sources */,
-				14BE118922CF22CE003DAF56 /* RequestBuilderTests.swift in Sources */,
-				14BE118A22CF22CE003DAF56 /* FormURLEncodedPostRequest.swift in Sources */,
-				14BE118B22CF22CE003DAF56 /* FormURLEncodedResponse.swift in Sources */,
-				14BE118C22CF22CE003DAF56 /* GetResponse.swift in Sources */,
-				14BE118D22CF22CE003DAF56 /* MultipartFormDataResponse.swift in Sources */,
-				14BE118E22CF22CE003DAF56 /* PostResponse.swift in Sources */,
-				14BE118F22CF22CE003DAF56 /* BinData.swift in Sources */,
-				14BE119022CF22CE003DAF56 /* BaseDelegateDispatcherTests.swift in Sources */,
-				14BE119122CF22CE003DAF56 /* BinHeaders.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,37 +393,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14292E1B20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
-				14BFC07F21BC541900FDC12F /* AstralInputStream.swift in Sources */,
-				14A007E821BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4BFC02026DC2B00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
-				147CA7DC21CACF1800BD5E98 /* AstralTask.swift in Sources */,
-				14C4BFC12026DC2B00938416 /* AstralRequestDispatcher.swift in Sources */,
-				1487E70D21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
-				1487E70821BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
-				14C4BFC22026DC2B00938416 /* DataStrategy.swift in Sources */,
-				14C4BFC52026DC2B00938416 /* MultiPartFormDataComponent.swift in Sources */,
-				14C4BFC62026DC2B00938416 /* FormURLEncodedStrategy.swift in Sources */,
-				14C4BFC72026DC2B00938416 /* HTTPMethod.swift in Sources */,
-				14C4BFC82026DC2B00938416 /* Header.swift in Sources */,
-				14C4BFC92026DC2B00938416 /* JSON.swift in Sources */,
-				14C4BFCA2026DC2B00938416 /* JSONResponse.swift in Sources */,
-				14C4BFCB2026DC2B00938416 /* JSONStrategy.swift in Sources */,
-				143A5BAD20AAC4CD004EE209 /* Parameters.swift in Sources */,
-				14C4BFCC2026DC2B00938416 /* MediaType.swift in Sources */,
-				14E5E384204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
-				14C4BFCD2026DC2B00938416 /* MultiPartFormDataRequest.swift in Sources */,
-				148AE2A722DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */,
-				14C4BFCE2026DC2B00938416 /* MultiPartFormDataStrategy.swift in Sources */,
-				14C4BFCF2026DC2B00938416 /* NetworkingError.swift in Sources */,
-				14BE117022CE9F8F003DAF56 /* BaseDelegateDispatcher.swift in Sources */,
-				14C4BFD02026DC2B00938416 /* Request.swift in Sources */,
-				14C4BFD12026DC2B00938416 /* RequestBuilder.swift in Sources */,
-				14C4BFD22026DC2B00938416 /* RequestConfiguration.swift in Sources */,
-				14C4BFD32026DC2B00938416 /* RequestDispatcher.swift in Sources */,
-				1413034120AABA2C0083CE27 /* Astral.swift in Sources */,
-				14C4BFD42026DC2B00938416 /* Response.swift in Sources */,
-				14C4BFD52026DC2B00938416 /* URLScheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,37 +400,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14292E1C20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
-				14BFC08021BC541900FDC12F /* AstralInputStream.swift in Sources */,
-				14A007E921BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				14C4C0082026DDAE00938416 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
-				147CA7DD21CACF1800BD5E98 /* AstralTask.swift in Sources */,
-				14C4C0092026DDAE00938416 /* AstralRequestDispatcher.swift in Sources */,
-				1487E70E21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
-				1487E70921BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
-				14C4C00A2026DDAE00938416 /* DataStrategy.swift in Sources */,
-				14C4C00D2026DDAE00938416 /* MultiPartFormDataComponent.swift in Sources */,
-				14C4C00E2026DDAE00938416 /* FormURLEncodedStrategy.swift in Sources */,
-				14C4C00F2026DDAE00938416 /* HTTPMethod.swift in Sources */,
-				14C4C0102026DDAE00938416 /* Header.swift in Sources */,
-				14C4C0112026DDAE00938416 /* JSON.swift in Sources */,
-				14C4C0122026DDAE00938416 /* JSONResponse.swift in Sources */,
-				14C4C0132026DDAE00938416 /* JSONStrategy.swift in Sources */,
-				143A5BAE20AAC4CD004EE209 /* Parameters.swift in Sources */,
-				14C4C0142026DDAE00938416 /* MediaType.swift in Sources */,
-				14E5E385204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
-				14C4C0152026DDAE00938416 /* MultiPartFormDataRequest.swift in Sources */,
-				148AE2A822DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */,
-				14C4C0162026DDAE00938416 /* MultiPartFormDataStrategy.swift in Sources */,
-				14C4C0172026DDAE00938416 /* NetworkingError.swift in Sources */,
-				14BE117122CE9F90003DAF56 /* BaseDelegateDispatcher.swift in Sources */,
-				14C4C0182026DDAE00938416 /* Request.swift in Sources */,
-				14C4C0192026DDAE00938416 /* RequestBuilder.swift in Sources */,
-				14C4C01A2026DDAE00938416 /* RequestConfiguration.swift in Sources */,
-				14C4C01B2026DDAE00938416 /* RequestDispatcher.swift in Sources */,
-				1413034220AABA2C0083CE27 /* Astral.swift in Sources */,
-				14C4C01C2026DDAE00938416 /* Response.swift in Sources */,
-				14C4C01D2026DDAE00938416 /* URLScheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,24 +407,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_107 /* BasicConfiguration.swift in Sources */,
-				OBJ_108 /* FormURLEncodedConfiguration.swift in Sources */,
-				145F5310209BF7E700B987B1 /* NestedParametersGetRequest.swift in Sources */,
-				1487E76D21BC7AE400759E3D /* ResponseTests.swift in Sources */,
-				OBJ_109 /* MultipartConfiguration.swift in Sources */,
-				OBJ_110 /* HeaderTests.swift in Sources */,
-				OBJ_111 /* BasicGetRequest.swift in Sources */,
-				OBJ_112 /* BasicMultipartFormDataRequest.swift in Sources */,
-				OBJ_113 /* BasicPostRequest.swift in Sources */,
-				145F530E209BF76A00B987B1 /* RequestBuilderTests.swift in Sources */,
-				OBJ_114 /* FormURLEncodedPostRequest.swift in Sources */,
-				OBJ_116 /* FormURLEncodedResponse.swift in Sources */,
-				OBJ_117 /* GetResponse.swift in Sources */,
-				OBJ_118 /* MultipartFormDataResponse.swift in Sources */,
-				OBJ_119 /* PostResponse.swift in Sources */,
-				OBJ_120 /* BinData.swift in Sources */,
-				145051BB2206395A009A9F69 /* BaseDelegateDispatcherTests.swift in Sources */,
-				OBJ_121 /* BinHeaders.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,37 +414,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14292E1A20552CF2004AFAE8 /* URLRequest+Astral.swift in Sources */,
-				14BFC07E21BC541900FDC12F /* AstralInputStream.swift in Sources */,
-				14A007E721BD57B5002C2ABB /* FileManager+Astral.swift in Sources */,
-				OBJ_137 /* BaseHTTPBodyRequestBuilder.swift in Sources */,
-				147CA7DB21CACF1800BD5E98 /* AstralTask.swift in Sources */,
-				OBJ_138 /* AstralRequestDispatcher.swift in Sources */,
-				1487E70C21BC693300759E3D /* MultiPartFormDataBuilder.swift in Sources */,
-				1487E70721BC64FD00759E3D /* HTTPBodyRequestBuilder.swift in Sources */,
-				OBJ_139 /* DataStrategy.swift in Sources */,
-				OBJ_142 /* MultiPartFormDataComponent.swift in Sources */,
-				OBJ_143 /* FormURLEncodedStrategy.swift in Sources */,
-				OBJ_144 /* HTTPMethod.swift in Sources */,
-				OBJ_145 /* Header.swift in Sources */,
-				OBJ_146 /* JSON.swift in Sources */,
-				OBJ_147 /* JSONResponse.swift in Sources */,
-				OBJ_148 /* JSONStrategy.swift in Sources */,
-				143A5BAC20AAC4CD004EE209 /* Parameters.swift in Sources */,
-				OBJ_149 /* MediaType.swift in Sources */,
-				14E5E383204C452100097A4A /* BaseRequestDispatcher.swift in Sources */,
-				OBJ_150 /* MultiPartFormDataRequest.swift in Sources */,
-				148AE2A622DB7F20000F3962 /* URLReqeustCachePolicy+Astral.swift in Sources */,
-				OBJ_151 /* MultiPartFormDataStrategy.swift in Sources */,
-				OBJ_152 /* NetworkingError.swift in Sources */,
-				14BE116F22CE9F8E003DAF56 /* BaseDelegateDispatcher.swift in Sources */,
-				OBJ_153 /* Request.swift in Sources */,
-				OBJ_154 /* RequestBuilder.swift in Sources */,
-				OBJ_155 /* RequestConfiguration.swift in Sources */,
-				OBJ_156 /* RequestDispatcher.swift in Sources */,
-				1413034020AABA2C0083CE27 /* Astral.swift in Sources */,
-				OBJ_157 /* Response.swift in Sources */,
-				OBJ_158 /* URLScheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,10 +433,109 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		14423910298EC723002571A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TestAstral/Preview Content\"";
+				DEVELOPMENT_TEAM = S886WPSL95;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alorro.TestAstral;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14423911298EC723002571A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TestAstral/Preview Content\"";
+				DEVELOPMENT_TEAM = S886WPSL95;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alorro.TestAstral;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		14BE119922CF22CE003DAF56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -860,6 +546,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -873,7 +560,7 @@
 		14BE119A22CF22CE003DAF56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -884,6 +571,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -899,6 +587,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -908,7 +597,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
@@ -929,6 +618,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -938,7 +628,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
@@ -965,8 +655,9 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
@@ -978,7 +669,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TARGET_NAME = Astral;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -993,8 +684,9 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
@@ -1006,14 +698,13 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TARGET_NAME = Astral;
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
 		OBJ_104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -1024,6 +715,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
@@ -1034,7 +726,6 @@
 		OBJ_105 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -1045,6 +736,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
@@ -1066,8 +758,9 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
@@ -1096,8 +789,9 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Astral;
@@ -1129,6 +823,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1149,7 +844,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
@@ -1159,7 +854,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				USE_HEADERMAP = NO;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
@@ -1182,6 +877,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1200,7 +896,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1210,7 +906,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				USE_HEADERMAP = NO;
 				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
@@ -1219,6 +915,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1442390F298EC723002571A9 /* Build configuration list for PBXNativeTarget "TestAstral" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14423910298EC723002571A9 /* Debug */,
+				14423911298EC723002571A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		14BE119822CF22CE003DAF56 /* Build configuration list for PBXNativeTarget "Astral-Mac Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1274,6 +979,17 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		14423912298EC780002571A9 /* Astral */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Astral;
+		};
+		14423914298EC784002571A9 /* OAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }

@@ -16,20 +16,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14BE117C22CF22CE003DAF56"
-               BuildableName = "AstralTests.xctest"
-               BlueprintName = "Astral-Mac Tests"
-               ReferencedContainer = "container:Astral.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Astral::AstralTests"
-               BuildableName = "AstralTests.xctest"
-               BlueprintName = "Astral-IOS Tests"
-               ReferencedContainer = "container:Astral.xcodeproj">
+               BlueprintIdentifier = "Tests"
+               BuildableName = "Tests"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
       </Testables>
