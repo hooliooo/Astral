@@ -7,7 +7,7 @@
 
 import Astral
 import AuthenticationServices
-import OAuth
+import OAuth2
 import SwiftUI
 
 struct ContentView: View {
@@ -32,34 +32,33 @@ struct ContentView_Previews: PreviewProvider {
 
 class LoginService: NSObject {
 
-  let client: OAuth2Client = OAuth2Client(
+  let client: OAuth2HTTPClient = OAuth2HTTPClient(
     authorizationEndpoint: "http://localhost:8080/realms/master/protocol/openid-connect/auth",
     tokenEndpoint: "http://localhost:8080/realms/master/protocol/openid-connect/token",
     clientId: "some.webapp"
   )
 
   func start() {
-    let codeVerifier = PKCEGenerator.generateCodeVerifier()
-    let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier)!
-
-    let authorization = PKCEAuthorization(
-      clientId: "some.webapp",
-      codeChallenge: codeChallenge,
-      redirectURI: "testastral:/"
-    )
-
-    var components = try! self.client.authorize(authorization: authorization).urlComponents
-    components.queryItems = authorization.urlQueryItems
+    let client: OAuth2HTTPClient = self.client
+    let redirectURI: String = "testastral://callback"
+    let url = try! client.createAuthorizationURL(redirectURI: redirectURI)
 
     let session = ASWebAuthenticationSession(
-      url: components.url!,
+      url: url,
       callbackURLScheme: "testastral"
     ) { (callbackURL: URL?, error: Error?) -> Void in
-      print(callbackURL)
-      print(error)
+      if let callbackURL {
+        Task {
+          let grant: AuthorizationCodePKCEGrant = try await client
+            .createAuthorizationCodeGrant(from: callbackURL, redirectURI: redirectURI)
+          print("Authenticating")
+          try await client.authenticate(with: grant)
+        }
+      }
     }
 
     session.presentationContextProvider = self
+    session.prefersEphemeralWebBrowserSession = true
     session.start()
   }
 

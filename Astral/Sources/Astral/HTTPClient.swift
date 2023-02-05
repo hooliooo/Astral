@@ -11,13 +11,13 @@ import class Foundation.URLSessionConfiguration
 import struct os.Logger
 
 /**
- A Client is an abstraction over a URLSession with an easy to use API to communicate with RESTful APIs
+ An HTTPClient is an abstraction over a URLSession with an easy to use API to communicate with RESTful APIs
  */
-public struct Client {
+public struct HTTPClient {
 
   // MARK: Initializers
   /**
-   Initializer for a Client instance
+   Initializer for a HTTPClient instance
    - parameters:
       - fileManager: The FileManager used to create temporary multipart/form-data files in the cache directory
       - session: The URLSession to be used by the Client instance

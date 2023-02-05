@@ -39,7 +39,7 @@ public actor OAuth2TokenStore {
 
     // Check if it exists first to remove the old file
     if self.fileManager.fileExists(atPath: url.path) {
-      try fileManager.removeItem(at: url)
+      try self.fileManager.removeItem(at: url)
     }
 
     try data.write(to: url)

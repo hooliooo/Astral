@@ -13,7 +13,7 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
   platforms: [.iOS(.v16), .macOS(.v13)],
   products: [
     .library(name: "Astral",targets: ["Astral"]),
-    .library(name: "OAuth", targets: ["OAuth"])
+    .library(name: "OAuth2", targets: ["OAuth2"])
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "3.0.0")
@@ -23,7 +23,7 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
       name: "Astral"
     ),
     .target(
-      name: "OAuth",
+      name: "OAuth2",
       dependencies: [
         .product(name: "Crypto", package: "swift-crypto"),
         "Astral"
@@ -33,7 +33,7 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
       name: "Tests",
       dependencies: [
         "Astral",
-        "OAuth"
+        "OAuth2"
       ],
       path: "Tests",
       exclude: [

@@ -12,6 +12,21 @@ import struct Foundation.URLQueryItem
 public struct AuthorizationCodePKCEGrant {
 
   /**
+   Initializer for a AuthorizationCodePKCEGrant instance
+    - parameters:
+        - clientId: The client id
+        - code: The authenication code
+        - codeVerifier: The code verifier for the PKCE verificiation
+        - redirectURI: The redirect uri
+   */
+  public init(clientId: String, code: String, codeVerifier: String, redirectURI: String) {
+    self.clientId = clientId
+    self.code = code
+    self.codeVerifier = codeVerifier
+    self.redirectURI = redirectURI
+  }
+
+  /**
    The client id
    */
   public var clientId: String

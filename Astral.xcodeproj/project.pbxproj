@@ -12,7 +12,7 @@
 		1442390B298EC723002571A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1442390A298EC723002571A9 /* Assets.xcassets */; };
 		1442390E298EC723002571A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1442390D298EC723002571A9 /* Preview Assets.xcassets */; };
 		14423913298EC780002571A9 /* Astral in Frameworks */ = {isa = PBXBuildFile; productRef = 14423912298EC780002571A9 /* Astral */; };
-		14423915298EC784002571A9 /* OAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 14423914298EC784002571A9 /* OAuth */; };
+		14C6B1A0298F07F70085FD35 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = 14C6B19F298F07F70085FD35 /* OAuth2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,17 +34,17 @@
 
 /* Begin PBXFileReference section */
 		14055E33298D989B0035CDB7 /* Astral */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Astral; sourceTree = "<group>"; };
-		144238C7298EC41C002571A9 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Astral.framework; path = "/Users/hooliooo/Swift/Astral/build/Debug-iphoneos/Astral.framework"; sourceTree = "<absolute>"; };
-		144238C8298EC41C002571A9 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Astral.framework; path = /Users/hooliooo/Swift/Astral/build/Debug/Astral.framework; sourceTree = "<absolute>"; };
-		144238C9298EC41C002571A9 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Astral.framework; path = "/Users/hooliooo/Swift/Astral/build/Debug-appletvos/Astral.framework"; sourceTree = "<absolute>"; };
-		144238CA298EC41C002571A9 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AstralTests.xctest; path = "/Users/hooliooo/Swift/Astral/build/Debug-iphoneos/AstralTests.xctest"; sourceTree = "<absolute>"; };
-		144238CB298EC41C002571A9 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AstralTests.xctest; path = /Users/hooliooo/Swift/Astral/build/Debug/AstralTests.xctest; sourceTree = "<absolute>"; };
 		14423904298EC722002571A9 /* TestAstral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAstral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14423906298EC722002571A9 /* TestAstralApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAstralApp.swift; sourceTree = "<group>"; };
 		14423908298EC722002571A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1442390A298EC723002571A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1442390D298EC723002571A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		14678D71220190F60095C801 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		14C6B19A298F05DD0085FD35 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C6B19B298F05DD0085FD35 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C6B19C298F05DD0085FD35 /* Astral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Astral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C6B19D298F05DD0085FD35 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14C6B19E298F05DD0085FD35 /* AstralTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstralTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14423915298EC784002571A9 /* OAuth in Frameworks */,
 				14423913298EC780002571A9 /* Astral in Frameworks */,
+				14C6B1A0298F07F70085FD35 /* OAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +137,11 @@
 				14423905298EC722002571A9 /* TestAstral */,
 				14358097298EBADF009C66B3 /* Frameworks */,
 				14423904298EC722002571A9 /* TestAstral.app */,
+				14C6B19A298F05DD0085FD35 /* Astral.framework */,
+				14C6B19B298F05DD0085FD35 /* Astral.framework */,
+				14C6B19C298F05DD0085FD35 /* Astral.framework */,
+				14C6B19D298F05DD0085FD35 /* AstralTests.xctest */,
+				14C6B19E298F05DD0085FD35 /* AstralTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,7 +163,7 @@
 			name = TestAstral;
 			packageProductDependencies = (
 				14423912298EC780002571A9 /* Astral */,
-				14423914298EC784002571A9 /* OAuth */,
+				14C6B19F298F07F70085FD35 /* OAuth2 */,
 			);
 			productName = TestAstral;
 			productReference = 14423904298EC722002571A9 /* TestAstral.app */;
@@ -179,7 +184,7 @@
 			);
 			name = "Astral-Mac Tests";
 			productName = AstralTests;
-			productReference = 144238CB298EC41C002571A9 /* AstralTests.xctest */;
+			productReference = 14C6B19E298F05DD0085FD35 /* AstralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		14C4BFBD2026DC2B00938416 /* Astral-Mac */ = {
@@ -196,7 +201,7 @@
 			);
 			name = "Astral-Mac";
 			productName = Astral;
-			productReference = 144238C8298EC41C002571A9 /* Astral.framework */;
+			productReference = 14C6B19B298F05DD0085FD35 /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		14C4C0052026DDAE00938416 /* Astral-tvOS */ = {
@@ -213,7 +218,7 @@
 			);
 			name = "Astral-tvOS";
 			productName = Astral;
-			productReference = 144238C9298EC41C002571A9 /* Astral.framework */;
+			productReference = 14C6B19C298F05DD0085FD35 /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		"Astral::Astral" /* Astral-iOS */ = {
@@ -230,7 +235,7 @@
 			);
 			name = "Astral-iOS";
 			productName = Astral;
-			productReference = 144238C7298EC41C002571A9 /* Astral.framework */;
+			productReference = 14C6B19A298F05DD0085FD35 /* Astral.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		"Astral::AstralTests" /* Astral-IOS Tests */ = {
@@ -248,7 +253,7 @@
 			);
 			name = "Astral-IOS Tests";
 			productName = AstralTests;
-			productReference = 144238CA298EC41C002571A9 /* AstralTests.xctest */;
+			productReference = 14C6B19D298F05DD0085FD35 /* AstralTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -985,9 +990,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Astral;
 		};
-		14423914298EC784002571A9 /* OAuth */ = {
+		14C6B19F298F07F70085FD35 /* OAuth2 */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = OAuth;
+			productName = OAuth2;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

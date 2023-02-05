@@ -14,7 +14,7 @@ public enum PKCEGenerator {
     var generator = SystemRandomNumberGenerator()
     let buffer = [UInt8](repeating: 0, count: 32)
         .map { _ in UInt8.random(in: UInt8.min...UInt8.max, using: &generator) }
-    return Data(buffer).base64URLEncodedString()
+    return base64URLEncodedString(for:Data(buffer))
   }
 
   /// Generate a code challenge from a code verifier as specified in
@@ -22,13 +22,11 @@ public enum PKCEGenerator {
   public static func generateCodeChallenge(codeVerifier: String) -> String? {
     guard let data = codeVerifier.data(using: .utf8) else { return nil }
     let dataHash = SHA256.hash(data: data)
-    return Data(dataHash).base64URLEncodedString()
+    return base64URLEncodedString(for: Data(dataHash))
   }
-}
 
-private extension Data {
-  func base64URLEncodedString() -> String {
-    base64EncodedString()
+  private static func base64URLEncodedString(for data: Data) -> String {
+    data.base64EncodedString()
       .replacingOccurrences(of: "+", with: "-")
       .replacingOccurrences(of: "/", with: "_")
       .replacingOccurrences(of: "=", with: "")

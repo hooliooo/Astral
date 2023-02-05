@@ -9,6 +9,6 @@ import Astral
 
 public enum Constants {
 
-  public static let client: Client = .init()
+  public static let client: HTTPClient = .init()
 
 }
