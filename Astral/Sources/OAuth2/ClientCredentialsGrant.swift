@@ -34,7 +34,7 @@ public struct ClientCredentialsGrant {
 
 }
 
-extension ClientCredentialsGrant: CredentialsGrant {
+extension ClientCredentialsGrant: OAuth2Grant {
 
   public var grantType: String { "client_credentials" }
 

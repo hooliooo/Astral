@@ -6,7 +6,10 @@
 
 import struct Foundation.URLQueryItem
 
-public protocol CredentialsGrant {
+/**
+ Protocol representing grant types for OAuth2 
+ */
+public protocol OAuth2Grant {
 
   /**
    The grant type used for authentication

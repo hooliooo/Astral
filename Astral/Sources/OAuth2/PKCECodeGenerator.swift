@@ -7,6 +7,10 @@
 import struct Foundation.Data
 import struct Crypto.SHA256
 
+/**
+ Namespace for functions responsible for creating a code verifier and code challenge for PKCE verification
+ of an authentication code grant request
+ */
 public enum PKCEGenerator {
   /// Generate a random code as specified in
   /// https://datatracker.ietf.org/doc/html/rfc7636#section-4.1

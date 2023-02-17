@@ -16,6 +16,7 @@ public struct OAuth2Token: Codable {
     case expiresIn
     case refreshToken
     case refreshExpiresIn
+    case idToken
     case tokenType
     case sessionState
     case scope
@@ -34,12 +35,17 @@ public struct OAuth2Token: Codable {
   /**
    The refresh token
    */
-  public var refreshToken: String
+  public var refreshToken: String?
 
   /**
    The duration (in seconds) of the validity of the refresh token
    */
-  public var refreshExpiresIn: Int
+  public var refreshExpiresIn: Int?
+
+  /**
+   The id token of the user
+   */
+  public var idToken: String?
 
   /**
    The token type
@@ -49,7 +55,7 @@ public struct OAuth2Token: Codable {
   /**
    The session state
    */
-  public var sessionState: String
+  public var sessionState: String?
 
   /**
    The scope of token
@@ -80,8 +86,9 @@ public struct OAuth2Token: Codable {
   /**
    The date and time of the refresh token's expiration
    */
-  public var refreshTokenExpirationDate: Date {
-    let seconds: Double = Double(self.refreshExpiresIn)
+  public var refreshTokenExpirationDate: Date? {
+    guard let refreshExpiresIn = self.refreshExpiresIn else { return nil }
+    let seconds: Double = Double(refreshExpiresIn)
     return self.createdAtDate.addingTimeInterval(seconds)
   }
 
@@ -89,7 +96,8 @@ public struct OAuth2Token: Codable {
    Bool indicating if the refresh token is expired
    */
   public var isRefreshTokenExpired: Bool {
-    self.refreshTokenExpirationDate.timeIntervalSinceNow < 0.0
+    guard let refreshTokenExpirationDate = self.refreshTokenExpirationDate else { return true }
+    return refreshTokenExpirationDate.timeIntervalSinceNow < 0.0
   }
 
 }

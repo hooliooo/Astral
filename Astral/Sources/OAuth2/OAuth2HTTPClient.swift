@@ -9,6 +9,7 @@ import struct Astral.RequestBuilder
 import class Foundation.JSONDecoder
 import struct Foundation.URL
 import struct Foundation.URLComponents
+import struct Foundation.URLQueryItem
 import class Foundation.URLResponse
 
 /**
@@ -70,7 +71,10 @@ public struct OAuth2HTTPClient {
    - parameters:
         - redirectURI: The redirect uri where the authorization response will be sent
    */
-  public func createAuthorizationURL(redirectURI: String) throws -> URL {
+  public func createAuthorizationURL(
+    redirectURI: String,
+    additionalURLQueryItems: [URLQueryItem] = []
+  ) throws -> URL {
     let codeVerifier = PKCEGenerator.generateCodeVerifier()
     guard let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier) else {
       fatalError()
@@ -78,11 +82,12 @@ public struct OAuth2HTTPClient {
 
     let authorization: PKCEAuthorization = PKCEAuthorization(
       clientId: self.clientId,
+      scope: "openid profile email",
       codeChallenge: codeChallenge,
       redirectURI: redirectURI
     )
     let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
-      .query(items: authorization.urlQueryItems)
+      .query(items: authorization.urlQueryItems + additionalURLQueryItems)
       .request
       .url
     guard let url else {
@@ -124,24 +129,38 @@ public struct OAuth2HTTPClient {
     )
   }
 
+  public func implicitGrantAuthorizationURL(redirectURI: String) throws -> URL {
+    let grant: ImplicitGrant = ImplicitGrant(clientId: self.clientId, redirectURI: redirectURI)
+    let url: URL? = try self.httpClient
+      .get(url: self.authorizationEndpoint)
+      .query(items: grant.urlQueryItems)
+      .request
+      .url
+    guard let url else {
+      fatalError()
+    }
+    return url
+  }
+
   /**
    Queries the given OAuth2.0 token url as a POST request with the necessary payload given the data
-   from the CredentialsGrant instance
+   from the OAuth2Grant instance
    - parameters:
         - url: The URL of the OAuth2.0 token endpoint
         - credentialGrant: The CredentialsGrant instance containing data necessary for the http POST request
    */
-  public func token(credentialsGrant: CredentialsGrant) throws -> RequestBuilder {
+  public func token(credentialsGrant: OAuth2Grant) throws -> RequestBuilder {
     return try self.httpClient.post(url: self.tokenEndpoint).form(items: credentialsGrant.urlQueryItems)
   }
 
-  public func authenticate(with grant: CredentialsGrant) async throws {
+  public func authenticate(with grant: OAuth2Grant) async throws {
     let decoder: JSONDecoder = JSONDecoder()
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
-    let (token, response): (OAuth2Token, URLResponse) = try await self
+    let (token, response): (String, URLResponse) = try await self
       .token(credentialsGrant: grant)
-      .send(decoder: decoder)
-    try await self.store.store(token: token)
+      .send()
+    print(token)
+//    try await self.store.store(token: token)
   }
 
   /**

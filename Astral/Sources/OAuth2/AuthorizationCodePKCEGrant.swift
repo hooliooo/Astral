@@ -48,7 +48,7 @@ public struct AuthorizationCodePKCEGrant {
 
 }
 
-extension AuthorizationCodePKCEGrant: CredentialsGrant {
+extension AuthorizationCodePKCEGrant: OAuth2Grant {
 
   public var grantType: String { "authorization_code" }
 

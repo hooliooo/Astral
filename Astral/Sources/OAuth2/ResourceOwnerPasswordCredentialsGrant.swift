@@ -47,7 +47,7 @@ public struct ResourceOwnerPasswordCredentialsGrant {
 
 }
 
-extension ResourceOwnerPasswordCredentialsGrant: CredentialsGrant {
+extension ResourceOwnerPasswordCredentialsGrant: OAuth2Grant {
 
   public var grantType: String { "password" }
 

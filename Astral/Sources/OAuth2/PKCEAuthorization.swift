@@ -7,6 +7,9 @@
 import struct Foundation.URLQueryItem
 import struct Foundation.UUID
 
+/**
+ Struct containing the data necessary to make an Authorization request with PKCE verification to an OAuth2.0 authorization endpoint
+ */
 public struct PKCEAuthorization {
 
   public init(clientId: String, scope: String? = nil, codeChallenge: String, redirectURI: String) {
@@ -31,6 +34,12 @@ public struct PKCEAuthorization {
    */
   public var scope: String?
 
+  /**
+   An opaque value used by the client to maintain state between the request and callback.
+   The object that handles the response from the authorization server will need to read this value and
+   compare it to the original one that was sent with an initial request.
+   The two values must match to prevent cross-site request forgery.
+   */
   private let state: String = UUID().uuidString.replacing("-", with: "")
 
   /**
@@ -49,7 +58,7 @@ public struct PKCEAuthorization {
   public var redirectURI: String
 
   /**
-
+   The query parameters of authorization request with PKCE verification
    */
   public var urlQueryItems: [URLQueryItem] {
     return [
