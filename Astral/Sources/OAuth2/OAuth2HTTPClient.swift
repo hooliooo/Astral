@@ -129,11 +129,18 @@ public struct OAuth2HTTPClient {
     )
   }
 
-  public func implicitGrantAuthorizationURL(redirectURI: String) throws -> URL {
-    let grant: ImplicitGrant = ImplicitGrant(clientId: self.clientId, redirectURI: redirectURI)
+  public func implicitGrantAuthorizationURL(
+    redirectURI: String,
+    additionalURLQueryItems: [URLQueryItem] = []
+  ) throws -> URL {
+    let grant: ImplicitGrant = ImplicitGrant(
+      clientId: self.clientId,
+      scope: "openid profile email",
+      redirectURI: redirectURI
+    )
     let url: URL? = try self.httpClient
       .get(url: self.authorizationEndpoint)
-      .query(items: grant.urlQueryItems)
+      .query(items: grant.urlQueryItems + additionalURLQueryItems)
       .request
       .url
     guard let url else {

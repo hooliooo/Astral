@@ -10,7 +10,7 @@ import struct Foundation.UUID
 import enum Crypto.ChaChaPoly
 
 /**
- Struct containing the data necessary to make a PKCE Authorization request to an OAuth2.0 authorization endpoint
+ Struct containing the data necessary to make an Implicit Authorization request to an OAuth2.0 authorization endpoint
  */
 public struct ImplicitGrant {
 
@@ -28,7 +28,7 @@ public struct ImplicitGrant {
   /**
    The response type
    */
-  private let responseType: String = "id_token"
+  private let responseType: String = "id_token token"
 
   /**
    The response mode
@@ -40,6 +40,12 @@ public struct ImplicitGrant {
    */
   public var scope: String?
 
+  /**
+   An opaque value used by the client to maintain state between the request and callback.
+   The object that handles the response from the authorization server will need to read this value and
+   compare it to the original one that was sent with an initial request.
+   The two values must match to prevent cross-site request forgery.
+   */
   private let state: String = UUID().uuidString.replacing("-", with: "")
 
   /**
