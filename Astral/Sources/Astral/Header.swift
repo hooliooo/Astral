@@ -7,12 +7,12 @@
 /**
  Representation of an HTTP header's name and value
  */
-public struct Header {
+public struct Header: Sendable {
 
   /**
    Representation of an HTTP header field
    */
-  public enum Key: Hashable {
+  public enum Key: Hashable, Sendable {
 
     /**
      Accept header field.
@@ -72,7 +72,7 @@ public struct Header {
   /**
    Representation of an HTTP header field's value
    */
-  public enum Value: Hashable {
+  public enum Value: Hashable, Sendable {
 
     /**
      Basic Authorization value. Must only be used with an Authorization field

@@ -15,7 +15,7 @@ import class Foundation.URLResponse
 /**
  An OAuth2HTTPClient is an abstraction over a Client with an easy to use API to communicate with RESTful APIs in an authenticated manner.
  */
-public struct OAuth2HTTPClient {
+public struct OAuth2HTTPClient: Sendable {
 
   // MARK: Initializers
   /**
@@ -30,11 +30,13 @@ public struct OAuth2HTTPClient {
     authorizationEndpoint: String,
     tokenEndpoint: String,
     clientId: String,
+    clientSecret: String?,
     store: OAuth2TokenStore = OAuth2TokenStore.shared
   ) {
     self.authorizationEndpoint = authorizationEndpoint
     self.tokenEndpoint = tokenEndpoint
     self.clientId = clientId
+    self.clientSecret = clientSecret
     self.store = store
   }
 
@@ -61,17 +63,41 @@ public struct OAuth2HTTPClient {
   private let clientId: String
 
   /**
+   The OAuth2 clientSecret
+   */
+  private let clientSecret: String?
+
+  /**
    The OAuth2TokenStore instance used to read/write the OAuth2Token for authentication
    */
   private let store: OAuth2TokenStore
 
   // MARK: Functions
+  public func createAuthorizationURL(
+    redirectURI: String,
+    additonalURLQueryItems: [URLQueryItem] = []
+  ) throws -> URL {
+    let authorization: AuthorizationCode = AuthorizationCode(
+      clientId: self.clientId,
+      scope: "openid profile email",
+      redirectURI: redirectURI
+    )
+
+    let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
+      .query(items: authorization.urlQueryItems + additonalURLQueryItems)
+      .request
+      .url
+    guard let url else { fatalError() }
+    return url
+
+  }
+
   /**
    Builds a complete PKCE authorization request URL with the given redirect_uri
    - parameters:
         - redirectURI: The redirect uri where the authorization response will be sent
    */
-  public func createAuthorizationURL(
+  public func createAuthorizationURLWithPKCE(
     redirectURI: String,
     additionalURLQueryItems: [URLQueryItem] = []
   ) throws -> URL {
@@ -80,7 +106,7 @@ public struct OAuth2HTTPClient {
       fatalError()
     }
 
-    let authorization: PKCEAuthorization = PKCEAuthorization(
+    let authorization: AuthorizationCodeWithPKCE = AuthorizationCodeWithPKCE(
       clientId: self.clientId,
       scope: "openid profile email",
       codeChallenge: codeChallenge,
@@ -102,13 +128,33 @@ public struct OAuth2HTTPClient {
     return url
   }
 
+  public func createAuthorizationCodeGrant(
+    from url: URL,
+    redirectURI: String
+  ) async throws -> AuthorizationCodeGrant {
+    let urlComponents = URLComponents(string: url.absoluteString)
+    guard
+      let queryItems = urlComponents?.queryItems,
+      let code = queryItems.first(where: { $0.name == "code" })?.value
+    else {
+      fatalError()
+    }
+
+    return AuthorizationCodeGrant(
+      clientId: self.clientId,
+      clientSecret: self.clientSecret,
+      code: code,
+      redirectURI: redirectURI
+    )
+  }
+
   /**
-   Extracts the code from the authorization response and creates an AuthorizationCodePKCEGrant to get an OAuth2Token
+   Extracts the code from the url and creates an AuthorizationCodePKCEGrant to get an OAuth2Token
    - parameters:
         - url: The URL containing the authentication code for the Authorization Code Grant
         - redirectURI: The redirect uri where the token response will be sent
    */
-  public func createAuthorizationCodeGrant(
+  public func createAuthorizationCodeWithPKCEGrant(
     from url: URL,
     redirectURI: String
   ) async throws -> AuthorizationCodePKCEGrant {
@@ -163,11 +209,12 @@ public struct OAuth2HTTPClient {
   public func authenticate(with grant: OAuth2Grant) async throws {
     let decoder: JSONDecoder = JSONDecoder()
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
-    let (token, response): (String, URLResponse) = try await self
-      .token(credentialsGrant: grant)
-      .send()
-    print(token)
-//    try await self.store.store(token: token)
+    let requestBuilder = try self.token(credentialsGrant: grant)
+    let request = requestBuilder.request
+    let formParams = String(data: request.httpBody!, encoding: .utf8)!.split(separator: "&")
+
+    let (token, response): (OAuth2Token, URLResponse) = try await requestBuilder.send()
+    try await self.store.store(token: token)
   }
 
   /**

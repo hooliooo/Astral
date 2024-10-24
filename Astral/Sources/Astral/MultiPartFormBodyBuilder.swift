@@ -15,7 +15,7 @@ import struct Foundation.FileAttributeKey
 /**
  An implementation of DataStrategy specifically for creating an HTTP body for multipart form-data.
  */
-public struct MultiPartFormBodyBuilder {
+public struct MultiPartFormBodyBuilder: Sendable {
 
   // MARK: Initializer
   /**

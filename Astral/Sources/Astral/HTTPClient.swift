@@ -13,14 +13,14 @@ import struct os.Logger
 /**
  An HTTPClient is an abstraction over a URLSession with an easy to use API to communicate with RESTful APIs
  */
-public struct HTTPClient {
+public struct HTTPClient: Sendable {
 
   // MARK: Initializers
   /**
    Initializer for a HTTPClient instance
    - parameters:
-      - fileManager: The FileManager used to create temporary multipart/form-data files in the cache directory
-      - session: The URLSession to be used by the Client instance
+   - fileManager: The FileManager used to create temporary multipart/form-data files in the cache directory
+   - session: The URLSession to be used by the Client instance
    */
   public init(fileManager: FileManager, session: URLSession) {
     self.fileManager = fileManager
@@ -59,14 +59,14 @@ public struct HTTPClient {
   /**
    The logger for the client
    */
-  public let logger: Logger = Logger(subsystem: "Astral", category: "Client")
+  public let logger: Logger = Logger(subsystem: "Astral", category: "HTTPClient")
 
   // MARK: Functions
   /**
    Creates a request to the url with the specified http method
    - parameters:
-      - url: The URL of the request
-      - method: The http method of the request
+   - url: The URL of the request
+   - method: The http method of the request
    */
   public func request(url: String, method: HTTPMethod) throws -> RequestBuilder {
     return try RequestBuilder(session: self.session, fileManager: self.fileManager, url: url, method: method)
@@ -74,7 +74,7 @@ public struct HTTPClient {
 
   /**
    A convenience method to make a GET request to the URL
-    - parameter url: The URL of the GET request
+   - parameter url: The URL of the GET request
    */
   public func get(url: String) throws -> RequestBuilder {
     return try self.request(url: url, method: HTTPMethod.get)
@@ -82,7 +82,7 @@ public struct HTTPClient {
 
   /**
    A convenience method to make a DELETE request to the URL
-    - parameter url: The URL of the DELETE request
+   - parameter url: The URL of the DELETE request
    */
   public func delete(url: String) throws -> RequestBuilder {
     return try self.request(url: url, method: HTTPMethod.delete)
@@ -90,7 +90,7 @@ public struct HTTPClient {
 
   /**
    A convenience method to make a POST request to the URL
-    - parameter url: The URL of the POST request
+   - parameter url: The URL of the POST request
    */
   public func post(url: String) throws -> RequestBuilder {
     return try self.request(url: url, method: HTTPMethod.post)
@@ -98,10 +98,12 @@ public struct HTTPClient {
 
   /**
    A convenience method to make a PUT request to the URL
-    - parameter url: The URL of the PUT request
+   - parameter url: The URL of the PUT request
    */
   public func put(url: String) throws -> RequestBuilder {
     return try self.request(url: url, method: HTTPMethod.put)
   }
 
 }
+
+extension FileManager: @retroactive @unchecked Sendable {}

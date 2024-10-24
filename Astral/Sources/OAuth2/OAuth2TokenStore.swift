@@ -4,9 +4,13 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import Foundation
+import class Foundation.JSONDecoder
+import class Foundation.JSONEncoder
+import class Foundation.FileManager
+import struct Foundation.Data
+import struct Foundation.URL
 
-public actor OAuth2TokenStore {
+public actor OAuth2TokenStore: Sendable {
 
   private init() {}
 
@@ -47,9 +51,7 @@ public actor OAuth2TokenStore {
 
   public func store(token: OAuth2Token) throws {
     self.storeInMemory(token: token)
-    Task.detached(priority: TaskPriority.background) {
-      try await self.storeInFile(token: token)
-    }
+    try self.storeInFile(token: token)
   }
 
   public func store(codeVerifier: String) {

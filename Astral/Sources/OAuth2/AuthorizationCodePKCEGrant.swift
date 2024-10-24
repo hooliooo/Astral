@@ -20,21 +20,25 @@ public struct AuthorizationCodePKCEGrant {
         - redirectURI: The redirect uri
    */
   public init(clientId: String, code: String, codeVerifier: String, redirectURI: String) {
-    self.clientId = clientId
-    self.code = code
+    self.authorizationCodeGrant = AuthorizationCodeGrant(clientId: clientId, code: code, redirectURI: redirectURI)
     self.codeVerifier = codeVerifier
-    self.redirectURI = redirectURI
   }
+
+  private let authorizationCodeGrant: AuthorizationCodeGrant
 
   /**
    The client id
    */
-  public var clientId: String
+  public var clientId: String {
+    self.authorizationCodeGrant.clientId
+  }
 
   /**
    The code given by the authorize endpoint
    */
-  public var code: String
+  public var code: String {
+    self.authorizationCodeGrant.code
+  }
 
   /**
    The code verifier used to verify the code challenge
@@ -44,26 +48,25 @@ public struct AuthorizationCodePKCEGrant {
   /**
    The redirect uri
    */
-  public var redirectURI: String
+  public var redirectURI: String {
+    self.authorizationCodeGrant.redirectURI
+  }
 
 }
 
 extension AuthorizationCodePKCEGrant: OAuth2Grant {
 
-  public var grantType: String { "authorization_code" }
+  public var grantType: String { self.authorizationCodeGrant.grantType }
 
   public var urlQueryItems: [URLQueryItem] {
-    return [
-      ("client_id", \Self.clientId),
-      ("code", \Self.code),
-      ("grant_type", \Self.grantType),
-      ("code_verifier", \Self.codeVerifier),
-      ("redirect_uri", \Self.redirectURI)
+    let queryItems = [
+      ("code_verifier", \Self.codeVerifier)
     ]
       .compactMap { (name: String, keyPath: PartialKeyPath<Self>) -> URLQueryItem? in
         guard let value = self[keyPath: keyPath] as? String else { return nil }
         return URLQueryItem(name: name, value: value)
       }
+    return queryItems + self.authorizationCodeGrant.urlQueryItems
   }
 
 }

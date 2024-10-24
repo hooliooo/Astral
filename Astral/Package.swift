@@ -1,4 +1,4 @@
-// swift-tools-version:5.7
+// swift-tools-version:6.0
 
 //
 //  Astral
@@ -16,7 +16,8 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
     .library(name: "OAuth2", targets: ["OAuth2"])
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "3.0.0")
+    .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "99.0.0"),
+    .package(url: "https://github.com/auth0/JWTDecode.swift.git", "1.0.0"..<"99.0.0")
   ],
   targets: [
     .target(
@@ -26,6 +27,7 @@ let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level
       name: "OAuth2",
       dependencies: [
         .product(name: "Crypto", package: "swift-crypto"),
+        .product(name: "JWTDecode", package: "JWTDecode.swift"),
         "Astral"
       ]
     ),

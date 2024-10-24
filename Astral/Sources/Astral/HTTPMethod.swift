@@ -7,7 +7,7 @@
 /**
  An enum that represents http methods
  */
-public enum HTTPMethod {
+public enum HTTPMethod: Sendable {
   /**
    - http GET method
    */

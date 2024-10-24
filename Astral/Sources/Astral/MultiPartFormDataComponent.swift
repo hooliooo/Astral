@@ -10,7 +10,7 @@ import struct Foundation.URL
 /**
  A data structure representing a file to be sent as part of a multipart form-data request
  */
-public enum MultiPartFormDataComponent {
+public enum MultiPartFormDataComponent: Sendable {
 
   /**
    Image to be uploaded as a part of multipart/form-data
@@ -19,7 +19,7 @@ public enum MultiPartFormDataComponent {
   /**
    JSON to be uploaded as a part of multipart/form-data
    */
-  case json(name: String, payload: Any)
+  case json(name: String, payload: any Sendable)
   /**
    Text to be uploaded as a part of multipart/form-data
    */
@@ -27,7 +27,7 @@ public enum MultiPartFormDataComponent {
   /**
    Something to be uploaded as a part of multipart/form-data
    */
-  case other(name: String, value: Any, contentType: String)
+  case other(name: String, value: any Sendable, contentType: String)
 
   /**
    The name of the part
@@ -68,7 +68,7 @@ public extension MultiPartFormDataComponent {
   /**
    Represent the File either as Data or its URL in the file system.
    */
-  enum File: CustomStringConvertible, CustomDebugStringConvertible {
+  enum File: CustomStringConvertible, CustomDebugStringConvertible, Sendable {
     /**
      Content of the file as Data.
      */

@@ -7,7 +7,7 @@
 /**
  Representation of a Media Type for HTTP requests.
  */
-public enum MediaType: Hashable {
+public enum MediaType: Hashable, Sendable {
 
   /**
    Application type with a custom subtype as an associated String value.

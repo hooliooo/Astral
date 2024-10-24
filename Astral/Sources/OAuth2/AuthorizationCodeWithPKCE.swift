@@ -10,37 +10,28 @@ import struct Foundation.UUID
 /**
  Struct containing the data necessary to make an Authorization request with PKCE verification to an OAuth2.0 authorization endpoint
  */
-public struct PKCEAuthorization {
+public struct AuthorizationCodeWithPKCE {
 
   public init(clientId: String, scope: String? = nil, codeChallenge: String, redirectURI: String) {
-    self.clientId = clientId
-    self.scope = scope
+    self.authorizationCode = AuthorizationCode(clientId: clientId, scope: scope, redirectURI: redirectURI)
     self.codeChallenge = codeChallenge
-    self.redirectURI = redirectURI
   }
+
+  private let authorizationCode: AuthorizationCode
 
   /**
    The client id
    */
-  public var clientId: String
-
-  /**
-   The response type
-   */
-  private let responseType: String = "code"
+  public var clientId: String {
+    self.authorizationCode.clientId
+  }
 
   /**
    The scope for authentication
    */
-  public var scope: String?
-
-  /**
-   An opaque value used by the client to maintain state between the request and callback.
-   The object that handles the response from the authorization server will need to read this value and
-   compare it to the original one that was sent with an initial request.
-   The two values must match to prevent cross-site request forgery.
-   */
-  private let state: String = UUID().uuidString.replacing("-", with: "")
+  public var scope: String? {
+    self.authorizationCode.scope
+  }
 
   /**
    The code challenge given to the authorize endpoint
@@ -55,25 +46,23 @@ public struct PKCEAuthorization {
   /**
    The redirect uri
    */
-  public var redirectURI: String
+  public var redirectURI: String {
+    self.authorizationCode.redirectURI
+  }
 
   /**
    The query parameters of authorization request with PKCE verification
    */
   public var urlQueryItems: [URLQueryItem] {
-    return [
-      ("client_id", \Self.clientId),
-      ("response_type", \Self.responseType),
-      ("scope", \Self.scope),
-      ("state", \Self.state),
+    let queryItems: [URLQueryItem] = [
       ("code_challenge", \Self.codeChallenge),
       ("code_challenge_method", \Self.codeChallengeMethod),
-      ("redirect_uri", \Self.redirectURI)
     ]
       .compactMap { (name: String, keyPath: PartialKeyPath<Self>) -> URLQueryItem? in
         guard let value = self[keyPath: keyPath] as? String else { return nil }
         return URLQueryItem(name: name, value: value)
       }
+    return queryItems + authorizationCode.urlQueryItems
   }
 
 }

@@ -9,7 +9,7 @@ import struct Foundation.Date
 /**
  A struct that encapsulates the token information retrieved from an OAuth2.0 token endpoint
  */
-public struct OAuth2Token: Codable {
+public struct OAuth2Token: Codable, Sendable {
 
   public enum CodingKeys: String, CodingKey {
     case accessToken

@@ -6,7 +6,7 @@
 
 import XCTest
 @testable import Astral
-@testable import OAuth
+@testable import OAuth2
 
 class PostRequestTests: XCTestCase {
 

@@ -11,7 +11,7 @@ import struct Foundation.Data
 /**
  The DSL used for FileManager extensions.
  */
-public struct AstralFileManagerExtension {
+public struct AstralFileManagerExtension: Sendable {
 
   // MARK: Initializer
   /**

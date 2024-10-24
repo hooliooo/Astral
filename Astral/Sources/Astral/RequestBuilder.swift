@@ -24,7 +24,7 @@ import struct os.Logger
 /**
  A RequestBuilder constructs the properties of a URLRequest
  */
-public struct RequestBuilder {
+public struct RequestBuilder: Sendable {
 
   // MARK: Stored Properties
   /**
