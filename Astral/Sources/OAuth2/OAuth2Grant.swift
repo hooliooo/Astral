@@ -9,7 +9,7 @@ import struct Foundation.URLQueryItem
 /**
  Protocol representing grant types for OAuth2 
  */
-public protocol OAuth2Grant: Sendable {
+public protocol OAuth2Grant: Hashable, Sendable {
 
   /**
    The grant type used for authentication

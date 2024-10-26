@@ -10,7 +10,7 @@ import struct Foundation.UUID
 /**
  Struct containing the data necessary to make an Authorization request with PKCE verification to an OAuth2.0 authorization endpoint
  */
-public struct AuthorizationCodeFlow {
+public struct AuthorizationCodeFlow: Hashable, Sendable {
 
   public init(clientId: String, scope: String? = nil, redirectURI: String, usePKCE: Bool) throws {
     self.clientId = clientId
@@ -97,7 +97,10 @@ public extension AuthorizationCodeFlow {
   }
 }
 
-struct PKCE {
+/**
+ Struct conftain the data necessary for Proof Key Code Exchange (PKCE)
+ */
+struct PKCE: Hashable, Sendable {
   /**
    The code verifier
    */

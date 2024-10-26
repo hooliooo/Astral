@@ -111,7 +111,7 @@ public struct OAuth2HTTPClient: Sendable {
    - parameters:
         - url: The URL containing the authentication code for the Authorization Code Grant
    */
-  public func createAuthorizationCodeGrant(from url: URL) async throws -> OAuth2Grant {
+  public func createAuthorizationCodeGrant(from url: URL) async throws -> any OAuth2Grant {
     let urlComponents = URLComponents(string: url.absoluteString)
     guard
       let queryItems = urlComponents?.queryItems,
@@ -140,11 +140,11 @@ public struct OAuth2HTTPClient: Sendable {
         - url: The URL of the OAuth2.0 token endpoint
         - credentialGrant: The CredentialsGrant instance containing data necessary for the http POST request
    */
-  private func token(credentialsGrant: OAuth2Grant) throws -> RequestBuilder {
+  private func token(credentialsGrant: any OAuth2Grant) throws -> RequestBuilder {
     return try self.httpClient.post(url: self.tokenEndpoint).form(items: credentialsGrant.urlQueryItems)
   }
 
-  private func authenticate(with grant: OAuth2Grant) async throws {
+  private func authenticate(with grant: any OAuth2Grant) async throws {
     let decoder: JSONDecoder = JSONDecoder()
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
@@ -169,7 +169,7 @@ public struct OAuth2HTTPClient: Sendable {
               if let callbackURL {
                 Task {
                   do {
-                    let grant: OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
+                    let grant: any OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
                     try await self.authenticate(with: grant)
                   } catch Error.missingAuthCode {
                     self.logger.error("Missing auth code")
@@ -268,7 +268,7 @@ public extension OAuth2HTTPClient {
   enum Error: Swift.Error {
     case invalidURL
     case invalidAuthenticationMethod(AuthenticationMethod)
-    case invalidGrant(grant: OAuth2Grant)
+    case invalidGrant(grant: any OAuth2Grant)
     case missingAuthCode
   }
 }

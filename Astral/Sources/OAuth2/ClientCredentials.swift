@@ -7,7 +7,7 @@
 /**
  Struct containing the client_id and client_secret used in authenticating via OAuth2.0
  */
-public struct ClientCredentials: Sendable, Hashable {
+public struct ClientCredentials: Hashable, Sendable {
   /**
    The client_id
    */
