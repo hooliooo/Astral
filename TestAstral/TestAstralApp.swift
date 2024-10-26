@@ -19,6 +19,8 @@ struct TestAstralApp: App {
     let keycloakRealm: String = Bundle.main.object(forInfoDictionaryKey: "KEYCLOAK_REALM") as! String
     let clientId: String = Bundle.main.object(forInfoDictionaryKey: "CLIENT_ID") as! String
     let clientSecret: String? = Bundle.main.object(forInfoDictionaryKey: "CLIENT_SECRET") as? String
+    let callbackScheme: String = Bundle.main.object(forInfoDictionaryKey: "CALLBACK_SCHEME") as! String
+    let redirectURI: String = Bundle.main.object(forInfoDictionaryKey: "REDIRECT_URI") as! String
 
     self.authCodeHttpClient = OAuth2HTTPClient(
       authorizationEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/auth",
@@ -26,8 +28,8 @@ struct TestAstralApp: App {
       grantType: AuthenticationMethod.authorizationCode(
         clientId: clientId,
         clientSecret: clientSecret,
-        callbackScheme: "testastral",
-        redirectURI: "testastral://callback",
+        callbackScheme: callbackScheme,
+        redirectURI: redirectURI,
         delegate: AuthCodeLoginDelegate(),
         usePKCE: true
       )
