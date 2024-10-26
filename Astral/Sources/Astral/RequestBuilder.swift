@@ -56,10 +56,10 @@ public struct RequestBuilder: Sendable {
   /**
    The initialer of the RequestBuilder
    - parameters:
-      - session: The URLSesson used to send the URLRequest
-      - fileManager: The FileManager used to create temporary multipart/form-data fiels in the cache directory
-      - url: The url of the URLRequest
-      - method: The http method of the URLRequest
+   - session: The URLSesson used to send the URLRequest
+   - fileManager: The FileManager used to create temporary multipart/form-data fiels in the cache directory
+   - url: The url of the URLRequest
+   - method: The http method of the URLRequest
    */
   public init(session: URLSession, fileManager: FileManager, url: String, method: HTTPMethod) throws {
     let logger: Logger = Logger(subsystem: "Astral", category: "RequestBuilder")
@@ -82,7 +82,7 @@ public struct RequestBuilder: Sendable {
     )
   }
 
-  // MARK: Private Functions
+  // MARK: Copy Functions
   /**
    Convenience method used under the hood to make a fluent API when building the URLRequest via the RequestBuilder
    - parameter changes: The closure used to mutate the RequestBuilder. Returns a new RequestBuilder with the changes.
@@ -92,6 +92,18 @@ public struct RequestBuilder: Sendable {
     try changes(&mutableSelf)
     return mutableSelf
   }
+
+  /**
+   Cleans up the file used to aggregate a multipart/form-data request into a stream
+   */
+  private func cleanUpMultipartStream() throws {
+    guard let url = self.fileURL else { return }
+    try self.fileManager.removeItem(at: url)
+  }
+
+}
+
+extension RequestBuilder {
 
   // MARK: Authentication Functions
   /**
@@ -224,14 +236,6 @@ public struct RequestBuilder: Sendable {
   }
 
   // MARK: Send Functions
-  /**
-   Cleans up the file used to aggregate a multipart/form-data request into a stream
-   */
-  private func cleanUpMultipartStream() throws {
-    guard let url = self.fileURL else { return }
-    try self.fileManager.removeItem(at: url)
-  }
-
   /**
    Sends the URLRequest and decodes the response into a Data instance. Also cleans up the multipart/form-data file created
    if there is one.

@@ -13,11 +13,11 @@ import struct Foundation.UUID
 public struct AuthorizationCodeWithPKCE {
 
   public init(clientId: String, scope: String? = nil, codeChallenge: String, redirectURI: String) {
-    self.authorizationCode = AuthorizationCode(clientId: clientId, scope: scope, redirectURI: redirectURI)
+    self.authorizationCode = AuthorizationCodeFlow(clientId: clientId, scope: scope, redirectURI: redirectURI)
     self.codeChallenge = codeChallenge
   }
 
-  private let authorizationCode: AuthorizationCode
+  private let authorizationCode: AuthorizationCodeFlow
 
   /**
    The client id

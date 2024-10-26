@@ -3,19 +3,23 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
-import struct Astral.HTTPClient
-import enum Astral.HTTPMethod
-import struct Astral.RequestBuilder
+import class AuthenticationServices.ASWebAuthenticationSession
 import class Foundation.JSONDecoder
+import class Foundation.NSObject
+import class Foundation.URLResponse
+import enum Astral.HTTPMethod
+import struct Astral.Header
+import struct Astral.HTTPClient
+import struct Astral.RequestBuilder
 import struct Foundation.URL
 import struct Foundation.URLComponents
 import struct Foundation.URLQueryItem
-import class Foundation.URLResponse
+import struct Foundation.URLRequest
 
 /**
  An OAuth2HTTPClient is an abstraction over a Client with an easy to use API to communicate with RESTful APIs in an authenticated manner.
  */
-public struct OAuth2HTTPClient: Sendable {
+public final class OAuth2HTTPClient: NSObject, Sendable {
 
   // MARK: Initializers
   /**
@@ -23,21 +27,18 @@ public struct OAuth2HTTPClient: Sendable {
    - parameters:
       - authorizationEndpoint: The authorization endpoint for authorization code requests
       - tokenEndpoint: The token endpoint for access token and refresh token requests
-      - cliendId: The client id to be used in the authorization and token requests
-      - store: The OAuth2TokenStore instance that reads/writes the token from the file system
+      - authenticationMethod: The grant type to be used when authenticating
    */
   public init(
     authorizationEndpoint: String,
     tokenEndpoint: String,
-    clientId: String,
-    clientSecret: String?,
-    store: OAuth2TokenStore = OAuth2TokenStore.shared
+    grantType: AuthenticationMethod
   ) {
     self.authorizationEndpoint = authorizationEndpoint
     self.tokenEndpoint = tokenEndpoint
-    self.clientId = clientId
-    self.clientSecret = clientSecret
-    self.store = store
+    self.authenticationMethod = grantType
+    self.store = OAuth2TokenStore(grantType: grantType)
+    super.init()
   }
 
 
@@ -58,14 +59,9 @@ public struct OAuth2HTTPClient: Sendable {
   private let tokenEndpoint: String
 
   /**
-   The OAuth2 clientId
+   The grant type to be used for authentication
    */
-  private let clientId: String
-
-  /**
-   The OAuth2 clientSecret
-   */
-  private let clientSecret: String?
+  public let authenticationMethod: AuthenticationMethod
 
   /**
    The OAuth2TokenStore instance used to read/write the OAuth2Token for authentication
@@ -73,65 +69,54 @@ public struct OAuth2HTTPClient: Sendable {
   private let store: OAuth2TokenStore
 
   // MARK: Functions
-  public func createAuthorizationURL(
-    redirectURI: String,
-    additonalURLQueryItems: [URLQueryItem] = []
-  ) throws -> URL {
-    let authorization: AuthorizationCode = AuthorizationCode(
-      clientId: self.clientId,
-      scope: "openid profile email",
-      redirectURI: redirectURI
-    )
+  public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
+    switch self.authenticationMethod {
+      case let .authorizationCode(clientId, clientSecret, callbackScheme, redirectURI, _, usePKCE):
+        let queryItems: [URLQueryItem]
+        if usePKCE {
+          let codeVerifier = PKCEGenerator.generateCodeVerifier()
+          guard let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier) else {
+            fatalError()
+          }
+          let authorization: AuthorizationCodeWithPKCE = AuthorizationCodeWithPKCE(
+            clientId: clientId,
+            scope: "openid profile email",
+            codeChallenge: codeChallenge,
+            redirectURI: redirectURI
+          )
 
-    let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
-      .query(items: authorization.urlQueryItems + additonalURLQueryItems)
-      .request
-      .url
-    guard let url else { fatalError() }
-    return url
+          // Store the code verifier for the authorization code flow request
+          Task.detached(priority: TaskPriority.userInitiated) {
+            await self.store.store(codeVerifier: codeVerifier)
+          }
 
+          queryItems = authorization.urlQueryItems
+        } else {
+          let authorization: AuthorizationCodeFlow = AuthorizationCodeFlow(
+            clientId: clientId,
+            scope: "openid profile email",
+            redirectURI: redirectURI
+          )
+          queryItems = authorization.urlQueryItems
+        }
+
+        let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
+          .query(items: queryItems + additonalURLQueryItems)
+          .request
+          .url
+        guard let url else { fatalError() }
+        return url
+
+      case let .clientCredentials(clientId, clientSecret): fatalError()
+    }
   }
 
   /**
-   Builds a complete PKCE authorization request URL with the given redirect_uri
+   Extracts the code from the url and creates an AuthorizationCodeGrant or AuthorizationCodePKCEGrant to get an OAuth2Token
    - parameters:
-        - redirectURI: The redirect uri where the authorization response will be sent
+        - url: The URL containing the authentication code for the Authorization Code Grant
    */
-  public func createAuthorizationURLWithPKCE(
-    redirectURI: String,
-    additionalURLQueryItems: [URLQueryItem] = []
-  ) throws -> URL {
-    let codeVerifier = PKCEGenerator.generateCodeVerifier()
-    guard let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier) else {
-      fatalError()
-    }
-
-    let authorization: AuthorizationCodeWithPKCE = AuthorizationCodeWithPKCE(
-      clientId: self.clientId,
-      scope: "openid profile email",
-      codeChallenge: codeChallenge,
-      redirectURI: redirectURI
-    )
-    let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
-      .query(items: authorization.urlQueryItems + additionalURLQueryItems)
-      .request
-      .url
-    guard let url else {
-      fatalError()
-    }
-
-    // Store the code verifier for the authorization code flow request
-    Task.detached(priority: TaskPriority.userInitiated) {
-      await self.store.store(codeVerifier: codeVerifier)
-    }
-
-    return url
-  }
-
-  public func createAuthorizationCodeGrant(
-    from url: URL,
-    redirectURI: String
-  ) async throws -> AuthorizationCodeGrant {
+  public func createAuthorizationCodeGrant(from url: URL) async throws -> OAuth2Grant {
     let urlComponents = URLComponents(string: url.absoluteString)
     guard
       let queryItems = urlComponents?.queryItems,
@@ -140,59 +125,27 @@ public struct OAuth2HTTPClient: Sendable {
       fatalError()
     }
 
-    return AuthorizationCodeGrant(
-      clientId: self.clientId,
-      clientSecret: self.clientSecret,
-      code: code,
-      redirectURI: redirectURI
-    )
-  }
+    switch self.authenticationMethod {
+      case let .authorizationCode(clientId, clientSecret, _, redirectURI, _, usePKCE):
+        if usePKCE {
+          guard let codeVerifier = await self.store.codeVerifier else { fatalError() }
+          return AuthorizationCodePKCEGrant(
+            clientId: clientId,
+            code: code,
+            codeVerifier: codeVerifier,
+            redirectURI: redirectURI
+          )
+        } else {
+          return AuthorizationCodeGrant(
+            clientId: clientId,
+            clientSecret: clientSecret,
+            code: code,
+            redirectURI: redirectURI
+          )
+        }
 
-  /**
-   Extracts the code from the url and creates an AuthorizationCodePKCEGrant to get an OAuth2Token
-   - parameters:
-        - url: The URL containing the authentication code for the Authorization Code Grant
-        - redirectURI: The redirect uri where the token response will be sent
-   */
-  public func createAuthorizationCodeWithPKCEGrant(
-    from url: URL,
-    redirectURI: String
-  ) async throws -> AuthorizationCodePKCEGrant {
-    let urlComponents = URLComponents(string: url.absoluteString)
-    guard
-      let queryItems = urlComponents?.queryItems,
-      let code = queryItems.first(where: { $0.name == "code" })?.value,
-      let codeVerifier = await self.store.codeVerifier
-    else {
-      fatalError()
+      case .clientCredentials: fatalError()
     }
-
-    return AuthorizationCodePKCEGrant(
-      clientId: self.clientId,
-      code: code,
-      codeVerifier: codeVerifier,
-      redirectURI: redirectURI
-    )
-  }
-
-  public func implicitGrantAuthorizationURL(
-    redirectURI: String,
-    additionalURLQueryItems: [URLQueryItem] = []
-  ) throws -> URL {
-    let grant: ImplicitGrant = ImplicitGrant(
-      clientId: self.clientId,
-      scope: "openid profile email",
-      redirectURI: redirectURI
-    )
-    let url: URL? = try self.httpClient
-      .get(url: self.authorizationEndpoint)
-      .query(items: grant.urlQueryItems + additionalURLQueryItems)
-      .request
-      .url
-    guard let url else {
-      fatalError()
-    }
-    return url
   }
 
   /**
@@ -202,51 +155,112 @@ public struct OAuth2HTTPClient: Sendable {
         - url: The URL of the OAuth2.0 token endpoint
         - credentialGrant: The CredentialsGrant instance containing data necessary for the http POST request
    */
-  public func token(credentialsGrant: OAuth2Grant) throws -> RequestBuilder {
+  private func token(credentialsGrant: OAuth2Grant) throws -> RequestBuilder {
     return try self.httpClient.post(url: self.tokenEndpoint).form(items: credentialsGrant.urlQueryItems)
   }
 
-  public func authenticate(with grant: OAuth2Grant) async throws {
+  private func authenticate(with grant: OAuth2Grant) async throws {
     let decoder: JSONDecoder = JSONDecoder()
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
-    let requestBuilder = try self.token(credentialsGrant: grant)
-    let request = requestBuilder.request
-    let formParams = String(data: request.httpBody!, encoding: .utf8)!.split(separator: "&")
+    let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
+    let request: URLRequest = requestBuilder.request
+    let formParams: [String.SubSequence] = String(data: request.httpBody!, encoding: .utf8)!.split(separator: "&")
 
     let (token, response): (OAuth2Token, URLResponse) = try await requestBuilder.send()
     try await self.store.store(token: token)
+  }
+
+  public func refresh() async throws {
+    let isAccessTokenExpired = await self.store.isAccessTokenExpired
+    let isRefreshTokenExpired = await self.store.isRefreshTokenExpired
+
+    if (isRefreshTokenExpired) {
+      switch self.authenticationMethod {
+        case let .authorizationCode(_, _, callbackScheme, _, delegate, _):
+          Task { @MainActor in
+            let url = try! self.createAuthorizationURL()
+            let session = ASWebAuthenticationSession(
+              url: url,
+              callbackURLScheme: callbackScheme
+            ) { (callbackURL: URL?, error: Error?) -> Void in
+              if let callbackURL {
+                Task {
+                  let grant: OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
+                  try await self.authenticate(with: grant)
+                }
+              }
+            }
+            session.presentationContextProvider = delegate
+            session.prefersEphemeralWebBrowserSession = true
+            session.start()
+          }
+
+        case let .clientCredentials(clientId, clientSecret):
+          let grant: ClientCredentialsGrant = ClientCredentialsGrant(
+            credentials: ClientCredentials(clientId: clientId, clientSecret: clientSecret),
+            scope: "openid profile email"
+          )
+          try await self.authenticate(with: grant)
+      }
+    } else if (isAccessTokenExpired) {
+      let refreshToken = await self.store.token!.refreshToken!
+      let grant: RefreshGrant = RefreshGrant(clientId: self.authenticationMethod.clientId, refreshToken: refreshToken)
+      let (token, response): (OAuth2Token, URLResponse) = try await self.token(credentialsGrant: grant).send()
+      try await self.store.store(token: token)
+    }
   }
 
   /**
    A convenience method to make a GET request to the URL
     - parameter url: The URL of the GET request
    */
-  public func get(url: String) throws -> RequestBuilder {
-    return try self.httpClient.get(url: url)
+  public func get(url: String) async throws -> RequestBuilder {
+    try await self.refresh()
+    return try self.httpClient.get(url: url).headers(
+      headers: [
+        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
+      ]
+    )
   }
 
   /**
    A convenience method to make a DELETE request to the URL
     - parameter url: The URL of the DELETE request
    */
-  public func delete(url: String) throws -> RequestBuilder {
-    return try self.httpClient.delete(url: url)
+  public func delete(url: String) async throws -> RequestBuilder {
+    try await self.refresh()
+    return try self.httpClient.delete(url: url).headers(
+      headers: [
+        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
+      ]
+    )
   }
 
   /**
    A convenience method to make a POST request to the URL
     - parameter url: The URL of the POST request
    */
-  public func post(url: String) throws -> RequestBuilder {
-    return try self.httpClient.post(url: url)
+  public func post(url: String) async throws -> RequestBuilder {
+    try await self.refresh()
+    return try self.httpClient.post(url: url).headers(
+      headers: [
+        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
+      ]
+    )
   }
 
   /**
    A convenience method to make a PUT request to the URL
     - parameter url: The URL of the PUT request
    */
-  public func put(url: String) throws -> RequestBuilder {
-    return try self.httpClient.put(url: url)
+  public func put(url: String) async throws -> RequestBuilder {
+    try await self.refresh()
+    return try self.httpClient.put(url: url).headers(
+      headers: [
+        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
+      ]
+    )
   }
 
 }
+

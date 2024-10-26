@@ -9,10 +9,13 @@ import class Foundation.JSONEncoder
 import class Foundation.FileManager
 import struct Foundation.Data
 import struct Foundation.URL
+import struct JSONWebKey.JWK
 
 public actor OAuth2TokenStore: Sendable {
 
-  private init() {}
+  public init(grantType: AuthenticationMethod) {
+    self.tokenName = "\(grantType.stringName)-token.json"
+  }
 
   public private(set) var token: OAuth2Token?
 
@@ -20,7 +23,7 @@ public actor OAuth2TokenStore: Sendable {
 
   private let fileManager: FileManager = FileManager.default
 
-  private static let tokenName: String = "token.json"
+  private let tokenName: String
 
   public var isAccessTokenExpired: Bool {
     guard let token = self.token else { return true }
@@ -39,7 +42,7 @@ public actor OAuth2TokenStore: Sendable {
   public func storeInFile(token: OAuth2Token) throws {
     let encoder: JSONEncoder = JSONEncoder()
     let data: Data = try encoder.encode(token)
-    let url: URL = self.fileManager.ast.documentDirectory.appendingPathComponent(OAuth2TokenStore.tokenName)
+    let url: URL = self.fileManager.ast.documentDirectory.appendingPathComponent(self.tokenName)
 
     // Check if it exists first to remove the old file
     if self.fileManager.fileExists(atPath: url.path) {
@@ -59,7 +62,7 @@ public actor OAuth2TokenStore: Sendable {
   }
 
   public func readFromFile() throws -> OAuth2Token? {
-    let url: URL = self.fileManager.ast.documentDirectory.appendingPathComponent(OAuth2TokenStore.tokenName)
+    let url: URL = self.fileManager.ast.documentDirectory.appendingPathComponent(self.tokenName)
     // Check if it exists first to remove the old file
     if self.fileManager.fileExists(atPath: url.path) {
       let data: Data = try Data(contentsOf: url)
@@ -71,11 +74,5 @@ public actor OAuth2TokenStore: Sendable {
       return nil
     }
   }
-
-}
-
-public extension OAuth2TokenStore {
-
-  static let shared: OAuth2TokenStore = .init()
 
 }
