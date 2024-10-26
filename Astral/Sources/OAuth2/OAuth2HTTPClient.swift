@@ -15,6 +15,7 @@ import struct Foundation.URL
 import struct Foundation.URLComponents
 import struct Foundation.URLQueryItem
 import struct Foundation.URLRequest
+import struct os.Logger
 
 /**
  An OAuth2HTTPClient is an abstraction over a Client with an easy to use API to communicate with RESTful APIs in an authenticated manner.
@@ -67,15 +68,21 @@ public struct OAuth2HTTPClient: Sendable {
    */
   private let store: OAuth2TokenStore
 
+  /**
+   The logger for the client
+   */
+  public let logger: Logger = Logger(subsystem: "Astral+OAuth2", category: "OAuth2HTTPClient")
+
   // MARK: Functions
   public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
     switch self.authenticationMethod {
       case let .authorizationCode(client, _, redirectURI, _, usePKCE):
+        logger.debug("Creating authorization URL for authorization code flow")
         let queryItems: [URLQueryItem]
         if usePKCE {
           let codeVerifier = PKCEGenerator.generateCodeVerifier()
           guard let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier) else {
-            fatalError()
+            throw Error.invalidCodeChallenge
           }
           let authorization: AuthorizationCodeWithPKCE = AuthorizationCodeWithPKCE(
             clientId: client.id,
@@ -103,10 +110,10 @@ public struct OAuth2HTTPClient: Sendable {
           .query(items: queryItems + additonalURLQueryItems)
           .request
           .url
-        guard let url else { fatalError() }
+        guard let url else { throw Error.invalidURL }
         return url
 
-      case .clientCredentials: fatalError()
+      case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.authenticationMethod)
     }
   }
 
@@ -121,13 +128,13 @@ public struct OAuth2HTTPClient: Sendable {
       let queryItems = urlComponents?.queryItems,
       let code = queryItems.first(where: { $0.name == "code" })?.value
     else {
-      fatalError()
+      throw Error.missingAuthCode
     }
 
     switch self.authenticationMethod {
       case let .authorizationCode(client, _, redirectURI, _, usePKCE):
         if usePKCE {
-          guard let codeVerifier = await self.store.codeVerifier else { fatalError() }
+          guard let codeVerifier = await self.store.codeVerifier else { throw Error.missingCodeVerifier }
           return AuthorizationCodePKCEGrant(
             client: client,
             code: code,
@@ -142,7 +149,7 @@ public struct OAuth2HTTPClient: Sendable {
           )
         }
 
-      case .clientCredentials: fatalError()
+      case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.authenticationMethod)
     }
   }
 
@@ -161,9 +168,6 @@ public struct OAuth2HTTPClient: Sendable {
     let decoder: JSONDecoder = JSONDecoder()
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
-    let request: URLRequest = requestBuilder.request
-    print(request.ast.curlString)
-
     let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send()
     try await self.store.store(token: token)
   }
@@ -175,17 +179,28 @@ public struct OAuth2HTTPClient: Sendable {
     if (isRefreshTokenExpired) {
       switch self.authenticationMethod {
         case let .authorizationCode(_, callbackScheme, _, delegate, _):
+          let url: URL = try self.createAuthorizationURL()
+
           Task { @MainActor in
-            let url = try! self.createAuthorizationURL()
             let session = ASWebAuthenticationSession(
               url: url,
               callback: ASWebAuthenticationSession.Callback.customScheme(callbackScheme)
-            ) { (callbackURL: URL?, error: Error?) -> Void in
+            ) { (callbackURL: URL?, error: Swift.Error?) -> Void in
               if let callbackURL {
                 Task {
-                  let grant: OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
-                  try await self.authenticate(with: grant)
+                  do {
+                    let grant: OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
+                    try await self.authenticate(with: grant)
+                  } catch Error.missingAuthCode {
+                    self.logger.error("Missing auth code")
+                  } catch Error.missingCodeVerifier {
+                    self.logger.error("Missing code verifier")
+                  } catch let error {
+                    self.logger.error("Uncaught Error: \(error)")
+                  }
                 }
+              } else if let error {
+                self.logger.error("Error: \(error)")
               }
             }
             session.presentationContextProvider = delegate
@@ -197,6 +212,15 @@ public struct OAuth2HTTPClient: Sendable {
           let grant: ClientCredentialsGrant = ClientCredentialsGrant(
             credentials: credentials,
             scope: "openid profile email"
+          )
+          try await self.authenticate(with: grant)
+
+        case let .password(credentials, username, password):
+          let grant: ResourceOwnerPasswordCredentialsGrant = ResourceOwnerPasswordCredentialsGrant(
+            username: username,
+            password: password,
+            scope: "openid profile email",
+            credentials: credentials
           )
           try await self.authenticate(with: grant)
       }
@@ -260,5 +284,16 @@ public struct OAuth2HTTPClient: Sendable {
     )
   }
 
+}
+
+public extension OAuth2HTTPClient {
+  enum Error: Swift.Error {
+    case invalidCodeChallenge
+    case invalidURL
+    case invalidAuthenticationMethod(AuthenticationMethod)
+    case invalidGrant(grant: OAuth2Grant)
+    case missingAuthCode
+    case missingCodeVerifier
+  }
 }
 
