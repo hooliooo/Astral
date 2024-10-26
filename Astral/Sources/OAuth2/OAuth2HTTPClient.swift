@@ -211,55 +211,46 @@ public struct OAuth2HTTPClient: Sendable {
   }
 
   /**
-   A convenience method to make a GET request to the URL
+   Creates an authenticated request to the url with the specified http method
+   - parameters:
+   - url: The URL of the request
+   - method: The http method of the request
+   */
+  public func request(url: String, method: HTTPMethod) async throws -> RequestBuilder {
+    try await self.refresh()
+    return try self.httpClient.request(url: url, method: method).bearerAuthentication(token: await store.token!.accessToken)
+  }
+
+  /**
+   A convenience method to make an authenticated GET request to the URL
     - parameter url: The URL of the GET request
    */
   public func get(url: String) async throws -> RequestBuilder {
-    try await self.refresh()
-    return try self.httpClient.get(url: url).headers(
-      headers: [
-        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
-      ]
-    )
+    return try await self.request(url: url, method: HTTPMethod.get)
   }
 
   /**
-   A convenience method to make a DELETE request to the URL
+   A convenience method to make an authenticated DELETE request to the URL
     - parameter url: The URL of the DELETE request
    */
   public func delete(url: String) async throws -> RequestBuilder {
-    try await self.refresh()
-    return try self.httpClient.delete(url: url).headers(
-      headers: [
-        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
-      ]
-    )
+    return try await self.request(url: url, method: HTTPMethod.delete)
   }
 
   /**
-   A convenience method to make a POST request to the URL
+   A convenience method to make an authenticated POST request to the URL
     - parameter url: The URL of the POST request
    */
   public func post(url: String) async throws -> RequestBuilder {
-    try await self.refresh()
-    return try self.httpClient.post(url: url).headers(
-      headers: [
-        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
-      ]
-    )
+    return try await self.request(url: url, method: HTTPMethod.post)
   }
 
   /**
-   A convenience method to make a PUT request to the URL
+   A convenience method to make an authenticated PUT request to the URL
     - parameter url: The URL of the PUT request
    */
   public func put(url: String) async throws -> RequestBuilder {
-    try await self.refresh()
-    return try self.httpClient.put(url: url).headers(
-      headers: [
-        Header(key: Header.Key.authorization, value: Header.Value.bearerToken(await store.token!.accessToken))
-      ]
-    )
+    return try await self.request(url: url, method: HTTPMethod.put)
   }
 
 }
