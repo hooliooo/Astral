@@ -17,11 +17,13 @@ public struct AuthorizationCodeGrant {
         - clientId: The client id
         - code: The authenication code
         - redirectURI: The redirect uri
+        - codeVerifier: The code verifier
    */
-  public init(client: OAuth2Client, code: String, redirectURI: String) {
+  public init(client: OAuth2Client, code: String, redirectURI: String, codeVerifier: String?) {
     self.client = client
     self.code = code
     self.redirectURI = redirectURI
+    self.codeVerifier = codeVerifier
   }
 
   /**
@@ -37,7 +39,7 @@ public struct AuthorizationCodeGrant {
    The client secret
    */
   public var clientSecret: String? {
-    guard case let .confidential(credentials) = self.client else { return nil}
+    guard case let .confidential(credentials) = self.client else { return nil }
     return credentials.clientSecret
   }
 
@@ -50,6 +52,11 @@ public struct AuthorizationCodeGrant {
    The redirect uri
    */
   public var redirectURI: String
+
+  /**
+   The code verifier
+   */
+  public var codeVerifier: String?
 
 }
 
@@ -66,6 +73,10 @@ extension AuthorizationCodeGrant: OAuth2Grant {
     ]
     if self.clientSecret != nil {
       queryItems.append(("client_secret", \Self.clientSecret!))
+    }
+
+    if self.codeVerifier != nil {
+      queryItems.append(("code_verifier", \Self.self.codeVerifier!))
     }
 
     return queryItems.compactMap { (name: String, keyPath: PartialKeyPath<Self>) -> URLQueryItem? in

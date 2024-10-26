@@ -78,32 +78,21 @@ public struct OAuth2HTTPClient: Sendable {
     switch self.authenticationMethod {
       case let .authorizationCode(client, _, redirectURI, _, usePKCE):
         logger.debug("Creating authorization URL for authorization code flow")
-        let queryItems: [URLQueryItem]
-        if usePKCE {
-          let codeVerifier = PKCEGenerator.generateCodeVerifier()
-          guard let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier) else {
-            throw Error.invalidCodeChallenge
-          }
-          let authorization: AuthorizationCodeWithPKCE = AuthorizationCodeWithPKCE(
-            clientId: client.id,
-            scope: "openid profile email",
-            codeChallenge: codeChallenge,
-            redirectURI: redirectURI
-          )
 
+        let authorization: AuthorizationCodeFlow = try AuthorizationCodeFlow(
+          clientId: client.id,
+          scope: "openid profile email",
+          redirectURI: redirectURI,
+          usePKCE: usePKCE
+        )
+        let queryItems: [URLQueryItem] = authorization.urlQueryItems
+
+        if let pkce = authorization.pkce {
+          let codeVerifier = pkce.codeVerifier
           // Store the code verifier for the authorization code flow request
           Task.detached(priority: TaskPriority.userInitiated) {
             await self.store.store(codeVerifier: codeVerifier)
           }
-
-          queryItems = authorization.urlQueryItems
-        } else {
-          let authorization: AuthorizationCodeFlow = AuthorizationCodeFlow(
-            clientId: client.id,
-            scope: "openid profile email",
-            redirectURI: redirectURI
-          )
-          queryItems = authorization.urlQueryItems
         }
 
         let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
@@ -132,22 +121,13 @@ public struct OAuth2HTTPClient: Sendable {
     }
 
     switch self.authenticationMethod {
-      case let .authorizationCode(client, _, redirectURI, _, usePKCE):
-        if usePKCE {
-          guard let codeVerifier = await self.store.codeVerifier else { throw Error.missingCodeVerifier }
-          return AuthorizationCodePKCEGrant(
-            client: client,
-            code: code,
-            codeVerifier: codeVerifier,
-            redirectURI: redirectURI
-          )
-        } else {
-          return AuthorizationCodeGrant(
-            client: client,
-            code: code,
-            redirectURI: redirectURI
-          )
-        }
+      case let .authorizationCode(client, _, redirectURI, _, _):
+        return AuthorizationCodeGrant(
+          client: client,
+          code: code,
+          redirectURI: redirectURI,
+          codeVerifier: await self.store.codeVerifier
+        )
 
       case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.authenticationMethod)
     }
@@ -193,8 +173,6 @@ public struct OAuth2HTTPClient: Sendable {
                     try await self.authenticate(with: grant)
                   } catch Error.missingAuthCode {
                     self.logger.error("Missing auth code")
-                  } catch Error.missingCodeVerifier {
-                    self.logger.error("Missing code verifier")
                   } catch let error {
                     self.logger.error("Uncaught Error: \(error)")
                   }
@@ -288,12 +266,10 @@ public struct OAuth2HTTPClient: Sendable {
 
 public extension OAuth2HTTPClient {
   enum Error: Swift.Error {
-    case invalidCodeChallenge
     case invalidURL
     case invalidAuthenticationMethod(AuthenticationMethod)
     case invalidGrant(grant: OAuth2Grant)
     case missingAuthCode
-    case missingCodeVerifier
   }
 }
 

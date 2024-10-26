@@ -12,10 +12,21 @@ import struct Foundation.UUID
  */
 public struct AuthorizationCodeFlow {
 
-  public init(clientId: String, scope: String? = nil, redirectURI: String) {
+  public init(clientId: String, scope: String? = nil, redirectURI: String, usePKCE: Bool) throws {
     self.clientId = clientId
     self.scope = scope
     self.redirectURI = redirectURI
+
+    if usePKCE {
+      let codeVerifier = PKCEGenerator.generateCodeVerifier()
+      guard let codeChallenge = PKCEGenerator.generateCodeChallenge(codeVerifier: codeVerifier) else {
+        throw Error.invalidCodeChallenge
+      }
+      self.pkce = PKCE(codeVerifier: codeVerifier, codeChallenge: codeChallenge)
+    } else {
+      self.pkce = nil
+    }
+
   }
 
   /**
@@ -47,16 +58,31 @@ public struct AuthorizationCodeFlow {
   public var redirectURI: String
 
   /**
+   Proof Key Code Exchange (PKCE) data
+   */
+  let pkce: PKCE?
+
+  /**
    The query parameters of authorization request with PKCE verification
    */
   public var urlQueryItems: [URLQueryItem] {
-    return [
+    let queryItems: [(String, PartialKeyPath<Self>)] = [
       ("client_id", \Self.clientId),
       ("response_type", \Self.responseType),
       ("scope", \Self.scope),
       ("state", \Self.state),
       ("redirect_uri", \Self.redirectURI)
     ]
+    let otherQueryItems: [(String, PartialKeyPath<Self>)] = if self.pkce != nil {
+      [
+        ("code_challenge", \Self.pkce!.codeChallenge),
+        ("code_challenge_method", \Self.pkce!.codeChallengeMethod)
+      ]
+    } else {
+      []
+    }
+
+    return (queryItems + otherQueryItems)
       .compactMap { (name: String, keyPath: PartialKeyPath<Self>) -> URLQueryItem? in
         guard let value = self[keyPath: keyPath] as? String else { return nil }
         return URLQueryItem(name: name, value: value)
@@ -64,3 +90,27 @@ public struct AuthorizationCodeFlow {
   }
 
 }
+
+public extension AuthorizationCodeFlow {
+  enum Error: Swift.Error {
+    case invalidCodeChallenge
+  }
+}
+
+struct PKCE {
+  /**
+   The code verifier
+   */
+  var codeVerifier: String
+
+  /**
+   The code challenge given to the authorize endpoint
+   */
+  var codeChallenge: String
+
+  /**
+   The code challenge given to the authorize endpoint
+   */
+  let codeChallengeMethod: String = "S256"
+}
+
