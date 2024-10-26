@@ -25,7 +25,7 @@ extension RefreshGrant: OAuth2Grant {
   public var grantType: String { "refresh_token" }
 
   public var urlQueryItems: [URLQueryItem] {
-    var queryItems = [
+    let queryItems = [
       ("client_id", \Self.clientId),
       ("grant_type", \Self.grantType),
       ("refresh_token", \Self.refreshToken)

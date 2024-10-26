@@ -6,13 +6,15 @@
 //
 
 import Astral
-import AuthenticationServices
+import class AuthenticationServices.ASWebAuthenticationSession
+import class AuthenticationServices.ASPresentationAnchor
+import protocol AuthenticationServices.ASWebAuthenticationPresentationContextProviding
 import OAuth2
 import SwiftUI
 
 struct ContentView: View {
 
-  let service: LoginService = .init()
+  let service: LoginService
 
   var body: some View {
     VStack {
@@ -24,48 +26,25 @@ struct ContentView: View {
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      ContentView(service: LoginService(keycloakURL: "", clientId: "", clientSecret: nil))
+//    }
+//}
 
 class LoginService: NSObject {
 
-  let client: OAuth2HTTPClient = OAuth2HTTPClient(
-    authorizationEndpoint: "http://localhost:8080/realms/master/protocol/openid-connect/auth",
-    tokenEndpoint: "http://localhost:8080/realms/master/protocol/openid-connect/token",
-    clientId: "some.webapp"
-  )
+  init(client: OAuth2HTTPClient) {
+    self.client = client
+  }
+
+  private let client: OAuth2HTTPClient
 
   func start() {
-    let client: OAuth2HTTPClient = self.client
-    let redirectURI: String = "testastral://callback"
-    let url = try! client.createAuthorizationURL(redirectURI: redirectURI)
+    Task { try await self.client.refresh() }
 
-    let session = ASWebAuthenticationSession(
-      url: url,
-      callbackURLScheme: "testastral"
-    ) { (callbackURL: URL?, error: Error?) -> Void in
-      if let callbackURL {
-        Task {
-          let grant: AuthorizationCodePKCEGrant = try await client
-            .createAuthorizationCodeGrant(from: callbackURL, redirectURI: redirectURI)
-          print("Authenticating")
-          try await client.authenticate(with: grant)
-        }
-      }
-    }
-
-    session.presentationContextProvider = self
-    session.prefersEphemeralWebBrowserSession = true
-    session.start()
+// Happy%path1234
+// kommy0-pyssat-sacTys
   }
 
-}
-
-extension LoginService: ASWebAuthenticationPresentationContextProviding {
-  func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-    return ASPresentationAnchor()
-  }
 }

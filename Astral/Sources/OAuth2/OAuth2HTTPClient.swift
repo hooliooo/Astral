@@ -19,7 +19,7 @@ import struct Foundation.URLRequest
 /**
  An OAuth2HTTPClient is an abstraction over a Client with an easy to use API to communicate with RESTful APIs in an authenticated manner.
  */
-public final class OAuth2HTTPClient: NSObject, Sendable {
+public struct OAuth2HTTPClient: Sendable {
 
   // MARK: Initializers
   /**
@@ -38,7 +38,6 @@ public final class OAuth2HTTPClient: NSObject, Sendable {
     self.tokenEndpoint = tokenEndpoint
     self.authenticationMethod = grantType
     self.store = OAuth2TokenStore(grantType: grantType)
-    super.init()
   }
 
 
@@ -71,7 +70,7 @@ public final class OAuth2HTTPClient: NSObject, Sendable {
   // MARK: Functions
   public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
     switch self.authenticationMethod {
-      case let .authorizationCode(clientId, clientSecret, callbackScheme, redirectURI, _, usePKCE):
+      case let .authorizationCode(clientId, _, _, redirectURI, _, usePKCE):
         let queryItems: [URLQueryItem]
         if usePKCE {
           let codeVerifier = PKCEGenerator.generateCodeVerifier()
@@ -107,7 +106,7 @@ public final class OAuth2HTTPClient: NSObject, Sendable {
         guard let url else { fatalError() }
         return url
 
-      case let .clientCredentials(clientId, clientSecret): fatalError()
+      case .clientCredentials: fatalError()
     }
   }
 
@@ -164,9 +163,9 @@ public final class OAuth2HTTPClient: NSObject, Sendable {
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
     let request: URLRequest = requestBuilder.request
-    let formParams: [String.SubSequence] = String(data: request.httpBody!, encoding: .utf8)!.split(separator: "&")
+    print(request.ast.curlString)
 
-    let (token, response): (OAuth2Token, URLResponse) = try await requestBuilder.send()
+    let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send()
     try await self.store.store(token: token)
   }
 
@@ -181,7 +180,7 @@ public final class OAuth2HTTPClient: NSObject, Sendable {
             let url = try! self.createAuthorizationURL()
             let session = ASWebAuthenticationSession(
               url: url,
-              callbackURLScheme: callbackScheme
+              callback: ASWebAuthenticationSession.Callback.customScheme(callbackScheme)
             ) { (callbackURL: URL?, error: Error?) -> Void in
               if let callbackURL {
                 Task {
@@ -205,7 +204,7 @@ public final class OAuth2HTTPClient: NSObject, Sendable {
     } else if (isAccessTokenExpired) {
       let refreshToken = await self.store.token!.refreshToken!
       let grant: RefreshGrant = RefreshGrant(clientId: self.authenticationMethod.clientId, refreshToken: refreshToken)
-      let (token, response): (OAuth2Token, URLResponse) = try await self.token(credentialsGrant: grant).send()
+      let (token, _): (OAuth2Token, URLResponse) = try await self.token(credentialsGrant: grant).send()
       try await self.store.store(token: token)
     }
   }
