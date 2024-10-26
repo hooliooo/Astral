@@ -1,3 +1,4 @@
+//
 //  Astral
 //  Copyright (c) Julio Miguel Alorro
 //  Licensed under the MIT license. See LICENSE file
@@ -137,7 +138,6 @@ public struct OAuth2HTTPClient: Sendable {
    Queries the given OAuth2.0 token url as a POST request with the necessary payload given the data
    from the OAuth2Grant instance
    - parameters:
-        - url: The URL of the OAuth2.0 token endpoint
         - credentialGrant: The CredentialsGrant instance containing data necessary for the http POST request
    */
   private func token(credentialsGrant: any OAuth2Grant) throws -> RequestBuilder {
@@ -272,4 +272,3 @@ public extension OAuth2HTTPClient {
     case missingAuthCode
   }
 }
-

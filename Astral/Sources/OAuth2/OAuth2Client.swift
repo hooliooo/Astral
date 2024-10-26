@@ -5,7 +5,7 @@
 //
 
 /**
- An OAuth2Client is an entity that can request authentication of a usre
+ An OAuth2Client is an entity that can request authentication of a user
  */
 public enum OAuth2Client: Sendable {
   /**
