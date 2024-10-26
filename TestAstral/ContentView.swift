@@ -42,9 +42,6 @@ class LoginService: NSObject {
 
   func start() {
     Task { try await self.client.refresh() }
-
-// Happy%path1234
-// kommy0-pyssat-sacTys
   }
 
 }
