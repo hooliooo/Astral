@@ -10,6 +10,7 @@ import class AuthenticationServices.ASWebAuthenticationSession
 import class AuthenticationServices.ASPresentationAnchor
 import protocol AuthenticationServices.ASWebAuthenticationPresentationContextProviding
 import enum OAuth2.AuthenticationMethod
+import enum OAuth2.OAuth2Client
 import struct OAuth2.OAuth2HTTPClient
 
 @main
@@ -26,8 +27,7 @@ struct TestAstralApp: App {
       authorizationEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/auth",
       tokenEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/token",
       grantType: AuthenticationMethod.authorizationCode(
-        clientId: clientId,
-        clientSecret: clientSecret,
+        client: OAuth2Client.public(clientId: clientId),
         callbackScheme: callbackScheme,
         redirectURI: redirectURI,
         delegate: AuthCodeLoginDelegate(),

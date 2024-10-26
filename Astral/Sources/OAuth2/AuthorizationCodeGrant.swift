@@ -18,9 +18,8 @@ public struct AuthorizationCodeGrant {
         - code: The authenication code
         - redirectURI: The redirect uri
    */
-  public init(clientId: String, clientSecret: String? = nil, code: String, redirectURI: String) {
-    self.clientId = clientId
-    self.clientSecret = clientSecret
+  public init(client: OAuth2Client, code: String, redirectURI: String) {
+    self.client = client
     self.code = code
     self.redirectURI = redirectURI
   }
@@ -28,12 +27,19 @@ public struct AuthorizationCodeGrant {
   /**
    The client id
    */
-  public var clientId: String
+  public var client: OAuth2Client
+
+  public var clientId: String {
+    return self.client.id
+  }
 
   /**
    The client secret
    */
-  public var clientSecret: String?
+  public var clientSecret: String? {
+    guard case let .confidential(credentials) = self.client else { return nil}
+    return credentials.clientSecret
+  }
 
   /**
    The code given by the authorize endpoint
@@ -53,7 +59,7 @@ extension AuthorizationCodeGrant: OAuth2Grant {
 
   public var urlQueryItems: [URLQueryItem] {
     var queryItems = [
-      ("client_id", \Self.clientId),
+      ("client_id", \Self.client.id),
       ("code", \Self.code),
       ("grant_type", \Self.grantType),
       ("redirect_uri", \Self.redirectURI)

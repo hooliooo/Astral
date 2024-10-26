@@ -70,7 +70,7 @@ public struct OAuth2HTTPClient: Sendable {
   // MARK: Functions
   public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
     switch self.authenticationMethod {
-      case let .authorizationCode(clientId, _, _, redirectURI, _, usePKCE):
+      case let .authorizationCode(client, _, redirectURI, _, usePKCE):
         let queryItems: [URLQueryItem]
         if usePKCE {
           let codeVerifier = PKCEGenerator.generateCodeVerifier()
@@ -78,7 +78,7 @@ public struct OAuth2HTTPClient: Sendable {
             fatalError()
           }
           let authorization: AuthorizationCodeWithPKCE = AuthorizationCodeWithPKCE(
-            clientId: clientId,
+            clientId: client.id,
             scope: "openid profile email",
             codeChallenge: codeChallenge,
             redirectURI: redirectURI
@@ -92,7 +92,7 @@ public struct OAuth2HTTPClient: Sendable {
           queryItems = authorization.urlQueryItems
         } else {
           let authorization: AuthorizationCodeFlow = AuthorizationCodeFlow(
-            clientId: clientId,
+            clientId: client.id,
             scope: "openid profile email",
             redirectURI: redirectURI
           )
@@ -125,19 +125,18 @@ public struct OAuth2HTTPClient: Sendable {
     }
 
     switch self.authenticationMethod {
-      case let .authorizationCode(clientId, clientSecret, _, redirectURI, _, usePKCE):
+      case let .authorizationCode(client, _, redirectURI, _, usePKCE):
         if usePKCE {
           guard let codeVerifier = await self.store.codeVerifier else { fatalError() }
           return AuthorizationCodePKCEGrant(
-            clientId: clientId,
+            client: client,
             code: code,
             codeVerifier: codeVerifier,
             redirectURI: redirectURI
           )
         } else {
           return AuthorizationCodeGrant(
-            clientId: clientId,
-            clientSecret: clientSecret,
+            client: client,
             code: code,
             redirectURI: redirectURI
           )
@@ -175,7 +174,7 @@ public struct OAuth2HTTPClient: Sendable {
 
     if (isRefreshTokenExpired) {
       switch self.authenticationMethod {
-        case let .authorizationCode(_, _, callbackScheme, _, delegate, _):
+        case let .authorizationCode(_, callbackScheme, _, delegate, _):
           Task { @MainActor in
             let url = try! self.createAuthorizationURL()
             let session = ASWebAuthenticationSession(
@@ -194,9 +193,9 @@ public struct OAuth2HTTPClient: Sendable {
             session.start()
           }
 
-        case let .clientCredentials(clientId, clientSecret):
+        case let .clientCredentials(credentials):
           let grant: ClientCredentialsGrant = ClientCredentialsGrant(
-            credentials: ClientCredentials(clientId: clientId, clientSecret: clientSecret),
+            credentials: credentials,
             scope: "openid profile email"
           )
           try await self.authenticate(with: grant)

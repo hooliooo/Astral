@@ -19,8 +19,8 @@ public struct AuthorizationCodePKCEGrant {
         - codeVerifier: The code verifier for the PKCE verificiation
         - redirectURI: The redirect uri
    */
-  public init(clientId: String, code: String, codeVerifier: String, redirectURI: String) {
-    self.authorizationCodeGrant = AuthorizationCodeGrant(clientId: clientId, code: code, redirectURI: redirectURI)
+  public init(client: OAuth2Client, code: String, codeVerifier: String, redirectURI: String) {
+    self.authorizationCodeGrant = AuthorizationCodeGrant(client: client, code: code, redirectURI: redirectURI)
     self.codeVerifier = codeVerifier
   }
 
