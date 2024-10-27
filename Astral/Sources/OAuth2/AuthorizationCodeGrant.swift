@@ -76,7 +76,7 @@ extension AuthorizationCodeGrant: OAuth2Grant {
     }
 
     if self.codeVerifier != nil {
-      queryItems.append(("code_verifier", \Self.self.codeVerifier!))
+      queryItems.append(("code_verifier", \Self.codeVerifier!))
     }
 
     return queryItems.compactMap { (name: String, keyPath: PartialKeyPath<Self>) -> URLQueryItem? in

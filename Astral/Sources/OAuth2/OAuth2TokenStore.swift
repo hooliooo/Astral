@@ -13,8 +13,8 @@ import struct JSONWebKey.JWK
 
 public actor OAuth2TokenStore: Sendable {
 
-  public init(grantType: AuthenticationMethod) {
-    self.tokenName = "\(grantType.stringName)-token.json"
+  public init(method: AuthenticationMethod) {
+    self.tokenName = "\(method.stringName)-token.json"
   }
 
   public private(set) var token: OAuth2Token?

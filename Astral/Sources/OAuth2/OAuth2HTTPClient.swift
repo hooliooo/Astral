@@ -29,17 +29,17 @@ public struct OAuth2HTTPClient: Sendable {
    - parameters:
       - authorizationEndpoint: The authorization endpoint for authorization code requests
       - tokenEndpoint: The token endpoint for access token and refresh token requests
-      - authenticationMethod: The grant type to be used when authenticating
+      - method: The method to be used when authenticating
    */
   public init(
     authorizationEndpoint: String,
     tokenEndpoint: String,
-    grantType: AuthenticationMethod
+    method: AuthenticationMethod
   ) {
     self.authorizationEndpoint = authorizationEndpoint
     self.tokenEndpoint = tokenEndpoint
-    self.authenticationMethod = grantType
-    self.store = OAuth2TokenStore(grantType: grantType)
+    self.method = method
+    self.store = OAuth2TokenStore(method: method)
   }
 
 
@@ -62,7 +62,7 @@ public struct OAuth2HTTPClient: Sendable {
   /**
    The grant type to be used for authentication
    */
-  public let authenticationMethod: AuthenticationMethod
+  public let method: AuthenticationMethod
 
   /**
    The OAuth2TokenStore instance used to read/write the OAuth2Token for authentication
@@ -76,9 +76,9 @@ public struct OAuth2HTTPClient: Sendable {
 
   // MARK: Functions
   public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
-    switch self.authenticationMethod {
+    switch self.method {
       case let .authorizationCode(client, _, redirectURI, _, usePKCE):
-        logger.debug("Creating authorization URL for authorization code flow")
+        self.logger.debug("Creating authorization URL for authorization code flow")
 
         let authorization: AuthorizationCodeFlow = try AuthorizationCodeFlow(
           clientId: client.id,
@@ -96,14 +96,13 @@ public struct OAuth2HTTPClient: Sendable {
           }
         }
 
-        let url: URL? = try self.httpClient.get(url: self.authorizationEndpoint)
+        let url: URL = try self.httpClient.get(url: self.authorizationEndpoint)
           .query(items: queryItems + additonalURLQueryItems)
           .request
-          .url
-        guard let url else { throw Error.invalidURL }
+          .url!
         return url
 
-      case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.authenticationMethod)
+      case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.method)
     }
   }
 
@@ -121,7 +120,7 @@ public struct OAuth2HTTPClient: Sendable {
       throw Error.missingAuthCode
     }
 
-    switch self.authenticationMethod {
+    switch self.method {
       case let .authorizationCode(client, _, redirectURI, _, _):
         return AuthorizationCodeGrant(
           client: client,
@@ -130,8 +129,12 @@ public struct OAuth2HTTPClient: Sendable {
           codeVerifier: await self.store.codeVerifier
         )
 
-      case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.authenticationMethod)
+      case .clientCredentials, .password: throw Error.invalidAuthenticationMethod(self.method)
     }
+  }
+
+  private func verifyAndStore(token: OAuth2Token) async throws {
+    try await self.store.store(token: token)
   }
 
   /**
@@ -149,7 +152,7 @@ public struct OAuth2HTTPClient: Sendable {
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
     let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send()
-    try await self.store.store(token: token)
+    try await self.verifyAndStore(token: token)
   }
 
   public func refresh() async throws {
@@ -157,7 +160,7 @@ public struct OAuth2HTTPClient: Sendable {
     let isRefreshTokenExpired = await self.store.isRefreshTokenExpired
 
     if (isRefreshTokenExpired) {
-      switch self.authenticationMethod {
+      switch self.method {
         case let .authorizationCode(_, callbackScheme, _, delegate, _):
           let url: URL = try self.createAuthorizationURL()
 
@@ -204,9 +207,9 @@ public struct OAuth2HTTPClient: Sendable {
       }
     } else if (isAccessTokenExpired) {
       let refreshToken = await self.store.token!.refreshToken!
-      let grant: RefreshGrant = RefreshGrant(clientId: self.authenticationMethod.clientId, refreshToken: refreshToken)
+      let grant: RefreshGrant = RefreshGrant(clientId: self.method.clientId, refreshToken: refreshToken)
       let (token, _): (OAuth2Token, URLResponse) = try await self.token(credentialsGrant: grant).send()
-      try await self.store.store(token: token)
+      try await self.verifyAndStore(token: token)
     }
   }
 
@@ -218,7 +221,7 @@ public struct OAuth2HTTPClient: Sendable {
    */
   public func request(url: String, method: HTTPMethod) async throws -> RequestBuilder {
     try await self.refresh()
-    return try self.httpClient.request(url: url, method: method).bearerAuthentication(token: await store.token!.accessToken)
+    return try self.httpClient.request(url: url, method: method).bearerAuthentication(token: await self.store.token!.accessToken)
   }
 
   /**
@@ -257,7 +260,6 @@ public struct OAuth2HTTPClient: Sendable {
 
 public extension OAuth2HTTPClient {
   enum Error: Swift.Error {
-    case invalidURL
     case invalidAuthenticationMethod(AuthenticationMethod)
     case invalidGrant(grant: any OAuth2Grant)
     case missingAuthCode
