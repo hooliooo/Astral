@@ -10,7 +10,7 @@ import PackageDescription
 
 let package = Package( // swiftlint:disable:this explicit_acl explicit_top_level_acl multiline_arguments_brackets
   name: "Astral",
-  platforms: [.iOS(.v18), .macOS(.v13)],
+  platforms: [.iOS(.v18), .macOS(.v15)],
   products: [
     .library(name: "Astral",targets: ["Astral"]),
     .library(name: "OAuth2", targets: ["OAuth2"])

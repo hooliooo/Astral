@@ -1,8 +1,8 @@
 //
-//  TestAstralApp.swift
-//  TestAstral
+//  TestAstralMacApp.swift
+//  TestAstralMac
 //
-//  Created by Julio Alorro on 04.02.23.
+//  Created by Julio Alorro on 21.05.25.
 //
 
 import SwiftUI
@@ -14,7 +14,8 @@ import enum OAuth2.OAuth2Client
 import struct OAuth2.OAuth2HTTPClient
 
 @main
-struct TestAstralApp: App {
+struct TestAstralMacApp: App {
+
   init() {
     let keycloakURL: String = Bundle.main.object(forInfoDictionaryKey: "KEYCLOAK_URL") as! String
     let keycloakRealm: String = Bundle.main.object(forInfoDictionaryKey: "KEYCLOAK_REALM") as! String
@@ -23,6 +24,7 @@ struct TestAstralApp: App {
     let callbackScheme: String = Bundle.main.object(forInfoDictionaryKey: "CALLBACK_SCHEME") as! String
     let redirectURI: String = Bundle.main.object(forInfoDictionaryKey: "REDIRECT_URI") as! String
 
+    self.loginDelegate = AuthCodeLoginDelegate()
     self.authCodeHttpClient = OAuth2HTTPClient(
       authorizationEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/auth",
       tokenEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/token",
@@ -30,7 +32,7 @@ struct TestAstralApp: App {
         client: OAuth2Client.public(clientId: clientId),
         callbackScheme: callbackScheme,
         redirectURI: redirectURI,
-        delegate: AuthCodeLoginDelegate(),
+        delegate: self.loginDelegate,
         usePKCE: true
       )
     )
@@ -42,20 +44,34 @@ struct TestAstralApp: App {
 //    )
   }
 
-  private let authCodeHttpClient: OAuth2HTTPClient
-//  private let clientCredentialsHttpClient: OAuth2HTTPClient
+  @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
+  private var loginDelegate: AuthCodeLoginDelegate!
+  private var authCodeHttpClient: OAuth2HTTPClient!
 
   var body: some Scene {
       WindowGroup {
-        ContentView(service: LoginService(client: self.authCodeHttpClient))
+          ContentView(
+            service: LoginService(client: self.authCodeHttpClient)
+          )
       }
   }
 }
 
-final class AuthCodeLoginDelegate: NSObject {}
+final class AuthCodeLoginDelegate: NSObject {
+  
+}
 
 extension AuthCodeLoginDelegate: ASWebAuthenticationPresentationContextProviding {
   func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+//    return NSApplication.shared.windows.first ?? NSApplication.shared.keyWindow ?? NSApplication.shared.mainWindow ?? ASPresentationAnchor()
     return ASPresentationAnchor()
+  }
+
+  
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+  func application(_ application: NSApplication, open urls: [URL]) {
+    print("Opened URLs: \(urls)")
   }
 }

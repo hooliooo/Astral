@@ -72,13 +72,13 @@ public struct OAuth2HTTPClient: Sendable {
   /**
    The logger for the client
    */
-  public let logger: Logger = Logger(subsystem: "Astral+OAuth2", category: "OAuth2HTTPClient")
+  private static let logger: Logger = Logger(subsystem: "Astral+OAuth2", category: "OAuth2HTTPClient")
 
   // MARK: Functions
   public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
     switch self.method {
       case let .authorizationCode(client, _, redirectURI, _, usePKCE):
-        self.logger.debug("Creating authorization URL for authorization code flow")
+        OAuth2HTTPClient.logger.debug("Creating authorization URL for authorization code flow")
 
         let authorization: AuthorizationCodeFlow = try AuthorizationCodeFlow(
           clientId: client.id,
@@ -151,41 +151,50 @@ public struct OAuth2HTTPClient: Sendable {
     let decoder: JSONDecoder = JSONDecoder()
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
-    let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send()
+    let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send(decoder: decoder)
+
+    OAuth2HTTPClient.logger.debug("Access Token: \(token.accessToken)")
+    if let refreshToken = token.refreshToken {
+      OAuth2HTTPClient.logger.debug("Refresh Token: \(refreshToken)")
+    }
+    if let idToken = token.idToken {
+      OAuth2HTTPClient.logger.debug("Id Token: \(idToken)")
+    }
     try await self.verifyAndStore(token: token)
   }
 
   public func refresh() async throws {
     let isAccessTokenExpired = await self.store.isAccessTokenExpired
     let isRefreshTokenExpired = await self.store.isRefreshTokenExpired
-
     if (isRefreshTokenExpired) {
       switch self.method {
         case let .authorizationCode(_, callbackScheme, _, delegate, _):
           let url: URL = try self.createAuthorizationURL()
-
-          Task { @MainActor in
-            let session = ASWebAuthenticationSession(
-              url: url,
-              callback: ASWebAuthenticationSession.Callback.customScheme(callbackScheme)
-            ) { (callbackURL: URL?, error: Swift.Error?) -> Void in
-              if let callbackURL {
-                Task {
-                  do {
-                    let grant: any OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
-                    try await self.authenticate(with: grant)
-                  } catch Error.missingAuthCode {
-                    self.logger.error("Missing auth code")
-                  } catch let error {
-                    self.logger.error("Uncaught Error: \(error)")
-                  }
+          OAuth2HTTPClient.logger.log("Authorization URL: \(url)")
+          let session = ASWebAuthenticationSession(
+            url: url,
+            callback: ASWebAuthenticationSession.Callback.customScheme(callbackScheme)
+          ) { (callbackURL: URL?, error: Swift.Error?) -> Void in
+            if let callbackURL {
+              OAuth2HTTPClient.logger.log("Callback URL: \(callbackURL)")
+              Task {
+                do {
+                  let grant: any OAuth2Grant = try await self.createAuthorizationCodeGrant(from: callbackURL)
+                  try await self.authenticate(with: grant)
+                } catch Error.missingAuthCode {
+                  OAuth2HTTPClient.logger.error("Missing auth code")
+                } catch let error {
+                  OAuth2HTTPClient.logger.error("Uncaught Error: \(error)")
                 }
-              } else if let error {
-                self.logger.error("Error: \(error)")
               }
+            } else if let error {
+              OAuth2HTTPClient.logger.error("Error: \(error)")
             }
-            session.presentationContextProvider = delegate
-            session.prefersEphemeralWebBrowserSession = true
+          }
+
+          session.presentationContextProvider = delegate
+
+          Task.detached(priority: TaskPriority.userInitiated) { @MainActor in
             session.start()
           }
 
@@ -265,3 +274,4 @@ public extension OAuth2HTTPClient {
     case missingAuthCode
   }
 }
+

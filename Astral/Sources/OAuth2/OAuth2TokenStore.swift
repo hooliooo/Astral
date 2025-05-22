@@ -14,7 +14,7 @@ import struct JSONWebKey.JWK
 public actor OAuth2TokenStore: Sendable {
 
   public init(method: AuthenticationMethod) {
-    self.tokenName = "\(method.stringName)-token.json"
+    self.tokenName = "\(method.name)-token.json"
   }
 
   public private(set) var token: OAuth2Token?
@@ -64,15 +64,14 @@ public actor OAuth2TokenStore: Sendable {
   public func readFromFile() throws -> OAuth2Token? {
     let url: URL = self.fileManager.ast.documentDirectory.appendingPathComponent(self.tokenName)
     // Check if it exists first to remove the old file
-    if self.fileManager.fileExists(atPath: url.path) {
-      let data: Data = try Data(contentsOf: url)
-      let decoder: JSONDecoder = JSONDecoder()
-      let token: OAuth2Token = try decoder.decode(OAuth2Token.self, from: data)
-      self.storeInMemory(token: token)
-      return token
-    } else {
-      return nil
-    }
+    guard self.fileManager.fileExists(atPath: url.path)
+    else { return nil }
+
+    let data: Data = try Data(contentsOf: url)
+    let decoder: JSONDecoder = JSONDecoder()
+    let token: OAuth2Token = try decoder.decode(OAuth2Token.self, from: data)
+    self.storeInMemory(token: token)
+    return token
   }
 
 }

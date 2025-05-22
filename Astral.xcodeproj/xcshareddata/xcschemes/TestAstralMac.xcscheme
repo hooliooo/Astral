@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "14423903298EC722002571A9"
-               BuildableName = "TestAstral.app"
-               BlueprintName = "TestAstral"
+               BlueprintIdentifier = "146AB4942DDDD19900DBC495"
+               BuildableName = "TestAstralMac.app"
+               BlueprintName = "TestAstralMac"
                ReferencedContainer = "container:Astral.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,7 +31,7 @@
       shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Staging"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14423903298EC722002571A9"
-            BuildableName = "TestAstral.app"
-            BlueprintName = "TestAstral"
+            BlueprintIdentifier = "146AB4942DDDD19900DBC495"
+            BuildableName = "TestAstralMac.app"
+            BlueprintName = "TestAstralMac"
             ReferencedContainer = "container:Astral.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "14423903298EC722002571A9"
-            BuildableName = "TestAstral.app"
-            BlueprintName = "TestAstral"
+            BlueprintIdentifier = "146AB4942DDDD19900DBC495"
+            BuildableName = "TestAstralMac.app"
+            BlueprintName = "TestAstralMac"
             ReferencedContainer = "container:Astral.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

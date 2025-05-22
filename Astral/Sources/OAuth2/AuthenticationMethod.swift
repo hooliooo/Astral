@@ -17,7 +17,7 @@ public enum AuthenticationMethod: Sendable {
   case clientCredentials(ClientCredentials)
   case password(ClientCredentials, username: String, password: String)
 
-  public var stringName: String {
+  public var name: String {
     return switch self {
       case let .authorizationCode(_, _, _, _, usePKCE): if usePKCE { "authorization_code_with_pkce" } else { "authorization_code" }
       case .clientCredentials: "client_credentials"
