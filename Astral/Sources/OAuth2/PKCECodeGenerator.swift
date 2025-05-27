@@ -18,7 +18,7 @@ public enum PKCEGenerator {
     var generator = SystemRandomNumberGenerator()
     let buffer = [UInt8](repeating: 0, count: 32)
         .map { _ in UInt8.random(in: UInt8.min...UInt8.max, using: &generator) }
-    return base64URLEncodedString(for:Data(buffer))
+    return base64URLEncodedString(for: Data(buffer))
   }
 
   /// Generate a code challenge from a code verifier as specified in

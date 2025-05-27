@@ -4,6 +4,7 @@
 //  Licensed under the MIT license. See LICENSE file
 //
 
+import struct Foundation.Data
 import struct Foundation.URLQueryItem
 import struct Foundation.UUID
 
@@ -16,6 +17,10 @@ public struct AuthorizationCodeFlow: Hashable, Sendable {
     self.clientId = clientId
     self.scope = scope
     self.redirectURI = redirectURI
+
+    let length: Int = 32
+    let bytes: [UInt8] = (0..<length).map { _ in UInt8.random(in: 0...255) }
+    self.state = Data(bytes).base64EncodedString()
 
     if usePKCE {
       let codeVerifier = PKCEGenerator.generateCodeVerifier()
@@ -50,7 +55,7 @@ public struct AuthorizationCodeFlow: Hashable, Sendable {
    compare it to the original one that was sent with an initial request.
    The two values must match to prevent cross-site request forgery.
    */
-  private let state: String = UUID().uuidString.replacing("-", with: "")
+  public let state: String
 
   /**
    The redirect uri

@@ -16,6 +16,8 @@
 	<string>${CALLBACK_SCHEME}</string>
 	<key>REDIRECT_URI</key>
 	<string>${REDIRECT_URI}</string>
+  <key>LSMultipleInstancesProhibited</key>
+  <true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

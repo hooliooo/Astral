@@ -49,7 +49,7 @@ struct TestAstralMacApp: App {
   private var authCodeHttpClient: OAuth2HTTPClient!
 
   var body: some Scene {
-      WindowGroup {
+    Window("Single Window App", id: "main") {
           ContentView(
             service: LoginService(client: self.authCodeHttpClient)
           )
@@ -72,6 +72,12 @@ extension AuthCodeLoginDelegate: ASWebAuthenticationPresentationContextProviding
 
 class AppDelegate: NSObject, NSApplicationDelegate {
   func application(_ application: NSApplication, open urls: [URL]) {
+    print("Window count \(application.windows.count)")
     print("Opened URLs: \(urls)")
   }
+
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    NSApplication.shared.windows.first?.tabbingMode = .disallowed
+  }
+
 }

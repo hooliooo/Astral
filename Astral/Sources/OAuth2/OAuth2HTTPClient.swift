@@ -96,6 +96,12 @@ public struct OAuth2HTTPClient: Sendable {
           }
         }
 
+        // Store the state for comparison when receiving the response from the authorization server
+        let state: String = authorization.state
+        Task.detached(priority: TaskPriority.userInitiated) {
+          await self.store.store(state: state)
+        }
+
         let url: URL = try self.httpClient.get(url: self.authorizationEndpoint)
           .query(items: queryItems + additonalURLQueryItems)
           .request
@@ -118,6 +124,15 @@ public struct OAuth2HTTPClient: Sendable {
       let code = queryItems.first(where: { $0.name == "code" })?.value
     else {
       throw Error.missingAuthCode
+    }
+
+    // Compare the state received from the URL authorization server with the state that was stored
+    guard let state = queryItems.first(where: { $0.name == "state"})?.value
+    else { throw Error.missingState }
+    let storedState = await self.store.state
+
+    if storedState != state {
+      throw Error.stateDoesNotMatch
     }
 
     switch self.method {
@@ -161,6 +176,10 @@ public struct OAuth2HTTPClient: Sendable {
       OAuth2HTTPClient.logger.debug("Id Token: \(idToken)")
     }
     try await self.verifyAndStore(token: token)
+
+    if grant is AuthorizationCodeGrant {
+      await self.store.clearState()
+    }
   }
 
   public func refresh() async throws {
@@ -272,6 +291,8 @@ public extension OAuth2HTTPClient {
     case invalidAuthenticationMethod(AuthenticationMethod)
     case invalidGrant(grant: any OAuth2Grant)
     case missingAuthCode
+    case missingState
+    case stateDoesNotMatch
   }
 }
 

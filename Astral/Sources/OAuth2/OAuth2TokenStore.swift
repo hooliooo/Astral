@@ -21,6 +21,8 @@ public actor OAuth2TokenStore: Sendable {
 
   public private(set) var codeVerifier: String?
 
+  public private(set) var state: String?
+
   private let fileManager: FileManager = FileManager.default
 
   private let tokenName: String
@@ -59,6 +61,15 @@ public actor OAuth2TokenStore: Sendable {
 
   public func store(codeVerifier: String) {
     self.codeVerifier = codeVerifier
+  }
+
+  public func store(state: String) {
+    self.state = state
+  }
+
+  public func clearState() {
+    self.state = nil
+    self.codeVerifier = nil
   }
 
   public func readFromFile() throws -> OAuth2Token? {
