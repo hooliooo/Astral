@@ -36,6 +36,9 @@ public struct OAuth2HTTPClient: Sendable {
     tokenEndpoint: String,
     method: AuthenticationMethod
   ) {
+    let httpClient: HTTPClient = HTTPClient()
+    self.httpClient = httpClient
+    self.verifier = JWTVerifier(httpClient: httpClient, url: URL(string: authorizationEndpoint)!)
     self.authorizationEndpoint = authorizationEndpoint
     self.tokenEndpoint = tokenEndpoint
     self.method = method
@@ -47,7 +50,12 @@ public struct OAuth2HTTPClient: Sendable {
   /**
    The underlying Client instance to make http requests
    */
-  private let httpClient: HTTPClient = HTTPClient()
+  private let httpClient: HTTPClient
+
+  /**
+   Verifies JWTs after authenticating
+   */
+  private let verifier: JWTVerifier
 
   /**
    The OAuth2 authorization endpoint
@@ -167,6 +175,7 @@ public struct OAuth2HTTPClient: Sendable {
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
     let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send(decoder: decoder)
+    try await self.verifier.verify(token: token)
 
     OAuth2HTTPClient.logger.debug("Access Token: \(token.accessToken)")
     if let refreshToken = token.refreshToken {
@@ -178,7 +187,7 @@ public struct OAuth2HTTPClient: Sendable {
     try await self.verifyAndStore(token: token)
 
     if grant is AuthorizationCodeGrant {
-      await self.store.clearState()
+      await self.store.clear()
     }
   }
 

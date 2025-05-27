@@ -67,7 +67,7 @@ public actor OAuth2TokenStore: Sendable {
     self.state = state
   }
 
-  public func clearState() {
+  public func clear() {
     self.state = nil
     self.codeVerifier = nil
   }
