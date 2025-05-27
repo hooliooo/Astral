@@ -11,7 +11,7 @@ import class AuthenticationServices.ASPresentationAnchor
 import protocol AuthenticationServices.ASWebAuthenticationPresentationContextProviding
 import enum OAuth2.AuthenticationMethod
 import enum OAuth2.OAuth2Client
-import struct OAuth2.OAuth2HTTPClient
+import class OAuth2.OAuth2HTTPClient
 
 @main
 struct TestAstralMacApp: App {
@@ -23,16 +23,13 @@ struct TestAstralMacApp: App {
     let clientSecret: String? = Bundle.main.object(forInfoDictionaryKey: "CLIENT_SECRET") as? String
     let callbackScheme: String = Bundle.main.object(forInfoDictionaryKey: "CALLBACK_SCHEME") as! String
     let redirectURI: String = Bundle.main.object(forInfoDictionaryKey: "REDIRECT_URI") as! String
-
-    self.loginDelegate = AuthCodeLoginDelegate()
     self.authCodeHttpClient = OAuth2HTTPClient(
-      authorizationEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/auth",
-      tokenEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/token",
+      baseURL: "\(keycloakURL)/realms/\(keycloakRealm)",
       method: AuthenticationMethod.authorizationCode(
         client: OAuth2Client.public(clientId: clientId),
         callbackScheme: callbackScheme,
         redirectURI: redirectURI,
-        delegate: self.loginDelegate,
+        delegate: AuthCodeLoginDelegate(),
         usePKCE: true
       )
     )
@@ -45,7 +42,6 @@ struct TestAstralMacApp: App {
   }
 
   @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
-  private var loginDelegate: AuthCodeLoginDelegate!
   private var authCodeHttpClient: OAuth2HTTPClient!
 
   var body: some Scene {

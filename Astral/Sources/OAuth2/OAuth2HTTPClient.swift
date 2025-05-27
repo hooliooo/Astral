@@ -21,30 +21,29 @@ import struct os.Logger
 /**
  An OAuth2HTTPClient is an abstraction over a Client with an easy to use API to communicate with RESTful APIs in an authenticated manner.
  */
-public struct OAuth2HTTPClient: Sendable {
+public actor OAuth2HTTPClient: Sendable {
 
   // MARK: Initializers
   /**
    Initializer for an OAuth2Client instance
    - parameters:
-      - authorizationEndpoint: The authorization endpoint for authorization code requests
-      - tokenEndpoint: The token endpoint for access token and refresh token requests
+      - baseURL: The base URL of the authorization server
       - method: The method to be used when authenticating
    */
   public init(
-    authorizationEndpoint: String,
-    tokenEndpoint: String,
+    baseURL: String,
     method: AuthenticationMethod
   ) {
     let httpClient: HTTPClient = HTTPClient()
     self.httpClient = httpClient
-    self.verifier = JWTVerifier(httpClient: httpClient, url: URL(string: authorizationEndpoint)!)
-    self.authorizationEndpoint = authorizationEndpoint
-    self.tokenEndpoint = tokenEndpoint
     self.method = method
     self.store = OAuth2TokenStore(method: method)
-  }
 
+    Task(priority: TaskPriority.userInitiated) { [weak self] in
+      guard let self else { return }
+      try await self.initializeConfiguration(baseURL: baseURL, httpClient: httpClient)
+    }
+  }
 
   // MARK: Properties
   /**
@@ -53,19 +52,9 @@ public struct OAuth2HTTPClient: Sendable {
   private let httpClient: HTTPClient
 
   /**
-   Verifies JWTs after authenticating
+   The OpenIDConnect Configuration of the authorization server the OAuth2HTTPClient is communicating with
    */
-  private let verifier: JWTVerifier
-
-  /**
-   The OAuth2 authorization endpoint
-   */
-  private let authorizationEndpoint: String
-
-  /**
-   The OAuth2 token endpoint
-   */
-  private let tokenEndpoint: String
+  private var configuration: OpenIDConnectConfiguration!
 
   /**
    The grant type to be used for authentication
@@ -83,6 +72,11 @@ public struct OAuth2HTTPClient: Sendable {
   private static let logger: Logger = Logger(subsystem: "Astral+OAuth2", category: "OAuth2HTTPClient")
 
   // MARK: Functions
+
+  private func initializeConfiguration(baseURL: String, httpClient: HTTPClient) async throws {
+    self.configuration = try await OpenIDConnectConfiguration(baseURL: baseURL, httpClient: httpClient)
+  }
+
   public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
     switch self.method {
       case let .authorizationCode(client, _, redirectURI, _, usePKCE):
@@ -99,18 +93,20 @@ public struct OAuth2HTTPClient: Sendable {
         if let pkce = authorization.pkce {
           let codeVerifier = pkce.codeVerifier
           // Store the code verifier for the authorization code flow request
-          Task.detached(priority: TaskPriority.userInitiated) {
+          Task.detached(priority: TaskPriority.userInitiated) { [weak self] in
+            guard let self else { return }
             await self.store.store(codeVerifier: codeVerifier)
           }
         }
 
         // Store the state for comparison when receiving the response from the authorization server
         let state: String = authorization.state
-        Task.detached(priority: TaskPriority.userInitiated) {
+        Task.detached(priority: TaskPriority.userInitiated) { [weak self] in
+          guard let self else { return }
           await self.store.store(state: state)
         }
 
-        let url: URL = try self.httpClient.get(url: self.authorizationEndpoint)
+        let url: URL = try self.httpClient.get(url: self.configuration.authorizationEndpoint)
           .query(items: queryItems + additonalURLQueryItems)
           .request
           .url!
@@ -167,7 +163,7 @@ public struct OAuth2HTTPClient: Sendable {
         - credentialGrant: The CredentialsGrant instance containing data necessary for the http POST request
    */
   private func token(credentialsGrant: any OAuth2Grant) throws -> RequestBuilder {
-    return try self.httpClient.post(url: self.tokenEndpoint).form(items: credentialsGrant.urlQueryItems)
+    return try self.httpClient.post(url: self.configuration.tokenEndpoint).form(items: credentialsGrant.urlQueryItems)
   }
 
   private func authenticate(with grant: any OAuth2Grant) async throws {
@@ -175,7 +171,7 @@ public struct OAuth2HTTPClient: Sendable {
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
     let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send(decoder: decoder)
-    try await self.verifier.verify(token: token)
+    try await self.configuration.verifier.verify(token: token)
 
     OAuth2HTTPClient.logger.debug("Access Token: \(token.accessToken)")
     if let refreshToken = token.refreshToken {
@@ -202,7 +198,8 @@ public struct OAuth2HTTPClient: Sendable {
           let session = ASWebAuthenticationSession(
             url: url,
             callback: ASWebAuthenticationSession.Callback.customScheme(callbackScheme)
-          ) { (callbackURL: URL?, error: Swift.Error?) -> Void in
+          ) { [weak self] (callbackURL: URL?, error: Swift.Error?) -> Void in
+            guard let self else { return }
             if let callbackURL {
               OAuth2HTTPClient.logger.log("Callback URL: \(callbackURL)")
               Task {

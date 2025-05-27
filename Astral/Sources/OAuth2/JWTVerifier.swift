@@ -20,7 +20,10 @@ struct JWTVerifier {
   private let httpClient: HTTPClient
 
   /// The URL to the OIDC certs endpoint
-  private let url: URL
+  private let url: String
+
+  /// The issuer of the JWT
+  private let issuer: String
 
   /**
    The logger for the client
@@ -33,16 +36,18 @@ struct JWTVerifier {
       - httpClient: The HTTPClient used to communicate with the OAuth2 Server's OIDC certs endpoint
       - url: The URL to the OIDC certs endpoint
    */
-  init(httpClient: HTTPClient, url: URL) {
+  init(httpClient: HTTPClient, url: String, issuer: String) {
     self.httpClient = httpClient
-    self.url = url.deletingLastPathComponent().appendingPathComponent("certs")
+    self.url = url
+    self.issuer = issuer
+
   }
 
   /**
    Verifies the token
    */
   func verify(token: OAuth2Token) async throws {
-    let (jwkSet, _): (JWKSet, URLResponse) = try await self.httpClient.get(url: url.absoluteString).send()
+    let (jwkSet, _): (JWKSet, URLResponse) = try await self.httpClient.get(url: url).send()
     let jwt = try JWT(jwtString: token.accessToken)
     guard
       case let JWT.Format.jws(headerJWS) = jwt.format,
@@ -53,7 +58,7 @@ struct JWTVerifier {
     let jws = try jwkSet.key(withID: keyID)
     
     JWTVerifier.logger.debug("Verifying JWT...")
-    let _: JWT = try JWT.verify(jwtString: token.accessToken, senderKey: jws)
+    let _: JWT = try JWT.verify(jwtString: token.accessToken, senderKey: jws, expectedIssuer: self.issuer)
     JWTVerifier.logger.debug("Verified JWT")
   }
 
