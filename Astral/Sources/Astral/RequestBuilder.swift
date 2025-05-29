@@ -38,11 +38,11 @@ public struct RequestBuilder: Sendable {
   /**
    The components that make up the url of the URLRequest
    */
-  public var urlComponents: URLComponents
+  public private(set)var urlComponents: URLComponents
   /**
    The URLRequest instance modified by the methods of the RequestBuilder and sent using the send methods
    */
-  public var request: URLRequest
+  public private(set)var request: URLRequest
   /**
    The url to the file being uploaded by the URLSession as a stream
    */

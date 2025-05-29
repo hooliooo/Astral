@@ -9,7 +9,6 @@ import class Foundation.JSONEncoder
 import class Foundation.FileManager
 import struct Foundation.Data
 import struct Foundation.URL
-import struct JSONWebKey.JWK
 
 public actor OAuth2TokenStore: Sendable {
 

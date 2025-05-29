@@ -47,7 +47,7 @@ struct JWTVerifier {
    Verifies the token
    */
   func verify(token: OAuth2Token) async throws {
-    let (jwkSet, _): (JWKSet, URLResponse) = try await self.httpClient.get(url: url).send()
+    let (jwkSet, _): (JWKSet, URLResponse) = try await self.httpClient.get(url: self.url).send()
     let jwt = try JWT(jwtString: token.accessToken)
     guard
       case let JWT.Format.jws(headerJWS) = jwt.format,
