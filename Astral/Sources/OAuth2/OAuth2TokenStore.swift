@@ -36,6 +36,10 @@ public actor OAuth2TokenStore: Sendable {
     return token.isRefreshTokenExpired
   }
 
+  public var hasToken: Bool {
+    self.token != nil
+  }
+
   public func storeInMemory(token: OAuth2Token) {
     self.token = token
   }
@@ -82,6 +86,14 @@ public actor OAuth2TokenStore: Sendable {
     let token: OAuth2Token = try decoder.decode(OAuth2Token.self, from: data)
     self.storeInMemory(token: token)
     return token
+  }
+
+  public func removeToken() throws {
+    let url: URL = self.fileManager.ast.documentDirectory.appendingPathComponent(self.tokenName)
+    if self.fileManager.fileExists(atPath: url.path) {
+      try self.fileManager.removeItem(at: url)
+    }
+    self.token = nil
   }
 
 }

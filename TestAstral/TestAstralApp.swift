@@ -11,7 +11,7 @@ import class AuthenticationServices.ASPresentationAnchor
 import protocol AuthenticationServices.ASWebAuthenticationPresentationContextProviding
 import enum OAuth2.AuthenticationMethod
 import enum OAuth2.OAuth2Client
-import struct OAuth2.OAuth2HTTPClient
+import class OAuth2.OAuth2HTTPClient
 
 @main
 struct TestAstralApp: App {
@@ -24,15 +24,18 @@ struct TestAstralApp: App {
     let redirectURI: String = Bundle.main.object(forInfoDictionaryKey: "REDIRECT_URI") as! String
 
     self.authCodeHttpClient = OAuth2HTTPClient(
-      authorizationEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/auth",
-      tokenEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/token",
+      baseURL: "\(keycloakURL)/realms/\(keycloakRealm)",
+//      authorizationEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/auth",
+//      tokenEndpoint: "\(keycloakURL)/realms/\(keycloakRealm)/protocol/openid-connect/token",
       method: AuthenticationMethod.authorizationCode(
         client: OAuth2Client.public(clientId: clientId),
         callbackScheme: callbackScheme,
         redirectURI: redirectURI,
         delegate: AuthCodeLoginDelegate(),
-        usePKCE: true
-      )
+        usePKCE: true,
+        useDPoP: true
+      ),
+      appName: Bundle.main.bundleIdentifier!
     )
 
 //    self.clientCredentialsHttpClient = OAuth2HTTPClient(

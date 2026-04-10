@@ -18,5 +18,10 @@
 	<string>${REDIRECT_URI}</string>
 	<key>CFBundleURLTypes</key>
 	<array/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

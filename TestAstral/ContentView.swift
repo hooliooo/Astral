@@ -17,9 +17,16 @@ struct ContentView: View {
   let service: LoginService
 
   var body: some View {
-    VStack {
-      Button("Login") {
-        self.service.start()
+    VStack(spacing: 10) {
+      Button("Login Regular") {
+        self.service.login()
+      }
+      Button("Login Offline") {
+        self.service.login(scope: "openid profile email offline_access")
+      }
+      Link("Account", destination: URL(string: "http://localhost:8080/realms/oneqrew/account")!)
+      Button("Logout") {
+        self.service.logout()
       }
     }
     .padding()
@@ -40,8 +47,12 @@ class LoginService: NSObject {
 
   private let client: OAuth2HTTPClient
 
-  func start() {
-    Task { try await self.client.refresh() }
+  func login(scope: String = "openid profile email") {
+    Task { try await self.client.refresh(scope: scope) }
+  }
+
+  func logout() {
+    Task { try await self.client.logout() }
   }
 
 }

@@ -32,16 +32,23 @@ public actor OAuth2HTTPClient: Sendable {
    */
   public init(
     baseURL: String,
-    method: AuthenticationMethod
+    method: AuthenticationMethod,
+    appName: String,
   ) {
     let httpClient: HTTPClient = HTTPClient()
     self.httpClient = httpClient
     self.method = method
     self.store = OAuth2TokenStore(method: method)
+    self.dPoPManager = DPoPManager(appName: appName)
 
     Task(priority: TaskPriority.userInitiated) { [weak self] in
       guard let self else { return }
       try await self.initializeConfiguration(baseURL: baseURL, httpClient: httpClient)
+    }
+
+    Task(priority: TaskPriority.userInitiated) { [weak self] in
+      guard let self else { return }
+      let _ = try await self.store.readFromFile()
     }
   }
 
@@ -67,6 +74,11 @@ public actor OAuth2HTTPClient: Sendable {
   private let store: OAuth2TokenStore
 
   /**
+   
+   */
+  private let dPoPManager: DPoPManager
+
+  /**
    The logger for the client
    */
   private static let logger: Logger = Logger(subsystem: "Astral+OAuth2", category: "OAuth2HTTPClient")
@@ -77,16 +89,34 @@ public actor OAuth2HTTPClient: Sendable {
     self.configuration = try await OpenIDConnectConfiguration(baseURL: baseURL, httpClient: httpClient)
   }
 
-  public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = []) throws -> URL {
+  private func generateDPoPProof(url: String, httpMethod: HTTPMethod, accessToken: String? = nil) throws -> String {
+    let privateKey = try dPoPManager.retrieveOrCreateKey()
+    return try DPoPProofGenerator.generate(
+      privateKey: privateKey,
+      parameters: DPoPProofGenerator.Parameters(
+        httpMethod: httpMethod.stringValue,
+        url: url,
+        accessToken: accessToken,
+        nonce: nil
+      )
+    )
+  }
+
+  public func createAuthorizationURL(additonalURLQueryItems: [URLQueryItem] = [], scope: String = "openid profile email") throws -> URL {
     switch self.method {
-      case let .authorizationCode(client, _, redirectURI, _, usePKCE):
+      case let .authorizationCode(client, _, redirectURI, _, usePKCE, useDPoP):
         OAuth2HTTPClient.logger.debug("Creating authorization URL for authorization code flow")
 
+        let dPoPThumbprint: String? = try useDPoP
+          ? DPoPProofGenerator.generateJWKThumbprint(try self.dPoPManager.retrieveOrCreateKey().publicKey)
+          : nil
+        
         let authorization: AuthorizationCodeFlow = try AuthorizationCodeFlow(
           clientId: client.id,
-          scope: "openid profile email",
+          scope: scope,
           redirectURI: redirectURI,
-          usePKCE: usePKCE
+          usePKCE: usePKCE,
+          dPoPThumbprint: dPoPThumbprint
         )
         let queryItems: [URLQueryItem] = authorization.urlQueryItems
 
@@ -140,7 +170,7 @@ public actor OAuth2HTTPClient: Sendable {
     }
 
     switch self.method {
-      case let .authorizationCode(client, _, redirectURI, _, _):
+      case let .authorizationCode(client, _, redirectURI, _, _, _):
         return AuthorizationCodeGrant(
           client: client,
           code: code,
@@ -163,7 +193,16 @@ public actor OAuth2HTTPClient: Sendable {
         - credentialGrant: The CredentialsGrant instance containing data necessary for the http POST request
    */
   private func token(credentialsGrant: any OAuth2Grant) throws -> RequestBuilder {
-    return try self.httpClient.post(url: self.configuration.tokenEndpoint).form(items: credentialsGrant.urlQueryItems)
+    let builder: RequestBuilder = try self.httpClient
+      .post(url: self.configuration.tokenEndpoint)
+      .form(items: credentialsGrant.urlQueryItems)
+
+    if self.method.useDPoP {
+      let proof: String = try generateDPoPProof(url: self.configuration.tokenEndpoint, httpMethod: HTTPMethod.post)
+      return builder.headers(headers: [Header(key: Header.Key.custom("DPoP"), value: Header.Value.custom(proof))])
+    }
+
+    return builder
   }
 
   private func authenticate(with grant: any OAuth2Grant) async throws {
@@ -171,6 +210,7 @@ public actor OAuth2HTTPClient: Sendable {
     decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
     let requestBuilder: RequestBuilder = try self.token(credentialsGrant: grant)
     let (token, _): (OAuth2Token, URLResponse) = try await requestBuilder.send(decoder: decoder)
+//    let (token, response): (String, URLResponse) = try await requestBuilder.send()
     try await self.configuration.verifier.verify(token: token)
 
     OAuth2HTTPClient.logger.debug("Access Token: \(token.accessToken)")
@@ -187,13 +227,13 @@ public actor OAuth2HTTPClient: Sendable {
     }
   }
 
-  public func refresh() async throws {
+  public func refresh(scope: String = "openid profile email") async throws {
     let isAccessTokenExpired = await self.store.isAccessTokenExpired
     let isRefreshTokenExpired = await self.store.isRefreshTokenExpired
-    if (isRefreshTokenExpired) {
+    if isRefreshTokenExpired {
       switch self.method {
-        case let .authorizationCode(_, callbackScheme, _, delegate, _):
-          let url: URL = try self.createAuthorizationURL()
+        case let .authorizationCode(_, callbackScheme, _, delegate, _, useDPoP):
+          let url: URL = try self.createAuthorizationURL(scope: scope)
           OAuth2HTTPClient.logger.log("Authorization URL: \(url)")
           let session = ASWebAuthenticationSession(
             url: url,
@@ -223,28 +263,53 @@ public actor OAuth2HTTPClient: Sendable {
             session.start()
           }
 
-        case let .clientCredentials(credentials):
+        case let .clientCredentials(credentials, useDPoP):
           let grant: ClientCredentialsGrant = ClientCredentialsGrant(
             credentials: credentials,
-            scope: "openid profile email"
+            scope: scope
           )
           try await self.authenticate(with: grant)
 
-        case let .password(credentials, username, password):
+        case let .password(credentials, username, password, useDPoP):
           let grant: ResourceOwnerPasswordCredentialsGrant = ResourceOwnerPasswordCredentialsGrant(
             username: username,
             password: password,
-            scope: "openid profile email",
+            scope: scope,
             credentials: credentials
           )
           try await self.authenticate(with: grant)
       }
-    } else if (isAccessTokenExpired) {
+    } else if isAccessTokenExpired {
       let refreshToken = await self.store.token!.refreshToken!
       let grant: RefreshGrant = RefreshGrant(clientId: self.method.clientId, refreshToken: refreshToken)
       let (token, _): (OAuth2Token, URLResponse) = try await self.token(credentialsGrant: grant).send()
       try await self.verifyAndStore(token: token)
     }
+  }
+
+  public func logout() async throws {
+    let hasToken: Bool = await self.store.hasToken
+    guard hasToken else { return }
+    guard let token = await self.store.token else { return }
+
+    guard case let .authorizationCode(client, _, _, _, _, _) = method else {
+      return
+    }
+
+    if let refreshToken = token.refreshToken {
+      let (revokeBody, revokeResponse): (String, URLResponse) = try await self.httpClient
+        .post(url: self.configuration.revocationEndpoint)
+        .form(items: [
+          URLQueryItem(name: "client_id", value: client.id),
+          URLQueryItem(name: "token", value: refreshToken),
+          URLQueryItem(name: "token_type_hint", value: "refresh_token")
+        ])
+        .send()
+      OAuth2HTTPClient.logger.debug("Revocation Response Body: \(revokeBody)")
+      OAuth2HTTPClient.logger.debug("Revocation Response: \(revokeResponse)")
+    }
+
+    try await self.store.removeToken()
   }
 
   /**
@@ -255,7 +320,14 @@ public actor OAuth2HTTPClient: Sendable {
    */
   public func request(url: String, method: HTTPMethod) async throws -> RequestBuilder {
     try await self.refresh()
-    return try self.httpClient.request(url: url, method: method).bearerAuthentication(token: await self.store.token!.accessToken)
+    let builder = try self.httpClient.request(url: url, method: method)
+    if self.method.useDPoP {
+      let accessToken = await self.store.token!.accessToken
+      let proof = try self.generateDPoPProof(url: url, httpMethod: method, accessToken: accessToken)
+      return builder.dPoP(token: accessToken, proof: proof)
+    } else {
+      return builder.bearerAuthentication(token: await self.store.token!.accessToken)
+    }
   }
 
   /**

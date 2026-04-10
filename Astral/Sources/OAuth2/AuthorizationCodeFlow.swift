@@ -13,7 +13,7 @@ import struct Foundation.UUID
  */
 public struct AuthorizationCodeFlow: Hashable, Sendable {
 
-  public init(clientId: String, scope: String? = nil, redirectURI: String, usePKCE: Bool) throws {
+  public init(clientId: String, scope: String? = nil, redirectURI: String, usePKCE: Bool, dPoPThumbprint: String?) throws {
     self.clientId = clientId
     self.scope = scope
     self.redirectURI = redirectURI
@@ -31,6 +31,8 @@ public struct AuthorizationCodeFlow: Hashable, Sendable {
     } else {
       self.pkce = nil
     }
+
+    self.dPoPThumbprint = dPoPThumbprint
 
   }
 
@@ -67,6 +69,12 @@ public struct AuthorizationCodeFlow: Hashable, Sendable {
    */
   let pkce: PKCE?
 
+
+  /**
+   DPoP JWK Thumbprint
+   */
+  let dPoPThumbprint: String?
+
   /**
    The query parameters of authorization request with PKCE verification
    */
@@ -78,14 +86,18 @@ public struct AuthorizationCodeFlow: Hashable, Sendable {
       ("state", \Self.state),
       ("redirect_uri", \Self.redirectURI)
     ]
-    let otherQueryItems: [(String, PartialKeyPath<Self>)] = if self.pkce != nil {
-      [
-        ("code_challenge", \Self.pkce!.codeChallenge),
-        ("code_challenge_method", \Self.pkce!.codeChallengeMethod)
-      ]
-    } else {
-      []
-    }
+    let otherQueryItems: [(String, PartialKeyPath<Self>)] = {
+      var items: [(String, PartialKeyPath<Self>)] = []
+      if self.pkce != nil {
+        items.append(("code_challenge", \Self.pkce!.codeChallenge))
+        items.append(("code_challenge_method", \Self.pkce!.codeChallengeMethod))
+      }
+
+      if self.dPoPThumbprint != nil {
+        items.append(("dpop_jkt", \Self.dPoPThumbprint!))
+      }
+      return items
+    }()
 
     return (queryItems + otherQueryItems)
       .compactMap { (name: String, keyPath: PartialKeyPath<Self>) -> URLQueryItem? in

@@ -127,6 +127,17 @@ extension RequestBuilder {
     return self.headers(headers: [Header(key: Header.Key.authorization, value: Header.Value.bearerToken(token))])
   }
 
+  /**
+   Adds DPoP headers to the URLRequest
+   - parameter token: The token for the Bearer Authentication header
+   */
+  public func dPoP(token: String, proof: String) -> RequestBuilder {
+    return self.headers(headers: [
+      Header(key: Header.Key.authorization, value: Header.Value.custom("DPoP \(token)")),
+      Header(key: Header.Key.custom("DPoP"), value: Header.Value.custom(proof))
+    ])
+  }
+
   // MARK: Body Functions
   /**
    Adds a body to the URLRequest and sets the Content-Type to the specified Media Type

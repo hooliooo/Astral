@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141521892F2A0BCB002749BE /* Dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 141521882F2A0BC2002749BE /* Dev.xcconfig */; };
 		143FC15C2DDDD62500FFDD24 /* Astral in Frameworks */ = {isa = PBXBuildFile; productRef = 143FC15B2DDDD62500FFDD24 /* Astral */; };
 		143FC15E2DDDD62A00FFDD24 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = 143FC15D2DDDD62A00FFDD24 /* OAuth2 */; };
 		14423907298EC722002571A9 /* TestAstralApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14423906298EC722002571A9 /* TestAstralApp.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		14055E33298D989B0035CDB7 /* Astral */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Astral; sourceTree = "<group>"; };
+		141521882F2A0BC2002749BE /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		14423904298EC722002571A9 /* TestAstral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAstral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14423906298EC722002571A9 /* TestAstralApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAstralApp.swift; sourceTree = "<group>"; };
 		14423908298EC722002571A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		14423905298EC722002571A9 /* TestAstral */ = {
 			isa = PBXGroup;
 			children = (
+				141521882F2A0BC2002749BE /* Dev.xcconfig */,
 				146827C92CC11FB3004A13F3 /* Staging.xcconfig */,
 				14F3BBC32CC001330054850E /* Info.plist */,
 				14423906298EC722002571A9 /* TestAstralApp.swift */,
@@ -363,6 +366,7 @@
 			files = (
 				1442390E298EC723002571A9 /* Preview Assets.xcassets in Resources */,
 				1442390B298EC723002571A9 /* Assets.xcassets in Resources */,
+				141521892F2A0BCB002749BE /* Dev.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +501,7 @@
 /* Begin XCBuildConfiguration section */
 		14423910298EC723002571A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 141521882F2A0BC2002749BE /* Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
